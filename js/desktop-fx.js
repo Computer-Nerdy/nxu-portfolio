@@ -1,6 +1,6 @@
 /* ==========================================================================
-   HYPER-REACTIVE CHARACTER KINETICS — CRYSTAL SHARP & ULTRA-SMOOTH EASING
-   Zero blurriness, vector-crisp typography, seamless smoothstep fade transitions
+   HYPER-REACTIVE CHARACTER KINETICS — CRYSTAL SHARP & PROPER WORD WRAPPING
+   Zero word-mangling, dynamic word wrapping, crystal-sharp typography
    ========================================================================== */
 
 export function initDesktopEffects() {
@@ -137,15 +137,14 @@ function spawnCursorSpark(x, y) {
 }
 
 /**
- * Crystal-Sharp Character-Level Kinetic Typography Engine:
- * Continuous smooth cosine ease-out decay without blurriness or abrupt transitions.
+ * Crystal-Sharp Character Kinetic Typography with Dynamic Word Boundary Protection
  */
 function initCrystalSharpKineticPhysics() {
   const headingElements = document.querySelectorAll('.hero-title, .section-title, .brand-name, .tilt-card h3');
   const charNodes = [];
 
   headingElements.forEach(heading => {
-    wrapTextNodesInKineticSpans(heading, charNodes);
+    wrapTextNodesInKineticWords(heading, charNodes);
   });
 
   let mouse = { x: -2000, y: -2000 };
@@ -160,7 +159,7 @@ function initCrystalSharpKineticPhysics() {
     mouse.y = -2000;
   });
 
-  const TOTAL_LINGER_MS = 2200; // 2.2s total smooth decay window
+  const TOTAL_LINGER_MS = 2200;
 
   function updateKineticPhysics() {
     const now = Date.now();
@@ -173,31 +172,29 @@ function initCrystalSharpKineticPhysics() {
       const dx = mouse.x - charCenterX;
       const dy = mouse.y - charCenterY;
       const dist = Math.hypot(dx, dy);
-      const radius = 150;
+      const radius = 140;
 
       if (dist < radius) {
         item.lastActiveTime = now;
         const force = Math.pow((1 - dist / radius), 1.4);
         const angle = Math.atan2(dy, dx);
 
-        // Repel coordinates
-        item.targetX = -Math.cos(angle) * 30 * force;
-        item.targetY = -Math.sin(angle) * 24 * force;
-        item.targetRotate = -Math.sin(angle) * 16 * force;
-        item.targetScale = 1 + 0.32 * force;
+        item.targetX = -Math.cos(angle) * 22 * force;
+        item.targetY = -Math.sin(angle) * 18 * force;
+        item.targetRotate = -Math.sin(angle) * 12 * force;
+        item.targetScale = 1 + 0.24 * force;
         item.targetGlow = force;
       } else {
         const elapsed = now - item.lastActiveTime;
 
         if (elapsed < TOTAL_LINGER_MS) {
-          // Smooth Continuous Cosine Easing Fade (Zero Abruptness)
           const progress = elapsed / TOTAL_LINGER_MS;
-          const easeFactor = 0.5 * (1 + Math.cos(Math.PI * progress)); // Smooth 1.0 -> 0.0 S-curve
+          const easeFactor = 0.5 * (1 + Math.cos(Math.PI * progress));
 
           item.targetX = 0;
-          item.targetY = -1.5 * easeFactor;
+          item.targetY = -1 * easeFactor;
           item.targetRotate = 0;
-          item.targetScale = 1 + 0.06 * easeFactor;
+          item.targetScale = 1 + 0.04 * easeFactor;
           item.targetGlow = easeFactor * 0.85;
         } else {
           item.targetX = 0;
@@ -208,22 +205,19 @@ function initCrystalSharpKineticPhysics() {
         }
       }
 
-      // Smooth continuous lerping
-      const lerpFactor = 0.12;
+      const lerpFactor = 0.14;
       item.currentX += (item.targetX - item.currentX) * lerpFactor;
       item.currentY += (item.targetY - item.currentY) * lerpFactor;
       item.currentRotate += (item.targetRotate - item.currentRotate) * lerpFactor;
       item.currentScale += (item.targetScale - item.currentScale) * lerpFactor;
       item.currentGlow += (item.targetGlow - item.currentGlow) * lerpFactor;
 
-      // Apply sharp rendering
       if (Math.abs(item.currentX) > 0.01 || Math.abs(item.currentY) > 0.01 || Math.abs(item.currentScale - 1) > 0.005) {
         item.element.style.transform = `translate3d(${item.currentX.toFixed(2)}px, ${item.currentY.toFixed(2)}px, 0) rotate(${item.currentRotate.toFixed(2)}deg) scale(${item.currentScale.toFixed(3)})`;
         
         if (item.currentGlow > 0.04) {
           item.element.style.color = '#FFFFFF';
-          // Clean, sharp, crystal-clear specular lighting (No blurry heavy halos)
-          item.element.style.textShadow = `0 0 1px #FFFFFF, 0 0 10px rgba(245, 158, 11, ${(item.currentGlow * 0.8).toFixed(2)}), 0 0 20px rgba(245, 158, 11, ${(item.currentGlow * 0.4).toFixed(2)})`;
+          item.element.style.textShadow = `0 0 1px #FFFFFF, 0 0 8px rgba(245, 158, 11, ${(item.currentGlow * 0.8).toFixed(2)})`;
         } else {
           item.element.style.color = '';
           item.element.style.textShadow = '';
@@ -241,7 +235,11 @@ function initCrystalSharpKineticPhysics() {
   updateKineticPhysics();
 }
 
-function wrapTextNodesInKineticSpans(container, charList) {
+/**
+ * Word-level wrapper: Ensures words never break awkwardly across lines,
+ * while allowing each letter inside the word to dynamically react to cursor.
+ */
+function wrapTextNodesInKineticWords(container, charList) {
   const childNodes = Array.from(container.childNodes);
 
   childNodes.forEach(node => {
@@ -250,35 +248,47 @@ function wrapTextNodesInKineticSpans(container, charList) {
       if (!text.trim() && text.length === 0) return;
 
       const fragment = document.createDocumentFragment();
-      for (let i = 0; i < text.length; i++) {
-        const char = text[i];
-        if (char === ' ') {
-          fragment.appendChild(document.createTextNode(' '));
-        } else {
-          const span = document.createElement('span');
-          span.className = 'kinetic-char';
-          span.textContent = char;
-          fragment.appendChild(span);
+      // Split into words by whitespace
+      const words = text.split(/(\s+)/);
 
-          charList.push({
-            element: span,
-            currentX: 0,
-            currentY: 0,
-            targetX: 0,
-            targetY: 0,
-            currentRotate: 0,
-            targetRotate: 0,
-            currentScale: 1,
-            targetScale: 1,
-            currentGlow: 0,
-            targetGlow: 0,
-            lastActiveTime: 0
-          });
+      words.forEach(part => {
+        if (/^\s+$/.test(part)) {
+          // Preserve exact whitespace
+          fragment.appendChild(document.createTextNode(part));
+        } else if (part.length > 0) {
+          // Create a word container that cannot be broken mid-word
+          const wordSpan = document.createElement('span');
+          wordSpan.className = 'kinetic-word';
+
+          for (let i = 0; i < part.length; i++) {
+            const char = part[i];
+            const charSpan = document.createElement('span');
+            charSpan.className = 'kinetic-char';
+            charSpan.textContent = char;
+            wordSpan.appendChild(charSpan);
+
+            charList.push({
+              element: charSpan,
+              currentX: 0,
+              currentY: 0,
+              targetX: 0,
+              targetY: 0,
+              currentRotate: 0,
+              targetRotate: 0,
+              currentScale: 1,
+              targetScale: 1,
+              currentGlow: 0,
+              targetGlow: 0,
+              lastActiveTime: 0
+            });
+          }
+          fragment.appendChild(wordSpan);
         }
-      }
+      });
+
       container.replaceChild(fragment, node);
     } else if (node.nodeType === Node.ELEMENT_NODE) {
-      wrapTextNodesInKineticSpans(node, charList);
+      wrapTextNodesInKineticWords(node, charList);
     }
   });
 }
@@ -306,7 +316,6 @@ function initSmoothParagraphIllumination() {
     });
   });
 
-  // Continuous smooth fade check
   function checkParagraphFades() {
     const now = Date.now();
     textItems.forEach(item => {

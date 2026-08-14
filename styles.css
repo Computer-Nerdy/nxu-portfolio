@@ -1,6 +1,6 @@
 /* ==========================================================================
    HARISH RAGAV V. — OBSIDIAN LIQUID GLASS DESIGN SYSTEM (DARK MODE)
-   Crystal-Sharp Typography, Zero Blurriness & Smoothstep Seamless Transitions
+   Word-Protected Dynamic Typography, Zero Blurriness & Smoothstep Seamless Transitions
    ========================================================================== */
 
 :root {
@@ -53,7 +53,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5.5rem;
+  scroll-padding-top: 6.5rem;
   background: var(--bg-canvas);
   color: var(--color-slate-800);
   font-family: var(--font-body);
@@ -195,8 +195,13 @@ a {
 }
 
 /* ==========================================================================
-   CRYSTAL-SHARP CHARACTER KINETIC TYPOGRAPHY (ZERO BLURRINESS)
+   DYNAMIC WORD & CHARACTER TYPOGRAPHY (ZERO WORD MANGLING)
    ========================================================================== */
+
+.kinetic-word {
+  display: inline-block;
+  white-space: nowrap;
+}
 
 .kinetic-char {
   display: inline-block;
@@ -213,7 +218,7 @@ a {
   font-family: var(--font-display);
   font-size: clamp(2.1rem, 4.5vw + 0.5rem, 3.8rem);
   font-weight: 800;
-  line-height: 1.12;
+  line-height: 1.15;
   letter-spacing: -0.025em;
   color: #FFFFFF;
 }
@@ -222,7 +227,7 @@ a {
   font-family: var(--font-display);
   font-size: clamp(1.65rem, 3.2vw + 0.2rem, 2.6rem);
   font-weight: 800;
-  line-height: 1.18;
+  line-height: 1.2;
   letter-spacing: -0.02em;
   color: #FFFFFF;
 }
