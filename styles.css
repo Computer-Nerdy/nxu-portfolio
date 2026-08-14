@@ -1,6 +1,6 @@
 /* ==========================================================================
    HARISH RAGAV V. — OBSIDIAN LIQUID GLASS DESIGN SYSTEM (DARK MODE)
-   Text Texture Packs, Real-Time Cinematic Slideshow & Calibrated Sticky Video
+   Hero Keyword Disappearing/Reappearing Morph Engine, Permanent Projects & Textures
    ========================================================================== */
 
 :root {
@@ -81,6 +81,49 @@ a {
 
 .hidden {
   display: none !important;
+}
+
+/* ==========================================================================
+   HERO KEYWORD DISAPPEARING & REAPPEARING MORPH ENGINE
+   ========================================================================== */
+
+.hero-morph-container {
+  display: inline-block;
+  vertical-align: baseline;
+  position: relative;
+}
+
+.hero-morph-word {
+  display: inline-block;
+  transform-origin: center center;
+  transition: opacity 0.45s var(--ease-smooth), transform 0.45s var(--ease-smooth), filter 0.45s var(--ease-smooth);
+}
+
+.hero-morph-word.morph-disappearing {
+  opacity: 0;
+  transform: translateY(-16px) scale(0.96);
+  filter: blur(6px);
+}
+
+.hero-morph-word.morph-reappearing {
+  animation: morphPopIn 0.5s var(--ease-smooth) forwards;
+}
+
+@keyframes morphPopIn {
+  0% { opacity: 0; transform: translateY(18px) scale(0.94); filter: blur(6px); }
+  100% { opacity: 1; transform: translateY(0px) scale(1); filter: blur(0px); }
+}
+
+/* ==========================================================================
+   PERMANENT PROJECTS SECTION STABILITY (NEVER HIDES OR DIMS)
+   ========================================================================== */
+
+#projects,
+#projects *,
+.grid-projects,
+.grid-projects * {
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 /* ==========================================================================
@@ -292,7 +335,7 @@ a {
   font-family: var(--font-display);
   font-size: clamp(2.1rem, 4.5vw + 0.5rem, 3.8rem);
   font-weight: 800;
-  line-height: 1.15;
+  line-height: 1.18;
   letter-spacing: -0.025em;
   color: #FFFFFF;
 }

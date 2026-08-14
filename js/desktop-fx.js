@@ -1,9 +1,11 @@
 /* ==========================================================================
-   HYPER-REACTIVE CHARACTER KINETICS & PERMANENT PROJECT REVELATION
-   Crystal sharp typography, 360 cursor interaction, and permanent project retention
+   HYPER-REACTIVE CHARACTER KINETICS & DYNAMIC HERO MORPH ENGINE
+   Hero keywords disappearing & reappearing, permanent project text retention
    ========================================================================== */
 
 export function initDesktopEffects() {
+  initHeroDisappearingTextMorph();
+
   if (window.innerWidth < 768) return; // Keep mobile lightweight
 
   initVelocitySparkCursor();
@@ -13,6 +15,57 @@ export function initDesktopEffects() {
   init3DCardTilt();
   initMagneticElements();
   initScrollReveals();
+}
+
+/**
+ * Hero Keywords Disappearing & Reappearing Engine
+ * Cycles: "IoT Architecture" -> "Edge AI & TinyML" -> "Interactive 3D Systems" -> "Quantum Simulations"
+ */
+function initHeroDisappearingTextMorph() {
+  const morphElement = document.getElementById('hero-morph-text');
+  if (!morphElement) return;
+
+  const phrases = [
+    { text: "IoT Architecture & Embedded Silicon", texture: "texture-liquid-amber" },
+    { text: "Edge AI & Neural Inference", texture: "texture-quantum-prism" },
+    { text: "Interactive 3D WebGL Systems", texture: "texture-cyber-circuit" },
+    { text: "Quantum Circuit Modeling", texture: "texture-plasma-ember" },
+    { text: "Low-Level Microcontroller Firmware", texture: "texture-brushed-titanium" }
+  ];
+
+  const allTextureClasses = [
+    "texture-liquid-amber",
+    "texture-quantum-prism",
+    "texture-cyber-circuit",
+    "texture-plasma-ember",
+    "texture-brushed-titanium"
+  ];
+
+  let currentIdx = 0;
+
+  setInterval(() => {
+    // 1. Disappear phase (glitch/fade out upward)
+    morphElement.classList.add('morph-disappearing');
+
+    setTimeout(() => {
+      // 2. Swap text and texture pack
+      currentIdx = (currentIdx + 1) % phrases.length;
+      const nextPhrase = phrases[currentIdx];
+
+      morphElement.textContent = nextPhrase.text;
+      allTextureClasses.forEach(cls => morphElement.classList.remove(cls));
+      morphElement.classList.add(nextPhrase.texture);
+
+      // 3. Reappear phase (slide in from below with glowing illumination)
+      morphElement.classList.remove('morph-disappearing');
+      morphElement.classList.add('morph-reappearing');
+
+      setTimeout(() => {
+        morphElement.classList.remove('morph-reappearing');
+      }, 500);
+    }, 450);
+
+  }, 2800);
 }
 
 /**
@@ -137,15 +190,14 @@ function spawnCursorSpark(x, y) {
 }
 
 /**
- * Crystal-Sharp Character Kinetic Typography with Permanent Project Retention
+ * Character Kinetic Typography (applied cleanly only to main headings without affecting static project text)
  */
 function initCrystalSharpKineticPhysics() {
-  const headingElements = document.querySelectorAll('.hero-title, .section-title, .brand-name, .tilt-card h3');
+  const headingElements = document.querySelectorAll('.brand-name, .section-title');
   const charNodes = [];
 
   headingElements.forEach(heading => {
-    const isProjectSection = !!heading.closest('#projects');
-    wrapTextNodesInKineticWords(heading, charNodes, isProjectSection);
+    wrapTextNodesInKineticWords(heading, charNodes);
   });
 
   let mouse = { x: -2000, y: -2000 };
@@ -177,45 +229,32 @@ function initCrystalSharpKineticPhysics() {
 
       if (dist < radius) {
         item.lastActiveTime = now;
-        if (item.isProjectSection) {
-          item.isPermanentlyRevealed = true;
-        }
-
         const force = Math.pow((1 - dist / radius), 1.4);
         const angle = Math.atan2(dy, dx);
 
-        item.targetX = -Math.cos(angle) * 20 * force;
-        item.targetY = -Math.sin(angle) * 16 * force;
-        item.targetRotate = -Math.sin(angle) * 10 * force;
-        item.targetScale = 1 + 0.2 * force;
+        item.targetX = -Math.cos(angle) * 18 * force;
+        item.targetY = -Math.sin(angle) * 14 * force;
+        item.targetRotate = -Math.sin(angle) * 8 * force;
+        item.targetScale = 1 + 0.16 * force;
         item.targetGlow = force;
       } else {
-        if (item.isPermanentlyRevealed) {
-          // Permanently Revealed in Projects section -> Keep lit and crisp!
+        const elapsed = now - item.lastActiveTime;
+
+        if (elapsed < TOTAL_LINGER_MS) {
+          const progress = elapsed / TOTAL_LINGER_MS;
+          const easeFactor = 0.5 * (1 + Math.cos(Math.PI * progress));
+
+          item.targetX = 0;
+          item.targetY = -1 * easeFactor;
+          item.targetRotate = 0;
+          item.targetScale = 1 + 0.03 * easeFactor;
+          item.targetGlow = easeFactor * 0.85;
+        } else {
           item.targetX = 0;
           item.targetY = 0;
           item.targetRotate = 0;
           item.targetScale = 1;
-          item.targetGlow = 0.8;
-        } else {
-          const elapsed = now - item.lastActiveTime;
-
-          if (elapsed < TOTAL_LINGER_MS) {
-            const progress = elapsed / TOTAL_LINGER_MS;
-            const easeFactor = 0.5 * (1 + Math.cos(Math.PI * progress));
-
-            item.targetX = 0;
-            item.targetY = -1 * easeFactor;
-            item.targetRotate = 0;
-            item.targetScale = 1 + 0.04 * easeFactor;
-            item.targetGlow = easeFactor * 0.85;
-          } else {
-            item.targetX = 0;
-            item.targetY = 0;
-            item.targetRotate = 0;
-            item.targetScale = 1;
-            item.targetGlow = 0;
-          }
+          item.targetGlow = 0;
         }
       }
 
@@ -238,13 +277,8 @@ function initCrystalSharpKineticPhysics() {
         }
       } else {
         item.element.style.transform = 'translate3d(0, 0, 0) rotate(0deg) scale(1)';
-        if (item.isPermanentlyRevealed) {
-          item.element.style.color = '#FFFFFF';
-          item.element.style.textShadow = '0 0 8px rgba(245, 158, 11, 0.4)';
-        } else {
-          item.element.style.color = '';
-          item.element.style.textShadow = '';
-        }
+        item.element.style.color = '';
+        item.element.style.textShadow = '';
       }
     });
 
@@ -254,7 +288,7 @@ function initCrystalSharpKineticPhysics() {
   updateKineticPhysics();
 }
 
-function wrapTextNodesInKineticWords(container, charList, isProjectSection) {
+function wrapTextNodesInKineticWords(container, charList) {
   const childNodes = Array.from(container.childNodes);
 
   childNodes.forEach(node => {
@@ -291,9 +325,7 @@ function wrapTextNodesInKineticWords(container, charList, isProjectSection) {
               targetScale: 1,
               currentGlow: 0,
               targetGlow: 0,
-              lastActiveTime: 0,
-              isProjectSection: isProjectSection,
-              isPermanentlyRevealed: isProjectSection // Initialize projects cleanly
+              lastActiveTime: 0
             });
           }
           fragment.appendChild(wordSpan);
@@ -302,24 +334,20 @@ function wrapTextNodesInKineticWords(container, charList, isProjectSection) {
 
       container.replaceChild(fragment, node);
     } else if (node.nodeType === Node.ELEMENT_NODE) {
-      wrapTextNodesInKineticWords(node, charList, isProjectSection);
+      wrapTextNodesInKineticWords(node, charList);
     }
   });
 }
 
 /**
- * Paragraph & Description Illumination with Permanent Project Retention
+ * Paragraph & Description Illumination
  */
 function initSmoothParagraphIllumination() {
-  const bodyTexts = document.querySelectorAll('.lead-text, .glass-card p, .grid-skills li');
+  const bodyTexts = document.querySelectorAll('.lead-text, .grid-skills li');
   const textItems = [];
 
   bodyTexts.forEach(el => {
-    const isProject = !!el.closest('#projects');
-    textItems.push({ element: el, lastActive: 0, isProject, isPermanentlyRevealed: isProject });
-    if (isProject) {
-      el.classList.add('text-illuminated');
-    }
+    textItems.push({ element: el, lastActive: 0 });
   });
 
   window.addEventListener('mousemove', (e) => {
@@ -330,9 +358,6 @@ function initSmoothParagraphIllumination() {
       if (dist < 260) {
         item.lastActive = now;
         item.element.classList.add('text-illuminated');
-        if (item.isProject) {
-          item.isPermanentlyRevealed = true;
-        }
       }
     });
   });
@@ -340,7 +365,7 @@ function initSmoothParagraphIllumination() {
   function checkParagraphFades() {
     const now = Date.now();
     textItems.forEach(item => {
-      if (!item.isPermanentlyRevealed && item.lastActive > 0 && now - item.lastActive > 2400) {
+      if (item.lastActive > 0 && now - item.lastActive > 2400) {
         item.element.classList.remove('text-illuminated');
       }
     });
