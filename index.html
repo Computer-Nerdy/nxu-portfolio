@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Harish Ragav V. | Software, IoT & 3D Systems Engineer</title>
+  
+  <!-- SEO & Meta Tags -->
+  <meta name="description" content="Portfolio of Harish Ragav V. — Computer Science (IoT) student and engineer specializing in Embedded Systems, Quantum Simulations, AI/ML Tooling, and Interactive 3D WebGL." />
+  <meta name="author" content="Harish Ragav V." />
+  <meta property="og:title" content="Harish Ragav V. | Portfolio" />
+  <meta property="og:description" content="Building at the intersection of IoT, Edge AI, and Interactive 3D WebGL." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#F8FAFC" />
+
+  <!-- Google Fonts: Figtree, Mulish, Syne & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Mulish:ital,wght@0,300..900;1,300..900&family=Syne:wght@600..800&family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Three.js + GLTFLoader ES Module -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body class="bg-gradient-canvas text-slate-800 antialiased selection:bg-amber-100 selection:text-amber-900 relative">
+
+  <!-- Ambient Liquid Mesh Background Orbs (Creates liquid glass refraction) -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="liquid-orb orb-1"></div>
+    <div class="liquid-orb orb-2"></div>
+    <div class="liquid-orb orb-3"></div>
+  </div>
+
+  <!-- Header Navigation (Pixel-Perfect Liquid Glass Bar) -->
+  <header class="nav-container">
+    <div class="navbar-card">
+      
+      <!-- Brand & Status -->
+      <a href="#hero" class="brand-wrapper">
+        <div class="brand-avatar">HR</div>
+        <div class="brand-info">
+          <span class="brand-name">Harish Ragav V.</span>
+          <div class="brand-status">
+            <span class="status-dot"></span>
+            <span>Available for Opportunities</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="nav-menu">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="nav-actions">
+        <a href="https://github.com/Computer-Nerdy" target="_blank" rel="noopener noreferrer" class="nav-github-btn">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          <span>GitHub</span>
+        </a>
+        <a href="#contact" class="nav-cta-btn">
+          Get in Touch
+        </a>
+
+        <!-- Mobile Menu Hamburger Button -->
+        <button id="mobile-menu-btn" class="nav-hamburger-btn" aria-label="Toggle navigation">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Drawer Menu (Strictly hidden on desktop, active on mobile toggle) -->
+    <div id="mobile-menu" class="mobile-menu-drawer">
+      <a href="#about" class="mobile-nav-link">About</a>
+      <a href="#projects" class="mobile-nav-link">Projects</a>
+      <a href="#skills" class="mobile-nav-link">Skills</a>
+      <a href="#contact" class="mobile-nav-link" style="color: var(--color-amber-700);">Contact</a>
+    </div>
+  </header>
+
+  <main class="relative z-10">
+    <!-- HERO SECTION (Fluid Dynamic Grid) -->
+    <section id="hero" class="hero-section">
+      <div class="fluid-container">
+        <div class="grid-hero">
+          
+          <!-- Left Column: Biography & Value Proposition -->
+          <div class="space-y-6">
+            
+            <div style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.35rem 0.85rem; border-radius: 9999px; border: 1px solid rgba(253, 230, 138, 0.8);" class="glass-card text-amber-800 text-xs font-semibold">
+              <span class="status-dot" style="background-color: var(--color-amber-600);"></span>
+              <span>B.Tech Computer Science (IoT) · SRM IST Ramapuram</span>
+            </div>
+
+            <h1 class="hero-title">
+              Building at the intersection of <span class="text-amber-700">IoT, Edge AI,</span> &amp; <span class="text-slate-900">3D Systems.</span>
+            </h1>
+
+            <p class="lead-text font-body">
+              I am a developer and builder focused on embedded hardware, quantum circuit simulations, local machine learning, and interactive browser-based 3D applications.
+            </p>
+
+            <!-- Fluid Metrics Strip -->
+            <div class="grid-metrics">
+              <div class="glass-card" style="padding: 0.75rem 0.5rem; border-radius: 0.875rem; text-align: center;">
+                <div style="font-size: 0.7rem; color: var(--color-slate-500); font-weight: 600;">Domain</div>
+                <div style="font-size: 0.85rem; font-weight: 700; color: var(--color-slate-800); margin-top: 0.15rem;">Embedded &amp; IoT</div>
+              </div>
+              <div class="glass-card" style="padding: 0.75rem 0.5rem; border-radius: 0.875rem; text-align: center;">
+                <div style="font-size: 0.7rem; color: var(--color-slate-500); font-weight: 600;">Focus</div>
+                <div style="font-size: 0.85rem; font-weight: 700; color: var(--color-slate-800); margin-top: 0.15rem;">Edge AI &amp; Quantum</div>
+              </div>
+              <div class="glass-card" style="padding: 0.75rem 0.5rem; border-radius: 0.875rem; text-align: center;">
+                <div style="font-size: 0.7rem; color: var(--color-slate-500); font-weight: 600;">Graphics</div>
+                <div style="font-size: 0.85rem; font-weight: 700; color: var(--color-slate-800); margin-top: 0.15rem;">Three.js / WebGL</div>
+              </div>
+            </div>
+
+            <!-- Action CTAs -->
+            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 0.875rem;">
+              <a href="#projects" class="btn-liquid-primary">
+                <span>Explore Projects</span>
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+              </a>
+              <a href="#contact" class="btn-liquid-secondary">
+                Contact Me
+              </a>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Prominent Fluid 3D Hardware Viewport -->
+          <div class="space-y-4">
+            <div class="viewport-card glass-card shadow-glass-lg">
+              
+              <!-- 3D Canvas -->
+              <div id="three-hero-container"></div>
+
+              <!-- Top Floating Controls -->
+              <div style="position: absolute; top: 1rem; left: 1rem; right: 1rem; display: flex; align-items: center; justify-content: space-between; pointer-events: auto; z-index: 20;">
+                <span class="glass-card" style="padding: 0.35rem 0.75rem; border-radius: 0.625rem; font-size: 0.75rem; font-weight: 600; color: var(--color-slate-700);">
+                  ESP32 Hardware Inspector (Drag to Rotate)
+                </span>
+                <button id="reset-cam-btn" style="padding: 0.35rem 0.75rem; border-radius: 0.625rem; background: rgba(255, 255, 255, 0.9); border: 1px solid var(--color-slate-200); font-size: 0.75rem; font-weight: 600; color: var(--color-slate-700); cursor: pointer;">
+                  Reset View
+                </button>
+              </div>
+
+            </div>
+
+            <!-- Interactive Component Label Buttons -->
+            <div class="glass-card p-card rounded-fluid space-y-4">
+              <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem; font-weight: 700; color: var(--color-slate-500);">
+                <span>INSPECT HARDWARE STAGE:</span>
+                <span class="text-amber-700">Interactive Focus</span>
+              </div>
+              
+              <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                <button class="comp-label-btn active" data-comp="mcu">ESP-WROOM-32 Shield</button>
+                <button class="comp-label-btn" data-comp="antenna">PCB Antenna</button>
+                <button class="comp-label-btn" data-comp="gpio">Dual-Row Pins</button>
+                <button class="comp-label-btn" data-comp="bridge">CP2102 UART Bridge</button>
+                <button class="comp-label-btn" data-comp="buttons">EN / BOOT Buttons</button>
+              </div>
+
+              <!-- Dynamic Component Description Card -->
+              <div style="padding: 0.75rem 1rem; border-radius: 0.75rem; background-color: #F8FAFC; border: 1px solid rgba(226, 232, 240, 0.8);">
+                <div id="component-label-title" style="font-weight: 800; color: var(--color-slate-900); font-size: 0.875rem;">ESP32 Dual-Core Xtensa LX6 (240MHz)</div>
+                <div id="component-label-desc" style="color: var(--color-slate-600); font-size: 0.75rem; margin-top: 0.25rem; line-height: 1.6;">Main compute core with integrated Wi-Fi, Bluetooth 4.2 BLE, hardware crypto accelerator, and 520KB SRAM.</div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="fluid-section">
+      <div class="fluid-container">
+        
+        <div class="glass-card p-fluid rounded-fluid shadow-glass">
+          <div class="space-y-4" style="max-width: 52rem;">
+            <div class="text-xs font-bold text-amber-700 uppercase tracking-widest font-mono">Engineering Approach</div>
+            <h2 class="section-title">
+              Hands-on engineering from silicon registers to high-level 3D web interfaces.
+            </h2>
+            <p class="lead-text font-body">
+              I am Harish Ragav V., pursuing my B.Tech in Computer Science with a specialization in Internet of Things (IoT) at SRM Institute of Science and Technology.
+            </p>
+            <p class="lead-text font-body">
+              My engineering work connects low-level microcontrollers, sensor arrays, quantum circuit modeling, and real-time visualization. I enjoy understanding how physical hardware and software integrate seamlessly—prototyping functional devices, diagnosing signal paths, and building robust client applications.
+            </p>
+            <div style="margin-top: 1rem; font-family: var(--font-mono); font-size: 0.8125rem; font-weight: 700; color: var(--color-slate-800);">
+              Creed: Build → Test → Understand → Improve → Deliver.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- VERIFIED PROJECTS SECTION -->
+    <section id="projects" class="fluid-section">
+      <div class="fluid-container">
+        
+        <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; margin-bottom: clamp(2rem, 4vw, 3.5rem); gap: 1rem;">
+          <div>
+            <div class="text-xs font-bold text-amber-700 uppercase tracking-widest font-mono" style="margin-bottom: 0.35rem;">Public Repositories &amp; Builds</div>
+            <h2 class="section-title">
+              Selected Engineering Projects
+            </h2>
+          </div>
+          <p class="font-body" style="font-size: 0.875rem; color: var(--color-slate-500); max-width: 28rem;">
+            Directly verified builds from my GitHub profile covering quantum simulations, developer tooling, 3D WebGL, and embedded systems.
+          </p>
+        </div>
+
+        <div class="grid-projects">
+          
+          <!-- PROJECT 01: QuantumLens -->
+          <div class="glass-card p-card rounded-fluid shadow-glass hover:shadow-glass-lg" style="display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s var(--ease-smooth);">
+            <div class="space-y-4">
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <span style="font-size: 0.75rem; font-weight: 700; color: var(--color-amber-800); font-family: var(--font-mono);">Computer-Nerdy / QuantumLens</span>
+                <span style="padding: 0.2rem 0.6rem; border-radius: 9999px; font-size: 0.65rem; font-weight: 700; background-color: var(--color-emerald-50); color: var(--color-emerald-700); border: 1px solid var(--color-emerald-200);">Public Repo</span>
+              </div>
+              <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--color-slate-900); font-family: var(--font-display);">
+                QuantumLens: Interactive Quantum Circuit Simulator
+              </h3>
+              <p class="font-body" style="font-size: 0.875rem; color: var(--color-slate-600); line-height: 1.6;">
+                A high-fidelity, interactive quantum circuit simulator featuring real-time circuit state simulation and 3D visual rendering of state spaces in the browser.
+              </p>
+              <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; font-family: var(--font-mono); font-size: 0.75rem;">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Qiskit</span>
+                <span class="skill-tag">Three.js</span>
+                <span class="skill-tag">Streamlit</span>
+                <span class="skill-tag">WebGL</span>
+              </div>
+            </div>
+
+            <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(226, 232, 240, 0.8);">
+              <a href="https://github.com/Computer-Nerdy/QuantumLens" target="_blank" rel="noopener noreferrer" class="project-link">
+                <span>View GitHub Repository</span>
+                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- PROJECT 02: Quantum RF Anomaly Detection -->
+          <div class="glass-card p-card rounded-fluid shadow-glass hover:shadow-glass-lg" style="display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s var(--ease-smooth);">
+            <div class="space-y-4">
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <span style="font-size: 0.75rem; font-weight: 700; color: var(--color-amber-800); font-family: var(--font-mono);">Computer-Nerdy / quantum-rf-anomaly-detection</span>
+                <span style="padding: 0.2rem 0.6rem; border-radius: 9999px; font-size: 0.65rem; font-weight: 700; background-color: var(--color-emerald-50); color: var(--color-emerald-700); border: 1px solid var(--color-emerald-200);">Public Repo</span>
+              </div>
+              <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--color-slate-900); font-family: var(--font-display);">
+                Quantum RF Spectrum Intelligence &amp; Disturbance Detector
+              </h3>
+              <p class="font-body" style="font-size: 0.875rem; color: var(--color-slate-600); line-height: 1.6;">
+                Real-time Radio Frequency analyzer and signal disturbance detector powered by Qiskit quantum circuit simulations with 3D Bloch sphere spatial representation.
+              </p>
+              <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; font-family: var(--font-mono); font-size: 0.75rem;">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Qiskit</span>
+                <span class="skill-tag">RF Signal Analysis</span>
+                <span class="skill-tag">3D Bloch Sphere</span>
+              </div>
+            </div>
+
+            <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(226, 232, 240, 0.8);">
+              <a href="https://github.com/Computer-Nerdy/quantum-rf-anomaly-detection" target="_blank" rel="noopener noreferrer" class="project-link">
+                <span>View GitHub Repository</span>
+                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- PROJECT 03: auto-patch -->
+          <div class="glass-card p-card rounded-fluid shadow-glass hover:shadow-glass-lg" style="display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s var(--ease-smooth);">
+            <div class="space-y-4">
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <span style="font-size: 0.75rem; font-weight: 700; color: var(--color-amber-800); font-family: var(--font-mono);">Computer-Nerdy / auto-patch</span>
+                <span style="padding: 0.2rem 0.6rem; border-radius: 9999px; font-size: 0.65rem; font-weight: 700; background-color: var(--color-emerald-50); color: var(--color-emerald-700); border: 1px solid var(--color-emerald-200);">Public Repo</span>
+              </div>
+              <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--color-slate-900); font-family: var(--font-display);">
+                Auto-Patch: AI-Driven Automated Script Bug Fixer
+              </h3>
+              <p class="font-body" style="font-size: 0.875rem; color: var(--color-slate-600); line-height: 1.6;">
+                An AI-driven command line tool designed to analyze script execution errors, identify root causes, and automatically patch bugs in-place.
+              </p>
+              <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; font-family: var(--font-mono); font-size: 0.75rem;">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">AI/ML</span>
+                <span class="skill-tag">CLI Tooling</span>
+                <span class="skill-tag">Productivity</span>
+              </div>
+            </div>
+
+            <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(226, 232, 240, 0.8);">
+              <a href="https://github.com/Computer-Nerdy/auto-patch" target="_blank" rel="noopener noreferrer" class="project-link">
+                <span>View GitHub Repository</span>
+                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- PROJECT 04: ESP32 Biometric & Stress Monitor -->
+          <div class="glass-card p-card rounded-fluid shadow-glass hover:shadow-glass-lg" style="display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s var(--ease-smooth);">
+            <div class="space-y-4">
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <span style="font-size: 0.75rem; font-weight: 700; color: var(--color-amber-800); font-family: var(--font-mono);">Embedded Hardware Prototype</span>
+                <span style="padding: 0.2rem 0.6rem; border-radius: 9999px; font-size: 0.65rem; font-weight: 700; background-color: var(--color-amber-50); color: var(--color-amber-800); border: 1px solid var(--color-amber-200);">Physical Hardware</span>
+              </div>
+              <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--color-slate-900); font-family: var(--font-display);">
+                ESP32 Biometric &amp; Physical Stress Indicator
+              </h3>
+              <p class="font-body" style="font-size: 0.875rem; color: var(--color-slate-600); line-height: 1.6;">
+                An interactive physical device combining galvanic skin response (GSR) and optical pulse sensing with real-time I2C OLED display rendering, addressable LED states, and audio feedback.
+              </p>
+              <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; font-family: var(--font-mono); font-size: 0.75rem;">
+                <span class="skill-tag">ESP32</span>
+                <span class="skill-tag">Embedded C++</span>
+                <span class="skill-tag">I2C OLED</span>
+                <span class="skill-tag">WS2812B RGB</span>
+                <span class="skill-tag">Biosensors</span>
+              </div>
+            </div>
+
+            <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(226, 232, 240, 0.8); font-size: 0.75rem; color: var(--color-slate-500); font-weight: 600;">
+              <span>Status: Prototype Built &amp; Tested</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TECHNICAL SKILLS SECTION -->
+    <section id="skills" class="fluid-section">
+      <div class="fluid-container">
+        
+        <div style="max-width: 52rem; margin-bottom: clamp(2rem, 4vw, 3.5rem);">
+          <div class="text-xs font-bold text-amber-700 uppercase tracking-widest font-mono" style="margin-bottom: 0.35rem;">Technical Matrix</div>
+          <h2 class="section-title">
+            Skills, Tools &amp; Technologies
+          </h2>
+        </div>
+
+        <div class="grid-skills">
+          
+          <div class="glass-card p-card rounded-fluid shadow-glass space-y-4">
+            <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--color-slate-900); font-family: var(--font-display);">Programming Languages</h3>
+            <ul class="font-body" style="font-size: 0.875rem; color: var(--color-slate-600); line-height: 1.8; font-weight: 600; list-style: none;">
+              <li>• Python (AI, Experimentation)</li>
+              <li>• C &amp; C++ (Embedded Systems)</li>
+              <li>• JavaScript / ES6+ (Web Apps)</li>
+              <li>• Java (Academic &amp; Systems)</li>
+              <li>• HTML5 &amp; CSS3</li>
+            </ul>
+          </div>
+
+          <div class="glass-card p-card rounded-fluid shadow-glass space-y-4">
+            <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--color-slate-900); font-family: var(--font-display);">Embedded &amp; Hardware</h3>
+            <ul class="font-body" style="font-size: 0.875rem; color: var(--color-slate-600); line-height: 1.8; font-weight: 600; list-style: none;">
+              <li>• ESP32, ESP32-S3, ESP32-P4</li>
+              <li>• Raspberry Pi 5 / Zero 2 W</li>
+              <li>• I2C, SPI, UART Communication</li>
+              <li>• OLED Displays &amp; Addressable LEDs</li>
+              <li>• Sensor Fusion &amp; Actuators</li>
+            </ul>
+          </div>
+
+          <div class="glass-card p-card rounded-fluid shadow-glass space-y-4">
+            <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--color-slate-900); font-family: var(--font-display);">AI, ML &amp; Quantum</h3>
+            <ul class="font-body" style="font-size: 0.875rem; color: var(--color-slate-600); line-height: 1.8; font-weight: 600; list-style: none;">
+              <li>• Qiskit (Quantum Circuits)</li>
+              <li>• Machine Learning &amp; Deep Learning</li>
+              <li>• Edge AI &amp; TinyML</li>
+              <li>• Local AI / LLM Inference</li>
+              <li>• Computer Vision (OpenCV)</li>
+            </ul>
+          </div>
+
+          <div class="glass-card p-card rounded-fluid shadow-glass space-y-4">
+            <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--color-slate-900); font-family: var(--font-display);">3D Web &amp; Tooling</h3>
+            <ul class="font-body" style="font-size: 0.875rem; color: var(--color-slate-600); line-height: 1.8; font-weight: 600; list-style: none;">
+              <li>• Three.js &amp; WebGL</li>
+              <li>• Blender (GLB 3D Pipeline)</li>
+              <li>• Linux / Ubuntu / WSL2</li>
+              <li>• Git &amp; GitHub Version Control</li>
+              <li>• VS Code &amp; Arduino IDE</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="fluid-section">
+      <div class="fluid-container" style="max-width: 48rem; text-align: center;">
+        
+        <div class="space-y-4" style="margin-bottom: 2rem;">
+          <div class="text-xs font-bold text-amber-700 uppercase tracking-widest font-mono">Get in Touch</div>
+          <h2 class="section-title">
+            Let's Discuss Projects &amp; Opportunities
+          </h2>
+          <p class="lead-text font-body" style="max-width: 36rem; margin-inline: auto;">
+            I am open to software development roles, embedded systems projects, IoT engineering, and interactive 3D web collaborations.
+          </p>
+        </div>
+
+        <div class="glass-card p-fluid rounded-fluid shadow-glass-lg space-y-6">
+          <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1rem;">
+            <!-- Direct Email -->
+            <a href="mailto:harishragav987@gmail.com" class="btn-liquid-primary" style="flex: 1 1 auto; max-width: 16rem;">
+              <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <span>Email Harish</span>
+            </a>
+
+            <!-- Copy Email Button -->
+            <button id="copy-email-btn" class="btn-liquid-secondary font-mono" style="flex: 1 1 auto; max-width: 18rem; font-size: 0.75rem;">
+              <span id="copy-text">harishragav987@gmail.com</span>
+              <span id="copy-icon">📋</span>
+            </button>
+          </div>
+
+          <!-- Social Links -->
+          <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 2rem; padding-top: 1rem; border-top: 1px solid rgba(226, 232, 240, 0.8); font-size: 0.875rem; font-weight: 600;" class="font-body">
+            <a href="https://www.linkedin.com/in/harish-ragav-ab92bb287" target="_blank" rel="noopener noreferrer" style="color: var(--color-slate-600); transition: color 0.15s ease;" onmouseover="this.style.color='var(--color-amber-700)'" onmouseout="this.style.color='var(--color-slate-600)'">
+              <span>LinkedIn</span>
+            </a>
+            <a href="https://github.com/Computer-Nerdy" target="_blank" rel="noopener noreferrer" style="color: var(--color-slate-600); transition: color 0.15s ease;" onmouseover="this.style.color='var(--color-amber-700)'" onmouseout="this.style.color='var(--color-slate-600)'">
+              <span>GitHub (@Computer-Nerdy)</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer style="padding: 2rem 0; border-top: 1px solid rgba(226, 232, 240, 0.8); text-align: center; font-size: 0.75rem; color: var(--color-slate-500); font-weight: 600;" class="font-body relative z-10">
+    <div class="fluid-container" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;">
+      <div>© 2026 Harish Ragav V. · All Rights Reserved</div>
+      <div>B.Tech Computer Science (IoT) · SRM IST Ramapuram</div>
+    </div>
+  </footer>
+
+  <!-- Main JS -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
