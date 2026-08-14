@@ -439,7 +439,7 @@
     </section>
   </main>
 
-  <!-- THEATRICAL FULLSCREEN 3D STUDIO MODAL -->
+  <!-- THEATRICAL FULLSCREEN 3D STUDIO MODAL WITH LIVE VIDEO PIP -->
   <div id="theatrical-modal" class="hidden">
     <!-- Top HUD -->
     <div class="theatrical-hud-top">
@@ -459,6 +459,27 @@
 
     <!-- 3D Canvas -->
     <div id="theatrical-canvas-container"></div>
+
+    <!-- Picture-in-Picture Live Hardware Video Card (Option A) -->
+    <div class="theatrical-video-pip">
+      <div class="theatrical-pip-header">
+        <div style="display: flex; align-items: center; gap: 0.4rem;">
+          <span class="pip-rec-dot"></span>
+          <span style="font-family: var(--font-mono); font-size: 0.6875rem; font-weight: 700; color: #F1F5F9;">HARDWARE CAM FEED</span>
+        </div>
+        <button id="theatrical-video-toggle" class="pip-audio-btn">
+          🔇 Unmute Audio
+        </button>
+      </div>
+
+      <div class="theatrical-pip-body">
+        <video id="theatrical-video" src="videos/showcase.mp4" loop muted playsinline poster="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='180' fill='%230F172A'><rect width='320' height='180'/><text x='50%25' y='50%25' fill='%23F59E0B' font-family='monospace' font-size='12' text-anchor='middle' dominant-baseline='middle'>[ LIVE HARDWARE STREAM ]</text></svg>">
+          <!-- Fallback sources if named demo.mp4 or esp32.mp4 -->
+          <source src="videos/demo.mp4" type="video/mp4">
+          <source src="videos/esp32.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
 
     <!-- Bottom HUD & View Mode Switcher -->
     <div class="theatrical-hud-bottom">

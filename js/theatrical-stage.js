@@ -16,7 +16,8 @@ export function initTheatricalStage(sharedGLTF) {
   const closeBtn = document.getElementById('close-theatrical-btn');
   const explodedBtn = document.getElementById('theatrical-explode-btn');
   const wireframeBtn = document.getElementById('theatrical-wireframe-btn');
-  const cinematicPlayBtn = document.getElementById('theatrical-play-btn');
+  const videoPipToggle = document.getElementById('theatrical-video-toggle');
+  const theatricalVideo = document.getElementById('theatrical-video');
 
   if (openBtn) {
     openBtn.addEventListener('click', () => openTheatricalView(sharedGLTF));
@@ -34,6 +35,13 @@ export function initTheatricalStage(sharedGLTF) {
     wireframeBtn.addEventListener('click', toggleWireframeView);
   }
 
+  if (videoPipToggle && theatricalVideo) {
+    videoPipToggle.addEventListener('click', () => {
+      theatricalVideo.muted = !theatricalVideo.muted;
+      videoPipToggle.textContent = theatricalVideo.muted ? "🔇 Unmute Audio" : "🔊 Mute Audio";
+    });
+  }
+
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && isTheatricalActive) {
       closeTheatricalView();
@@ -48,6 +56,12 @@ function openTheatricalView(sharedModel) {
   theatricalModal.classList.add('active');
   document.body.style.overflow = 'hidden';
   isTheatricalActive = true;
+
+  const video = document.getElementById('theatrical-video');
+  if (video) {
+    video.currentTime = 0;
+    video.play().catch(() => {});
+  }
 
   if (!tRenderer) {
     setupTheatricalScene(sharedModel);
@@ -65,6 +79,11 @@ function closeTheatricalView() {
   theatricalModal.classList.add('hidden');
   document.body.style.overflow = '';
   isTheatricalActive = false;
+
+  const video = document.getElementById('theatrical-video');
+  if (video) {
+    video.pause();
+  }
 
   if (animationId) {
     cancelAnimationFrame(animationId);
@@ -92,7 +111,7 @@ function setupTheatricalScene(modelToClone) {
 
   theatricalContainer.appendChild(tRenderer.domElement);
 
-  // Cinematic Lighting Rig
+  // Cinematic 3-Point Lighting Rig
   const ambient = new THREE.AmbientLight(0xFFFFFF, 2.4);
   tScene.add(ambient);
 
@@ -109,7 +128,7 @@ function setupTheatricalScene(modelToClone) {
   amberFill.position.set(4, -8, 6);
   tScene.add(amberFill);
 
-  // Replicate and configure cloned model
+  // Clone Model Assembly
   if (modelToClone) {
     const clone = modelToClone.clone(true);
     tBoardGroup = clone;
@@ -162,7 +181,6 @@ function toggleExplodedView() {
 
   tSubMeshes.forEach((item, index) => {
     if (isExploded) {
-      // Smoothly offset parts along Y and X
       const offsetY = (index % 4) * 0.35 + 0.2;
       const offsetX = ((index % 3) - 1) * 0.25;
       item.mesh.position.set(
