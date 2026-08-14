@@ -1,6 +1,6 @@
 /* ==========================================================================
-   HYPER-REACTIVE CHARACTER KINETICS — CRYSTAL SHARP & PROPER WORD WRAPPING
-   Zero word-mangling, dynamic word wrapping, crystal-sharp typography
+   HYPER-REACTIVE CHARACTER KINETICS & PERMANENT PROJECT REVELATION
+   Crystal sharp typography, 360 cursor interaction, and permanent project retention
    ========================================================================== */
 
 export function initDesktopEffects() {
@@ -137,14 +137,15 @@ function spawnCursorSpark(x, y) {
 }
 
 /**
- * Crystal-Sharp Character Kinetic Typography with Dynamic Word Boundary Protection
+ * Crystal-Sharp Character Kinetic Typography with Permanent Project Retention
  */
 function initCrystalSharpKineticPhysics() {
   const headingElements = document.querySelectorAll('.hero-title, .section-title, .brand-name, .tilt-card h3');
   const charNodes = [];
 
   headingElements.forEach(heading => {
-    wrapTextNodesInKineticWords(heading, charNodes);
+    const isProjectSection = !!heading.closest('#projects');
+    wrapTextNodesInKineticWords(heading, charNodes, isProjectSection);
   });
 
   let mouse = { x: -2000, y: -2000 };
@@ -176,32 +177,45 @@ function initCrystalSharpKineticPhysics() {
 
       if (dist < radius) {
         item.lastActiveTime = now;
+        if (item.isProjectSection) {
+          item.isPermanentlyRevealed = true;
+        }
+
         const force = Math.pow((1 - dist / radius), 1.4);
         const angle = Math.atan2(dy, dx);
 
-        item.targetX = -Math.cos(angle) * 22 * force;
-        item.targetY = -Math.sin(angle) * 18 * force;
-        item.targetRotate = -Math.sin(angle) * 12 * force;
-        item.targetScale = 1 + 0.24 * force;
+        item.targetX = -Math.cos(angle) * 20 * force;
+        item.targetY = -Math.sin(angle) * 16 * force;
+        item.targetRotate = -Math.sin(angle) * 10 * force;
+        item.targetScale = 1 + 0.2 * force;
         item.targetGlow = force;
       } else {
-        const elapsed = now - item.lastActiveTime;
-
-        if (elapsed < TOTAL_LINGER_MS) {
-          const progress = elapsed / TOTAL_LINGER_MS;
-          const easeFactor = 0.5 * (1 + Math.cos(Math.PI * progress));
-
-          item.targetX = 0;
-          item.targetY = -1 * easeFactor;
-          item.targetRotate = 0;
-          item.targetScale = 1 + 0.04 * easeFactor;
-          item.targetGlow = easeFactor * 0.85;
-        } else {
+        if (item.isPermanentlyRevealed) {
+          // Permanently Revealed in Projects section -> Keep lit and crisp!
           item.targetX = 0;
           item.targetY = 0;
           item.targetRotate = 0;
           item.targetScale = 1;
-          item.targetGlow = 0;
+          item.targetGlow = 0.8;
+        } else {
+          const elapsed = now - item.lastActiveTime;
+
+          if (elapsed < TOTAL_LINGER_MS) {
+            const progress = elapsed / TOTAL_LINGER_MS;
+            const easeFactor = 0.5 * (1 + Math.cos(Math.PI * progress));
+
+            item.targetX = 0;
+            item.targetY = -1 * easeFactor;
+            item.targetRotate = 0;
+            item.targetScale = 1 + 0.04 * easeFactor;
+            item.targetGlow = easeFactor * 0.85;
+          } else {
+            item.targetX = 0;
+            item.targetY = 0;
+            item.targetRotate = 0;
+            item.targetScale = 1;
+            item.targetGlow = 0;
+          }
         }
       }
 
@@ -224,8 +238,13 @@ function initCrystalSharpKineticPhysics() {
         }
       } else {
         item.element.style.transform = 'translate3d(0, 0, 0) rotate(0deg) scale(1)';
-        item.element.style.color = '';
-        item.element.style.textShadow = '';
+        if (item.isPermanentlyRevealed) {
+          item.element.style.color = '#FFFFFF';
+          item.element.style.textShadow = '0 0 8px rgba(245, 158, 11, 0.4)';
+        } else {
+          item.element.style.color = '';
+          item.element.style.textShadow = '';
+        }
       }
     });
 
@@ -235,11 +254,7 @@ function initCrystalSharpKineticPhysics() {
   updateKineticPhysics();
 }
 
-/**
- * Word-level wrapper: Ensures words never break awkwardly across lines,
- * while allowing each letter inside the word to dynamically react to cursor.
- */
-function wrapTextNodesInKineticWords(container, charList) {
+function wrapTextNodesInKineticWords(container, charList, isProjectSection) {
   const childNodes = Array.from(container.childNodes);
 
   childNodes.forEach(node => {
@@ -248,15 +263,12 @@ function wrapTextNodesInKineticWords(container, charList) {
       if (!text.trim() && text.length === 0) return;
 
       const fragment = document.createDocumentFragment();
-      // Split into words by whitespace
       const words = text.split(/(\s+)/);
 
       words.forEach(part => {
         if (/^\s+$/.test(part)) {
-          // Preserve exact whitespace
           fragment.appendChild(document.createTextNode(part));
         } else if (part.length > 0) {
-          // Create a word container that cannot be broken mid-word
           const wordSpan = document.createElement('span');
           wordSpan.className = 'kinetic-word';
 
@@ -279,7 +291,9 @@ function wrapTextNodesInKineticWords(container, charList) {
               targetScale: 1,
               currentGlow: 0,
               targetGlow: 0,
-              lastActiveTime: 0
+              lastActiveTime: 0,
+              isProjectSection: isProjectSection,
+              isPermanentlyRevealed: isProjectSection // Initialize projects cleanly
             });
           }
           fragment.appendChild(wordSpan);
@@ -288,20 +302,24 @@ function wrapTextNodesInKineticWords(container, charList) {
 
       container.replaceChild(fragment, node);
     } else if (node.nodeType === Node.ELEMENT_NODE) {
-      wrapTextNodesInKineticWords(node, charList);
+      wrapTextNodesInKineticWords(node, charList, isProjectSection);
     }
   });
 }
 
 /**
- * Paragraph & Description Illumination with Continuous Smoothstep Fade
+ * Paragraph & Description Illumination with Permanent Project Retention
  */
 function initSmoothParagraphIllumination() {
   const bodyTexts = document.querySelectorAll('.lead-text, .glass-card p, .grid-skills li');
   const textItems = [];
 
   bodyTexts.forEach(el => {
-    textItems.push({ element: el, lastActive: 0 });
+    const isProject = !!el.closest('#projects');
+    textItems.push({ element: el, lastActive: 0, isProject, isPermanentlyRevealed: isProject });
+    if (isProject) {
+      el.classList.add('text-illuminated');
+    }
   });
 
   window.addEventListener('mousemove', (e) => {
@@ -312,6 +330,9 @@ function initSmoothParagraphIllumination() {
       if (dist < 260) {
         item.lastActive = now;
         item.element.classList.add('text-illuminated');
+        if (item.isProject) {
+          item.isPermanentlyRevealed = true;
+        }
       }
     });
   });
@@ -319,7 +340,7 @@ function initSmoothParagraphIllumination() {
   function checkParagraphFades() {
     const now = Date.now();
     textItems.forEach(item => {
-      if (item.lastActive > 0 && now - item.lastActive > 2400) {
+      if (!item.isPermanentlyRevealed && item.lastActive > 0 && now - item.lastActive > 2400) {
         item.element.classList.remove('text-illuminated');
       }
     });

@@ -1,12 +1,29 @@
+/* ==========================================================================
+   THEATRICAL 3D STAGE & ESP32 HARDWARE LAB
+   True 360° free orbit, correct upright orientation, and interactive diagnostics HUD
+   ========================================================================== */
+
 import * as THREE from 'three';
 
 let theatricalModal, theatricalContainer;
-let tScene, tCamera, tRenderer, tBoardGroup, tSubMeshes = [];
+let tScene, tCamera, tRenderer, tBoardGroup;
+let tSubMeshes = [];
 let isTheatricalActive = false;
-let animationId;
-let currentCinematicAngle = 0;
+let animationId = null;
+
+let autoOrbit = true;
 let isExploded = false;
 let isWireframe = false;
+
+// 360° Free Orbit & Zoom Physics
+let isDragging = false;
+let prevMouse = { x: 0, y: 0 };
+let currentRotX = 0.25;
+let currentRotY = 0.0;
+let targetRotX = 0.25;
+let targetRotY = 0.0;
+let cameraDistance = 5.2;
+let targetCameraDistance = 5.2;
 
 export function initTheatricalStage(sharedGLTF) {
   theatricalModal = document.getElementById('theatrical-modal');
@@ -14,10 +31,11 @@ export function initTheatricalStage(sharedGLTF) {
 
   const openBtn = document.getElementById('open-theatrical-btn');
   const closeBtn = document.getElementById('close-theatrical-btn');
-  const explodedBtn = document.getElementById('theatrical-explode-btn');
-  const wireframeBtn = document.getElementById('theatrical-wireframe-btn');
-  const videoPipToggle = document.getElementById('theatrical-video-toggle');
-  const theatricalVideo = document.getElementById('theatrical-video');
+  
+  const standardBtn = document.getElementById('theat-mode-standard');
+  const explodeBtn = document.getElementById('theat-mode-exploded');
+  const wireframeBtn = document.getElementById('theat-mode-wireframe');
+  const autoRotateBtn = document.getElementById('theat-autorotate-btn');
 
   if (openBtn) {
     openBtn.addEventListener('click', () => openTheatricalView(sharedGLTF));
@@ -27,18 +45,32 @@ export function initTheatricalStage(sharedGLTF) {
     closeBtn.addEventListener('click', closeTheatricalView);
   }
 
-  if (explodedBtn) {
-    explodedBtn.addEventListener('click', toggleExplodedView);
+  if (standardBtn) {
+    standardBtn.addEventListener('click', () => {
+      setAssemblyMode('standard');
+      updateButtonStates(standardBtn);
+    });
+  }
+
+  if (explodeBtn) {
+    explodeBtn.addEventListener('click', () => {
+      setAssemblyMode('exploded');
+      updateButtonStates(explodeBtn);
+    });
   }
 
   if (wireframeBtn) {
-    wireframeBtn.addEventListener('click', toggleWireframeView);
+    wireframeBtn.addEventListener('click', () => {
+      toggleWireframe();
+      updateButtonStates(wireframeBtn, isWireframe);
+    });
   }
 
-  if (videoPipToggle && theatricalVideo) {
-    videoPipToggle.addEventListener('click', () => {
-      theatricalVideo.muted = !theatricalVideo.muted;
-      videoPipToggle.textContent = theatricalVideo.muted ? "🔇 Unmute Audio" : "🔊 Mute Audio";
+  if (autoRotateBtn) {
+    autoRotateBtn.addEventListener('click', () => {
+      autoOrbit = !autoOrbit;
+      autoRotateBtn.textContent = autoOrbit ? "Auto-Orbit: ON" : "Auto-Orbit: OFF";
+      autoRotateBtn.classList.toggle('active', autoOrbit);
     });
   }
 
@@ -49,19 +81,24 @@ export function initTheatricalStage(sharedGLTF) {
   });
 }
 
+function updateButtonStates(activeBtn, isToggleActive = true) {
+  if (!activeBtn) return;
+  if (activeBtn.id === 'theat-mode-standard' || activeBtn.id === 'theat-mode-exploded') {
+    document.getElementById('theat-mode-standard')?.classList.remove('active');
+    document.getElementById('theat-mode-exploded')?.classList.remove('active');
+    activeBtn.classList.add('active');
+  } else {
+    activeBtn.classList.toggle('active', isToggleActive);
+  }
+}
+
 function openTheatricalView(sharedModel) {
   if (!theatricalModal || !theatricalContainer) return;
 
   theatricalModal.classList.remove('hidden');
-  theatricalModal.classList.add('active');
+  theatricalModal.style.display = 'flex';
   document.body.style.overflow = 'hidden';
   isTheatricalActive = true;
-
-  const video = document.getElementById('theatrical-video');
-  if (video) {
-    video.currentTime = 0;
-    video.play().catch(() => {});
-  }
 
   if (!tRenderer) {
     setupTheatricalScene(sharedModel);
@@ -69,21 +106,23 @@ function openTheatricalView(sharedModel) {
     onTheatricalResize();
   }
 
+  // Reset to natural upright orientation
+  targetRotX = 0.25;
+  targetRotY = 0.0;
+  currentRotX = 0.25;
+  currentRotY = 0.0;
+  targetCameraDistance = 5.2;
+
   animateTheatrical();
 }
 
 function closeTheatricalView() {
   if (!theatricalModal) return;
 
-  theatricalModal.classList.remove('active');
   theatricalModal.classList.add('hidden');
+  theatricalModal.style.display = 'none';
   document.body.style.overflow = '';
   isTheatricalActive = false;
-
-  const video = document.getElementById('theatrical-video');
-  if (video) {
-    video.pause();
-  }
 
   if (animationId) {
     cancelAnimationFrame(animationId);
@@ -97,7 +136,7 @@ function setupTheatricalScene(modelToClone) {
 
   tScene = new THREE.Scene();
   tCamera = new THREE.PerspectiveCamera(40, width / height, 0.1, 100);
-  tCamera.position.set(0, 3.2, 6.5);
+  tCamera.position.set(0, 0, cameraDistance);
   tCamera.lookAt(0, 0, 0);
 
   tRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
@@ -105,34 +144,37 @@ function setupTheatricalScene(modelToClone) {
   tRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   tRenderer.outputColorSpace = THREE.SRGBColorSpace;
   tRenderer.toneMapping = THREE.ACESFilmicToneMapping;
-  tRenderer.toneMappingExposure = 1.4;
+  tRenderer.toneMappingExposure = 1.3;
   tRenderer.shadowMap.enabled = true;
-  tRenderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
   theatricalContainer.appendChild(tRenderer.domElement);
 
-  // Cinematic 3-Point Lighting Rig
-  const ambient = new THREE.AmbientLight(0xFFFFFF, 2.4);
+  // Cinematic 4-Point Studio Lighting Rig
+  const ambient = new THREE.AmbientLight(0xFFFFFF, 2.2);
   tScene.add(ambient);
 
-  const keyLight = new THREE.DirectionalLight(0xFFFFFF, 3.5);
-  keyLight.position.set(8, 14, 10);
-  keyLight.castShadow = true;
+  const keyLight = new THREE.DirectionalLight(0xFFFFFF, 3.8);
+  keyLight.position.set(6, 10, 8);
   tScene.add(keyLight);
 
-  const cyanRim = new THREE.DirectionalLight(0x38BDF8, 2.5);
-  cyanRim.position.set(-10, 6, -6);
-  tScene.add(cyanRim);
+  const rimCyan = new THREE.DirectionalLight(0x38BDF8, 2.6);
+  rimCyan.position.set(-8, 5, -5);
+  tScene.add(rimCyan);
 
-  const amberFill = new THREE.DirectionalLight(0xF59E0B, 2.2);
-  amberFill.position.set(4, -8, 6);
-  tScene.add(amberFill);
+  const fillAmber = new THREE.DirectionalLight(0xF59E0B, 2.2);
+  fillAmber.position.set(4, -6, 5);
+  tScene.add(fillAmber);
 
-  // Clone Model Assembly
+  // Board Anchor
+  tBoardGroup = new THREE.Group();
+  tScene.add(tBoardGroup);
+
+  // Clone Model with Right-Side Up Orientation
   if (modelToClone) {
     const clone = modelToClone.clone(true);
-    tBoardGroup = clone;
-    tScene.add(tBoardGroup);
+    // Ensure clean centering and upright posture
+    clone.position.set(0, 0, 0);
+    tBoardGroup.add(clone);
 
     tSubMeshes = [];
     clone.traverse((child) => {
@@ -146,11 +188,7 @@ function setupTheatricalScene(modelToClone) {
     });
   }
 
-  // Mouse Orbit Drag Controls for Theatrical View
-  let isDragging = false;
-  let prevMouse = { x: 0, y: 0 };
-  let targetRotY = 0.5, targetRotX = 0.35;
-
+  // Free 360° Orbit & Zoom Event Listeners
   theatricalContainer.addEventListener('mousedown', (e) => {
     isDragging = true;
     prevMouse = { x: e.clientX, y: e.clientY };
@@ -161,27 +199,59 @@ function setupTheatricalScene(modelToClone) {
     const dx = e.clientX - prevMouse.x;
     const dy = e.clientY - prevMouse.y;
 
-    targetRotY += dx * 0.007;
-    targetRotX += dy * 0.007;
+    targetRotY += dx * 0.008;
+    targetRotX += dy * 0.008;
+
+    // Clamp vertical tilt to prevent inverting
+    targetRotX = Math.max(-Math.PI / 2 + 0.05, Math.min(Math.PI / 2 - 0.05, targetRotX));
 
     prevMouse = { x: e.clientX, y: e.clientY };
   });
 
-  window.addEventListener('mouseup', () => { isDragging = false; });
+  window.addEventListener('mouseup', () => {
+    isDragging = false;
+  });
+
+  // Touch support for free orbit
+  theatricalContainer.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 1) {
+      isDragging = true;
+      prevMouse = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    }
+  }, { passive: true });
+
+  window.addEventListener('touchmove', (e) => {
+    if (!isDragging || !isTheatricalActive || e.touches.length !== 1) return;
+    const dx = e.touches[0].clientX - prevMouse.x;
+    const dy = e.touches[0].clientY - prevMouse.y;
+
+    targetRotY += dx * 0.008;
+    targetRotX += dy * 0.008;
+    targetRotX = Math.max(-Math.PI / 2 + 0.05, Math.min(Math.PI / 2 - 0.05, targetRotX));
+
+    prevMouse = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  }, { passive: true });
+
+  window.addEventListener('touchend', () => {
+    isDragging = false;
+  });
+
+  // Mouse Wheel Zoom
+  theatricalContainer.addEventListener('wheel', (e) => {
+    if (!isTheatricalActive) return;
+    e.preventDefault();
+    targetCameraDistance = Math.max(2.5, Math.min(9.0, targetCameraDistance + e.deltaY * 0.005));
+  }, { passive: false });
+
   window.addEventListener('resize', onTheatricalResize);
 }
 
-function toggleExplodedView() {
-  isExploded = !isExploded;
-  const btn = document.getElementById('theatrical-explode-btn');
-  if (btn) {
-    btn.classList.toggle('active', isExploded);
-    btn.textContent = isExploded ? "Assembly: Exploded View" : "Assembly: Default View";
-  }
+function setAssemblyMode(mode) {
+  isExploded = (mode === 'exploded');
 
   tSubMeshes.forEach((item, index) => {
     if (isExploded) {
-      const offsetY = (index % 4) * 0.35 + 0.2;
+      const offsetY = (index % 4) * 0.4 + 0.25;
       const offsetX = ((index % 3) - 1) * 0.25;
       item.mesh.position.set(
         item.originalPos.x + offsetX,
@@ -194,13 +264,8 @@ function toggleExplodedView() {
   });
 }
 
-function toggleWireframeView() {
+function toggleWireframe() {
   isWireframe = !isWireframe;
-  const btn = document.getElementById('theatrical-wireframe-btn');
-  if (btn) {
-    btn.classList.toggle('active', isWireframe);
-    btn.textContent = isWireframe ? "Mode: Wireframe Mesh" : "Mode: Photorealistic PBR";
-  }
 
   tSubMeshes.forEach((item) => {
     if (isWireframe) {
@@ -228,10 +293,23 @@ function animateTheatrical() {
 
   animationId = requestAnimationFrame(animateTheatrical);
 
+  // Smooth Auto-Orbit if not manually dragging
+  if (autoOrbit && !isDragging) {
+    targetRotY += 0.005;
+  }
+
+  // Smooth Inertial Interpolation for 360° Free Orbit
+  currentRotX += (targetRotX - currentRotX) * 0.12;
+  currentRotY += (targetRotY - currentRotY) * 0.12;
+  cameraDistance += (targetCameraDistance - cameraDistance) * 0.12;
+
   if (tBoardGroup) {
-    currentCinematicAngle += 0.004;
-    tBoardGroup.rotation.y = currentCinematicAngle;
-    tBoardGroup.rotation.x = Math.sin(currentCinematicAngle * 0.7) * 0.08 + 0.32;
+    tBoardGroup.rotation.x = currentRotX;
+    tBoardGroup.rotation.y = currentRotY;
+  }
+
+  if (tCamera) {
+    tCamera.position.z = cameraDistance;
   }
 
   tRenderer.render(tScene, tCamera);
