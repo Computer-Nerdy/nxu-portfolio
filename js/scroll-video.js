@@ -1,19 +1,20 @@
 /* ==========================================================================
-   ULTRA-SMOOTH HARDWARE-ACCELERATED SCROLL-DRIVEN VIDEO ENGINE
-   Auto-resets to 0:00 whenever scrolling back up to landing page / hero section
+   SCROLL-LOCKED THEATRICAL VIDEO REEL ENGINE
+   Locks website scrolling when entering the video section until the video
+   playback finishes 100% of its duration. Auto-unlocks to continue scrolling.
    ========================================================================== */
 
 export function initScrollVideo() {
   const container = document.getElementById('scroll-video-container');
+  const section = document.getElementById('engineering-reel');
   const video = document.getElementById('scroll-scrub-video');
   const progressBar = document.getElementById('video-scrub-bar');
 
-  if (!container || !video) return;
+  if (!container || !video || !section) return;
 
   let isPlaying = false;
   let scrollTimeout = null;
-  let lastScrollY = window.scrollY;
-  let lastScrollTime = performance.now();
+  let isVideoComplete = false;
 
   video.muted = true;
   video.playsInline = true;
@@ -27,34 +28,27 @@ export function initScrollVideo() {
       isPlaying = false;
     }
     video.currentTime = 0;
+    isVideoComplete = false;
     if (progressBar) {
       progressBar.style.width = '0%';
     }
   }
 
-  function onScroll() {
-    const rect = container.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-    const currentScrollY = window.scrollY;
-    const currentTime = performance.now();
+  // Wheel & Touch Interceptor for Scroll-Lock
+  window.addEventListener('wheel', (e) => {
+    const rect = section.getBoundingClientRect();
+    const isAtSection = rect.top <= 80 && rect.bottom >= window.innerHeight - 80;
 
-    // Reset video whenever user scrolls back up to landing page / above video section
-    if (rect.top > 20 || currentScrollY < 120) {
-      if (video.currentTime > 0) {
-        resetVideoToBeginning();
-      }
-    }
+    if (isAtSection) {
+      const isComplete = video.duration && (video.currentTime >= video.duration - 0.15 || video.ended);
 
-    const inViewport = rect.top <= 0 && rect.bottom >= windowHeight;
+      // Downward scroll while video has not completed -> Lock scroll & play video forward
+      if (e.deltaY > 0 && !isComplete) {
+        e.preventDefault();
 
-    if (inViewport) {
-      const scrollDelta = currentScrollY - lastScrollY;
-      const timeDelta = Math.max(1, currentTime - lastScrollTime);
-      const velocity = Math.abs(scrollDelta) / timeDelta;
-
-      if (scrollDelta > 0 && !video.ended) {
-        const targetRate = Math.min(2.5, Math.max(0.75, velocity * 1.6));
-        video.playbackRate = targetRate;
+        // Scale playback speed dynamically to wheel velocity
+        const delta = Math.min(Math.abs(e.deltaY), 150);
+        video.playbackRate = Math.min(2.5, Math.max(0.8, delta * 0.02));
 
         if (!isPlaying) {
           const playPromise = video.play();
@@ -64,26 +58,83 @@ export function initScrollVideo() {
             }).catch(() => {});
           }
         }
+
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+          if (isPlaying) {
+            video.pause();
+            isPlaying = false;
+          }
+        }, 140);
+      } 
+      // Upward scroll when at the beginning -> Allow normal scrolling back to landing page
+      else if (e.deltaY < 0 && video.currentTime <= 0.2) {
+        resetVideoToBeginning();
+        // Allow default scroll back up to hero
       }
-
-      clearTimeout(scrollTimeout);
-
-      scrollTimeout = setTimeout(() => {
-        if (isPlaying) {
-          video.pause();
-          isPlaying = false;
+      // Upward scroll while mid-video -> Lock and gently step backward
+      else if (e.deltaY < 0 && !isComplete && video.currentTime > 0.2) {
+        e.preventDefault();
+        video.currentTime = Math.max(0, video.currentTime - 0.25);
+        if (progressBar && video.duration) {
+          progressBar.style.width = `${(video.currentTime / video.duration) * 100}%`;
         }
-      }, 120);
-    } else {
-      if (isPlaying) {
-        video.pause();
-        isPlaying = false;
+      }
+      // If complete and scrolling down -> naturally lets the user scroll past into Projects!
+    } else if (rect.top > 120 || window.scrollY < 100) {
+      // Reset if scrolled back up to hero landing
+      if (video.currentTime > 0) {
+        resetVideoToBeginning();
       }
     }
+  }, { passive: false });
 
-    lastScrollY = currentScrollY;
-    lastScrollTime = currentTime;
-  }
+  // Touch device swipe handling for mobile/trackpad
+  let touchStartY = 0;
+  window.addEventListener('touchstart', (e) => {
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+
+  window.addEventListener('touchmove', (e) => {
+    const rect = section.getBoundingClientRect();
+    const isAtSection = rect.top <= 80 && rect.bottom >= window.innerHeight - 80;
+
+    if (isAtSection) {
+      const touchCurrentY = e.touches[0].clientY;
+      const touchDeltaY = touchStartY - touchCurrentY;
+      const isComplete = video.duration && (video.currentTime >= video.duration - 0.15 || video.ended);
+
+      if (touchDeltaY > 0 && !isComplete) {
+        e.preventDefault();
+        video.playbackRate = 1.2;
+        if (!isPlaying) {
+          video.play().then(() => { isPlaying = true; }).catch(() => {});
+        }
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+          if (isPlaying) {
+            video.pause();
+            isPlaying = false;
+          }
+        }, 150);
+      }
+    }
+  }, { passive: false });
+
+  video.addEventListener('timeupdate', () => {
+    if (progressBar && video.duration) {
+      const progress = (video.currentTime / video.duration) * 100;
+      progressBar.style.width = `${progress}%`;
+      if (video.currentTime >= video.duration - 0.15) {
+        isVideoComplete = true;
+      }
+    }
+  });
+
+  video.addEventListener('ended', () => {
+    isPlaying = false;
+    isVideoComplete = true;
+  });
 
   // Hook navigation links to hero/about or brand logo
   const heroTriggers = document.querySelectorAll('a[href="#hero"], a[href="#about"], .brand-wrapper');
@@ -92,17 +143,4 @@ export function initScrollVideo() {
       resetVideoToBeginning();
     });
   });
-
-  video.addEventListener('timeupdate', () => {
-    if (progressBar && video.duration) {
-      const progress = (video.currentTime / video.duration) * 100;
-      progressBar.style.width = `${progress}%`;
-    }
-  });
-
-  video.addEventListener('ended', () => {
-    isPlaying = false;
-  });
-
-  window.addEventListener('scroll', onScroll, { passive: true });
 }

@@ -1,6 +1,6 @@
 /* ==========================================================================
    HARISH RAGAV V. — OBSIDIAN LIQUID GLASS DESIGN SYSTEM (DARK MODE)
-   Word-Protected Dynamic Typography, Zero Blurriness & Smoothstep Seamless Transitions
+   Scroll-Locked Fullscreen Video Reel, Crystal-Sharp Kinetic Typography
    ========================================================================== */
 
 :root {
@@ -597,17 +597,26 @@ svg {
 }
 
 /* ==========================================================================
-   FULL-LENGTH TRUE FULLSCREEN ZERO-CHOPPINESS VIDEO REEL
+   SCROLL-LOCKED TRUE FULLSCREEN ZERO-CHOPPINESS VIDEO REEL
    ========================================================================== */
 
+#engineering-reel {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  background: #000000;
+}
+
 .scroll-track-wrapper {
-  height: 380vh;
+  height: 100vh;
+  width: 100vw;
   position: relative;
 }
 
 .scroll-sticky-viewport {
-  position: sticky;
-  top: 0;
+  position: relative;
   height: 100vh;
   width: 100vw;
   display: flex;
