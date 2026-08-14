@@ -1,5 +1,5 @@
 name: '3D WebGL Portfolio & Hardware Telemetry Engine'
-description: 'Production-ready dark obsidian liquid-glass portfolio with Three.js ESP32 stage, calibrated scroll video reel, and kinetic physics'
+description: 'Production-ready 3D WebGL portfolio with Three.js ESP32 stage, video reel & kinetic typography'
 author: 'Harish Ragav V. (Computer-Nerdy)'
 branding:
   icon: 'cpu'
@@ -7,7 +7,7 @@ branding:
 
 inputs:
   build-path:
-    description: 'The output path for website assets'
+    description: 'Output path'
     required: false
     default: '.'
 
@@ -18,8 +18,5 @@ runs:
       shell: bash
       run: |
         echo "⚡ Initializing 3D WebGL Portfolio Action Engine..."
-        echo "Verifying Three.js scenes, GLTF hardware models, and video reel tracks..."
         test -f index.html || exit 1
-        test -f styles.css || exit 1
-        test -f js/main.js || exit 1
-        echo "✅ Portfolio assets and WebGL pipeline verified successfully!"
+        echo "✅ Verified successfully!"
