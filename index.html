@@ -11,7 +11,7 @@
   <meta property="og:title" content="Harish Ragav V. | Portfolio" />
   <meta property="og:description" content="Building at the intersection of IoT, Edge AI, and Interactive 3D WebGL." />
   <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#F8FAFC" />
+  <meta name="theme-color" content="#060913" />
 
   <!-- Google Fonts: Figtree, Mulish, Syne & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -31,16 +31,16 @@
     }
   </script>
 </head>
-<body class="bg-gradient-canvas text-slate-800 antialiased selection:bg-amber-100 selection:text-amber-900 relative">
+<body class="antialiased selection:bg-amber-500/30 selection:text-amber-200 relative">
 
-  <!-- Ambient Liquid Mesh Background Orbs (Reacts to Cursor Physics) -->
+  <!-- Ambient Liquid Cosmic Mesh Background Orbs (Reacts to Cursor Physics) -->
   <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
     <div class="liquid-orb orb-1"></div>
     <div class="liquid-orb orb-2"></div>
     <div class="liquid-orb orb-3"></div>
   </div>
 
-  <!-- Header Navigation (Pixel-Perfect Liquid Glass Bar) -->
+  <!-- Header Navigation (Obsidian Liquid Glass Bar) -->
   <header class="nav-container">
     <div class="navbar-card">
       
@@ -89,7 +89,7 @@
       <a href="#about" class="mobile-nav-link">About</a>
       <a href="#projects" class="mobile-nav-link">Projects</a>
       <a href="#skills" class="mobile-nav-link">Skills</a>
-      <a href="#contact" class="mobile-nav-link" style="color: var(--color-amber-700);">Contact</a>
+      <a href="#contact" class="mobile-nav-link" style="color: var(--color-amber-500);">Contact</a>
     </div>
   </header>
 
@@ -102,8 +102,8 @@
           <!-- Left Column: Biography & Value Proposition -->
           <div class="space-y-6 reveal-on-scroll">
             
-            <div style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.35rem 0.85rem; border-radius: 9999px; border: 1px solid rgba(253, 230, 138, 0.8);" class="glass-card text-amber-800 text-xs font-semibold shadow-xs">
-              <span class="status-dot" style="background-color: var(--color-amber-600);"></span>
+            <div style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.35rem 0.85rem; border-radius: 9999px; border: 1px solid rgba(245, 158, 11, 0.4);" class="glass-card text-amber-200 text-xs font-semibold shadow-xs">
+              <span class="status-dot" style="background-color: var(--color-amber-500);"></span>
               <span>B.Tech Computer Science (IoT) · SRM IST Ramapuram</span>
             </div>
 
@@ -119,15 +119,15 @@
             <div class="grid-metrics">
               <div class="glass-card tilt-card" style="padding: 0.75rem 0.5rem; border-radius: 0.875rem; text-align: center;">
                 <div style="font-size: 0.7rem; color: var(--color-slate-500); font-weight: 600;">Domain</div>
-                <div style="font-size: 0.85rem; font-weight: 700; color: var(--color-slate-800); margin-top: 0.15rem;">Embedded &amp; IoT</div>
+                <div style="font-size: 0.85rem; font-weight: 700; color: #FFFFFF; margin-top: 0.15rem;">Embedded &amp; IoT</div>
               </div>
               <div class="glass-card tilt-card" style="padding: 0.75rem 0.5rem; border-radius: 0.875rem; text-align: center;">
                 <div style="font-size: 0.7rem; color: var(--color-slate-500); font-weight: 600;">Focus</div>
-                <div style="font-size: 0.85rem; font-weight: 700; color: var(--color-slate-800); margin-top: 0.15rem;">Edge AI &amp; Quantum</div>
+                <div style="font-size: 0.85rem; font-weight: 700; color: #FFFFFF; margin-top: 0.15rem;">Edge AI &amp; Quantum</div>
               </div>
               <div class="glass-card tilt-card" style="padding: 0.75rem 0.5rem; border-radius: 0.875rem; text-align: center;">
                 <div style="font-size: 0.7rem; color: var(--color-slate-500); font-weight: 600;">Graphics</div>
-                <div style="font-size: 0.85rem; font-weight: 700; color: var(--color-slate-800); margin-top: 0.15rem;">Three.js / WebGL</div>
+                <div style="font-size: 0.85rem; font-weight: 700; color: #FFFFFF; margin-top: 0.15rem;">Three.js / WebGL</div>
               </div>
             </div>
 
@@ -153,10 +153,10 @@
 
               <!-- Top Floating Controls -->
               <div style="position: absolute; top: 1rem; left: 1rem; right: 1rem; display: flex; align-items: center; justify-content: space-between; pointer-events: auto; z-index: 20;">
-                <span class="glass-card" style="padding: 0.35rem 0.75rem; border-radius: 0.625rem; font-size: 0.75rem; font-weight: 600; color: var(--color-slate-700);">
+                <span class="glass-card" style="padding: 0.35rem 0.75rem; border-radius: 0.625rem; font-size: 0.75rem; font-weight: 600; color: #F1F5F9;">
                   ESP32 Hardware Inspector (Drag to Rotate)
                 </span>
-                <button id="reset-cam-btn" style="padding: 0.35rem 0.75rem; border-radius: 0.625rem; background: rgba(255, 255, 255, 0.9); border: 1px solid var(--color-slate-200); font-size: 0.75rem; font-weight: 600; color: var(--color-slate-700); cursor: pointer;">
+                <button id="reset-cam-btn" style="padding: 0.35rem 0.75rem; border-radius: 0.625rem; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); font-size: 0.75rem; font-weight: 600; color: #FFFFFF; cursor: pointer;">
                   Reset View
                 </button>
               </div>
@@ -165,9 +165,9 @@
 
             <!-- Interactive Component Label Buttons -->
             <div class="glass-card p-card rounded-fluid space-y-4 tilt-card">
-              <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem; font-weight: 700; color: var(--color-slate-500);">
+              <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem; font-weight: 700; color: #94A3B8;">
                 <span>INSPECT HARDWARE STAGE:</span>
-                <span class="text-amber-700">Interactive Focus</span>
+                <span class="text-amber-500">Interactive Focus</span>
               </div>
               
               <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
@@ -179,9 +179,9 @@
               </div>
 
               <!-- Dynamic Component Description Card -->
-              <div style="padding: 0.75rem 1rem; border-radius: 0.75rem; background-color: #F8FAFC; border: 1px solid rgba(226, 232, 240, 0.8);">
-                <div id="component-label-title" style="font-weight: 800; color: var(--color-slate-900); font-size: 0.875rem;">ESP32 Dual-Core Xtensa LX6 (240MHz)</div>
-                <div id="component-label-desc" style="color: var(--color-slate-600); font-size: 0.75rem; margin-top: 0.25rem; line-height: 1.6;">Main compute core with integrated Wi-Fi, Bluetooth 4.2 BLE, hardware crypto accelerator, and 520KB SRAM.</div>
+              <div style="padding: 0.75rem 1rem; border-radius: 0.75rem; background-color: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08);">
+                <div id="component-label-title" style="font-weight: 800; color: #FFFFFF; font-size: 0.875rem;">ESP32 Dual-Core Xtensa LX6 (240MHz)</div>
+                <div id="component-label-desc" style="color: #94A3B8; font-size: 0.75rem; margin-top: 0.25rem; line-height: 1.6;">Main compute core with integrated Wi-Fi, Bluetooth 4.2 BLE, hardware crypto accelerator, and 520KB SRAM.</div>
               </div>
             </div>
 
@@ -197,7 +197,7 @@
         
         <div class="glass-card p-fluid rounded-fluid shadow-glass tilt-card reveal-on-scroll">
           <div class="space-y-4" style="max-width: 52rem;">
-            <div class="text-xs font-bold text-amber-700 uppercase tracking-widest font-mono">Engineering Philosophy</div>
+            <div class="text-xs font-bold text-amber-500 uppercase tracking-widest font-mono">Engineering Philosophy</div>
             <h2 class="section-title">
               Hands-on engineering from silicon registers to high-level 3D web interfaces.
             </h2>
@@ -207,7 +207,7 @@
             <p class="lead-text font-body">
               My engineering work connects low-level microcontrollers, quantum circuit modeling, and real-time visualization. I enjoy understanding how physical hardware and software integrate seamlessly—prototyping functional devices, diagnosing signal paths, and building robust client applications.
             </p>
-            <div style="margin-top: 1rem; font-family: var(--font-mono); font-size: 0.8125rem; font-weight: 700; color: var(--color-slate-800);">
+            <div style="margin-top: 1rem; font-family: var(--font-mono); font-size: 0.8125rem; font-weight: 700; color: #F59E0B;">
               Creed: Build → Test → Understand → Improve → Deliver.
             </div>
           </div>
@@ -222,12 +222,12 @@
         
         <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; margin-bottom: clamp(2rem, 4vw, 3.5rem); gap: 1rem;" class="reveal-on-scroll">
           <div>
-            <div class="text-xs font-bold text-amber-700 uppercase tracking-widest font-mono" style="margin-bottom: 0.35rem;">Public Builds &amp; Live Deployments</div>
+            <div class="text-xs font-bold text-amber-500 uppercase tracking-widest font-mono" style="margin-bottom: 0.35rem;">Public Builds &amp; Live Deployments</div>
             <h2 class="section-title">
               Featured Client-Ready Projects
             </h2>
           </div>
-          <p class="font-body" style="font-size: 0.875rem; color: var(--color-slate-500); max-width: 28rem;">
+          <p class="font-body" style="font-size: 0.875rem; color: #94A3B8; max-width: 28rem;">
             Directly verified applications covering quantum simulations, RF signal intelligence, and developer tooling.
           </p>
         </div>
@@ -238,13 +238,13 @@
           <div class="glass-card p-card rounded-fluid shadow-glass hover:shadow-glass-lg tilt-card reveal-on-scroll" style="display: flex; flex-direction: column; justify-content: space-between;">
             <div class="space-y-4">
               <div style="display: flex; align-items: center; justify-content: space-between;">
-                <span style="font-size: 0.75rem; font-weight: 700; color: var(--color-amber-800); font-family: var(--font-mono);">Computer-Nerdy / QuantumLens</span>
-                <span style="padding: 0.2rem 0.6rem; border-radius: 9999px; font-size: 0.65rem; font-weight: 700; background-color: var(--color-emerald-50); color: var(--color-emerald-700); border: 1px solid var(--color-emerald-200);">Live Deployed</span>
+                <span style="font-size: 0.75rem; font-weight: 700; color: #FDE68A; font-family: var(--font-mono);">Computer-Nerdy / QuantumLens</span>
+                <span style="padding: 0.2rem 0.6rem; border-radius: 9999px; font-size: 0.65rem; font-weight: 700; background-color: rgba(16, 185, 129, 0.2); color: #6EE7B7; border: 1px solid rgba(16, 185, 129, 0.4);">Live Deployed</span>
               </div>
-              <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--color-slate-900); font-family: var(--font-display);">
+              <h3 style="font-size: 1.25rem; font-weight: 800; color: #FFFFFF; font-family: var(--font-display);">
                 QuantumLens: Interactive Quantum Circuit Simulator
               </h3>
-              <p class="font-body" style="font-size: 0.875rem; color: var(--color-slate-600); line-height: 1.6;">
+              <p class="font-body" style="font-size: 0.875rem; color: #94A3B8; line-height: 1.6;">
                 A high-fidelity quantum circuit simulator featuring real-time state simulation and 3D visual rendering of state spaces in the browser.
               </p>
               <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; font-family: var(--font-mono); font-size: 0.75rem;">
@@ -256,7 +256,7 @@
               </div>
             </div>
 
-            <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(226, 232, 240, 0.8); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem;">
+            <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem;">
               <a href="https://quantumlenscb.streamlit.app" target="_blank" rel="noopener noreferrer" class="btn-launch">
                 <span>🚀 Launch Web App</span>
                 <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
@@ -271,13 +271,13 @@
           <div class="glass-card p-card rounded-fluid shadow-glass hover:shadow-glass-lg tilt-card reveal-on-scroll" style="display: flex; flex-direction: column; justify-content: space-between;">
             <div class="space-y-4">
               <div style="display: flex; align-items: center; justify-content: space-between;">
-                <span style="font-size: 0.75rem; font-weight: 700; color: var(--color-amber-800); font-family: var(--font-mono);">Computer-Nerdy / quantum-rf-anomaly-detection</span>
-                <span style="padding: 0.2rem 0.6rem; border-radius: 9999px; font-size: 0.65rem; font-weight: 700; background-color: var(--color-emerald-50); color: var(--color-emerald-700); border: 1px solid var(--color-emerald-200);">Live Deployed</span>
+                <span style="font-size: 0.75rem; font-weight: 700; color: #FDE68A; font-family: var(--font-mono);">Computer-Nerdy / quantum-rf-anomaly-detection</span>
+                <span style="padding: 0.2rem 0.6rem; border-radius: 9999px; font-size: 0.65rem; font-weight: 700; background-color: rgba(16, 185, 129, 0.2); color: #6EE7B7; border: 1px solid rgba(16, 185, 129, 0.4);">Live Deployed</span>
               </div>
-              <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--color-slate-900); font-family: var(--font-display);">
+              <h3 style="font-size: 1.25rem; font-weight: 800; color: #FFFFFF; font-family: var(--font-display);">
                 Quantum RF Spectrum Intelligence &amp; Disturbance Detector
               </h3>
-              <p class="font-body" style="font-size: 0.875rem; color: var(--color-slate-600); line-height: 1.6;">
+              <p class="font-body" style="font-size: 0.875rem; color: #94A3B8; line-height: 1.6;">
                 Real-time Radio Frequency analyzer and signal disturbance detector powered by Qiskit quantum circuit simulations with 3D Bloch sphere spatial representation.
               </p>
               <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; font-family: var(--font-mono); font-size: 0.75rem;">
@@ -288,7 +288,7 @@
               </div>
             </div>
 
-            <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(226, 232, 240, 0.8); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem;">
+            <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem;">
               <a href="https://quantum-rf-anomaly-detection.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn-launch">
                 <span>🚀 Launch Live Tool</span>
                 <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
@@ -303,13 +303,13 @@
           <div class="glass-card p-card rounded-fluid shadow-glass hover:shadow-glass-lg tilt-card reveal-on-scroll" style="display: flex; flex-direction: column; justify-content: space-between;">
             <div class="space-y-4">
               <div style="display: flex; align-items: center; justify-content: space-between;">
-                <span style="font-size: 0.75rem; font-weight: 700; color: var(--color-amber-800); font-family: var(--font-mono);">Computer-Nerdy / auto-patch</span>
-                <span style="padding: 0.2rem 0.6rem; border-radius: 9999px; font-size: 0.65rem; font-weight: 700; background-color: var(--color-emerald-50); color: var(--color-emerald-700); border: 1px solid var(--color-emerald-200);">Public Repo</span>
+                <span style="font-size: 0.75rem; font-weight: 700; color: #FDE68A; font-family: var(--font-mono);">Computer-Nerdy / auto-patch</span>
+                <span style="padding: 0.2rem 0.6rem; border-radius: 9999px; font-size: 0.65rem; font-weight: 700; background-color: rgba(16, 185, 129, 0.2); color: #6EE7B7; border: 1px solid rgba(16, 185, 129, 0.4);">Public Repo</span>
               </div>
-              <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--color-slate-900); font-family: var(--font-display);">
+              <h3 style="font-size: 1.25rem; font-weight: 800; color: #FFFFFF; font-family: var(--font-display);">
                 Auto-Patch: AI-Driven Automated Script Bug Fixer
               </h3>
-              <p class="font-body" style="font-size: 0.875rem; color: var(--color-slate-600); line-height: 1.6;">
+              <p class="font-body" style="font-size: 0.875rem; color: #94A3B8; line-height: 1.6;">
                 An AI-driven command line tool designed to analyze script execution errors, identify root causes, and automatically patch bugs in-place.
               </p>
               <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; font-family: var(--font-mono); font-size: 0.75rem;">
@@ -320,7 +320,7 @@
               </div>
             </div>
 
-            <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(226, 232, 240, 0.8); display: flex; align-items: center; justify-content: space-between;">
+            <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; align-items: center; justify-content: space-between;">
               <a href="https://github.com/Computer-Nerdy/auto-patch" target="_blank" rel="noopener noreferrer" class="project-link">
                 <span>View GitHub Repository</span>
                 <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
@@ -338,7 +338,7 @@
       <div class="fluid-container">
         
         <div style="max-width: 52rem; margin-bottom: clamp(2rem, 4vw, 3.5rem);" class="reveal-on-scroll">
-          <div class="text-xs font-bold text-amber-700 uppercase tracking-widest font-mono" style="margin-bottom: 0.35rem;">Technical Matrix</div>
+          <div class="text-xs font-bold text-amber-500 uppercase tracking-widest font-mono" style="margin-bottom: 0.35rem;">Technical Matrix</div>
           <h2 class="section-title">
             Skills, Tools &amp; Technologies
           </h2>
@@ -347,8 +347,8 @@
         <div class="grid-skills">
           
           <div class="glass-card p-card rounded-fluid shadow-glass space-y-4 tilt-card reveal-on-scroll">
-            <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--color-slate-900); font-family: var(--font-display);">Programming Languages</h3>
-            <ul class="font-body" style="font-size: 0.875rem; color: var(--color-slate-600); line-height: 1.8; font-weight: 600; list-style: none;">
+            <h3 style="font-size: 1.05rem; font-weight: 800; color: #FFFFFF; font-family: var(--font-display);">Programming Languages</h3>
+            <ul class="font-body" style="font-size: 0.875rem; color: #94A3B8; line-height: 1.8; font-weight: 600; list-style: none;">
               <li>• Python (AI, Experimentation)</li>
               <li>• C &amp; C++ (Embedded Systems)</li>
               <li>• JavaScript / ES6+ (Web Apps)</li>
@@ -358,8 +358,8 @@
           </div>
 
           <div class="glass-card p-card rounded-fluid shadow-glass space-y-4 tilt-card reveal-on-scroll">
-            <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--color-slate-900); font-family: var(--font-display);">Embedded &amp; Hardware</h3>
-            <ul class="font-body" style="font-size: 0.875rem; color: var(--color-slate-600); line-height: 1.8; font-weight: 600; list-style: none;">
+            <h3 style="font-size: 1.05rem; font-weight: 800; color: #FFFFFF; font-family: var(--font-display);">Embedded &amp; Hardware</h3>
+            <ul class="font-body" style="font-size: 0.875rem; color: #94A3B8; line-height: 1.8; font-weight: 600; list-style: none;">
               <li>• ESP32, ESP32-S3, ESP32-P4</li>
               <li>• Raspberry Pi 5 / Zero 2 W</li>
               <li>• I2C, SPI, UART Communication</li>
@@ -369,8 +369,8 @@
           </div>
 
           <div class="glass-card p-card rounded-fluid shadow-glass space-y-4 tilt-card reveal-on-scroll">
-            <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--color-slate-900); font-family: var(--font-display);">AI, ML &amp; Quantum</h3>
-            <ul class="font-body" style="font-size: 0.875rem; color: var(--color-slate-600); line-height: 1.8; font-weight: 600; list-style: none;">
+            <h3 style="font-size: 1.05rem; font-weight: 800; color: #FFFFFF; font-family: var(--font-display);">AI, ML &amp; Quantum</h3>
+            <ul class="font-body" style="font-size: 0.875rem; color: #94A3B8; line-height: 1.8; font-weight: 600; list-style: none;">
               <li>• Qiskit (Quantum Circuits)</li>
               <li>• Machine Learning &amp; Deep Learning</li>
               <li>• Edge AI &amp; TinyML</li>
@@ -380,8 +380,8 @@
           </div>
 
           <div class="glass-card p-card rounded-fluid shadow-glass space-y-4 tilt-card reveal-on-scroll">
-            <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--color-slate-900); font-family: var(--font-display);">3D Web &amp; Tooling</h3>
-            <ul class="font-body" style="font-size: 0.875rem; color: var(--color-slate-600); line-height: 1.8; font-weight: 600; list-style: none;">
+            <h3 style="font-size: 1.05rem; font-weight: 800; color: #FFFFFF; font-family: var(--font-display);">3D Web &amp; Tooling</h3>
+            <ul class="font-body" style="font-size: 0.875rem; color: #94A3B8; line-height: 1.8; font-weight: 600; list-style: none;">
               <li>• Three.js &amp; WebGL</li>
               <li>• Blender (GLB 3D Pipeline)</li>
               <li>• Linux / Ubuntu / WSL2</li>
@@ -400,7 +400,7 @@
       <div class="fluid-container" style="max-width: 48rem; text-align: center;">
         
         <div class="space-y-4 reveal-on-scroll" style="margin-bottom: 2rem;">
-          <div class="text-xs font-bold text-amber-700 uppercase tracking-widest font-mono">Get in Touch</div>
+          <div class="text-xs font-bold text-amber-500 uppercase tracking-widest font-mono">Get in Touch</div>
           <h2 class="section-title">
             Let's Discuss Projects &amp; Opportunities
           </h2>
@@ -425,11 +425,11 @@
           </div>
 
           <!-- Social Links -->
-          <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 2rem; padding-top: 1rem; border-top: 1px solid rgba(226, 232, 240, 0.8); font-size: 0.875rem; font-weight: 600;" class="font-body">
-            <a href="https://www.linkedin.com/in/harish-ragav-ab92bb287" target="_blank" rel="noopener noreferrer" style="color: var(--color-slate-600); transition: color 0.15s ease;" onmouseover="this.style.color='var(--color-amber-700)'" onmouseout="this.style.color='var(--color-slate-600)'">
+          <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.1); font-size: 0.875rem; font-weight: 600;" class="font-body">
+            <a href="https://www.linkedin.com/in/harish-ragav-ab92bb287" target="_blank" rel="noopener noreferrer" style="color: #94A3B8; transition: color 0.15s ease;" onmouseover="this.style.color='var(--color-amber-500)'" onmouseout="this.style.color='#94A3B8'">
               <span>LinkedIn</span>
             </a>
-            <a href="https://github.com/Computer-Nerdy" target="_blank" rel="noopener noreferrer" style="color: var(--color-slate-600); transition: color 0.15s ease;" onmouseover="this.style.color='var(--color-amber-700)'" onmouseout="this.style.color='var(--color-slate-600)'">
+            <a href="https://github.com/Computer-Nerdy" target="_blank" rel="noopener noreferrer" style="color: #94A3B8; transition: color 0.15s ease;" onmouseover="this.style.color='var(--color-amber-500)'" onmouseout="this.style.color='#94A3B8'">
               <span>GitHub (@Computer-Nerdy)</span>
             </a>
           </div>
@@ -474,7 +474,6 @@
 
       <div class="theatrical-pip-body">
         <video id="theatrical-video" src="videos/showcase.mp4" loop muted playsinline poster="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='180' fill='%230F172A'><rect width='320' height='180'/><text x='50%25' y='50%25' fill='%23F59E0B' font-family='monospace' font-size='12' text-anchor='middle' dominant-baseline='middle'>[ LIVE HARDWARE STREAM ]</text></svg>">
-          <!-- Fallback sources if named demo.mp4 or esp32.mp4 -->
           <source src="videos/demo.mp4" type="video/mp4">
           <source src="videos/esp32.mp4" type="video/mp4">
         </video>
@@ -509,7 +508,7 @@
   </div>
 
   <!-- Footer -->
-  <footer style="padding: 2rem 0; border-top: 1px solid rgba(226, 232, 240, 0.8); text-align: center; font-size: 0.75rem; color: var(--color-slate-500); font-weight: 600;" class="font-body relative z-10">
+  <footer style="padding: 2rem 0; border-top: 1px solid rgba(255, 255, 255, 0.08); text-align: center; font-size: 0.75rem; color: #64748B; font-weight: 600;" class="font-body relative z-10">
     <div class="fluid-container" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;">
       <div>© 2026 Harish Ragav V. · All Rights Reserved</div>
       <div>B.Tech Computer Science (IoT) · SRM IST Ramapuram</div>
