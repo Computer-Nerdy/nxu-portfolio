@@ -1,5 +1,6 @@
 import { initThreeHero } from './three-hero.js';
 import { initDesktopEffects } from './desktop-fx.js';
+import { initScrollVideo } from './scroll-video.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Initialize 3D Hardware Model & Theatrical Engine
@@ -9,17 +10,24 @@ document.addEventListener('DOMContentLoaded', () => {
     console.warn("3D canvas initialization note:", err);
   }
 
-  // 2. Initialize Desktop Dynamics (Liquid Orbs, 3D Tilt, Magnetic CTAs, Kinetic Scroll)
+  // 2. Initialize Scroll-Driven Video Theater (Option C Scrubbing)
+  try {
+    initScrollVideo();
+  } catch (err) {
+    console.warn("Scroll video engine note:", err);
+  }
+
+  // 3. Initialize Desktop Dynamics (Liquid Orbs, 3D Tilt, Cursor-Reactive Text, Scroll Reveals)
   try {
     initDesktopEffects();
   } catch (err) {
     console.warn("Desktop effects note:", err);
   }
 
-  // 3. Mobile Menu Navigation
+  // 4. Mobile Menu Navigation
   initMobileNav();
 
-  // 4. 1-Click Email Copy Feature
+  // 5. 1-Click Email Copy Feature
   initCopyEmail();
 });
 
