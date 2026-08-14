@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { initTheatricalStage } from './theatrical-stage.js';
 
 let scene, camera, renderer, boardGroup;
 let isUserInteracting = false;
@@ -121,6 +122,9 @@ function loadESP32Model() {
     scene.add(boardGroup);
 
     setupComponentMapForGLTF();
+
+    // Initialize full-screen theatrical studio with boardGroup
+    initTheatricalStage(boardGroup);
   }, undefined, (err) => {
     console.error("Error loading GLB:", err);
   });

@@ -1,17 +1,25 @@
 import { initThreeHero } from './three-hero.js';
+import { initDesktopEffects } from './desktop-fx.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Initialize 3D Hardware Model
+  // 1. Initialize 3D Hardware Model & Theatrical Engine
   try {
     initThreeHero();
   } catch (err) {
     console.warn("3D canvas initialization note:", err);
   }
 
-  // 2. Mobile Menu Navigation
+  // 2. Initialize Desktop Dynamics (Liquid Orbs, 3D Tilt, Magnetic CTAs, Kinetic Scroll)
+  try {
+    initDesktopEffects();
+  } catch (err) {
+    console.warn("Desktop effects note:", err);
+  }
+
+  // 3. Mobile Menu Navigation
   initMobileNav();
 
-  // 3. 1-Click Email Copy Feature
+  // 4. 1-Click Email Copy Feature
   initCopyEmail();
 });
 
@@ -32,7 +40,6 @@ function initMobileNav() {
       });
     });
 
-    // Close mobile menu if clicked outside
     document.addEventListener('click', (e) => {
       if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
         mobileMenu.classList.remove('active');

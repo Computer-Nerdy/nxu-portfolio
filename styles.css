@@ -1,12 +1,12 @@
 /* ==========================================================================
-   HARISH RAGAV V. — 100% FLUID RESPONSIVE LIQUID GLASS DESIGN SYSTEM
-   Auto-Adapts to Any Screen Width (320px Mobile -> 4K Ultra-Wide)
+   HARISH RAGAV V. — THEATRICAL LIQUID GLASS DESIGN SYSTEM
+   Desktop Parallax, Specular Reflections, Textured Typography & Fullscreen Stage
    ========================================================================== */
 
 :root {
   --bg-gradient-canvas: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 50%, #FAF5EF 100%);
   --glass-bg: rgba(255, 255, 255, 0.78);
-  --glass-bg-hover: rgba(255, 255, 255, 0.92);
+  --glass-bg-hover: rgba(255, 255, 255, 0.94);
   --glass-border: rgba(255, 255, 255, 0.95);
   --glass-border-subtle: rgba(226, 232, 240, 0.85);
   
@@ -70,6 +70,10 @@ a {
   color: inherit;
 }
 
+.hidden {
+  display: none !important;
+}
+
 /* Universal SVG Size Lock */
 svg {
   display: inline-block !important;
@@ -78,7 +82,8 @@ svg {
 }
 
 .btn-liquid-primary svg,
-.btn-liquid-secondary svg {
+.btn-liquid-secondary svg,
+.btn-launch svg {
   width: 1rem !important;
   height: 1rem !important;
   max-width: 1rem !important;
@@ -110,6 +115,21 @@ svg {
 .font-display { font-family: var(--font-display); letter-spacing: -0.02em; }
 .font-body { font-family: var(--font-body); }
 .font-mono { font-family: var(--font-mono); }
+
+/* Text Texture Packs */
+.text-textured-amber {
+  background: linear-gradient(135deg, #B45309 0%, #D97706 40%, #78350F 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.text-textured-chrome {
+  background: linear-gradient(135deg, #0F172A 0%, #334155 50%, #0F172A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
 
 .hero-title {
   font-family: var(--font-display);
@@ -162,8 +182,8 @@ svg {
 
 .grid-projects {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
-  gap: clamp(1.25rem, 2.5vw, 2rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 23rem), 1fr));
+  gap: clamp(1.5rem, 2.5vw, 2.25rem);
 }
 
 .grid-skills {
@@ -436,13 +456,13 @@ svg {
 }
 
 /* ==========================================================================
-   DYNAMIC 3D HARDWARE VIEWPORT
+   DYNAMIC 3D HARDWARE VIEWPORT & THEATRICAL STAGE
    ========================================================================== */
 
 .viewport-card {
   position: relative;
   width: 100%;
-  height: clamp(320px, 38vw, 440px);
+  height: clamp(340px, 40vw, 460px);
   border-radius: clamp(1.25rem, 2.5vw, 1.75rem);
   padding: 0.75rem;
   overflow: hidden;
@@ -460,6 +480,103 @@ svg {
 
 #three-hero-container:active {
   cursor: grabbing;
+}
+
+/* Fullscreen Theatrical Stage Modal */
+#theatrical-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  display: flex;
+  flex-direction: column;
+  animation: modalFadeIn 0.3s var(--ease-smooth);
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+#theatrical-canvas-container {
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+
+#theatrical-canvas-container:active {
+  cursor: grabbing;
+}
+
+.theatrical-hud-top {
+  position: absolute;
+  top: 1.5rem;
+  left: 2rem;
+  right: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 110;
+}
+
+.theatrical-hud-bottom {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  right: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  pointer-events: none;
+  z-index: 110;
+}
+
+.theatrical-control-btn {
+  pointer-events: auto;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.875rem;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #FFFFFF;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.theatrical-control-btn:hover,
+.theatrical-control-btn.active {
+  background: rgba(245, 158, 11, 0.35);
+  border-color: #F59E0B;
+  color: #FEF3C7;
+  box-shadow: 0 0 16px rgba(245, 158, 11, 0.3);
+}
+
+/* 3D Tilt Card Parallax with Specular Glare */
+.tilt-card {
+  transition: transform 0.25s var(--ease-smooth), box-shadow 0.25s var(--ease-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.tilt-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 50%), rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 60%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.tilt-card:hover::before {
+  opacity: 1;
 }
 
 /* Ambient Liquid Orbs in Background */
@@ -601,6 +718,29 @@ svg {
   color: var(--color-slate-900);
 }
 
+.btn-launch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1rem;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(217, 119, 6, 0.18) 100%);
+  border: 1px solid rgba(217, 119, 6, 0.35);
+  color: var(--color-amber-800);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s var(--ease-smooth);
+}
+
+.btn-launch:hover {
+  background: linear-gradient(135deg, #C25E00 0%, #9A3412 100%);
+  color: #FFFFFF !important;
+  transform: translateY(-1.5px);
+  box-shadow: 0 4px 14px rgba(194, 94, 0, 0.25);
+}
+
 /* Component Inspector Buttons */
 .comp-label-btn {
   cursor: pointer;
@@ -651,6 +791,18 @@ svg {
   color: var(--color-slate-700);
   font-size: clamp(0.65rem, 0.85vw, 0.72rem);
   font-weight: 600;
+}
+
+/* Reveal Animations */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s var(--ease-smooth), transform 0.7s var(--ease-smooth);
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Custom Scrollbar */
