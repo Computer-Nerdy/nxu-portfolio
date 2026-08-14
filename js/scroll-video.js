@@ -1,7 +1,6 @@
 /* ==========================================================================
-   ULTRA-SMOOTH GPU-ACCELERATED STICKY SCROLL VIDEO ENGINE
-   Uses native hardware playback (.play() & dynamic playbackRate) to completely
-   eliminate seeking decode lag and guarantee 60 FPS butter-smooth playback.
+   CINEMATIC GPU-ACCELERATED STICKY SCROLL VIDEO ENGINE
+   Calibrated natural playback speed (0.6x to 1.15x max) with generous scroll travel.
    ========================================================================== */
 
 export function initScrollVideo() {
@@ -70,11 +69,11 @@ export function initScrollVideo() {
         const targetTime = targetProgress * video.duration;
         const timeDiff = targetTime - video.currentTime;
 
-        // Downward scroll: Drive smooth native GPU hardware playback
-        if (scrollDelta > 0 && timeDiff > 0.05 && !video.ended) {
-          // Adjust playback rate dynamically based on scroll distance gap
-          const rate = Math.min(3.0, Math.max(0.75, timeDiff * 2.2));
-          video.playbackRate = rate;
+        // Downward scroll: Calm, cinematic natural-speed GPU playback
+        if (scrollDelta > 0 && timeDiff > 0.04 && !video.ended) {
+          // Calibrated smooth natural playback rate (capped at 1.15x max)
+          const naturalRate = Math.min(1.15, Math.max(0.65, 0.75 + timeDiff * 0.4));
+          video.playbackRate = naturalRate;
 
           if (!isPlaying) {
             const playPromise = video.play();
@@ -85,7 +84,6 @@ export function initScrollVideo() {
             }
           }
 
-          // Clear debounce timer
           clearTimeout(pauseDebounce);
           pauseDebounce = setTimeout(() => {
             if (isPlaying) {
@@ -94,7 +92,7 @@ export function initScrollVideo() {
             }
           }, 140);
         }
-        // Backward scroll: Smooth gentle step
+        // Backward scroll: Gentle position alignment
         else if (scrollDelta < 0 && timeDiff < -0.1) {
           if (isPlaying) {
             video.pause();
