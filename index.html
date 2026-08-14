@@ -218,55 +218,21 @@
       </div>
     </section>
 
-    <!-- OPTION C: SCROLL-DRIVEN FULLSCREEN VIDEO THEATER -->
+    <!-- OPTION C: TRUE FULLSCREEN AUTO-PLAY SCROLL REEL (CLEAN 100vw x 100vh) -->
     <section id="engineering-reel" class="relative">
       <div id="scroll-video-container" class="scroll-track-wrapper">
         <div class="scroll-sticky-viewport">
           
-          <div class="fluid-container" style="width: 100%; display: flex; justify-content: center;">
-            <div id="video-glass-frame" class="glass-card shadow-glass-lg scroll-video-card">
-              
-              <!-- Video Frame Header -->
-              <div class="scroll-video-header">
-                <div style="display: flex; align-items: center; gap: 0.6rem;">
-                  <span class="pip-rec-dot"></span>
-                  <span style="font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; color: #FFFFFF;">
-                    HARDWARE BUILD &amp; SIGNAL LAB REEL
-                  </span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 0.75rem;">
-                  <span id="video-scrub-progress" style="font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; color: var(--color-amber-500);">
-                    SCROLL TO SCRUB
-                  </span>
-                  <button id="video-fullscreen-btn" class="video-theater-action-btn" title="Toggle Fullscreen Theater">
-                    ⛶ Fullscreen
-                  </button>
-                </div>
-              </div>
+          <div class="fullscreen-video-theater">
+            <video id="scroll-scrub-video" muted playsinline preload="auto" poster="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080' fill='%23060913'><rect width='1920' height='1080'/><circle cx='960' cy='540' r='80' fill='none' stroke='%23F59E0B' stroke-width='4'/><polygon points='945,510 990,540 945,570' fill='%23F59E0B'/><text x='960' y='660' fill='%2394A3B8' font-family='monospace' font-size='22' text-anchor='middle'>[ HARDWARE ENGINEERING REEL - SCROLL TO PLAY ]</text></svg>">
+              <source src="videos/showcase.mp4" type="video/mp4">
+              <source src="videos/demo.mp4" type="video/mp4">
+              <source src="videos/esp32.mp4" type="video/mp4">
+            </video>
 
-              <!-- Interactive Video Screen -->
-              <div class="scroll-video-screen">
-                <video id="scroll-scrub-video" muted playsinline preload="auto" poster="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1280' height='720' fill='%23060913'><rect width='1280' height='720'/><circle cx='640' cy='360' r='60' fill='none' stroke='%23F59E0B' stroke-width='3'/><polygon points='630,340 660,360 630,380' fill='%23F59E0B'/><text x='640' y='460' fill='%2394A3B8' font-family='monospace' font-size='18' text-anchor='middle'>[ SCROLL TO SCRUB HARDWARE FOOTAGE ]</text></svg>">
-                  <source src="videos/showcase.mp4" type="video/mp4">
-                  <source src="videos/demo.mp4" type="video/mp4">
-                  <source src="videos/esp32.mp4" type="video/mp4">
-                </video>
-
-                <!-- Overlay Telemetry Grid -->
-                <div class="scroll-video-telemetry-overlay">
-                  <div style="font-family: var(--font-mono); font-size: 0.6875rem; color: rgba(255, 255, 255, 0.7); display: flex; flex-direction: column; gap: 0.25rem;">
-                    <div>[CH1] OSCILLOSCOPE CLK: 240.00 MHz</div>
-                    <div>[CH2] SPI BUS: 80.00 MHz</div>
-                    <div>[SYS] TELEMETRY SYNCHRONIZED</div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Video Scrubber Progress Bar -->
-              <div class="scroll-scrubber-track">
-                <div id="video-scrub-bar" class="scroll-scrubber-fill"></div>
-              </div>
-
+            <!-- Ultra-Clean Glowing Bottom Progress Bar -->
+            <div class="fullscreen-scrubber-track">
+              <div id="video-scrub-bar" class="fullscreen-scrubber-fill"></div>
             </div>
           </div>
 

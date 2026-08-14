@@ -1,6 +1,6 @@
 /* ==========================================================================
    HARISH RAGAV V. — OBSIDIAN LIQUID GLASS DESIGN SYSTEM (DARK MODE)
-   Cyber Cursor, Kinetic Spotlight Typography, Background Quantum Canvas & Video Theater
+   Character Kinetic Physics, Velocity Cursor & True Fullscreen Zero-Lag Video Reel
    ========================================================================== */
 
 :root {
@@ -79,7 +79,7 @@ a {
 }
 
 /* ==========================================================================
-   CYBER LIQUID CURSOR
+   VELOCITY-STRETCHING CYBER CURSOR & SHOCKWAVES
    ========================================================================== */
 
 @media (min-width: 768px) {
@@ -114,14 +114,10 @@ a {
     pointer-events: none;
     z-index: 9998;
     transform: translate3d(-100px, -100px, 0);
-    transition: width 0.25s var(--ease-smooth), height 0.25s var(--ease-smooth), border-color 0.25s ease, background 0.25s ease;
+    will-change: transform;
   }
 
   .cyber-cursor-follower.cursor-hover {
-    top: -28px;
-    left: -28px;
-    width: 56px;
-    height: 56px;
     border-color: rgba(245, 158, 11, 0.9);
     background: radial-gradient(circle, rgba(245, 158, 11, 0.28) 0%, rgba(245, 158, 11, 0) 75%);
   }
@@ -132,6 +128,73 @@ a {
     background-color: #FFFFFF;
     box-shadow: 0 0 16px #FFFFFF;
   }
+
+  .cursor-shockwave {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #F59E0B;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: none;
+    z-index: 9997;
+    animation: shockwaveExpand 0.6s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+  }
+
+  @keyframes shockwaveExpand {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 1; border-width: 3px; }
+    100% { transform: translate(-50%, -50%) scale(5); opacity: 0; border-width: 0.5px; }
+  }
+}
+
+/* ==========================================================================
+   CHARACTER-LEVEL KINETIC TYPOGRAPHY
+   ========================================================================== */
+
+.kinetic-char {
+  display: inline-block;
+  will-change: transform, color, text-shadow;
+  transition: transform 0.04s linear, color 0.1s ease, text-shadow 0.1s ease;
+  user-select: none;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 4.5vw + 0.5rem, 3.8rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  color: #FFFFFF;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 3.2vw + 0.2rem, 2.6rem);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+}
+
+.text-textured-amber {
+  background: linear-gradient(135deg, #FDE68A 0%, #F59E0B 45%, #D97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  filter: drop-shadow(0 0 16px rgba(245, 158, 11, 0.45));
+}
+
+.text-textured-chrome {
+  background: linear-gradient(135deg, #FFFFFF 0%, #E2E8F0 40%, #94A3B8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.lead-text {
+  font-size: clamp(0.95rem, 1.1vw + 0.2rem, 1.15rem);
+  line-height: 1.65;
+  color: #94A3B8;
 }
 
 /* Universal SVG Size Lock */
@@ -169,57 +232,6 @@ svg {
   height: 1.25rem !important;
   max-width: 1.25rem !important;
   max-height: 1.25rem !important;
-}
-
-/* Fluid Typography */
-.font-display { font-family: var(--font-display); letter-spacing: -0.02em; }
-.font-body { font-family: var(--font-body); }
-.font-mono { font-family: var(--font-mono); }
-
-/* ==========================================================================
-   CURSOR-REACTIVE KINETIC SPOTLIGHT TYPOGRAPHY
-   ========================================================================== */
-
-.hero-title {
-  font-family: var(--font-display);
-  font-size: clamp(2.1rem, 4.5vw + 0.5rem, 3.8rem);
-  font-weight: 800;
-  line-height: 1.12;
-  letter-spacing: -0.025em;
-  color: #FFFFFF;
-  transition: transform 0.2s var(--ease-smooth), text-shadow 0.2s var(--ease-smooth);
-}
-
-.section-title {
-  font-family: var(--font-display);
-  font-size: clamp(1.65rem, 3.2vw + 0.2rem, 2.6rem);
-  font-weight: 800;
-  line-height: 1.18;
-  letter-spacing: -0.02em;
-  color: #FFFFFF;
-  transition: transform 0.2s var(--ease-smooth), text-shadow 0.2s var(--ease-smooth);
-}
-
-.text-textured-amber {
-  background: linear-gradient(135deg, #FDE68A 0%, #F59E0B 45%, #D97706 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline-block;
-  filter: drop-shadow(0 0 16px rgba(245, 158, 11, 0.45));
-}
-
-.text-textured-chrome {
-  background: linear-gradient(135deg, #FFFFFF 0%, #E2E8F0 40%, #94A3B8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline-block;
-}
-
-.lead-text {
-  font-size: clamp(0.95rem, 1.1vw + 0.2rem, 1.15rem);
-  line-height: 1.65;
-  color: #94A3B8;
-  transition: color 0.2s ease, text-shadow 0.2s ease;
 }
 
 /* Fluid Container Wrapper */
@@ -524,11 +536,11 @@ svg {
 }
 
 /* ==========================================================================
-   OPTION C: SCROLL-DRIVEN FULLSCREEN VIDEO THEATER (STICKY SCRUBBING)
+   OPTION C: TRUE FULLSCREEN ZERO-CHOPPINESS VIDEO REEL
    ========================================================================== */
 
 .scroll-track-wrapper {
-  height: 260vh;
+  height: 240vh;
   position: relative;
 }
 
@@ -536,103 +548,46 @@ svg {
   position: sticky;
   top: 0;
   height: 100vh;
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.25rem;
+  padding: 0;
+  margin: 0;
   overflow: hidden;
   z-index: 20;
 }
 
-.scroll-video-card {
-  max-width: 68rem;
-  width: 100%;
-  margin: 0 auto;
-  overflow: hidden;
-  border-radius: 1.75rem;
-  border: 1px solid var(--glass-border);
-  background: rgba(15, 23, 42, 0.8);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
-  transition: max-width 0.25s var(--ease-smooth), border-radius 0.25s var(--ease-smooth), transform 0.2s var(--ease-smooth), opacity 0.2s var(--ease-smooth);
-}
-
-.scroll-video-header {
-  padding: 0.85rem 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: rgba(255, 255, 255, 0.05);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.pip-rec-dot {
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 50%;
-  background-color: #EF4444;
-  box-shadow: 0 0 8px #EF4444;
-  animation: pulseDot 1.5s infinite ease-in-out;
-}
-
-.video-theater-action-btn {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #F8FAFC;
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  font-weight: 700;
-  padding: 0.25rem 0.65rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.video-theater-action-btn:hover {
-  background: rgba(245, 158, 11, 0.25);
-  border-color: #F59E0B;
-  color: #FDE68A;
-}
-
-.scroll-video-screen {
+.fullscreen-video-theater {
   position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  max-height: 520px;
+  width: 100vw;
+  height: 100vh;
   background: #000000;
   overflow: hidden;
 }
 
-.scroll-video-screen video {
+.fullscreen-video-theater video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.scroll-video-telemetry-overlay {
+.fullscreen-scrubber-track {
   position: absolute;
-  bottom: 1.25rem;
-  left: 1.25rem;
-  padding: 0.6rem 1rem;
-  border-radius: 0.625rem;
-  background: rgba(6, 9, 19, 0.75);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  pointer-events: none;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 10;
 }
 
-.scroll-scrubber-track {
-  width: 100%;
-  height: 5px;
-  background: rgba(255, 255, 255, 0.08);
-  position: relative;
-}
-
-.scroll-scrubber-fill {
+.fullscreen-scrubber-fill {
   height: 100%;
   width: 0%;
   background: linear-gradient(90deg, #F59E0B 0%, #D97706 100%);
-  box-shadow: 0 0 12px rgba(245, 158, 11, 0.8);
+  box-shadow: 0 0 14px rgba(245, 158, 11, 0.9);
 }
 
 /* ==========================================================================
