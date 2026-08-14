@@ -1,6 +1,6 @@
 /* ==========================================================================
    HARISH RAGAV V. — OBSIDIAN LIQUID GLASS DESIGN SYSTEM (DARK MODE)
-   Full-Length Video Scrubbing Track & Long Linger Kinetic Typography
+   Crystal-Sharp Typography, Zero Blurriness & Smoothstep Seamless Transitions
    ========================================================================== */
 
 :root {
@@ -58,6 +58,9 @@ html {
   color: var(--color-slate-800);
   font-family: var(--font-body);
   font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
@@ -67,6 +70,8 @@ body {
   background: var(--bg-gradient-canvas);
   color: var(--color-slate-800);
   font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 a {
@@ -190,13 +195,17 @@ a {
 }
 
 /* ==========================================================================
-   HYPER-REACTIVE CHARACTER KINETIC TYPOGRAPHY
+   CRYSTAL-SHARP CHARACTER KINETIC TYPOGRAPHY (ZERO BLURRINESS)
    ========================================================================== */
 
 .kinetic-char {
   display: inline-block;
-  will-change: transform, color, text-shadow;
-  transition: transform 0.04s linear, color 0.15s ease, text-shadow 0.15s ease;
+  will-change: transform, color;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-origin: center center;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   user-select: none;
 }
 
@@ -223,7 +232,6 @@ a {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
-  filter: drop-shadow(0 0 16px rgba(245, 158, 11, 0.45));
 }
 
 .text-textured-chrome {
@@ -237,7 +245,12 @@ a {
   font-size: clamp(0.95rem, 1.1vw + 0.2rem, 1.15rem);
   line-height: 1.65;
   color: #94A3B8;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
+  transition: color 0.7s var(--ease-smooth), text-shadow 0.7s var(--ease-smooth);
+}
+
+.text-illuminated {
+  color: #FFFFFF !important;
+  text-shadow: 0 0 10px rgba(245, 158, 11, 0.45);
 }
 
 /* Universal SVG Size Lock */
@@ -322,7 +335,7 @@ svg {
 
 /* ==========================================================================
    HEADER & NAVBAR (DARK OBSIDIAN GLASS)
-   ========================================================================= */
+   ========================================================================== */
 
 .nav-container {
   position: fixed;
