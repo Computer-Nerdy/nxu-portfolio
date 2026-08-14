@@ -1,146 +1,102 @@
 /* ==========================================================================
-   SCROLL-LOCKED THEATRICAL VIDEO REEL ENGINE
-   Locks website scrolling when entering the video section until the video
-   playback finishes 100% of its duration. Auto-unlocks to continue scrolling.
+   UNIVERSAL STICKY SCROLL-LOCKED VIDEO ENGINE
+   Works seamlessly with manual scrolling, scrollbar dragging, autoscroll & nav links.
+   Sticky viewport locks for 300vh while video plays from 0:00 to 100% duration.
    ========================================================================== */
 
 export function initScrollVideo() {
-  const container = document.getElementById('scroll-video-container');
-  const section = document.getElementById('engineering-reel');
+  const track = document.getElementById('engineering-reel');
   const video = document.getElementById('scroll-scrub-video');
   const progressBar = document.getElementById('video-scrub-bar');
 
-  if (!container || !video || !section) return;
+  if (!track || !video) return;
 
-  let isPlaying = false;
-  let scrollTimeout = null;
-  let isVideoComplete = false;
+  let isLoaded = false;
+  let targetTime = 0;
+  let isSeeking = false;
 
   video.muted = true;
   video.playsInline = true;
   video.autoplay = false;
   video.preload = "auto";
-  video.pause();
 
-  function resetVideoToBeginning() {
-    if (isPlaying) {
-      video.pause();
-      isPlaying = false;
-    }
+  video.addEventListener('loadedmetadata', () => {
+    isLoaded = true;
+    onScrollUpdate();
+  });
+
+  video.addEventListener('seeked', () => {
+    isSeeking = false;
+  });
+
+  if (video.readyState >= 1) {
+    isLoaded = true;
+  }
+
+  function resetVideo() {
+    video.pause();
     video.currentTime = 0;
-    isVideoComplete = false;
-    if (progressBar) {
-      progressBar.style.width = '0%';
+    if (progressBar) progressBar.style.width = '0%';
+  }
+
+  function onScrollUpdate() {
+    const rect = track.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    const scrollDistance = track.offsetHeight - windowHeight;
+
+    if (scrollDistance <= 0) return;
+
+    // Above section / landing page -> Reset to 0:00
+    if (rect.top > 40 || window.scrollY < 120) {
+      if (video.currentTime > 0) {
+        resetVideo();
+      }
+      return;
+    }
+
+    // Inside sticky track [0.0 -> 1.0]
+    const scrollProgress = Math.max(0, Math.min(1, -rect.top / scrollDistance));
+
+    if (isLoaded && video.duration) {
+      targetTime = scrollProgress * video.duration;
+
+      // Update progress bar
+      if (progressBar) {
+        progressBar.style.width = `${scrollProgress * 100}%`;
+      }
     }
   }
 
-  // Wheel & Touch Interceptor for Scroll-Lock
-  window.addEventListener('wheel', (e) => {
-    const rect = section.getBoundingClientRect();
-    const isAtSection = rect.top <= 80 && rect.bottom >= window.innerHeight - 80;
+  // Smooth RAF loop syncing video position with hardware acceleration
+  function syncLoop() {
+    if (isLoaded && video.duration && !isSeeking) {
+      const diff = targetTime - video.currentTime;
 
-    if (isAtSection) {
-      const isComplete = video.duration && (video.currentTime >= video.duration - 0.15 || video.ended);
+      if (Math.abs(diff) > 0.04) {
+        isSeeking = true;
+        const nextTime = video.currentTime + diff * 0.25;
 
-      // Downward scroll while video has not completed -> Lock scroll & play video forward
-      if (e.deltaY > 0 && !isComplete) {
-        e.preventDefault();
-
-        // Scale playback speed dynamically to wheel velocity
-        const delta = Math.min(Math.abs(e.deltaY), 150);
-        video.playbackRate = Math.min(2.5, Math.max(0.8, delta * 0.02));
-
-        if (!isPlaying) {
-          const playPromise = video.play();
-          if (playPromise !== undefined) {
-            playPromise.then(() => {
-              isPlaying = true;
-            }).catch(() => {});
-          }
-        }
-
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-          if (isPlaying) {
-            video.pause();
-            isPlaying = false;
-          }
-        }, 140);
-      } 
-      // Upward scroll when at the beginning -> Allow normal scrolling back to landing page
-      else if (e.deltaY < 0 && video.currentTime <= 0.2) {
-        resetVideoToBeginning();
-        // Allow default scroll back up to hero
-      }
-      // Upward scroll while mid-video -> Lock and gently step backward
-      else if (e.deltaY < 0 && !isComplete && video.currentTime > 0.2) {
-        e.preventDefault();
-        video.currentTime = Math.max(0, video.currentTime - 0.25);
-        if (progressBar && video.duration) {
-          progressBar.style.width = `${(video.currentTime / video.duration) * 100}%`;
+        if (typeof video.fastSeek === 'function') {
+          video.fastSeek(nextTime);
+        } else {
+          video.currentTime = nextTime;
         }
       }
-      // If complete and scrolling down -> naturally lets the user scroll past into Projects!
-    } else if (rect.top > 120 || window.scrollY < 100) {
-      // Reset if scrolled back up to hero landing
-      if (video.currentTime > 0) {
-        resetVideoToBeginning();
-      }
     }
-  }, { passive: false });
 
-  // Touch device swipe handling for mobile/trackpad
-  let touchStartY = 0;
-  window.addEventListener('touchstart', (e) => {
-    touchStartY = e.touches[0].clientY;
-  }, { passive: true });
+    requestAnimationFrame(syncLoop);
+  }
 
-  window.addEventListener('touchmove', (e) => {
-    const rect = section.getBoundingClientRect();
-    const isAtSection = rect.top <= 80 && rect.bottom >= window.innerHeight - 80;
-
-    if (isAtSection) {
-      const touchCurrentY = e.touches[0].clientY;
-      const touchDeltaY = touchStartY - touchCurrentY;
-      const isComplete = video.duration && (video.currentTime >= video.duration - 0.15 || video.ended);
-
-      if (touchDeltaY > 0 && !isComplete) {
-        e.preventDefault();
-        video.playbackRate = 1.2;
-        if (!isPlaying) {
-          video.play().then(() => { isPlaying = true; }).catch(() => {});
-        }
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-          if (isPlaying) {
-            video.pause();
-            isPlaying = false;
-          }
-        }, 150);
-      }
-    }
-  }, { passive: false });
-
-  video.addEventListener('timeupdate', () => {
-    if (progressBar && video.duration) {
-      const progress = (video.currentTime / video.duration) * 100;
-      progressBar.style.width = `${progress}%`;
-      if (video.currentTime >= video.duration - 0.15) {
-        isVideoComplete = true;
-      }
-    }
-  });
-
-  video.addEventListener('ended', () => {
-    isPlaying = false;
-    isVideoComplete = true;
-  });
-
-  // Hook navigation links to hero/about or brand logo
+  // Reset triggers on landing page / logo click
   const heroTriggers = document.querySelectorAll('a[href="#hero"], a[href="#about"], .brand-wrapper');
   heroTriggers.forEach(el => {
     el.addEventListener('click', () => {
-      resetVideoToBeginning();
+      resetVideo();
     });
   });
+
+  window.addEventListener('scroll', onScrollUpdate, { passive: true });
+  window.addEventListener('resize', onScrollUpdate, { passive: true });
+
+  syncLoop();
 }
