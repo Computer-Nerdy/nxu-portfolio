@@ -1,6 +1,6 @@
 /* ==========================================================================
    HARISH RAGAV V. — OBSIDIAN LIQUID GLASS DESIGN SYSTEM (DARK MODE)
-   Hyper-Reactive Character Kinetics, Neon Sparks, Real-Time Slideshow & Fullscreen Video
+   Full-Length Video Scrubbing Track & Long Linger Kinetic Typography
    ========================================================================== */
 
 :root {
@@ -196,7 +196,7 @@ a {
 .kinetic-char {
   display: inline-block;
   will-change: transform, color, text-shadow;
-  transition: transform 0.04s linear, color 0.08s ease, text-shadow 0.08s ease;
+  transition: transform 0.04s linear, color 0.15s ease, text-shadow 0.15s ease;
   user-select: none;
 }
 
@@ -237,6 +237,7 @@ a {
   font-size: clamp(0.95rem, 1.1vw + 0.2rem, 1.15rem);
   line-height: 1.65;
   color: #94A3B8;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 /* Universal SVG Size Lock */
@@ -321,7 +322,7 @@ svg {
 
 /* ==========================================================================
    HEADER & NAVBAR (DARK OBSIDIAN GLASS)
-   ========================================================================== */
+   ========================================================================= */
 
 .nav-container {
   position: fixed;
@@ -578,11 +579,11 @@ svg {
 }
 
 /* ==========================================================================
-   OPTION C: TRUE FULLSCREEN ZERO-CHOPPINESS VIDEO REEL
+   FULL-LENGTH TRUE FULLSCREEN ZERO-CHOPPINESS VIDEO REEL
    ========================================================================== */
 
 .scroll-track-wrapper {
-  height: 240vh;
+  height: 380vh;
   position: relative;
 }
 

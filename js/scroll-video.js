@@ -1,7 +1,7 @@
 /* ==========================================================================
-   SCROLL-DRIVEN TRUE FULLSCREEN VIDEO REEL (ZERO CHOPPINESS NATIVE PLAYBACK)
-   Plays smoothly while scrolling down, pauses when idle, unpins when done.
-   No backward seeking, no telemetry, true 100vw x 100vh fullscreen.
+   SCROLL-DRIVEN TRUE FULL-LENGTH VIDEO SCRUBBING
+   Guarantees 100% of video duration is scrubbed before unpinning.
+   Zero lag, butter-smooth frame interpolation mapped across full scroll distance.
    ========================================================================== */
 
 export function initScrollVideo() {
@@ -11,72 +11,71 @@ export function initScrollVideo() {
 
   if (!container || !video) return;
 
-  let isPlaying = false;
-  let scrollTimeout = null;
-  let lastScrollY = window.scrollY;
+  let isLoaded = false;
+  let targetTime = 0;
+  let currentTime = 0;
+  let isSeeking = false;
+  let animationId = null;
 
-  // Video settings for instant GPU hardware playback
-  video.muted = true;
-  video.playsInline = true;
-  video.autoplay = false;
+  video.load();
   video.pause();
 
-  function onScroll() {
+  video.addEventListener('loadedmetadata', () => {
+    isLoaded = true;
+    updateScrollScrub();
+  });
+
+  video.addEventListener('seeked', () => {
+    isSeeking = false;
+  });
+
+  if (video.readyState >= 1) {
+    isLoaded = true;
+  }
+
+  function updateScrollScrub() {
+    if (!isLoaded || !video.duration) return;
+
     const rect = container.getBoundingClientRect();
     const windowHeight = window.innerHeight;
-    const currentScrollY = window.scrollY;
-    const isScrollingDown = currentScrollY > lastScrollY;
-    lastScrollY = currentScrollY;
+    const totalDistance = container.offsetHeight - windowHeight;
 
-    // Check if user is inside the sticky video section
-    const inViewport = rect.top <= 0 && rect.bottom >= windowHeight;
+    if (totalDistance <= 0) return;
 
-    if (inViewport) {
-      // If scrolling down and video isn't ended, smoothly play
-      if (isScrollingDown && !video.ended) {
-        if (!isPlaying) {
-          const playPromise = video.play();
-          if (playPromise !== undefined) {
-            playPromise.then(() => {
-              isPlaying = true;
-            }).catch(() => {});
-          }
-        }
-      }
+    // Calculate exact progress through the full track [0.0 to 1.0]
+    const scrollOffset = -rect.top;
+    const progress = Math.max(0, Math.min(1, scrollOffset / totalDistance));
 
-      // Reset idle timer to pause when scrolling stops
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => {
-        if (isPlaying) {
-          video.pause();
-          isPlaying = false;
-        }
-      }, 140);
-    } else {
-      // Outside sticky area -> pause
-      if (isPlaying) {
-        video.pause();
-        isPlaying = false;
-      }
-    }
+    targetTime = progress * video.duration;
 
-    // Update bottom scrubber progress bar
-    if (progressBar && video.duration) {
-      const progress = (video.currentTime / video.duration) * 100;
-      progressBar.style.width = `${progress}%`;
+    // Update bottom scrubber bar
+    if (progressBar) {
+      progressBar.style.width = `${progress * 100}%`;
     }
   }
 
-  video.addEventListener('timeupdate', () => {
-    if (progressBar && video.duration) {
-      const progress = (video.currentTime / video.duration) * 100;
-      progressBar.style.width = `${progress}%`;
+  // Smooth render loop ensuring frame accuracy across the entire video length
+  function renderLoop() {
+    if (isLoaded && video.duration && !isSeeking) {
+      const diff = targetTime - currentTime;
+
+      if (Math.abs(diff) > 0.02) {
+        currentTime += diff * 0.15;
+
+        isSeeking = true;
+        if (typeof video.fastSeek === 'function') {
+          video.fastSeek(currentTime);
+        } else {
+          video.currentTime = currentTime;
+        }
+      }
     }
-  });
 
-  video.addEventListener('ended', () => {
-    isPlaying = false;
-  });
+    animationId = requestAnimationFrame(renderLoop);
+  }
 
-  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('scroll', updateScrollScrub, { passive: true });
+  window.addEventListener('resize', updateScrollScrub, { passive: true });
+
+  renderLoop();
 }

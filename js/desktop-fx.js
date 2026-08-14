@@ -1,6 +1,6 @@
 /* ==========================================================================
-   HYPER-REACTIVE CHARACTER KINETIC PHYSICS & VELOCITY SPARK CURSOR
-   Explosive letter repulsion, wave dispersion, plasma illumination & neon particle sparks
+   HYPER-REACTIVE CHARACTER KINETIC PHYSICS & EXTENDED TEXT REVELATION
+   Explosive letter repulsion, wave dispersion, long-linger readable illumination, and neon sparks
    ========================================================================== */
 
 export function initDesktopEffects() {
@@ -8,6 +8,7 @@ export function initDesktopEffects() {
 
   initVelocitySparkCursor();
   initHyperKineticCharacterPhysics();
+  initExtendedParagraphIllumination();
   initLiquidOrbCursorTracking();
   init3DCardTilt();
   initMagneticElements();
@@ -39,7 +40,6 @@ function initVelocitySparkCursor() {
     mouseY = e.clientY;
     dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
 
-    // Spawn glowing neon sparks on mouse velocity
     sparkCounter++;
     if (sparkCounter % 2 === 0) {
       spawnCursorSpark(mouseX, mouseY);
@@ -86,7 +86,7 @@ function initVelocitySparkCursor() {
     setTimeout(() => wave.remove(), 600);
   });
 
-  // Hover expansion
+  // Hover expansion on interactives
   const interactives = document.querySelectorAll('a, button, input, .comp-label-btn, .tilt-card, #three-hero-container');
   interactives.forEach(el => {
     el.addEventListener('mouseenter', () => {
@@ -137,9 +137,8 @@ function spawnCursorSpark(x, y) {
 }
 
 /**
- * Hyper-Reactive Character-Level Kinetic Typography Engine:
- * Each letter repels with physics, pushes sibling letters outward, scales up,
- * and ignites with multi-layered plasma glow.
+ * Hyper-Reactive Character-Level Kinetic Typography Engine with Long Retention Linger:
+ * Characters ignite, repel, and remain brightly illuminated for ~1.8s so user can read them clearly.
  */
 function initHyperKineticCharacterPhysics() {
   const headingElements = document.querySelectorAll('.hero-title, .section-title, .brand-name, .tilt-card h3');
@@ -161,8 +160,11 @@ function initHyperKineticCharacterPhysics() {
     mouse.y = -2000;
   });
 
-  // Physics Loop
+  const HOLD_TIME_MS = 1800; // 1.8 seconds linger hold for easy reading
+
   function updateKineticPhysics() {
+    const now = Date.now();
+
     charNodes.forEach(item => {
       const rect = item.element.getBoundingClientRect();
       const charCenterX = rect.left + rect.width / 2;
@@ -171,39 +173,53 @@ function initHyperKineticCharacterPhysics() {
       const dx = mouse.x - charCenterX;
       const dy = mouse.y - charCenterY;
       const dist = Math.hypot(dx, dy);
-      const radius = 160; // Generous over-reactive field
+      const radius = 160;
 
       if (dist < radius) {
+        item.lastActiveTime = now;
         const force = Math.pow((1 - dist / radius), 1.5);
         const angle = Math.atan2(dy, dx);
 
-        // Explosive repulsion displacement & physical tilt
         item.targetX = -Math.cos(angle) * 36 * force;
         item.targetY = -Math.sin(angle) * 28 * force;
         item.targetRotate = -Math.sin(angle) * 20 * force;
-        item.targetScale = 1 + 0.52 * force; // Jump up to 1.52x
-        item.targetGlow = force;
+        item.targetScale = 1 + 0.48 * force;
+        item.targetGlow = Math.max(0.6, force);
       } else {
-        item.targetX = 0;
-        item.targetY = 0;
-        item.targetRotate = 0;
-        item.targetScale = 1;
-        item.targetGlow = 0;
+        const timeSinceActive = now - item.lastActiveTime;
+
+        if (timeSinceActive < HOLD_TIME_MS) {
+          // Linger State: Hold readable scale and crisp illumination
+          const lingerProgress = timeSinceActive / HOLD_TIME_MS;
+          item.targetX = 0;
+          item.targetY = -2;
+          item.targetRotate = 0;
+          item.targetScale = 1.08;
+          item.targetGlow = 1 - lingerProgress * 0.4; // Soft glowing retention
+        } else {
+          // Fade back to resting alignment
+          item.targetX = 0;
+          item.targetY = 0;
+          item.targetRotate = 0;
+          item.targetScale = 1;
+          item.targetGlow = 0;
+        }
       }
 
-      // Elastic Spring Interpolation
-      item.currentX += (item.targetX - item.currentX) * 0.18;
-      item.currentY += (item.targetY - item.currentY) * 0.18;
-      item.currentRotate += (item.targetRotate - item.currentRotate) * 0.18;
-      item.currentScale += (item.targetScale - item.currentScale) * 0.18;
-      item.currentGlow += (item.targetGlow - item.currentGlow) * 0.18;
+      // Smooth Interpolation
+      const lerpSpeed = (now - item.lastActiveTime < HOLD_TIME_MS && dist >= radius) ? 0.06 : 0.16;
+      item.currentX += (item.targetX - item.currentX) * lerpSpeed;
+      item.currentY += (item.targetY - item.currentY) * lerpSpeed;
+      item.currentRotate += (item.targetRotate - item.currentRotate) * lerpSpeed;
+      item.currentScale += (item.targetScale - item.currentScale) * lerpSpeed;
+      item.currentGlow += (item.targetGlow - item.currentGlow) * lerpSpeed;
 
       if (Math.abs(item.currentX) > 0.01 || Math.abs(item.currentY) > 0.01 || Math.abs(item.currentScale - 1) > 0.01) {
         item.element.style.transform = `translate3d(${item.currentX}px, ${item.currentY}px, 0) rotate(${item.currentRotate}deg) scale(${item.currentScale})`;
         
         if (item.currentGlow > 0.05) {
           item.element.style.color = '#FFFFFF';
-          item.element.style.textShadow = `0 0 20px rgba(245, 158, 11, ${item.currentGlow * 1}), 0 0 40px rgba(245, 158, 11, ${item.currentGlow * 0.8}), 0 0 70px rgba(217, 119, 6, ${item.currentGlow * 0.6}), 0 0 100px rgba(255, 255, 255, ${item.currentGlow * 0.5})`;
+          item.element.style.textShadow = `0 0 16px rgba(245, 158, 11, ${item.currentGlow * 0.9}), 0 0 32px rgba(245, 158, 11, ${item.currentGlow * 0.6}), 0 0 60px rgba(217, 119, 6, ${item.currentGlow * 0.4})`;
         } else {
           item.element.style.color = '';
           item.element.style.textShadow = '';
@@ -251,7 +267,8 @@ function wrapTextNodesInKineticSpans(container, charList) {
             currentScale: 1,
             targetScale: 1,
             currentGlow: 0,
-            targetGlow: 0
+            targetGlow: 0,
+            lastActiveTime: 0
           });
         }
       }
@@ -260,6 +277,42 @@ function wrapTextNodesInKineticSpans(container, charList) {
       wrapTextNodesInKineticSpans(node, charList);
     }
   });
+}
+
+/**
+ * Paragraph & Description Illumination with Extended Hold Time
+ */
+function initExtendedParagraphIllumination() {
+  const bodyTexts = document.querySelectorAll('.lead-text, .glass-card p, .grid-skills li');
+  const textItems = [];
+
+  bodyTexts.forEach(el => {
+    textItems.push({ element: el, lastActive: 0 });
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    const now = Date.now();
+    textItems.forEach(item => {
+      const rect = item.element.getBoundingClientRect();
+      const dist = Math.hypot(e.clientX - (rect.left + rect.width / 2), e.clientY - (rect.top + rect.height / 2));
+      if (dist < 260) {
+        item.lastActive = now;
+        item.element.style.color = '#FFFFFF';
+        item.element.style.textShadow = '0 0 12px rgba(245, 158, 11, 0.4)';
+      }
+    });
+  });
+
+  // Check linger decay every 200ms
+  setInterval(() => {
+    const now = Date.now();
+    textItems.forEach(item => {
+      if (item.lastActive > 0 && now - item.lastActive > 2000) {
+        item.element.style.color = '';
+        item.element.style.textShadow = '';
+      }
+    });
+  }, 200);
 }
 
 /**
