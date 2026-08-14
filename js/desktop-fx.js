@@ -1,12 +1,13 @@
 /* ==========================================================================
-   DESKTOP DYNAMICS & CURSOR-REACTIVE TEXT ENGINE
-   Real-Time Cursor Proximity, 3D Card Tilt, Magnetic Physics & Kinetic Scroll
+   DESKTOP DYNAMICS, FLUID CYBER CURSOR & KINETIC TYPOGRAPHY
+   Real-Time Character Spotlight, Magnetic Attraction & Cursor Aura Physics
    ========================================================================== */
 
 export function initDesktopEffects() {
   if (window.innerWidth < 768) return; // Keep mobile lightweight
 
-  initCursorReactiveText();
+  initFluidCyberCursor();
+  initKineticSpotlightText();
   initLiquidOrbCursorTracking();
   init3DCardTilt();
   initMagneticElements();
@@ -14,31 +15,97 @@ export function initDesktopEffects() {
 }
 
 /**
- * Cursor-Reactive Text Engine:
- * Headings, titles, and text dynamically illuminate and track the cursor position
+ * High-End Cyber Liquid Cursor Follower
  */
-function initCursorReactiveText() {
-  const reactiveHeadings = document.querySelectorAll('.hero-title, .section-title, .reactive-text, .tilt-card h3');
+function initFluidCyberCursor() {
+  // Create cursor elements
+  const dot = document.createElement('div');
+  dot.className = 'cyber-cursor-dot';
+  
+  const follower = document.createElement('div');
+  follower.className = 'cyber-cursor-follower';
+
+  document.body.appendChild(dot);
+  document.body.appendChild(follower);
+
+  let mouseX = -100, mouseY = -100;
+  let followerX = -100, followerY = -100;
 
   window.addEventListener('mousemove', (e) => {
-    reactiveHeadings.forEach(el => {
-      const rect = el.getBoundingClientRect();
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+  });
+
+  function animateFollower() {
+    followerX += (mouseX - followerX) * 0.18;
+    followerY += (mouseY - followerY) * 0.18;
+
+    follower.style.transform = `translate3d(${followerX}px, ${followerY}px, 0)`;
+    requestAnimationFrame(animateFollower);
+  }
+  animateFollower();
+
+  // Hover expansion on interactive elements
+  const interactives = document.querySelectorAll('a, button, input, .comp-label-btn, .tilt-card, #three-hero-container, .scroll-video-card');
+  interactives.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      follower.classList.add('cursor-hover');
+      dot.classList.add('cursor-hover-dot');
+    });
+    el.addEventListener('mouseleave', () => {
+      follower.classList.remove('cursor-hover');
+      dot.classList.remove('cursor-hover-dot');
+    });
+  });
+}
+
+/**
+ * Pronounced Kinetic Spotlight Text Engine:
+ * Splits headings into reactive spans with real-time radial spotlight tracking
+ */
+function initKineticSpotlightText() {
+  const titles = document.querySelectorAll('.hero-title, .section-title');
+
+  titles.forEach(title => {
+    title.addEventListener('mousemove', (e) => {
+      const rect = title.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
 
-      // Set cursor coordinate relative to each text element
-      el.style.setProperty('--text-mouse-x', `${x}px`);
-      el.style.setProperty('--text-mouse-y', `${y}px`);
+      title.style.setProperty('--spotlight-x', `${x}px`);
+      title.style.setProperty('--spotlight-y', `${y}px`);
 
-      // Proximity check for magnetic subtle tilt
+      // Dynamic 3D micro-tilt on the heading
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const tiltX = ((y - centerY) / centerY) * -4;
+      const tiltY = ((x - centerX) / centerX) * 4;
+
+      title.style.transform = `perspective(800px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+      title.style.textShadow = `${tiltY * -2}px ${tiltX * -2}px 28px rgba(245, 158, 11, 0.6), 0 0 16px rgba(255, 255, 255, 0.4)`;
+    });
+
+    title.addEventListener('mouseleave', () => {
+      title.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg)';
+      title.style.textShadow = 'none';
+    });
+  });
+
+  // Body paragraphs proximity illumination
+  const bodyTexts = document.querySelectorAll('.lead-text, .glass-card p');
+  window.addEventListener('mousemove', (e) => {
+    bodyTexts.forEach(el => {
+      const rect = el.getBoundingClientRect();
       const dist = Math.hypot(e.clientX - (rect.left + rect.width / 2), e.clientY - (rect.top + rect.height / 2));
-      if (dist < 350) {
-        const intensity = (1 - dist / 350);
-        const shiftX = ((e.clientX - (rect.left + rect.width / 2)) / rect.width) * 4 * intensity;
-        const shiftY = ((e.clientY - (rect.top + rect.height / 2)) / rect.height) * 4 * intensity;
-        el.style.textShadow = `${shiftX * -1.5}px ${shiftY * -1.5}px 24px rgba(245, 158, 11, ${0.4 * intensity}), 0 0 12px rgba(255, 255, 255, ${0.3 * intensity})`;
+      if (dist < 280) {
+        const factor = (1 - dist / 280);
+        el.style.color = `rgba(248, 250, 252, ${0.7 + factor * 0.3})`;
+        el.style.textShadow = `0 0 10px rgba(245, 158, 11, ${factor * 0.3})`;
       } else {
-        el.style.textShadow = 'none';
+        el.style.color = '';
+        el.style.textShadow = '';
       }
     });
   });
@@ -66,12 +133,12 @@ function initLiquidOrbCursorTracking() {
     currentX += (mouseX - currentX) * 0.04;
     currentY += (mouseY - currentY) * 0.04;
 
-    const offsetX = (currentX / window.innerWidth - 0.5) * 80;
-    const offsetY = (currentY / window.innerHeight - 0.5) * 80;
+    const offsetX = (currentX / window.innerWidth - 0.5) * 100;
+    const offsetY = (currentY / window.innerHeight - 0.5) * 100;
 
-    if (orb1) orb1.style.transform = `translate(${offsetX * 1.3}px, ${offsetY * 1.3}px)`;
-    if (orb2) orb2.style.transform = `translate(${-offsetX * 1.6}px, ${-offsetY * 1.6}px)`;
-    if (orb3) orb3.style.transform = `translate(${offsetX * 0.9}px, ${-offsetY * 0.9}px)`;
+    if (orb1) orb1.style.transform = `translate(${offsetX * 1.4}px, ${offsetY * 1.4}px)`;
+    if (orb2) orb2.style.transform = `translate(${-offsetX * 1.8}px, ${-offsetY * 1.8}px)`;
+    if (orb3) orb3.style.transform = `translate(${offsetX * 1.1}px, ${-offsetY * 1.1}px)`;
 
     requestAnimationFrame(updateOrbs);
   }
@@ -94,10 +161,10 @@ function init3DCardTilt() {
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
 
-      const rotateX = ((y - centerY) / centerY) * -6;
-      const rotateY = ((x - centerX) / centerX) * 6;
+      const rotateX = ((y - centerY) / centerY) * -7;
+      const rotateY = ((x - centerX) / centerX) * 7;
 
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
       
       // Update dynamic glare position
       card.style.setProperty('--glare-x', `${(x / rect.width) * 100}%`);
@@ -122,7 +189,7 @@ function initMagneticElements() {
       const x = e.clientX - (rect.left + rect.width / 2);
       const y = e.clientY - (rect.top + rect.height / 2);
 
-      btn.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
+      btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
     });
 
     btn.addEventListener('mouseleave', () => {

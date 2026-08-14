@@ -1,6 +1,6 @@
 /* ==========================================================================
-   SCROLL-DRIVEN VIDEO THEATER ENGINE (APPLE-TIER SCRUBBING)
-   Frames play forward on scroll-down, reverse on scroll-up, and stop when idle
+   SCROLL-DRIVEN FULLSCREEN VIDEO THEATER ENGINE (HIGH PERFORMANCE)
+   Smooth Frame Scrubbing, Dynamic Edge-to-Edge Expansion & Native Fullscreen
    ========================================================================== */
 
 export function initScrollVideo() {
@@ -9,15 +9,16 @@ export function initScrollVideo() {
   const progressText = document.getElementById('video-scrub-progress');
   const progressBar = document.getElementById('video-scrub-bar');
   const videoFrame = document.getElementById('video-glass-frame');
+  const fullscreenBtn = document.getElementById('video-fullscreen-btn');
 
   if (!container || !video) return;
 
   let isLoaded = false;
   let targetTime = 0;
   let currentTime = 0;
+  let isSeeking = false;
   let animationId = null;
 
-  // Ensure video is ready for frame scrubbing
   video.load();
   video.pause();
 
@@ -26,9 +27,29 @@ export function initScrollVideo() {
     updateScrollPosition();
   });
 
-  // Handle metadata already cached
+  video.addEventListener('seeked', () => {
+    isSeeking = false;
+  });
+
   if (video.readyState >= 1) {
     isLoaded = true;
+  }
+
+  // 1-Click Native Fullscreen Toggle
+  if (fullscreenBtn) {
+    fullscreenBtn.addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        if (videoFrame.requestFullscreen) {
+          videoFrame.requestFullscreen();
+        } else if (videoFrame.webkitRequestFullscreen) {
+          videoFrame.webkitRequestFullscreen();
+        }
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    });
   }
 
   function updateScrollPosition() {
@@ -56,26 +77,34 @@ export function initScrollVideo() {
       progressText.textContent = `${percentage}% COMPLETE`;
     }
 
-    // Dynamic scale-in transition when entering view
+    // Dynamic Edge-to-Edge Theater Expansion as user scrolls
     if (videoFrame) {
-      if (rect.top > 0) {
-        const entryProgress = Math.max(0, 1 - rect.top / windowHeight);
-        videoFrame.style.opacity = `${0.4 + entryProgress * 0.6}`;
-        videoFrame.style.transform = `scale(${0.92 + entryProgress * 0.08})`;
+      if (rect.top <= 0 && rect.bottom >= windowHeight) {
+        // Active in sticky view: expand to full cinematic theater
+        const expansion = Math.min(1, Math.max(0, -rect.top / (totalDistance * 0.2)));
+        videoFrame.style.maxWidth = `${68 + expansion * 28}rem`;
+        videoFrame.style.borderRadius = `${Math.max(0.5, 1.75 - expansion * 1.25)}rem`;
       } else {
-        videoFrame.style.opacity = '1';
-        videoFrame.style.transform = 'scale(1)';
+        videoFrame.style.maxWidth = '68rem';
+        videoFrame.style.borderRadius = '1.75rem';
       }
     }
   }
 
-  // Smooth lerp loop for jitter-free 60fps video frame seeking
+  // Smooth jitter-free seek loop
   function renderLoop() {
-    if (isLoaded && video.duration) {
-      currentTime += (targetTime - currentTime) * 0.15;
+    if (isLoaded && video.duration && !isSeeking) {
+      const diff = targetTime - currentTime;
 
-      if (Math.abs(currentTime - video.currentTime) > 0.02) {
-        video.currentTime = currentTime;
+      if (Math.abs(diff) > 0.015) {
+        currentTime += diff * 0.12;
+
+        isSeeking = true;
+        if (typeof video.fastSeek === 'function') {
+          video.fastSeek(currentTime);
+        } else {
+          video.currentTime = currentTime;
+        }
       }
     }
 

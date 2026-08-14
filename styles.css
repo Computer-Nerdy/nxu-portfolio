@@ -1,6 +1,6 @@
 /* ==========================================================================
    HARISH RAGAV V. — OBSIDIAN LIQUID GLASS DESIGN SYSTEM (DARK MODE)
-   Option C: Scroll-Driven Interactive Video Theater Scrubbing
+   Cyber Cursor, Kinetic Spotlight Typography, Background Quantum Canvas & Video Theater
    ========================================================================== */
 
 :root {
@@ -78,6 +78,62 @@ a {
   display: none !important;
 }
 
+/* ==========================================================================
+   CYBER LIQUID CURSOR
+   ========================================================================== */
+
+@media (min-width: 768px) {
+  body {
+    cursor: default;
+  }
+
+  .cyber-cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    background-color: #F59E0B;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate3d(-100px, -100px, 0);
+    box-shadow: 0 0 10px #F59E0B, 0 0 20px #F59E0B;
+    transition: width 0.15s ease, height 0.15s ease, background-color 0.15s ease;
+  }
+
+  .cyber-cursor-follower {
+    position: fixed;
+    top: -18px;
+    left: -18px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(245, 158, 11, 0.5);
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, rgba(245, 158, 11, 0) 70%);
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate3d(-100px, -100px, 0);
+    transition: width 0.25s var(--ease-smooth), height 0.25s var(--ease-smooth), border-color 0.25s ease, background 0.25s ease;
+  }
+
+  .cyber-cursor-follower.cursor-hover {
+    top: -28px;
+    left: -28px;
+    width: 56px;
+    height: 56px;
+    border-color: rgba(245, 158, 11, 0.9);
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.28) 0%, rgba(245, 158, 11, 0) 75%);
+  }
+
+  .cyber-cursor-dot.cursor-hover-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 16px #FFFFFF;
+  }
+}
+
 /* Universal SVG Size Lock */
 svg {
   display: inline-block !important;
@@ -121,7 +177,7 @@ svg {
 .font-mono { font-family: var(--font-mono); }
 
 /* ==========================================================================
-   CURSOR-REACTIVE TEXTURE PACKS & GLOW TYPOGRAPHY
+   CURSOR-REACTIVE KINETIC SPOTLIGHT TYPOGRAPHY
    ========================================================================== */
 
 .hero-title {
@@ -131,7 +187,7 @@ svg {
   line-height: 1.12;
   letter-spacing: -0.025em;
   color: #FFFFFF;
-  transition: text-shadow 0.2s var(--ease-smooth);
+  transition: transform 0.2s var(--ease-smooth), text-shadow 0.2s var(--ease-smooth);
 }
 
 .section-title {
@@ -141,7 +197,7 @@ svg {
   line-height: 1.18;
   letter-spacing: -0.02em;
   color: #FFFFFF;
-  transition: text-shadow 0.2s var(--ease-smooth);
+  transition: transform 0.2s var(--ease-smooth), text-shadow 0.2s var(--ease-smooth);
 }
 
 .text-textured-amber {
@@ -149,7 +205,7 @@ svg {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
-  filter: drop-shadow(0 0 16px rgba(245, 158, 11, 0.35));
+  filter: drop-shadow(0 0 16px rgba(245, 158, 11, 0.45));
 }
 
 .text-textured-chrome {
@@ -163,6 +219,7 @@ svg {
   font-size: clamp(0.95rem, 1.1vw + 0.2rem, 1.15rem);
   line-height: 1.65;
   color: #94A3B8;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
 }
 
 /* Fluid Container Wrapper */
@@ -467,7 +524,7 @@ svg {
 }
 
 /* ==========================================================================
-   OPTION C: SCROLL-DRIVEN VIDEO THEATER (STICKY SCRUBBING)
+   OPTION C: SCROLL-DRIVEN FULLSCREEN VIDEO THEATER (STICKY SCRUBBING)
    ========================================================================== */
 
 .scroll-track-wrapper {
@@ -482,7 +539,7 @@ svg {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem;
+  padding: 1.25rem;
   overflow: hidden;
   z-index: 20;
 }
@@ -492,10 +549,11 @@ svg {
   width: 100%;
   margin: 0 auto;
   overflow: hidden;
+  border-radius: 1.75rem;
   border: 1px solid var(--glass-border);
-  background: rgba(15, 23, 42, 0.75);
+  background: rgba(15, 23, 42, 0.8);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
-  transition: transform 0.2s var(--ease-smooth), opacity 0.2s var(--ease-smooth);
+  transition: max-width 0.25s var(--ease-smooth), border-radius 0.25s var(--ease-smooth), transform 0.2s var(--ease-smooth), opacity 0.2s var(--ease-smooth);
 }
 
 .scroll-video-header {
@@ -516,11 +574,30 @@ svg {
   animation: pulseDot 1.5s infinite ease-in-out;
 }
 
+.video-theater-action-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #F8FAFC;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.video-theater-action-btn:hover {
+  background: rgba(245, 158, 11, 0.25);
+  border-color: #F59E0B;
+  color: #FDE68A;
+}
+
 .scroll-video-screen {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  max-height: 480px;
+  max-height: 520px;
   background: #000000;
   overflow: hidden;
 }

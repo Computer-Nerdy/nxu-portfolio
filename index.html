@@ -218,13 +218,13 @@
       </div>
     </section>
 
-    <!-- OPTION C: SCROLL-DRIVEN INTERACTIVE VIDEO THEATER -->
+    <!-- OPTION C: SCROLL-DRIVEN FULLSCREEN VIDEO THEATER -->
     <section id="engineering-reel" class="relative">
       <div id="scroll-video-container" class="scroll-track-wrapper">
         <div class="scroll-sticky-viewport">
           
-          <div class="fluid-container" style="width: 100%;">
-            <div id="video-glass-frame" class="glass-card rounded-fluid shadow-glass-lg scroll-video-card">
+          <div class="fluid-container" style="width: 100%; display: flex; justify-content: center;">
+            <div id="video-glass-frame" class="glass-card shadow-glass-lg scroll-video-card">
               
               <!-- Video Frame Header -->
               <div class="scroll-video-header">
@@ -238,9 +238,9 @@
                   <span id="video-scrub-progress" style="font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; color: var(--color-amber-500);">
                     SCROLL TO SCRUB
                   </span>
-                  <span style="padding: 0.2rem 0.5rem; border-radius: 0.5rem; background: rgba(255, 255, 255, 0.08); font-size: 0.65rem; color: #94A3B8; font-family: var(--font-mono);">
-                    INTERACTIVE TIMELINE
-                  </span>
+                  <button id="video-fullscreen-btn" class="video-theater-action-btn" title="Toggle Fullscreen Theater">
+                    ⛶ Fullscreen
+                  </button>
                 </div>
               </div>
 
