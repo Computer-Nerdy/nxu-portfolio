@@ -1,13 +1,13 @@
 /* ==========================================================================
-   OVER-REACTIVE DESKTOP DYNAMICS, VELOCITY CURSOR & CHARACTER-LEVEL KINETIC PHYSICS
-   Individual letter repulsion, specular illumination, fluid wave displacement, and elastic recovery
+   HYPER-REACTIVE CHARACTER KINETIC PHYSICS & VELOCITY SPARK CURSOR
+   Explosive letter repulsion, wave dispersion, plasma illumination & neon particle sparks
    ========================================================================== */
 
 export function initDesktopEffects() {
   if (window.innerWidth < 768) return; // Keep mobile lightweight
 
-  initVelocityCyberCursor();
-  initCharacterKineticPhysics();
+  initVelocitySparkCursor();
+  initHyperKineticCharacterPhysics();
   initLiquidOrbCursorTracking();
   init3DCardTilt();
   initMagneticElements();
@@ -15,9 +15,9 @@ export function initDesktopEffects() {
 }
 
 /**
- * Velocity-Stretching Cyber Cursor with Shockwave Click Ripples
+ * Velocity-Stretching Cursor with Neon Trailing Sparks & Shockwaves
  */
-function initVelocityCyberCursor() {
+function initVelocitySparkCursor() {
   const dot = document.createElement('div');
   dot.className = 'cyber-cursor-dot';
 
@@ -32,28 +32,35 @@ function initVelocityCyberCursor() {
   let followerX = -100, followerY = -100;
   let currentAngle = 0;
   let currentScaleX = 1, currentScaleY = 1;
+  let sparkCounter = 0;
 
   window.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
     dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+
+    // Spawn glowing neon sparks on mouse velocity
+    sparkCounter++;
+    if (sparkCounter % 2 === 0) {
+      spawnCursorSpark(mouseX, mouseY);
+    }
   });
 
   function animateCursor() {
     const vx = mouseX - prevMouseX;
     const vy = mouseY - prevMouseY;
-    const speed = Math.min(Math.hypot(vx, vy), 40);
+    const speed = Math.min(Math.hypot(vx, vy), 45);
 
     prevMouseX = mouseX;
     prevMouseY = mouseY;
 
-    followerX += (mouseX - followerX) * 0.2;
-    followerY += (mouseY - followerY) * 0.2;
+    followerX += (mouseX - followerX) * 0.22;
+    followerY += (mouseY - followerY) * 0.22;
 
     if (speed > 1.5) {
       currentAngle = Math.atan2(vy, vx);
-      currentScaleX = 1 + speed * 0.035;
-      currentScaleY = Math.max(0.65, 1 - speed * 0.02);
+      currentScaleX = 1 + speed * 0.045;
+      currentScaleY = Math.max(0.6, 1 - speed * 0.025);
     } else {
       currentScaleX += (1 - currentScaleX) * 0.15;
       currentScaleY += (1 - currentScaleY) * 0.15;
@@ -64,7 +71,7 @@ function initVelocityCyberCursor() {
   }
   animateCursor();
 
-  // Click Shockwave Effect
+  // Click Shockwave Burst
   window.addEventListener('click', (e) => {
     const wave = document.createElement('div');
     wave.className = 'cursor-shockwave';
@@ -72,10 +79,14 @@ function initVelocityCyberCursor() {
     wave.style.top = `${e.clientY}px`;
     document.body.appendChild(wave);
 
+    for (let i = 0; i < 8; i++) {
+      spawnCursorSpark(e.clientX + (Math.random() - 0.5) * 40, e.clientY + (Math.random() - 0.5) * 40);
+    }
+
     setTimeout(() => wave.remove(), 600);
   });
 
-  // Hover expansion on interactives
+  // Hover expansion
   const interactives = document.querySelectorAll('a, button, input, .comp-label-btn, .tilt-card, #three-hero-container');
   interactives.forEach(el => {
     el.addEventListener('mouseenter', () => {
@@ -89,17 +100,52 @@ function initVelocityCyberCursor() {
   });
 }
 
+function spawnCursorSpark(x, y) {
+  const spark = document.createElement('div');
+  spark.className = 'kinetic-spark';
+  spark.style.left = `${x}px`;
+  spark.style.top = `${y}px`;
+  
+  const vx = (Math.random() - 0.5) * 3;
+  const vy = (Math.random() - 0.5) * 3 - 1;
+  const color = Math.random() > 0.3 ? '#F59E0B' : '#38BDF8';
+  spark.style.backgroundColor = color;
+  spark.style.boxShadow = `0 0 8px ${color}`;
+
+  document.body.appendChild(spark);
+
+  let curX = x, curY = y;
+  let opacity = 1;
+  let scale = Math.random() * 0.8 + 0.6;
+
+  function animateSpark() {
+    curX += vx;
+    curY += vy;
+    opacity -= 0.04;
+    scale *= 0.94;
+
+    spark.style.transform = `translate3d(${curX - x}px, ${curY - y}px, 0) scale(${scale})`;
+    spark.style.opacity = opacity;
+
+    if (opacity > 0) {
+      requestAnimationFrame(animateSpark);
+    } else {
+      spark.remove();
+    }
+  }
+  requestAnimationFrame(animateSpark);
+}
+
 /**
- * Character-Level Kinetic Typography Engine:
- * Splits headings into individual interactive characters that repel, scale up,
- * push adjacent letters away, and light up with specular amber glow.
+ * Hyper-Reactive Character-Level Kinetic Typography Engine:
+ * Each letter repels with physics, pushes sibling letters outward, scales up,
+ * and ignites with multi-layered plasma glow.
  */
-function initCharacterKineticPhysics() {
-  const headingElements = document.querySelectorAll('.hero-title, .section-title, .brand-name');
+function initHyperKineticCharacterPhysics() {
+  const headingElements = document.querySelectorAll('.hero-title, .section-title, .brand-name, .tilt-card h3');
   const charNodes = [];
 
   headingElements.forEach(heading => {
-    // Process text nodes to wrap letters in spans while preserving special markup
     wrapTextNodesInKineticSpans(heading, charNodes);
   });
 
@@ -115,8 +161,8 @@ function initCharacterKineticPhysics() {
     mouse.y = -2000;
   });
 
-  // Kinetic Physics Update Loop
-  function updateKineticChars() {
+  // Physics Loop
+  function updateKineticPhysics() {
     charNodes.forEach(item => {
       const rect = item.element.getBoundingClientRect();
       const charCenterX = rect.left + rect.width / 2;
@@ -125,52 +171,54 @@ function initCharacterKineticPhysics() {
       const dx = mouse.x - charCenterX;
       const dy = mouse.y - charCenterY;
       const dist = Math.hypot(dx, dy);
-      const radius = 130;
+      const radius = 160; // Generous over-reactive field
 
       if (dist < radius) {
-        const force = Math.pow((1 - dist / radius), 1.8);
+        const force = Math.pow((1 - dist / radius), 1.5);
         const angle = Math.atan2(dy, dx);
 
-        // Repel away from cursor
-        item.targetX = -Math.cos(angle) * 26 * force;
-        item.targetY = -Math.sin(angle) * 22 * force;
-        item.targetScale = 1 + 0.38 * force;
+        // Explosive repulsion displacement & physical tilt
+        item.targetX = -Math.cos(angle) * 36 * force;
+        item.targetY = -Math.sin(angle) * 28 * force;
+        item.targetRotate = -Math.sin(angle) * 20 * force;
+        item.targetScale = 1 + 0.52 * force; // Jump up to 1.52x
         item.targetGlow = force;
       } else {
         item.targetX = 0;
         item.targetY = 0;
+        item.targetRotate = 0;
         item.targetScale = 1;
         item.targetGlow = 0;
       }
 
-      // Elastic Spring Interpolation (Damping)
-      item.currentX += (item.targetX - item.currentX) * 0.16;
-      item.currentY += (item.targetY - item.currentY) * 0.16;
-      item.currentScale += (item.targetScale - item.currentScale) * 0.16;
-      item.currentGlow += (item.targetGlow - item.currentGlow) * 0.16;
+      // Elastic Spring Interpolation
+      item.currentX += (item.targetX - item.currentX) * 0.18;
+      item.currentY += (item.targetY - item.currentY) * 0.18;
+      item.currentRotate += (item.targetRotate - item.currentRotate) * 0.18;
+      item.currentScale += (item.targetScale - item.currentScale) * 0.18;
+      item.currentGlow += (item.targetGlow - item.currentGlow) * 0.18;
 
-      // Apply transform & glowing specular illumination
       if (Math.abs(item.currentX) > 0.01 || Math.abs(item.currentY) > 0.01 || Math.abs(item.currentScale - 1) > 0.01) {
-        item.element.style.transform = `translate3d(${item.currentX}px, ${item.currentY}px, 0) scale(${item.currentScale})`;
+        item.element.style.transform = `translate3d(${item.currentX}px, ${item.currentY}px, 0) rotate(${item.currentRotate}deg) scale(${item.currentScale})`;
         
-        if (item.currentGlow > 0.08) {
+        if (item.currentGlow > 0.05) {
           item.element.style.color = '#FFFFFF';
-          item.element.style.textShadow = `0 0 18px rgba(245, 158, 11, ${item.currentGlow * 0.9}), 0 0 36px rgba(245, 158, 11, ${item.currentGlow * 0.6}), 0 0 60px rgba(217, 119, 6, ${item.currentGlow * 0.4})`;
+          item.element.style.textShadow = `0 0 20px rgba(245, 158, 11, ${item.currentGlow * 1}), 0 0 40px rgba(245, 158, 11, ${item.currentGlow * 0.8}), 0 0 70px rgba(217, 119, 6, ${item.currentGlow * 0.6}), 0 0 100px rgba(255, 255, 255, ${item.currentGlow * 0.5})`;
         } else {
           item.element.style.color = '';
           item.element.style.textShadow = '';
         }
       } else {
-        item.element.style.transform = 'translate3d(0, 0, 0) scale(1)';
+        item.element.style.transform = 'translate3d(0, 0, 0) rotate(0deg) scale(1)';
         item.element.style.color = '';
         item.element.style.textShadow = '';
       }
     });
 
-    requestAnimationFrame(updateKineticChars);
+    requestAnimationFrame(updateKineticPhysics);
   }
 
-  updateKineticChars();
+  updateKineticPhysics();
 }
 
 function wrapTextNodesInKineticSpans(container, charList) {
@@ -198,6 +246,8 @@ function wrapTextNodesInKineticSpans(container, charList) {
             currentY: 0,
             targetX: 0,
             targetY: 0,
+            currentRotate: 0,
+            targetRotate: 0,
             currentScale: 1,
             targetScale: 1,
             currentGlow: 0,
@@ -262,10 +312,10 @@ function init3DCardTilt() {
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
 
-      const rotateX = ((y - centerY) / centerY) * -7;
-      const rotateY = ((x - centerX) / centerX) * 7;
+      const rotateX = ((y - centerY) / centerY) * -8;
+      const rotateY = ((x - centerX) / centerX) * 8;
 
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
       card.style.setProperty('--glare-x', `${(x / rect.width) * 100}%`);
       card.style.setProperty('--glare-y', `${(y / rect.height) * 100}%`);
     });
@@ -288,7 +338,7 @@ function initMagneticElements() {
       const x = e.clientX - (rect.left + rect.width / 2);
       const y = e.clientY - (rect.top + rect.height / 2);
 
-      btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+      btn.style.transform = `translate(${x * 0.35}px, ${y * 0.35}px)`;
     });
 
     btn.addEventListener('mouseleave', () => {

@@ -1,6 +1,6 @@
 /* ==========================================================================
    HARISH RAGAV V. — OBSIDIAN LIQUID GLASS DESIGN SYSTEM (DARK MODE)
-   Character Kinetic Physics, Velocity Cursor & True Fullscreen Zero-Lag Video Reel
+   Hyper-Reactive Character Kinetics, Neon Sparks, Real-Time Slideshow & Fullscreen Video
    ========================================================================== */
 
 :root {
@@ -79,7 +79,39 @@ a {
 }
 
 /* ==========================================================================
-   VELOCITY-STRETCHING CYBER CURSOR & SHOCKWAVES
+   REAL-TIME CINEMATIC BACKGROUND SLIDESHOW
+   ========================================================================== */
+
+.bg-slideshow-wrapper {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  transition: transform 0.3s var(--ease-smooth);
+}
+
+.bg-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1.08);
+  transition: opacity 2s ease-in-out, transform 8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.bg-slide.active {
+  opacity: 0.32;
+  transform: scale(1);
+}
+
+/* ==========================================================================
+   VELOCITY-STRETCHING CYBER CURSOR, SPARKS & SHOCKWAVES
    ========================================================================== */
 
 @media (min-width: 768px) {
@@ -145,16 +177,26 @@ a {
     0% { transform: translate(-50%, -50%) scale(1); opacity: 1; border-width: 3px; }
     100% { transform: translate(-50%, -50%) scale(5); opacity: 0; border-width: 0.5px; }
   }
+
+  .kinetic-spark {
+    position: fixed;
+    width: 4.5px;
+    height: 4.5px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9996;
+    will-change: transform, opacity;
+  }
 }
 
 /* ==========================================================================
-   CHARACTER-LEVEL KINETIC TYPOGRAPHY
+   HYPER-REACTIVE CHARACTER KINETIC TYPOGRAPHY
    ========================================================================== */
 
 .kinetic-char {
   display: inline-block;
   will-change: transform, color, text-shadow;
-  transition: transform 0.04s linear, color 0.1s ease, text-shadow 0.1s ease;
+  transition: transform 0.04s linear, color 0.08s ease, text-shadow 0.08s ease;
   user-select: none;
 }
 

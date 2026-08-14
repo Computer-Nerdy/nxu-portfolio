@@ -2,40 +2,48 @@ import { initThreeHero } from './three-hero.js';
 import { initDesktopEffects } from './desktop-fx.js';
 import { initScrollVideo } from './scroll-video.js';
 import { initBackgroundCanvas } from './bg-canvas.js';
+import { initBackgroundSlideshow } from './bg-slideshow.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Initialize Interactive Quantum Background Canvas
+  // 1. Initialize Real-Time Transitioning Background Slideshow
+  try {
+    initBackgroundSlideshow();
+  } catch (err) {
+    console.warn("Background slideshow note:", err);
+  }
+
+  // 2. Initialize Interactive Quantum Background Canvas
   try {
     initBackgroundCanvas();
   } catch (err) {
     console.warn("Background canvas note:", err);
   }
 
-  // 2. Initialize 3D Hardware Model & Theatrical Engine
+  // 3. Initialize 3D Hardware Model & Theatrical Engine
   try {
     initThreeHero();
   } catch (err) {
     console.warn("3D canvas initialization note:", err);
   }
 
-  // 3. Initialize Scroll-Driven Video Theater (Option C Scrubbing)
+  // 4. Initialize Zero-Lag Fullscreen Video Reel
   try {
     initScrollVideo();
   } catch (err) {
     console.warn("Scroll video engine note:", err);
   }
 
-  // 4. Initialize Desktop Dynamics (Fluid Cyber Cursor, Kinetic Spotlight Text, 3D Tilt, Scroll Reveals)
+  // 5. Initialize Hyper-Reactive Character Kinetics, Velocity Spark Cursor & 3D Tilt
   try {
     initDesktopEffects();
   } catch (err) {
     console.warn("Desktop effects note:", err);
   }
 
-  // 5. Mobile Menu Navigation
+  // 6. Mobile Menu Navigation
   initMobileNav();
 
-  // 6. 1-Click Email Copy Feature
+  // 7. 1-Click Email Copy Feature
   initCopyEmail();
 });
 
