@@ -1,8 +1,7 @@
 /* ==========================================================================
-   PURE IMMERSIVE SCROLL-DRIVEN VIDEO SCRUB ENGINE
-   - Zero Autoplay / Zero Controls — Purely driven by your scroll position
-   - Frame-accurate hardware seek queue (listens to 'seeked' events for 60fps responsiveness)
-   - Real-time Amber Scrubber Fill across the 480vh Sticky Track
+   BUTTERY-SMOOTH 60FPS GPU SCROLL VIDEO ENGINE (FORWARD PLAY-STREAM + SYNC)
+   Eliminates HTML5 keyframe seek choppiness by utilizing GPU forward-stream
+   playback scaled dynamically to scroll velocity & position difference.
    ========================================================================== */
 
 export function initScrollVideo() {
@@ -12,64 +11,42 @@ export function initScrollVideo() {
 
   if (!track || !video) return;
 
-  let isSeeking = false;
-  let targetTime = 0;
-  let isVideoReady = false;
+  let isLoaded = false;
+  let isPlaying = false;
+  let targetProgress = 0;
+  let rafId = null;
+  let backwardSeekTimeout = null;
 
-  // Configure video for pure scroll scrubbing (Muted, Paused, Preloaded)
+  // Configure video for native zero-latency GPU decoding
   video.muted = true;
   video.playsInline = true;
   video.autoplay = false;
   video.preload = "auto";
   video.pause();
 
-  // Remove any leftover HUD pill
-  const oldHud = document.getElementById('video-hud-pill');
-  if (oldHud) oldHud.remove();
-
-  function onVideoReady() {
-    isVideoReady = true;
-    updateScrollPosition();
+  function onReady() {
+    isLoaded = true;
+    updateScroll();
   }
 
-  video.addEventListener('loadedmetadata', onVideoReady);
-  video.addEventListener('canplaythrough', onVideoReady);
+  video.addEventListener('loadedmetadata', onReady);
+  video.addEventListener('canplay', onReady);
+  if (video.readyState >= 2) onReady();
 
-  if (video.readyState >= 1) {
-    onVideoReady();
-  }
-
-  // Pure seek queue: only seeks when decoder is ready for next frame
-  function processSeek() {
-    if (!isVideoReady || !video.duration || isSeeking) return;
-
-    const timeDiff = Math.abs(targetTime - video.currentTime);
-    if (timeDiff > 0.02) {
-      isSeeking = true;
-      if (video.fastSeek) {
-        video.fastSeek(targetTime);
-      } else {
-        video.currentTime = targetTime;
-      }
-    }
-  }
-
-  video.addEventListener('seeked', () => {
-    isSeeking = false;
-    processSeek();
-  });
-
-  // Calculate exact scroll progress through the 480vh track
-  function updateScrollPosition() {
+  function updateScroll() {
     const rect = track.getBoundingClientRect();
     const windowHeight = window.innerHeight;
     const scrollDistance = track.offsetHeight - windowHeight;
 
     if (scrollDistance <= 0) return;
 
-    // 1. Above section -> Clean reset to 0:00
-    if (rect.top > 0) {
-      targetTime = 0;
+    // 1. Above section -> Reset cleanly to 0:00
+    if (rect.top > 20 || window.scrollY < 80) {
+      targetProgress = 0;
+      if (isPlaying) {
+        video.pause();
+        isPlaying = false;
+      }
       if (video.currentTime > 0.05) {
         video.currentTime = 0;
       }
@@ -79,41 +56,88 @@ export function initScrollVideo() {
 
     // 2. Below section -> Video at end
     if (rect.bottom < windowHeight) {
-      if (video.duration) {
-        targetTime = video.duration - 0.05;
-        processSeek();
+      targetProgress = 1;
+      if (isPlaying) {
+        video.pause();
+        isPlaying = false;
       }
       if (progressBar) progressBar.style.width = '100%';
       return;
     }
 
-    // 3. Inside the Sticky Track (Active Scrub Zone)
-    const progress = Math.max(0, Math.min(1, -rect.top / scrollDistance));
-
-    if (video.duration) {
-      targetTime = progress * video.duration;
-      processSeek();
-    }
+    // 3. Active Sticky Scrub Zone (0.0 to 1.0)
+    targetProgress = Math.max(0, Math.min(1, -rect.top / scrollDistance));
 
     if (progressBar) {
-      progressBar.style.width = `${progress * 100}%`;
+      progressBar.style.width = `${targetProgress * 100}%`;
     }
   }
 
-  // Smooth High-Performance Scroll Listeners
-  window.addEventListener('scroll', updateScrollPosition, { passive: true });
-  window.addEventListener('resize', updateScrollPosition, { passive: true });
+  // 60FPS Velocity-Matching Synchronization Loop
+  function tick() {
+    if (isLoaded && video.duration) {
+      const targetTime = targetProgress * video.duration;
+      const diff = targetTime - video.currentTime;
 
-  // Reset when clicking navigation links
+      // FORWARD SCROLL: Fluid GPU Playback Stream (Zero Keyframe Stutter)
+      if (diff > 0.04 && !video.ended) {
+        // Dynamically scale playback rate according to how fast user is scrolling
+        const dynamicRate = Math.min(2.8, Math.max(0.5, diff * 1.6));
+        video.playbackRate = dynamicRate;
+
+        if (!isPlaying) {
+          const p = video.play();
+          if (p !== undefined) {
+            p.then(() => { isPlaying = true; }).catch(() => {});
+          }
+        }
+      }
+      // USER STOPPED OR CAUGHT UP: Smoothly Pause Video
+      else if (diff <= 0.02 && diff >= -0.08) {
+        if (isPlaying) {
+          video.pause();
+          isPlaying = false;
+        }
+      }
+      // BACKWARD SCROLL: Gentle, Throttled Backward Step
+      else if (diff < -0.12) {
+        if (isPlaying) {
+          video.pause();
+          isPlaying = false;
+        }
+        if (!backwardSeekTimeout) {
+          backwardSeekTimeout = setTimeout(() => {
+            video.currentTime = Math.max(0, targetTime);
+            backwardSeekTimeout = null;
+          }, 40);
+        }
+      }
+    }
+
+    rafId = requestAnimationFrame(tick);
+  }
+
+  // Start RAF loop
+  cancelAnimationFrame(rafId);
+  rafId = requestAnimationFrame(tick);
+
+  // Listeners
+  window.addEventListener('scroll', updateScroll, { passive: true });
+  window.addEventListener('resize', updateScroll, { passive: true });
+
+  // Reset triggers
   const topLinks = document.querySelectorAll('a[href="#hero"], a[href="#about"], .brand-wrapper');
   topLinks.forEach(el => {
     el.addEventListener('click', () => {
-      targetTime = 0;
+      targetProgress = 0;
+      if (isPlaying) {
+        video.pause();
+        isPlaying = false;
+      }
       video.currentTime = 0;
       if (progressBar) progressBar.style.width = '0%';
     });
   });
 
-  // Initial calculation
-  updateScrollPosition();
+  updateScroll();
 }
