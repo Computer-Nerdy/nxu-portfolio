@@ -2,9 +2,17 @@ import { initDesktopEffects } from './desktop-fx.js';
 import { initScrollVideo } from './scroll-video.js';
 import { initBackgroundCanvas } from './bg-canvas.js';
 import { initBackgroundSlideshow } from './bg-slideshow.js';
+import { initNeuralAILab } from './neural-ai-lab.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Initialize Real-Time Background Slideshow
+  // 1. Initialize Living Neural AI Laboratory & RGB Particle Engine
+  try {
+    initNeuralAILab();
+  } catch (err) {
+    console.warn("Neural AI lab note:", err);
+  }
+
+  // 2. Initialize Real-Time Background Slideshow
   try {
     initBackgroundSlideshow();
   } catch (err) {

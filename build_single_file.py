@@ -19,6 +19,7 @@ def build():
     js_files = [
         "bg-slideshow.js",
         "bg-canvas.js",
+        "neural-ai-lab.js",
         "scroll-video.js",
         "desktop-fx.js",
         "main.js"

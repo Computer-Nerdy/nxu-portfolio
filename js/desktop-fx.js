@@ -4,8 +4,6 @@
    ========================================================================== */
 
 export function initDesktopEffects() {
-  initHeroDisappearingTextMorph();
-
   if (window.innerWidth < 768) return; // Keep mobile lightweight
 
   initVelocitySparkCursor();
@@ -15,57 +13,6 @@ export function initDesktopEffects() {
   init3DCardTilt();
   initMagneticElements();
   initScrollReveals();
-}
-
-/**
- * Hero Keywords Disappearing & Reappearing Engine
- * Cycles: "IoT Architecture" -> "Edge AI & TinyML" -> "Interactive 3D Systems" -> "Quantum Simulations"
- */
-function initHeroDisappearingTextMorph() {
-  const morphElement = document.getElementById('hero-morph-text');
-  if (!morphElement) return;
-
-  const phrases = [
-    { text: "IoT Architecture & Embedded Silicon", texture: "texture-liquid-amber" },
-    { text: "Edge AI & Neural Inference", texture: "texture-quantum-prism" },
-    { text: "Interactive 3D WebGL Systems", texture: "texture-cyber-circuit" },
-    { text: "Quantum Circuit Modeling", texture: "texture-plasma-ember" },
-    { text: "Low-Level Microcontroller Firmware", texture: "texture-brushed-titanium" }
-  ];
-
-  const allTextureClasses = [
-    "texture-liquid-amber",
-    "texture-quantum-prism",
-    "texture-cyber-circuit",
-    "texture-plasma-ember",
-    "texture-brushed-titanium"
-  ];
-
-  let currentIdx = 0;
-
-  setInterval(() => {
-    // 1. Disappear phase (glitch/fade out upward)
-    morphElement.classList.add('morph-disappearing');
-
-    setTimeout(() => {
-      // 2. Swap text and texture pack
-      currentIdx = (currentIdx + 1) % phrases.length;
-      const nextPhrase = phrases[currentIdx];
-
-      morphElement.textContent = nextPhrase.text;
-      allTextureClasses.forEach(cls => morphElement.classList.remove(cls));
-      morphElement.classList.add(nextPhrase.texture);
-
-      // 3. Reappear phase (slide in from below with glowing illumination)
-      morphElement.classList.remove('morph-disappearing');
-      morphElement.classList.add('morph-reappearing');
-
-      setTimeout(() => {
-        morphElement.classList.remove('morph-reappearing');
-      }, 500);
-    }, 450);
-
-  }, 2800);
 }
 
 /**

@@ -173,34 +173,75 @@ a {
 }
 
 /* ==========================================================================
-   HERO KEYWORD DISAPPEARING & REAPPEARING MORPH ENGINE
+   LIVING RGB EDGE SCREEN GLOW & NEURAL AI LAB STYLES
    ========================================================================== */
 
-.hero-morph-container {
-  display: inline-block;
-  vertical-align: baseline;
+.neural-lab-section {
   position: relative;
+  padding-top: clamp(3rem, 6vw, 6rem);
+  padding-bottom: clamp(3rem, 6vw, 6rem);
 }
 
-.hero-morph-word {
-  display: inline-block;
-  transform-origin: center center;
-  transition: opacity 0.45s var(--ease-smooth), transform 0.45s var(--ease-smooth), filter 0.45s var(--ease-smooth);
+.rgb-living-edge-container {
+  position: relative;
+  border-radius: clamp(1.25rem, 3vw, 2.25rem);
+  overflow: hidden;
+  border: 2px solid rgba(56, 189, 248, 0.5);
+  box-shadow: 
+    inset 0 0 50px rgba(56, 189, 248, 0.35),
+    inset 0 0 100px rgba(168, 85, 247, 0.2),
+    0 0 45px rgba(56, 189, 248, 0.25);
+  animation: rgbLivingEdgePulse 9s ease-in-out infinite alternate;
+  transition: all 0.4s var(--ease-smooth);
 }
 
-.hero-morph-word.morph-disappearing {
-  opacity: 0;
-  transform: translateY(-16px) scale(0.96);
-  filter: blur(6px);
+@keyframes rgbLivingEdgePulse {
+  0% {
+    border-color: rgba(56, 189, 248, 0.7);
+    box-shadow: 
+      inset 0 0 50px rgba(56, 189, 248, 0.4),
+      inset 0 0 100px rgba(168, 85, 247, 0.25),
+      0 0 45px rgba(56, 189, 248, 0.3);
+  }
+  33% {
+    border-color: rgba(236, 72, 153, 0.7);
+    box-shadow: 
+      inset 0 0 50px rgba(236, 72, 153, 0.4),
+      inset 0 0 100px rgba(245, 158, 11, 0.25),
+      0 0 45px rgba(236, 72, 153, 0.3);
+  }
+  66% {
+    border-color: rgba(16, 185, 129, 0.7);
+    box-shadow: 
+      inset 0 0 50px rgba(16, 185, 129, 0.4),
+      inset 0 0 100px rgba(56, 189, 248, 0.25),
+      0 0 45px rgba(16, 185, 129, 0.3);
+  }
+  100% {
+    border-color: rgba(168, 85, 247, 0.7);
+    box-shadow: 
+      inset 0 0 50px rgba(168, 85, 247, 0.4),
+      inset 0 0 100px rgba(236, 72, 153, 0.25),
+      0 0 45px rgba(168, 85, 247, 0.3);
+  }
 }
 
-.hero-morph-word.morph-reappearing {
-  animation: morphPopIn 0.5s var(--ease-smooth) forwards;
+.edge-glow-supercharge {
+  border-color: #FFFFFF !important;
+  box-shadow: 
+    inset 0 0 80px rgba(255, 255, 255, 0.75),
+    inset 0 0 160px rgba(56, 189, 248, 0.5),
+    0 0 80px rgba(168, 85, 247, 0.7) !important;
+  transform: scale(1.006);
 }
 
-@keyframes morphPopIn {
-  0% { opacity: 0; transform: translateY(18px) scale(0.94); filter: blur(6px); }
-  100% { opacity: 1; transform: translateY(0px) scale(1); filter: blur(0px); }
+#neural-particle-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* ==========================================================================
@@ -1326,13 +1367,11 @@ svg {
 
             <h1 class="hero-title">
               Building at the intersection of <br />
-              <span class="hero-morph-container">
-                <span id="hero-morph-text" class="hero-morph-word texture-liquid-amber">IoT Architecture &amp; Embedded Silicon</span>
-              </span>
+              <span class="texture-liquid-amber">IoT Architecture, Edge AI &amp; Quantum Systems.</span>
             </h1>
 
             <p class="lead-text font-body">
-              I develop robust low-level embedded hardware, quantum circuit simulations, local AI tooling, and interactive 3D WebGL applications.
+              I develop robust low-level embedded hardware, quantum circuit simulations, local AI tooling, and high-performance Web systems.
             </p>
 
             <!-- Fluid Metrics Strip -->
@@ -1346,8 +1385,8 @@ svg {
                 <div style="font-size: 0.85rem; font-weight: 700; color: #FFFFFF; margin-top: 0.15rem;">Edge AI &amp; Quantum</div>
               </div>
               <div class="glass-card tilt-card" style="padding: 0.75rem 0.5rem; border-radius: 0.875rem; text-align: center;">
-                <div style="font-size: 0.7rem; color: var(--color-slate-500); font-weight: 600;">Graphics</div>
-                <div style="font-size: 0.85rem; font-weight: 700; color: #FFFFFF; margin-top: 0.15rem;">Three.js / WebGL</div>
+                <div style="font-size: 0.7rem; color: var(--color-slate-500); font-weight: 600;">Architecture</div>
+                <div style="font-size: 0.85rem; font-weight: 700; color: #FFFFFF; margin-top: 0.15rem;">C++ / PyTorch</div>
               </div>
             </div>
 
@@ -1357,8 +1396,8 @@ svg {
                 <span>Explore Projects</span>
                 <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
               </a>
-              <a href="#engineering-reel" class="btn-liquid-secondary btn-magnetic">
-                <span>🎬 Watch Video Reel</span>
+              <a href="#neural-ai-lab" class="btn-liquid-secondary btn-magnetic">
+                <span>🧠 Enter AI Neural Lab</span>
               </a>
             </div>
 
@@ -1424,6 +1463,96 @@ svg {
           </div>
 
         </div>
+      </div>
+    </section>
+
+    <!-- DEDICATED LIVING RGB NEURAL AI LABORATORY & SYNAPTIC PARTICLE FIELD -->
+    <section id="neural-ai-lab" class="neural-lab-section">
+      <div class="fluid-container">
+        
+        <div class="rgb-living-edge-container glass-card p-fluid tilt-card">
+          
+          <!-- Interactive Neural Synaptic Particle Canvas -->
+          <canvas id="neural-particle-canvas"></canvas>
+
+          <!-- Foreground AI Content Layer -->
+          <div class="relative z-10 space-y-6">
+            
+            <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;">
+              <div style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.35rem 0.85rem; border-radius: 9999px; background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.4); color: #E0F2FE;" class="text-xs font-mono font-semibold">
+                <span class="status-dot" style="background-color: #38BDF8; box-shadow: 0 0 12px #38BDF8;"></span>
+                <span>NEURAL AI SYNAPSE &amp; EDGE LAB</span>
+              </div>
+
+              <div style="display: flex; align-items: center; gap: 0.6rem; font-family: var(--font-mono); font-size: 0.75rem; color: #CBD5E1;">
+                <span>EDGE ENGINE:</span>
+                <span style="background: rgba(255,255,255,0.08); padding: 0.25rem 0.6rem; border-radius: 0.5rem; color: #FFFFFF; font-weight: 700; border: 1px solid rgba(255,255,255,0.15);">
+                  TENSOR-RT / ONNX INT8
+                </span>
+              </div>
+            </div>
+
+            <div style="max-width: 48rem;">
+              <h2 class="section-title">
+                Edge AI Intelligence &amp; <br />
+                <span class="texture-quantum-prism">Real-Time Neural Inference.</span>
+              </h2>
+              <p class="lead-text font-body" style="margin-top: 0.5rem;">
+                Bridging deep learning with physical silicon. Developing lightweight neural networks for real-time anomaly detection, autonomous AST self-healing pipelines, and low-latency edge deployment.
+              </p>
+            </div>
+
+            <!-- Live Neural Telemetry & Action HUD Strip -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: 1rem; margin-top: 1.5rem;">
+              
+              <div style="padding: 1rem; border-radius: 0.875rem; background: rgba(0, 0, 0, 0.55); border: 1px solid rgba(255, 255, 255, 0.12); backdrop-filter: blur(12px);">
+                <div style="font-size: 0.7rem; font-family: var(--font-mono); color: #94A3B8;">INFERENCE LATENCY</div>
+                <div id="neural-telemetry-latency" style="font-size: 1.4rem; font-weight: 800; color: #38BDF8; font-family: var(--font-mono); margin-top: 0.25rem;">
+                  0.68 ms
+                </div>
+                <div style="font-size: 0.65rem; color: #64748B; margin-top: 0.2rem;">Zero-Copy DMA Buffer</div>
+              </div>
+
+              <div style="padding: 1rem; border-radius: 0.875rem; background: rgba(0, 0, 0, 0.55); border: 1px solid rgba(255, 255, 255, 0.12); backdrop-filter: blur(12px);">
+                <div style="font-size: 0.7rem; font-family: var(--font-mono); color: #94A3B8;">SYNAPTIC ACCURACY</div>
+                <div id="neural-telemetry-accuracy" style="font-size: 1.4rem; font-weight: 800; color: #A855F7; font-family: var(--font-mono); margin-top: 0.25rem;">
+                  99.7%
+                </div>
+                <div style="font-size: 0.65rem; color: #64748B; margin-top: 0.2rem;">Cross-Validated Residuals</div>
+              </div>
+
+              <div style="padding: 1rem; border-radius: 0.875rem; background: rgba(0, 0, 0, 0.55); border: 1px solid rgba(255, 255, 255, 0.12); backdrop-filter: blur(12px);">
+                <div style="font-size: 0.7rem; font-family: var(--font-mono); color: #94A3B8;">REAL-TIME THROUGHPUT</div>
+                <div id="neural-telemetry-throughput" style="font-size: 1.4rem; font-weight: 800; color: #F59E0B; font-family: var(--font-mono); margin-top: 0.25rem;">
+                  2,140 FPS
+                </div>
+                <div style="font-size: 0.65rem; color: #64748B; margin-top: 0.2rem;">Continuous Pipeline Stream</div>
+              </div>
+
+            </div>
+
+            <!-- Interactive Neural Control & Trigger -->
+            <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+              <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <label for="neural-model-select" style="font-size: 0.75rem; font-family: var(--font-mono); color: #94A3B8;">
+                  ACTIVE AI PIPELINE:
+                </label>
+                <select id="neural-model-select" style="padding: 0.4rem 0.75rem; border-radius: 0.5rem; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(255, 255, 255, 0.2); color: #FFFFFF; font-size: 0.75rem; font-family: var(--font-mono); cursor: pointer;">
+                  <option value="anomaly">RF Spectrum Anomaly Classifier (Deep ResNet)</option>
+                  <option value="autopatch">Auto-Patch AST Neural Code Healer</option>
+                  <option value="quantum">Quantum Qubit VQE Noise Filter</option>
+                </select>
+              </div>
+
+              <button id="trigger-neural-pulse-btn" class="btn-liquid-primary btn-magnetic" style="cursor: pointer;">
+                <span>⚡ Fire Synaptic Neural Pulse</span>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
     </section>
 
@@ -1935,6 +2064,219 @@ function initBackgroundCanvas() {
   render();
 }
 
+/* --- Module: neural-ai-lab.js --- */
+/* ==========================================================================
+   LIVING NEURAL AI LABORATORY & RGB SYNAPTIC PARTICLE ENGINE
+   - Chromatic RGB Edge Screen Aura
+   - Synaptic Node Network with Action Potential Laser Pulses
+   - Interactive Pulse Trigger & Neural Model Telemetry
+   ========================================================================== */
+
+function initNeuralAILab() {
+  const container = document.getElementById('neural-ai-lab');
+  const canvas = document.getElementById('neural-particle-canvas');
+  const pulseBtn = document.getElementById('trigger-neural-pulse-btn');
+  const modelSelect = document.getElementById('neural-model-select');
+  const latencyDisplay = document.getElementById('neural-telemetry-latency');
+  const accuracyDisplay = document.getElementById('neural-telemetry-accuracy');
+  const throughputDisplay = document.getElementById('neural-telemetry-throughput');
+
+  if (!canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  let width, height;
+  let neurons = [];
+  let actionPulses = [];
+  let mouse = { x: -1000, y: -1000, radius: 170 };
+
+  const rgbColors = [
+    { r: 56, g: 189, b: 248 },   // Cyan
+    { r: 168, g: 85, b: 247 },   // Violet
+    { r: 236, g: 72, b: 153 },   // Pink/Magenta
+    { r: 245, g: 158, b: 11 },   // Amber
+    { r: 16, g: 185, b: 129 }    // Emerald
+  ];
+
+  function resize() {
+    if (!container) return;
+    width = canvas.width = container.offsetWidth;
+    height = canvas.height = container.offsetHeight;
+    createNetwork();
+  }
+
+  function createNetwork() {
+    neurons = [];
+    const count = Math.min(Math.floor((width * height) / 10000), 80);
+
+    for (let i = 0; i < count; i++) {
+      const color = rgbColors[i % rgbColors.length];
+      neurons.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        radius: Math.random() * 2.5 + 1.2,
+        color: color,
+        alpha: Math.random() * 0.6 + 0.35,
+        pulseVal: Math.random() * Math.PI * 2,
+        pulseSpeed: Math.random() * 0.03 + 0.015
+      });
+    }
+  }
+
+  container.addEventListener('mousemove', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left;
+    mouse.y = e.clientY - rect.top;
+  });
+
+  container.addEventListener('mouseleave', () => {
+    mouse.x = -1000;
+    mouse.y = -1000;
+  });
+
+  // Trigger high-energy RGB synaptic action potential wave
+  function fireNeuralPulse() {
+    for (let i = 0; i < 6; i++) {
+      const startIdx = Math.floor(Math.random() * neurons.length);
+      const endIdx = (startIdx + Math.floor(Math.random() * 6) + 1) % neurons.length;
+      actionPulses.push({
+        from: neurons[startIdx],
+        to: neurons[endIdx],
+        progress: 0,
+        speed: 0.035 + Math.random() * 0.02,
+        color: rgbColors[Math.floor(Math.random() * rgbColors.length)]
+      });
+    }
+
+    // Flash screen edge glow
+    if (container) {
+      container.classList.add('edge-glow-supercharge');
+      setTimeout(() => {
+        container.classList.remove('edge-glow-supercharge');
+      }, 700);
+    }
+  }
+
+  if (pulseBtn) {
+    pulseBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      fireNeuralPulse();
+      
+      // Simulate real-time inference latency fluctuation
+      if (latencyDisplay) {
+        latencyDisplay.textContent = `${(0.4 + Math.random() * 0.5).toFixed(2)} ms`;
+      }
+      if (accuracyDisplay) {
+        accuracyDisplay.textContent = `${(99.6 + Math.random() * 0.3).toFixed(1)}%`;
+      }
+      if (throughputDisplay) {
+        throughputDisplay.textContent = `${Math.floor(1800 + Math.random() * 400)} FPS`;
+      }
+    });
+  }
+
+  // Model Selector Simulator
+  if (modelSelect) {
+    modelSelect.addEventListener('change', () => {
+      fireNeuralPulse();
+      if (latencyDisplay) {
+        latencyDisplay.textContent = `${(0.5 + Math.random() * 0.6).toFixed(2)} ms`;
+      }
+    });
+  }
+
+  function render() {
+    ctx.clearRect(0, 0, width, height);
+
+    // 1. Update & Draw Neurons
+    for (let i = 0; i < neurons.length; i++) {
+      const n = neurons[i];
+
+      n.x += n.vx;
+      n.y += n.vy;
+
+      if (n.x < 0) n.x = width;
+      if (n.x > width) n.x = 0;
+      if (n.y < 0) n.y = height;
+      if (n.y > height) n.y = 0;
+
+      // Mouse Gravitational Attractor
+      const dx = mouse.x - n.x;
+      const dy = mouse.y - n.y;
+      const dist = Math.hypot(dx, dy);
+
+      if (dist < mouse.radius) {
+        const force = (1 - dist / mouse.radius) * 0.9;
+        n.x -= (dx / dist) * force * 2;
+        n.y -= (dy / dist) * force * 2;
+      }
+
+      n.pulseVal += n.pulseSpeed;
+      const currentAlpha = n.alpha + Math.sin(n.pulseVal) * 0.25;
+
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${n.color.r}, ${n.color.g}, ${n.color.b}, ${Math.max(0.2, currentAlpha)})`;
+      ctx.shadowColor = `rgb(${n.color.r}, ${n.color.g}, ${n.color.b})`;
+      ctx.shadowBlur = 12;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+
+      // Draw Synaptic Axon Links
+      for (let j = i + 1; j < neurons.length; j++) {
+        const n2 = neurons[j];
+        const dist2 = Math.hypot(n.x - n2.x, n.y - n2.y);
+
+        if (dist2 < 130) {
+          const alpha = (1 - dist2 / 130) * 0.22;
+          ctx.beginPath();
+          ctx.moveTo(n.x, n.y);
+          ctx.lineTo(n2.x, n2.y);
+          ctx.strokeStyle = `rgba(${n.color.r}, ${n.color.g}, ${n.color.b}, ${alpha})`;
+          ctx.lineWidth = 0.9;
+          ctx.stroke();
+        }
+      }
+    }
+
+    // 2. Update & Draw Action Potential Pulses
+    for (let p = actionPulses.length - 1; p >= 0; p--) {
+      const pulse = actionPulses[p];
+      pulse.progress += pulse.speed;
+
+      if (pulse.progress >= 1) {
+        actionPulses.splice(p, 1);
+        continue;
+      }
+
+      const curX = pulse.from.x + (pulse.to.x - pulse.from.x) * pulse.progress;
+      const curY = pulse.from.y + (pulse.to.y - pulse.from.y) * pulse.progress;
+
+      ctx.beginPath();
+      ctx.arc(curX, curY, 3.5, 0, Math.PI * 2);
+      ctx.fillStyle = `rgb(${pulse.color.r}, ${pulse.color.g}, ${pulse.color.b})`;
+      ctx.shadowColor = '#FFFFFF';
+      ctx.shadowBlur = 16;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    }
+
+    requestAnimationFrame(render);
+  }
+
+  window.addEventListener('resize', resize);
+  setTimeout(resize, 100);
+  render();
+
+  // Ambient automatic synaptic pulses every 4.5 seconds
+  setInterval(() => {
+    if (Math.random() > 0.3) {
+      fireNeuralPulse();
+    }
+  }, 4500);
+}
+
 /* --- Module: scroll-video.js --- */
 /* ==========================================================================
    BUTTERY-SMOOTH 60FPS GPU SCROLL VIDEO ENGINE (FORWARD PLAY-STREAM + SYNC)
@@ -2087,8 +2429,6 @@ function initScrollVideo() {
    ========================================================================== */
 
 function initDesktopEffects() {
-  initHeroDisappearingTextMorph();
-
   if (window.innerWidth < 768) return; // Keep mobile lightweight
 
   initVelocitySparkCursor();
@@ -2098,57 +2438,6 @@ function initDesktopEffects() {
   init3DCardTilt();
   initMagneticElements();
   initScrollReveals();
-}
-
-/**
- * Hero Keywords Disappearing & Reappearing Engine
- * Cycles: "IoT Architecture" -> "Edge AI & TinyML" -> "Interactive 3D Systems" -> "Quantum Simulations"
- */
-function initHeroDisappearingTextMorph() {
-  const morphElement = document.getElementById('hero-morph-text');
-  if (!morphElement) return;
-
-  const phrases = [
-    { text: "IoT Architecture & Embedded Silicon", texture: "texture-liquid-amber" },
-    { text: "Edge AI & Neural Inference", texture: "texture-quantum-prism" },
-    { text: "Interactive 3D WebGL Systems", texture: "texture-cyber-circuit" },
-    { text: "Quantum Circuit Modeling", texture: "texture-plasma-ember" },
-    { text: "Low-Level Microcontroller Firmware", texture: "texture-brushed-titanium" }
-  ];
-
-  const allTextureClasses = [
-    "texture-liquid-amber",
-    "texture-quantum-prism",
-    "texture-cyber-circuit",
-    "texture-plasma-ember",
-    "texture-brushed-titanium"
-  ];
-
-  let currentIdx = 0;
-
-  setInterval(() => {
-    // 1. Disappear phase (glitch/fade out upward)
-    morphElement.classList.add('morph-disappearing');
-
-    setTimeout(() => {
-      // 2. Swap text and texture pack
-      currentIdx = (currentIdx + 1) % phrases.length;
-      const nextPhrase = phrases[currentIdx];
-
-      morphElement.textContent = nextPhrase.text;
-      allTextureClasses.forEach(cls => morphElement.classList.remove(cls));
-      morphElement.classList.add(nextPhrase.texture);
-
-      // 3. Reappear phase (slide in from below with glowing illumination)
-      morphElement.classList.remove('morph-disappearing');
-      morphElement.classList.add('morph-reappearing');
-
-      setTimeout(() => {
-        morphElement.classList.remove('morph-reappearing');
-      }, 500);
-    }, 450);
-
-  }, 2800);
 }
 
 /**
@@ -2566,8 +2855,16 @@ function initScrollReveals() {
 
 
 
+
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Initialize Real-Time Background Slideshow
+  // 1. Initialize Living Neural AI Laboratory & RGB Particle Engine
+  try {
+    initNeuralAILab();
+  } catch (err) {
+    console.warn("Neural AI lab note:", err);
+  }
+
+  // 2. Initialize Real-Time Background Slideshow
   try {
     initBackgroundSlideshow();
   } catch (err) {
