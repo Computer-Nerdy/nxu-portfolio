@@ -224,6 +224,26 @@ a {
 }
 
 /* ==========================================================================
+   HIGH-VISIBILITY KINETIC TEXT MOTION & ELASTIC MAGNETIC SWAY
+   - Always 100% visible (never disappears, never clips)
+   - Magnetic tilt, starlight specular shine, and smooth elastic spring lift
+   ========================================================================== */
+
+.hero-title, .section-title, .brand-name {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transition: text-shadow 0.3s ease;
+}
+
+.interactive-kinetic-word {
+  display: inline-block;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transition: text-shadow 0.25s ease;
+  will-change: transform;
+}
+
+/* ==========================================================================
    EDGE-EMITTED CHROMATIC SMOKE & PLASMA VAPOR ATMOSPHERE
    ========================================================================== */
 
