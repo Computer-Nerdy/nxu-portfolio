@@ -224,6 +224,103 @@ a {
 }
 
 /* ==========================================================================
+   EDGE-EMITTED CHROMATIC SMOKE & PLASMA VAPOR ATMOSPHERE
+   ========================================================================== */
+
+.edge-smoke-atmosphere {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 2;
+  mix-blend-mode: screen;
+}
+
+.smoke-plume {
+  position: absolute;
+  filter: blur(40px);
+  opacity: 0.65;
+  pointer-events: none;
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+}
+
+.plume-top {
+  top: -30px;
+  left: 0;
+  right: 0;
+  height: 180px;
+  background: radial-gradient(ellipse at 50% 0%, var(--smoke-color-1, #38BDF8) 0%, rgba(56, 189, 248, 0.4) 45%, transparent 75%);
+  animation-name: smokeFlowTop;
+}
+
+.plume-bottom {
+  bottom: -30px;
+  left: 0;
+  right: 0;
+  height: 180px;
+  background: radial-gradient(ellipse at 50% 100%, var(--smoke-color-2, #EC4899) 0%, rgba(236, 72, 153, 0.4) 45%, transparent 75%);
+  animation-name: smokeFlowBottom;
+}
+
+.plume-left {
+  top: 0;
+  bottom: 0;
+  left: -30px;
+  width: 180px;
+  background: radial-gradient(ellipse at 0% 50%, var(--smoke-color-3, #10B981) 0%, rgba(16, 185, 129, 0.4) 45%, transparent 75%);
+  animation-name: smokeFlowLeft;
+}
+
+.plume-right {
+  top: 0;
+  bottom: 0;
+  right: -30px;
+  width: 180px;
+  background: radial-gradient(ellipse at 100% 50%, var(--smoke-color-4, #A855F7) 0%, rgba(168, 85, 247, 0.4) 45%, transparent 75%);
+  animation-name: smokeFlowRight;
+}
+
+.plume-center {
+  inset: 10%;
+  background: radial-gradient(circle at center, rgba(168, 85, 247, 0.3) 0%, rgba(56, 189, 248, 0.2) 45%, transparent 70%);
+  animation-name: smokeFlowCenter;
+  filter: blur(60px);
+}
+
+@keyframes smokeFlowTop {
+  0% { transform: translateY(0) scaleX(1); opacity: 0.65; filter: blur(35px); }
+  50% { transform: translateY(45px) scaleX(1.15); opacity: 0.85; filter: blur(50px); }
+  100% { transform: translateY(75px) scaleX(1.3); opacity: 0.7; filter: blur(42px); }
+}
+
+@keyframes smokeFlowBottom {
+  0% { transform: translateY(0) scaleX(1); opacity: 0.65; filter: blur(35px); }
+  50% { transform: translateY(-45px) scaleX(1.15); opacity: 0.85; filter: blur(50px); }
+  100% { transform: translateY(-75px) scaleX(1.3); opacity: 0.7; filter: blur(42px); }
+}
+
+@keyframes smokeFlowLeft {
+  0% { transform: translateX(0) scaleY(1); opacity: 0.65; filter: blur(35px); }
+  50% { transform: translateX(45px) scaleY(1.15); opacity: 0.85; filter: blur(50px); }
+  100% { transform: translateX(75px) scaleY(1.3); opacity: 0.7; filter: blur(42px); }
+}
+
+@keyframes smokeFlowRight {
+  0% { transform: translateX(0) scaleY(1); opacity: 0.65; filter: blur(35px); }
+  50% { transform: translateX(-45px) scaleY(1.15); opacity: 0.85; filter: blur(50px); }
+  100% { transform: translateX(-75px) scaleY(1.3); opacity: 0.7; filter: blur(42px); }
+}
+
+@keyframes smokeFlowCenter {
+  0% { transform: scale(0.9) rotate(0deg); opacity: 0.45; }
+  50% { transform: scale(1.2) rotate(20deg); opacity: 0.75; }
+  100% { transform: scale(1.05) rotate(-20deg); opacity: 0.5; }
+}
+
+/* ==========================================================================
    REAL-TIME CINEMATIC BACKGROUND SLIDESHOW (MONOCHROME FILTERED)
    ========================================================================== */
 

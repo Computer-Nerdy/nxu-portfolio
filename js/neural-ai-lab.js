@@ -34,7 +34,7 @@ export function initNeuralAILab() {
   let currentPipelineIdx = 0;
 
   function getLivingRGB(offset = 0) {
-    const t = performance.now() * 0.0006 + offset;
+    const t = performance.now() * 0.0008 + offset;
     const r = Math.floor(Math.sin(t) * 95 + 160);
     const g = Math.floor(Math.sin(t + 2.094) * 95 + 160);
     const b = Math.floor(Math.sin(t + 4.188) * 95 + 160);
@@ -42,40 +42,40 @@ export function initNeuralAILab() {
   }
 
   function resize() {
-    width = canvas.width = container.clientWidth || container.offsetWidth;
-    height = canvas.height = container.clientHeight || container.offsetHeight;
+    width = canvas.width = container.clientWidth || container.offsetWidth || window.innerWidth;
+    height = canvas.height = container.clientHeight || container.offsetHeight || 600;
     createNetwork();
   }
 
   function spawnSmokePuff(randomStart = false) {
     const edge = Math.floor(Math.random() * 4);
     let x, y, vx, vy;
-    const speed = Math.random() * 0.9 + 0.4;
+    const speed = Math.random() * 1.2 + 0.6;
 
     if (edge === 0) {
       // Top edge
       x = Math.random() * width;
-      y = randomStart ? Math.random() * (height * 0.4) : -10;
-      vx = (Math.random() - 0.5) * 0.6;
+      y = randomStart ? Math.random() * (height * 0.4) : -20;
+      vx = (Math.random() - 0.5) * 0.8;
       vy = speed;
     } else if (edge === 1) {
       // Right edge
-      x = randomStart ? width - Math.random() * (width * 0.4) : width + 10;
+      x = randomStart ? width - Math.random() * (width * 0.4) : width + 20;
       y = Math.random() * height;
       vx = -speed;
-      vy = (Math.random() - 0.5) * 0.6;
+      vy = (Math.random() - 0.5) * 0.8;
     } else if (edge === 2) {
       // Bottom edge
       x = Math.random() * width;
-      y = randomStart ? height - Math.random() * (height * 0.4) : height + 10;
-      vx = (Math.random() - 0.5) * 0.6;
+      y = randomStart ? height - Math.random() * (height * 0.4) : height + 20;
+      vx = (Math.random() - 0.5) * 0.8;
       vy = -speed;
     } else {
       // Left edge
-      x = randomStart ? Math.random() * (width * 0.4) : -10;
+      x = randomStart ? Math.random() * (width * 0.4) : -20;
       y = Math.random() * height;
       vx = speed;
-      vy = (Math.random() - 0.5) * 0.6;
+      vy = (Math.random() - 0.5) * 0.8;
     }
 
     smokePuffs.push({
@@ -83,14 +83,14 @@ export function initNeuralAILab() {
       y,
       vx,
       vy,
-      size: Math.random() * 45 + 35,
-      maxSize: Math.random() * 120 + 90,
-      growth: Math.random() * 0.6 + 0.35,
-      opacity: 0.05,
-      maxOpacity: Math.random() * 0.35 + 0.22,
-      life: randomStart ? Math.floor(Math.random() * 60) : 0,
-      maxLife: Math.random() * 160 + 130,
-      color: getLivingRGB(Math.random() * 2)
+      size: Math.random() * 60 + 45,
+      maxSize: Math.random() * 160 + 120,
+      growth: Math.random() * 0.8 + 0.45,
+      opacity: 0.1,
+      maxOpacity: Math.random() * 0.45 + 0.3,
+      life: randomStart ? Math.floor(Math.random() * 50) : 0,
+      maxLife: Math.random() * 150 + 110,
+      color: getLivingRGB(Math.random() * 3)
     });
   }
 
@@ -113,7 +113,7 @@ export function initNeuralAILab() {
     }
 
     // Pre-populate dense initial smoke
-    for (let s = 0; s < 35; s++) {
+    for (let s = 0; s < 40; s++) {
       spawnSmokePuff(true);
     }
   }
@@ -145,7 +145,7 @@ export function initNeuralAILab() {
     }
 
     // Extra burst of edge smoke
-    for (let s = 0; s < 6; s++) {
+    for (let s = 0; s < 8; s++) {
       spawnSmokePuff(false);
     }
   }
@@ -185,10 +185,20 @@ export function initNeuralAILab() {
   function render() {
     ctx.clearRect(0, 0, width, height);
 
-    const activeRGB = getLivingRGB();
+    const rgb1 = getLivingRGB(0);
+    const rgb2 = getLivingRGB(1.5);
+    const rgb3 = getLivingRGB(3.0);
+    const rgb4 = getLivingRGB(4.5);
+
+    // Sync CSS Edge Smoke Plumes
+    container.style.setProperty('--smoke-color-1', `rgb(${rgb1.r}, ${rgb1.g}, ${rgb1.b})`);
+    container.style.setProperty('--smoke-color-2', `rgb(${rgb2.r}, ${rgb2.g}, ${rgb2.b})`);
+    container.style.setProperty('--smoke-color-3', `rgb(${rgb3.r}, ${rgb3.g}, ${rgb3.b})`);
+    container.style.setProperty('--smoke-color-4', `rgb(${rgb4.r}, ${rgb4.g}, ${rgb4.b})`);
 
     // 1. Continuous Emission of Smoke Puffs from Edges
-    if (smokePuffs.length < 80) {
+    if (smokePuffs.length < 90) {
+      spawnSmokePuff(false);
       spawnSmokePuff(false);
       spawnSmokePuff(false);
     }
@@ -204,10 +214,10 @@ export function initNeuralAILab() {
       p.y += p.vy;
       p.size = Math.min(p.maxSize, p.size + p.growth);
 
-      if (p.life < 35) {
-        p.opacity = (p.life / 35) * p.maxOpacity;
+      if (p.life < 30) {
+        p.opacity = (p.life / 30) * p.maxOpacity;
       } else {
-        p.opacity = Math.max(0, p.maxOpacity * (1 - (p.life - 35) / (p.maxLife - 35)));
+        p.opacity = Math.max(0, p.maxOpacity * (1 - (p.life - 30) / (p.maxLife - 30)));
       }
 
       if (p.life >= p.maxLife || p.opacity <= 0) {
@@ -217,8 +227,8 @@ export function initNeuralAILab() {
 
       const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size);
       grad.addColorStop(0, `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${p.opacity})`);
-      grad.addColorStop(0.4, `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${p.opacity * 0.55})`);
-      grad.addColorStop(0.8, `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${p.opacity * 0.15})`);
+      grad.addColorStop(0.35, `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${p.opacity * 0.75})`);
+      grad.addColorStop(0.7, `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${p.opacity * 0.25})`);
       grad.addColorStop(1, `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, 0)`);
 
       ctx.beginPath();
@@ -258,8 +268,8 @@ export function initNeuralAILab() {
 
       ctx.beginPath();
       ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${activeRGB.r}, ${activeRGB.g}, ${activeRGB.b}, ${Math.max(0.2, currentAlpha)})`;
-      ctx.shadowColor = `rgb(${activeRGB.r}, ${activeRGB.g}, ${activeRGB.b})`;
+      ctx.fillStyle = `rgba(${rgb1.r}, ${rgb1.g}, ${rgb1.b}, ${Math.max(0.2, currentAlpha)})`;
+      ctx.shadowColor = `rgb(${rgb1.r}, ${rgb1.g}, ${rgb1.b})`;
       ctx.shadowBlur = 10;
       ctx.fill();
       ctx.shadowBlur = 0;
@@ -274,7 +284,7 @@ export function initNeuralAILab() {
           ctx.beginPath();
           ctx.moveTo(n.x, n.y);
           ctx.lineTo(n2.x, n2.y);
-          ctx.strokeStyle = `rgba(${activeRGB.r}, ${activeRGB.g}, ${activeRGB.b}, ${alpha})`;
+          ctx.strokeStyle = `rgba(${rgb1.r}, ${rgb1.g}, ${rgb1.b}, ${alpha})`;
           ctx.lineWidth = 0.9;
           ctx.stroke();
         }

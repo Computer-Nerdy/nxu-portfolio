@@ -246,6 +246,103 @@ a {
 }
 
 /* ==========================================================================
+   EDGE-EMITTED CHROMATIC SMOKE & PLASMA VAPOR ATMOSPHERE
+   ========================================================================== */
+
+.edge-smoke-atmosphere {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 2;
+  mix-blend-mode: screen;
+}
+
+.smoke-plume {
+  position: absolute;
+  filter: blur(40px);
+  opacity: 0.65;
+  pointer-events: none;
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+}
+
+.plume-top {
+  top: -30px;
+  left: 0;
+  right: 0;
+  height: 180px;
+  background: radial-gradient(ellipse at 50% 0%, var(--smoke-color-1, #38BDF8) 0%, rgba(56, 189, 248, 0.4) 45%, transparent 75%);
+  animation-name: smokeFlowTop;
+}
+
+.plume-bottom {
+  bottom: -30px;
+  left: 0;
+  right: 0;
+  height: 180px;
+  background: radial-gradient(ellipse at 50% 100%, var(--smoke-color-2, #EC4899) 0%, rgba(236, 72, 153, 0.4) 45%, transparent 75%);
+  animation-name: smokeFlowBottom;
+}
+
+.plume-left {
+  top: 0;
+  bottom: 0;
+  left: -30px;
+  width: 180px;
+  background: radial-gradient(ellipse at 0% 50%, var(--smoke-color-3, #10B981) 0%, rgba(16, 185, 129, 0.4) 45%, transparent 75%);
+  animation-name: smokeFlowLeft;
+}
+
+.plume-right {
+  top: 0;
+  bottom: 0;
+  right: -30px;
+  width: 180px;
+  background: radial-gradient(ellipse at 100% 50%, var(--smoke-color-4, #A855F7) 0%, rgba(168, 85, 247, 0.4) 45%, transparent 75%);
+  animation-name: smokeFlowRight;
+}
+
+.plume-center {
+  inset: 10%;
+  background: radial-gradient(circle at center, rgba(168, 85, 247, 0.3) 0%, rgba(56, 189, 248, 0.2) 45%, transparent 70%);
+  animation-name: smokeFlowCenter;
+  filter: blur(60px);
+}
+
+@keyframes smokeFlowTop {
+  0% { transform: translateY(0) scaleX(1); opacity: 0.65; filter: blur(35px); }
+  50% { transform: translateY(45px) scaleX(1.15); opacity: 0.85; filter: blur(50px); }
+  100% { transform: translateY(75px) scaleX(1.3); opacity: 0.7; filter: blur(42px); }
+}
+
+@keyframes smokeFlowBottom {
+  0% { transform: translateY(0) scaleX(1); opacity: 0.65; filter: blur(35px); }
+  50% { transform: translateY(-45px) scaleX(1.15); opacity: 0.85; filter: blur(50px); }
+  100% { transform: translateY(-75px) scaleX(1.3); opacity: 0.7; filter: blur(42px); }
+}
+
+@keyframes smokeFlowLeft {
+  0% { transform: translateX(0) scaleY(1); opacity: 0.65; filter: blur(35px); }
+  50% { transform: translateX(45px) scaleY(1.15); opacity: 0.85; filter: blur(50px); }
+  100% { transform: translateX(75px) scaleY(1.3); opacity: 0.7; filter: blur(42px); }
+}
+
+@keyframes smokeFlowRight {
+  0% { transform: translateX(0) scaleY(1); opacity: 0.65; filter: blur(35px); }
+  50% { transform: translateX(-45px) scaleY(1.15); opacity: 0.85; filter: blur(50px); }
+  100% { transform: translateX(-75px) scaleY(1.3); opacity: 0.7; filter: blur(42px); }
+}
+
+@keyframes smokeFlowCenter {
+  0% { transform: scale(0.9) rotate(0deg); opacity: 0.45; }
+  50% { transform: scale(1.2) rotate(20deg); opacity: 0.75; }
+  100% { transform: scale(1.05) rotate(-20deg); opacity: 0.5; }
+}
+
+/* ==========================================================================
    REAL-TIME CINEMATIC BACKGROUND SLIDESHOW (MONOCHROME FILTERED)
    ========================================================================== */
 
@@ -1473,6 +1570,15 @@ svg {
         
         <div class="rgb-living-edge-container p-fluid">
           
+          <!-- Edge-Emitted Chromatic Smoke & Plasma Vapor Atmosphere -->
+          <div class="edge-smoke-atmosphere">
+            <div class="smoke-plume plume-top"></div>
+            <div class="smoke-plume plume-bottom"></div>
+            <div class="smoke-plume plume-left"></div>
+            <div class="smoke-plume plume-right"></div>
+            <div class="smoke-plume plume-center"></div>
+          </div>
+
           <!-- Interactive Neural Synaptic Particle Canvas -->
           <canvas id="neural-particle-canvas"></canvas>
 
@@ -2108,7 +2214,7 @@ function initNeuralAILab() {
   let currentPipelineIdx = 0;
 
   function getLivingRGB(offset = 0) {
-    const t = performance.now() * 0.0006 + offset;
+    const t = performance.now() * 0.0008 + offset;
     const r = Math.floor(Math.sin(t) * 95 + 160);
     const g = Math.floor(Math.sin(t + 2.094) * 95 + 160);
     const b = Math.floor(Math.sin(t + 4.188) * 95 + 160);
@@ -2116,40 +2222,40 @@ function initNeuralAILab() {
   }
 
   function resize() {
-    width = canvas.width = container.clientWidth || container.offsetWidth;
-    height = canvas.height = container.clientHeight || container.offsetHeight;
+    width = canvas.width = container.clientWidth || container.offsetWidth || window.innerWidth;
+    height = canvas.height = container.clientHeight || container.offsetHeight || 600;
     createNetwork();
   }
 
   function spawnSmokePuff(randomStart = false) {
     const edge = Math.floor(Math.random() * 4);
     let x, y, vx, vy;
-    const speed = Math.random() * 0.9 + 0.4;
+    const speed = Math.random() * 1.2 + 0.6;
 
     if (edge === 0) {
       // Top edge
       x = Math.random() * width;
-      y = randomStart ? Math.random() * (height * 0.4) : -10;
-      vx = (Math.random() - 0.5) * 0.6;
+      y = randomStart ? Math.random() * (height * 0.4) : -20;
+      vx = (Math.random() - 0.5) * 0.8;
       vy = speed;
     } else if (edge === 1) {
       // Right edge
-      x = randomStart ? width - Math.random() * (width * 0.4) : width + 10;
+      x = randomStart ? width - Math.random() * (width * 0.4) : width + 20;
       y = Math.random() * height;
       vx = -speed;
-      vy = (Math.random() - 0.5) * 0.6;
+      vy = (Math.random() - 0.5) * 0.8;
     } else if (edge === 2) {
       // Bottom edge
       x = Math.random() * width;
-      y = randomStart ? height - Math.random() * (height * 0.4) : height + 10;
-      vx = (Math.random() - 0.5) * 0.6;
+      y = randomStart ? height - Math.random() * (height * 0.4) : height + 20;
+      vx = (Math.random() - 0.5) * 0.8;
       vy = -speed;
     } else {
       // Left edge
-      x = randomStart ? Math.random() * (width * 0.4) : -10;
+      x = randomStart ? Math.random() * (width * 0.4) : -20;
       y = Math.random() * height;
       vx = speed;
-      vy = (Math.random() - 0.5) * 0.6;
+      vy = (Math.random() - 0.5) * 0.8;
     }
 
     smokePuffs.push({
@@ -2157,14 +2263,14 @@ function initNeuralAILab() {
       y,
       vx,
       vy,
-      size: Math.random() * 45 + 35,
-      maxSize: Math.random() * 120 + 90,
-      growth: Math.random() * 0.6 + 0.35,
-      opacity: 0.05,
-      maxOpacity: Math.random() * 0.35 + 0.22,
-      life: randomStart ? Math.floor(Math.random() * 60) : 0,
-      maxLife: Math.random() * 160 + 130,
-      color: getLivingRGB(Math.random() * 2)
+      size: Math.random() * 60 + 45,
+      maxSize: Math.random() * 160 + 120,
+      growth: Math.random() * 0.8 + 0.45,
+      opacity: 0.1,
+      maxOpacity: Math.random() * 0.45 + 0.3,
+      life: randomStart ? Math.floor(Math.random() * 50) : 0,
+      maxLife: Math.random() * 150 + 110,
+      color: getLivingRGB(Math.random() * 3)
     });
   }
 
@@ -2187,7 +2293,7 @@ function initNeuralAILab() {
     }
 
     // Pre-populate dense initial smoke
-    for (let s = 0; s < 35; s++) {
+    for (let s = 0; s < 40; s++) {
       spawnSmokePuff(true);
     }
   }
@@ -2219,7 +2325,7 @@ function initNeuralAILab() {
     }
 
     // Extra burst of edge smoke
-    for (let s = 0; s < 6; s++) {
+    for (let s = 0; s < 8; s++) {
       spawnSmokePuff(false);
     }
   }
@@ -2259,10 +2365,20 @@ function initNeuralAILab() {
   function render() {
     ctx.clearRect(0, 0, width, height);
 
-    const activeRGB = getLivingRGB();
+    const rgb1 = getLivingRGB(0);
+    const rgb2 = getLivingRGB(1.5);
+    const rgb3 = getLivingRGB(3.0);
+    const rgb4 = getLivingRGB(4.5);
+
+    // Sync CSS Edge Smoke Plumes
+    container.style.setProperty('--smoke-color-1', `rgb(${rgb1.r}, ${rgb1.g}, ${rgb1.b})`);
+    container.style.setProperty('--smoke-color-2', `rgb(${rgb2.r}, ${rgb2.g}, ${rgb2.b})`);
+    container.style.setProperty('--smoke-color-3', `rgb(${rgb3.r}, ${rgb3.g}, ${rgb3.b})`);
+    container.style.setProperty('--smoke-color-4', `rgb(${rgb4.r}, ${rgb4.g}, ${rgb4.b})`);
 
     // 1. Continuous Emission of Smoke Puffs from Edges
-    if (smokePuffs.length < 80) {
+    if (smokePuffs.length < 90) {
+      spawnSmokePuff(false);
       spawnSmokePuff(false);
       spawnSmokePuff(false);
     }
@@ -2278,10 +2394,10 @@ function initNeuralAILab() {
       p.y += p.vy;
       p.size = Math.min(p.maxSize, p.size + p.growth);
 
-      if (p.life < 35) {
-        p.opacity = (p.life / 35) * p.maxOpacity;
+      if (p.life < 30) {
+        p.opacity = (p.life / 30) * p.maxOpacity;
       } else {
-        p.opacity = Math.max(0, p.maxOpacity * (1 - (p.life - 35) / (p.maxLife - 35)));
+        p.opacity = Math.max(0, p.maxOpacity * (1 - (p.life - 30) / (p.maxLife - 30)));
       }
 
       if (p.life >= p.maxLife || p.opacity <= 0) {
@@ -2291,8 +2407,8 @@ function initNeuralAILab() {
 
       const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size);
       grad.addColorStop(0, `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${p.opacity})`);
-      grad.addColorStop(0.4, `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${p.opacity * 0.55})`);
-      grad.addColorStop(0.8, `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${p.opacity * 0.15})`);
+      grad.addColorStop(0.35, `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${p.opacity * 0.75})`);
+      grad.addColorStop(0.7, `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${p.opacity * 0.25})`);
       grad.addColorStop(1, `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, 0)`);
 
       ctx.beginPath();
@@ -2332,8 +2448,8 @@ function initNeuralAILab() {
 
       ctx.beginPath();
       ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${activeRGB.r}, ${activeRGB.g}, ${activeRGB.b}, ${Math.max(0.2, currentAlpha)})`;
-      ctx.shadowColor = `rgb(${activeRGB.r}, ${activeRGB.g}, ${activeRGB.b})`;
+      ctx.fillStyle = `rgba(${rgb1.r}, ${rgb1.g}, ${rgb1.b}, ${Math.max(0.2, currentAlpha)})`;
+      ctx.shadowColor = `rgb(${rgb1.r}, ${rgb1.g}, ${rgb1.b})`;
       ctx.shadowBlur = 10;
       ctx.fill();
       ctx.shadowBlur = 0;
@@ -2348,7 +2464,7 @@ function initNeuralAILab() {
           ctx.beginPath();
           ctx.moveTo(n.x, n.y);
           ctx.lineTo(n2.x, n2.y);
-          ctx.strokeStyle = `rgba(${activeRGB.r}, ${activeRGB.g}, ${activeRGB.b}, ${alpha})`;
+          ctx.strokeStyle = `rgba(${rgb1.r}, ${rgb1.g}, ${rgb1.b}, ${alpha})`;
           ctx.lineWidth = 0.9;
           ctx.stroke();
         }
