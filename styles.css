@@ -1,11 +1,11 @@
 /* ==========================================================================
-   HARISH RAGAV V. — DEEP COSMIC NEBULA & OBSIDIAN DESIGN SYSTEM
-   Luminous Starlight, Supernova Amber, Pulsar Cyan & Galactic Violet
+   HARISH RAGAV V. — COSMIC GREY MONOCHROME DESIGN SYSTEM
+   Ultra-Minimalist Lunar Platinum, Frosted Silver, Deep Graphite & Obsidian
    ========================================================================== */
 
 :root {
-  --bg-canvas: #030614;
-  --bg-gradient-canvas: radial-gradient(ellipse at 50% -20%, #1A103C 0%, #0C102E 35%, #040718 70%, #010208 100%);
+  --bg-canvas: #08090C;
+  --bg-gradient-canvas: radial-gradient(ellipse at 50% -20%, #1A1D24 0%, #0F1117 40%, #08090C 75%, #040507 100%);
   
   /* Physical 2K Texture Paths */
   --obsidian-grain: url("images/textures/obsidian_grain.jpeg");
@@ -15,35 +15,36 @@
   --carbon-weave: url("images/textures/carbon_weave.jpeg");
   --circuit-matrix: url("images/textures/circuit_matrix.jpeg");
 
-  --glass-bg: rgba(14, 20, 48, 0.82);
-  --glass-bg-hover: rgba(24, 32, 70, 0.92);
-  --glass-border: rgba(168, 85, 247, 0.25);
-  --glass-border-hover: rgba(245, 158, 11, 0.65);
-  --glass-border-subtle: rgba(255, 255, 255, 0.1);
+  --glass-bg: rgba(18, 22, 30, 0.82);
+  --glass-bg-hover: rgba(28, 34, 46, 0.92);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --glass-border-hover: rgba(255, 255, 255, 0.65);
+  --glass-border-subtle: rgba(255, 255, 255, 0.08);
   
-  --shadow-glass: 0 16px 45px 0 rgba(2, 6, 23, 0.85), inset 0 1px 1px 0 rgba(255, 255, 255, 0.35), 0 0 20px rgba(139, 92, 246, 0.1);
-  --shadow-glass-lg: 0 24px 65px 0 rgba(2, 6, 23, 0.95), inset 0 1px 1px 0 rgba(255, 255, 255, 0.45), 0 0 35px rgba(245, 158, 11, 0.15);
+  --shadow-glass: 0 16px 45px 0 rgba(0, 0, 0, 0.85), inset 0 1px 1px 0 rgba(255, 255, 255, 0.35), 0 0 20px rgba(255, 255, 255, 0.04);
+  --shadow-glass-lg: 0 24px 65px 0 rgba(0, 0, 0, 0.95), inset 0 1px 1px 0 rgba(255, 255, 255, 0.45), 0 0 35px rgba(255, 255, 255, 0.08);
   
   --color-slate-900: #FFFFFF;
   --color-slate-800: #F8FAFC;
   --color-slate-700: #E2E8F0;
-  --color-slate-600: #94A3B8;
-  --color-slate-500: #64748B;
-  --color-slate-400: #475569;
+  --color-slate-600: #CBD5E1;
+  --color-slate-500: #94A3B8;
+  --color-slate-400: #64748B;
   --color-slate-200: rgba(255, 255, 255, 0.14);
   --color-slate-100: rgba(255, 255, 255, 0.06);
   
-  --color-amber-800: #FDE68A;
-  --color-amber-700: #F59E0B;
-  --color-amber-600: #D97706;
-  --color-amber-500: #F59E0B;
-  --color-amber-100: rgba(245, 158, 11, 0.2);
-  --color-amber-50: rgba(245, 158, 11, 0.12);
+  /* Monochromatic Silver & Lunar Platinum Accents */
+  --color-amber-800: #FFFFFF;
+  --color-amber-700: #E2E8F0;
+  --color-amber-600: #CBD5E1;
+  --color-amber-500: #F8FAFC;
+  --color-amber-100: rgba(255, 255, 255, 0.16);
+  --color-amber-50: rgba(255, 255, 255, 0.08);
   
-  --color-emerald-500: #10B981;
-  --color-emerald-50: rgba(16, 185, 129, 0.14);
-  --color-emerald-700: #34D399;
-  --color-emerald-200: rgba(52, 211, 153, 0.35);
+  --color-emerald-500: #E2E8F0;
+  --color-emerald-50: rgba(255, 255, 255, 0.12);
+  --color-emerald-700: #FFFFFF;
+  --color-emerald-200: rgba(255, 255, 255, 0.3);
 
   --font-display: 'Syne', 'Figtree', sans-serif;
   --font-body: 'Mulish', 'Figtree', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -105,7 +106,7 @@ a {
   background-image: var(--obsidian-grain);
   background-size: 480px 480px;
   background-repeat: repeat;
-  opacity: 0.16;
+  opacity: 0.15;
   mix-blend-mode: screen;
 }
 
@@ -125,17 +126,17 @@ a {
 }
 
 /* ==========================================================================
-   TACTILE COSMIC GLASS CARDS & SURFACES
+   TACTILE COSMIC GREY GLASS CARDS & SURFACES
    ========================================================================== */
 
 .glass-card {
   background: 
-    linear-gradient(135deg, rgba(20, 28, 58, 0.86) 0%, rgba(9, 14, 34, 0.94) 100%),
+    linear-gradient(135deg, rgba(24, 28, 38, 0.88) 0%, rgba(12, 15, 22, 0.95) 100%),
     var(--obsidian-grain);
   background-size: cover, 340px 340px;
   background-blend-mode: normal, overlay;
-  backdrop-filter: blur(30px) saturate(220%);
-  -webkit-backdrop-filter: blur(30px) saturate(220%);
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
   border: 1px solid var(--glass-border);
   box-shadow: var(--shadow-glass);
   position: relative;
@@ -181,7 +182,7 @@ a {
 }
 
 /* ==========================================================================
-   REAL-TIME CINEMATIC BACKGROUND SLIDESHOW
+   REAL-TIME CINEMATIC BACKGROUND SLIDESHOW (MONOCHROME FILTERED)
    ========================================================================== */
 
 .bg-slideshow-wrapper {
@@ -193,6 +194,7 @@ a {
   z-index: 0;
   overflow: hidden;
   transition: transform 0.4s var(--ease-smooth);
+  filter: grayscale(100%) brightness(0.65) contrast(1.15);
 }
 
 .bg-slide {
@@ -208,86 +210,74 @@ a {
 }
 
 .bg-slide.active {
-  opacity: 0.36;
+  opacity: 0.32;
   transform: scale(1);
 }
 
 /* ==========================================================================
-   ADVANCED COSMIC TEXT TEXTURE PACKS (SUPERNOVA, PRISM, PULSAR & EMBER)
+   MONOCHROME COSMIC TEXT TEXTURE PACKS (PLATINUM, CHROME, TITANIUM & SILVER)
    ========================================================================== */
 
-/* 1. Supernova Liquid Gold Texture with Animated Sheen Sweep */
+/* 1. Lunar Platinum Texture with Animated Sheen Sweep */
 .texture-liquid-amber,
 .text-textured-amber {
-  background: linear-gradient(110deg, #FDE68A 0%, #F59E0B 22%, #FFFBEB 45%, #F59E0B 68%, #D97706 88%, #B45309 100%);
-  background-size: 260% auto;
+  background: linear-gradient(110deg, #FFFFFF 0%, #E2E8F0 25%, #94A3B8 50%, #FFFFFF 75%, #64748B 100%);
+  background-size: 240% auto;
   animation: textureSheenSweep 6s linear infinite;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
-  filter: drop-shadow(0 0 18px rgba(245, 158, 11, 0.55));
+  filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.45));
 }
 
 @keyframes textureSheenSweep {
   0% { background-position: 0% 50%; }
-  100% { background-position: 260% 50%; }
+  100% { background-position: 240% 50%; }
 }
 
-/* 2. Quantum Holographic Prism Texture with Iridescent Shift */
+/* 2. Quantum Monochrome Chrome Texture */
 .texture-quantum-prism {
-  background: linear-gradient(135deg, #38BDF8 0%, #818CF8 26%, #C084FC 52%, #F59E0B 78%, #38BDF8 100%);
-  background-size: 240% auto;
-  animation: texturePrismFlow 7s ease-in-out infinite alternate;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline-block;
-  filter: drop-shadow(0 0 18px rgba(168, 85, 247, 0.5));
-}
-
-@keyframes texturePrismFlow {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
-}
-
-/* 3. Cyber Pulsar Cyan Lightning Texture */
-.texture-cyber-circuit {
-  background: linear-gradient(120deg, #E0F2FE 0%, #38BDF8 30%, #0284C7 60%, #06B6D4 100%);
+  background: linear-gradient(135deg, #FFFFFF 0%, #CBD5E1 30%, #F1F5F9 60%, #94A3B8 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
-  filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.55));
+  filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.4));
 }
 
-/* 4. Plasma Ember Volcanic Texture */
-.texture-plasma-ember {
-  background: linear-gradient(135deg, #FEF08A 0%, #F59E0B 30%, #EA580C 65%, #DC2626 100%);
-  background-size: 220% auto;
-  animation: texturePlasmaPulse 5s ease-in-out infinite alternate;
+/* 3. Cyber Titanium Matte Texture */
+.texture-cyber-circuit {
+  background: linear-gradient(120deg, #FFFFFF 0%, #E2E8F0 35%, #94A3B8 70%, #CBD5E1 100%);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
-  filter: drop-shadow(0 0 16px rgba(234, 88, 12, 0.5));
+  filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.35));
 }
 
-@keyframes texturePlasmaPulse {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
+/* 4. Plasma Silver Brushed Texture */
+.texture-plasma-ember {
+  background: linear-gradient(135deg, #FFFFFF 0%, #E2E8F0 40%, #94A3B8 75%, #475569 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.35));
 }
 
 /* 5. Aerospace Brushed Titanium Chrome Texture */
 .texture-brushed-titanium,
 .text-textured-chrome {
-  background: linear-gradient(140deg, #FFFFFF 0%, #E2E8F0 25%, #A5B4FC 50%, #F8FAFC 75%, #6366F1 100%);
+  background: linear-gradient(140deg, #FFFFFF 0%, #E2E8F0 25%, #CBD5E1 50%, #FFFFFF 75%, #64748B 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
-  filter: drop-shadow(0 0 14px rgba(129, 140, 248, 0.35));
+  filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.3));
 }
 
 /* ==========================================================================
-   VELOCITY-STRETCHING CYBER CURSOR, SPARKS & SHOCKWAVES (DESKTOP ONLY)
+   VELOCITY-STRETCHING MONOCHROME CURSOR, SPARKS & SHOCKWAVES (DESKTOP ONLY)
    ========================================================================== */
 
 @media (min-width: 768px) {
@@ -301,12 +291,12 @@ a {
     left: 0;
     width: 6px;
     height: 6px;
-    background-color: #F59E0B;
+    background-color: #FFFFFF;
     border-radius: 50%;
     pointer-events: none;
     z-index: 9999;
     transform: translate3d(-100px, -100px, 0);
-    box-shadow: 0 0 10px #F59E0B, 0 0 20px #F59E0B;
+    box-shadow: 0 0 10px #FFFFFF, 0 0 20px #FFFFFF;
     transition: width 0.15s ease, height 0.15s ease, background-color 0.15s ease;
   }
 
@@ -317,8 +307,8 @@ a {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    border: 1.5px solid rgba(245, 158, 11, 0.6);
-    background: radial-gradient(circle, rgba(245, 158, 11, 0.2) 0%, rgba(139, 92, 246, 0.1) 40%, rgba(245, 158, 11, 0) 70%);
+    border: 1.5px solid rgba(255, 255, 255, 0.6);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0) 70%);
     pointer-events: none;
     z-index: 9998;
     transform: translate3d(-100px, -100px, 0);
@@ -326,16 +316,16 @@ a {
   }
 
   .cyber-cursor-follower.cursor-hover {
-    border-color: rgba(245, 158, 11, 0.95);
-    background: radial-gradient(circle, rgba(245, 158, 11, 0.32) 0%, rgba(139, 92, 246, 0.2) 50%, rgba(245, 158, 11, 0) 75%);
-    box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+    border-color: rgba(255, 255, 255, 0.95);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0) 75%);
+    box-shadow: 0 0 24px rgba(255, 255, 255, 0.35);
   }
 
   .cyber-cursor-dot.cursor-hover-dot {
     width: 10px;
     height: 10px;
     background-color: #FFFFFF;
-    box-shadow: 0 0 18px #FFFFFF, 0 0 30px #F59E0B;
+    box-shadow: 0 0 20px #FFFFFF;
   }
 
   .cursor-shockwave {
@@ -343,7 +333,7 @@ a {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    border: 2px solid #F59E0B;
+    border: 2px solid #FFFFFF;
     transform: translate(-50%, -50%) scale(1);
     pointer-events: none;
     z-index: 9997;
@@ -362,6 +352,7 @@ a {
     border-radius: 50%;
     pointer-events: none;
     z-index: 9996;
+    background-color: #FFFFFF;
     will-change: transform, opacity;
   }
 }
@@ -413,7 +404,7 @@ a {
 
 .text-illuminated {
   color: #FFFFFF !important;
-  text-shadow: 0 0 12px rgba(245, 158, 11, 0.5);
+  text-shadow: 0 0 14px rgba(255, 255, 255, 0.6);
 }
 
 /* Universal SVG Size Lock */
@@ -497,7 +488,7 @@ svg {
 }
 
 /* ==========================================================================
-   HEADER & NAVBAR (COSMIC NEBULA GLASS)
+   HEADER & NAVBAR (MONOCHROME OBSIDIAN GLASS)
    ========================================================================== */
 
 .nav-container {
@@ -516,12 +507,12 @@ svg {
   padding: 0 clamp(0.85rem, 2vw, 1.75rem);
   border-radius: clamp(0.875rem, 2vw, 1.25rem);
   background: 
-    linear-gradient(135deg, rgba(22, 32, 68, 0.9) 0%, rgba(10, 16, 40, 0.95) 100%),
+    linear-gradient(135deg, rgba(26, 30, 40, 0.92) 0%, rgba(12, 15, 22, 0.96) 100%),
     var(--obsidian-glass);
   background-size: cover, 360px 360px;
   background-blend-mode: normal, overlay;
-  backdrop-filter: blur(28px) saturate(220%);
-  -webkit-backdrop-filter: blur(28px) saturate(220%);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
   border: 1px solid var(--glass-border);
   box-shadow: var(--shadow-glass);
   display: flex;
@@ -540,16 +531,16 @@ svg {
   width: clamp(2rem, 3.2vw, 2.5rem);
   height: clamp(2rem, 3.2vw, 2.5rem);
   border-radius: 0.65rem;
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.3) 0%, rgba(139, 92, 246, 0.2) 100%);
-  border: 1px solid rgba(245, 158, 11, 0.5);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #FDE68A;
+  color: #FFFFFF;
   font-family: var(--font-mono);
   font-weight: 700;
   font-size: 0.8125rem;
-  box-shadow: 0 0 18px rgba(245, 158, 11, 0.25);
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.15);
   transition: transform 0.2s var(--ease-smooth);
 }
 
@@ -572,7 +563,8 @@ svg {
 }
 
 .brand-wrapper:hover .brand-name {
-  color: var(--color-amber-500);
+  color: #FFFFFF;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
 }
 
 .brand-status {
@@ -588,8 +580,8 @@ svg {
   width: 0.45rem;
   height: 0.45rem;
   border-radius: 50%;
-  background-color: var(--color-emerald-500);
-  box-shadow: 0 0 10px rgba(16, 185, 129, 0.8);
+  background-color: #FFFFFF;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
   animation: pulseDot 2s infinite ease-in-out;
 }
 
@@ -631,9 +623,9 @@ svg {
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, #F59E0B, #8B5CF6);
+  background: #FFFFFF;
   border-radius: 2px;
-  box-shadow: 0 0 10px rgba(245, 158, 11, 0.7);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
   transition: width 0.2s var(--ease-smooth);
 }
 
@@ -668,10 +660,10 @@ svg {
 }
 
 .nav-github-btn:hover {
-  background: rgba(139, 92, 246, 0.25);
-  border-color: #8B5CF6;
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #FFFFFF;
   color: #FFFFFF;
-  box-shadow: 0 0 16px rgba(139, 92, 246, 0.3);
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.25);
 }
 
 .nav-cta-btn {
@@ -680,12 +672,12 @@ svg {
   justify-content: center;
   padding: 0.45rem clamp(0.75rem, 1.5vw, 1.15rem);
   border-radius: 0.75rem;
-  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  background: #FFFFFF;
   color: #060913 !important;
   font-size: clamp(0.7rem, 0.95vw, 0.75rem);
   font-weight: 800;
-  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.8);
   transition: all 0.2s var(--ease-smooth);
 }
 
@@ -697,7 +689,7 @@ svg {
 
 .nav-cta-btn:hover {
   transform: translateY(-1.5px);
-  box-shadow: 0 6px 26px rgba(245, 158, 11, 0.55);
+  box-shadow: 0 6px 26px rgba(255, 255, 255, 0.5);
   filter: brightness(1.08);
 }
 
@@ -726,7 +718,7 @@ svg {
   margin: 0.5rem auto 0;
   padding: 0.875rem;
   border-radius: 1.25rem;
-  background: rgba(16, 24, 52, 0.96);
+  background: rgba(20, 24, 34, 0.96);
   backdrop-filter: blur(28px);
   -webkit-backdrop-filter: blur(28px);
   border: 1px solid var(--glass-border);
@@ -761,7 +753,7 @@ svg {
 }
 
 .mobile-nav-link:hover {
-  background: rgba(139, 92, 246, 0.2);
+  background: rgba(255, 255, 255, 0.15);
   color: #FFFFFF;
 }
 
@@ -824,15 +816,15 @@ svg {
   left: 0;
   right: 0;
   height: 4px;
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.15);
   z-index: 10;
 }
 
 .fullscreen-scrubber-fill {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, #F59E0B 0%, #C084FC 50%, #38BDF8 100%);
-  box-shadow: 0 0 16px rgba(245, 158, 11, 0.95);
+  background: linear-gradient(90deg, #FFFFFF 0%, #CBD5E1 50%, #94A3B8 100%);
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.95);
 }
 
 /* ==========================================================================
@@ -848,7 +840,7 @@ svg {
   overflow: hidden;
   border: 1px solid var(--glass-border);
   background: 
-    linear-gradient(135deg, rgba(20, 28, 60, 0.88) 0%, rgba(9, 14, 36, 0.95) 100%),
+    linear-gradient(135deg, rgba(24, 28, 40, 0.9) 0%, rgba(12, 15, 24, 0.96) 100%),
     var(--obsidian-fracture);
   background-size: cover, 420px 420px;
   background-blend-mode: normal, overlay;
@@ -874,12 +866,12 @@ svg {
   inset: 0;
   z-index: 100;
   background: 
-    linear-gradient(135deg, rgba(10, 14, 34, 0.97) 0%, rgba(3, 5, 15, 0.99) 100%),
+    linear-gradient(135deg, rgba(14, 18, 26, 0.98) 0%, rgba(6, 8, 12, 0.99) 100%),
     var(--obsidian-grain);
   background-size: cover, 400px 400px;
   background-blend-mode: normal, overlay;
-  backdrop-filter: blur(28px) saturate(200%);
-  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
   display: flex;
   flex-direction: column;
   animation: modalFadeIn 0.3s var(--ease-smooth);
@@ -933,7 +925,7 @@ svg {
   border-radius: 0.75rem;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(168, 85, 247, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   color: #FFFFFF;
   font-size: 0.75rem;
   font-weight: 700;
@@ -943,10 +935,10 @@ svg {
 
 .theatrical-control-btn:hover,
 .theatrical-control-btn.active {
-  background: rgba(245, 158, 11, 0.35);
-  border-color: #F59E0B;
-  color: #FEF3C7;
-  box-shadow: 0 0 20px rgba(245, 158, 11, 0.45);
+  background: rgba(255, 255, 255, 0.3);
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
 }
 
 /* 3D Tilt Card Parallax with Specular Glare in Dark Mode */
@@ -960,35 +952,35 @@ svg {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 50%), rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0) 60%);
+  background: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 50%), rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 60%);
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 .tilt-card:hover {
-  border-color: rgba(245, 158, 11, 0.6);
-  box-shadow: 0 24px 60px rgba(2, 6, 23, 0.8), 0 0 28px rgba(139, 92, 246, 0.25);
+  border-color: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85), 0 0 28px rgba(255, 255, 255, 0.18);
 }
 
 .tilt-card:hover::before {
   opacity: 1;
 }
 
-/* Volumetric Deep Nebula Cosmic Orbs */
+/* Volumetric Deep Lunar Platinum & Graphite Orbs */
 .liquid-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.42;
+  filter: blur(110px);
+  opacity: 0.3;
   pointer-events: none;
-  animation: orbFloat 22s infinite ease-in-out alternate;
+  animation: orbFloat 24s infinite ease-in-out alternate;
 }
 
 .orb-1 {
   width: clamp(340px, 46vw, 650px);
   height: clamp(340px, 46vw, 650px);
-  background: radial-gradient(circle, #F59E0B 0%, rgba(245, 158, 11, 0) 70%);
+  background: radial-gradient(circle, #FFFFFF 0%, rgba(255, 255, 255, 0) 70%);
   top: -120px;
   right: -120px;
 }
@@ -996,33 +988,33 @@ svg {
 .orb-2 {
   width: clamp(400px, 52vw, 750px);
   height: clamp(400px, 52vw, 750px);
-  background: radial-gradient(circle, #8B5CF6 0%, #6366F1 40%, rgba(139, 92, 246, 0) 75%);
+  background: radial-gradient(circle, #94A3B8 0%, #475569 50%, rgba(148, 163, 184, 0) 75%);
   top: 22%;
   left: -180px;
-  animation-duration: 26s;
+  animation-duration: 28s;
 }
 
 .orb-3 {
   width: clamp(320px, 40vw, 550px);
   height: clamp(320px, 40vw, 550px);
-  background: radial-gradient(circle, #06B6D4 0%, rgba(6, 182, 212, 0) 70%);
+  background: radial-gradient(circle, #CBD5E1 0%, rgba(203, 213, 225, 0) 70%);
   bottom: 8%;
   right: 4%;
-  animation-duration: 20s;
+  animation-duration: 22s;
 }
 
 .orb-4 {
   width: clamp(280px, 35vw, 480px);
   height: clamp(280px, 35vw, 480px);
-  background: radial-gradient(circle, #EC4899 0%, rgba(236, 72, 153, 0) 70%);
+  background: radial-gradient(circle, #E2E8F0 0%, rgba(226, 232, 240, 0) 70%);
   top: 60%;
   left: 20%;
-  animation-duration: 28s;
+  animation-duration: 30s;
 }
 
 @keyframes orbFloat {
   0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(50px, 70px) scale(1.12); }
+  50% { transform: translate(50px, 70px) scale(1.1); }
   100% { transform: translate(-40px, 40px) scale(0.95); }
 }
 
@@ -1034,18 +1026,18 @@ svg {
 .space-y-4 > * + * { margin-top: clamp(0.75rem, 1.5vw, 1.25rem); }
 .space-y-6 > * + * { margin-top: clamp(1.25rem, 2vw, 1.75rem); }
 
-/* Liquid Buttons in Dark Mode */
+/* Liquid Buttons in Cosmic Monochrome Mode */
 .btn-liquid-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   padding: clamp(0.75rem, 1.5vw, 0.95rem) clamp(1.25rem, 2.5vw, 1.75rem);
-  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  background: #FFFFFF;
   color: #060913 !important;
   border-radius: 0.875rem;
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.45);
+  border: 1px solid #FFFFFF;
+  box-shadow: 0 4px 22px rgba(255, 255, 255, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.8);
   font-size: clamp(0.8125rem, 1.1vw, 0.875rem);
   font-weight: 800;
   text-decoration: none;
@@ -1055,7 +1047,7 @@ svg {
 
 .btn-liquid-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(245, 158, 11, 0.55), inset 0 1px 1px rgba(255, 255, 255, 0.55);
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.9);
   filter: brightness(1.08);
 }
 
@@ -1066,7 +1058,7 @@ svg {
   gap: 0.5rem;
   padding: clamp(0.75rem, 1.5vw, 0.95rem) clamp(1.25rem, 2.5vw, 1.75rem);
   background: 
-    linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(139, 92, 246, 0.08) 100%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%),
     var(--carbon-weave);
   background-size: cover, 180px 180px;
   background-blend-mode: normal, overlay;
@@ -1083,10 +1075,10 @@ svg {
 }
 
 .btn-liquid-secondary:hover {
-  background: rgba(139, 92, 246, 0.22);
-  border-color: #8B5CF6;
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #FFFFFF;
   transform: translateY(-2px);
-  box-shadow: var(--shadow-glass-lg), 0 0 25px rgba(139, 92, 246, 0.25);
+  box-shadow: var(--shadow-glass-lg), 0 0 25px rgba(255, 255, 255, 0.2);
   color: #FFFFFF;
 }
 
@@ -1097,9 +1089,9 @@ svg {
   gap: 0.45rem;
   padding: 0.55rem 1rem;
   border-radius: 0.75rem;
-  background: rgba(245, 158, 11, 0.15);
-  border: 1px solid rgba(245, 158, 11, 0.45);
-  color: #FDE68A;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #FFFFFF;
   font-size: 0.75rem;
   font-weight: 700;
   text-decoration: none;
@@ -1107,10 +1099,10 @@ svg {
 }
 
 .btn-launch:hover {
-  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  background: #FFFFFF;
   color: #060913 !important;
   transform: translateY(-1.5px);
-  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.45);
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.4);
 }
 
 /* Component Inspector Buttons */
@@ -1119,7 +1111,7 @@ svg {
   padding: 0.4rem clamp(0.55rem, 1.1vw, 0.85rem);
   font-size: clamp(0.6875rem, 0.9vw, 0.75rem);
   border-radius: 0.625rem;
-  border: 1px solid rgba(139, 92, 246, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   background: 
     linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%),
     var(--carbon-weave);
@@ -1131,16 +1123,17 @@ svg {
 }
 
 .comp-label-btn:hover {
-  border-color: var(--color-amber-500);
-  background: rgba(245, 158, 11, 0.2);
+  border-color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.2);
   color: #FFFFFF;
 }
 
 .comp-label-btn.active {
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.35) 0%, rgba(217, 119, 6, 0.2) 100%);
-  border-color: var(--color-amber-500);
-  color: #FDE68A;
-  box-shadow: 0 0 16px rgba(245, 158, 11, 0.35);
+  background: #FFFFFF;
+  border-color: #FFFFFF;
+  color: #060913;
+  font-weight: 800;
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.4);
 }
 
 /* Project Links */
@@ -1151,12 +1144,12 @@ svg {
   text-decoration: none;
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--color-amber-500);
-  transition: color 0.15s ease;
+  color: #FFFFFF;
+  transition: all 0.15s ease;
 }
 
 .project-link:hover {
-  color: #FDE68A;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
 }
 
 /* Skill Tags */
@@ -1165,12 +1158,12 @@ svg {
   padding: 0.25rem 0.5rem;
   border-radius: 0.375rem;
   background: 
-    linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, rgba(139, 92, 246, 0.06) 100%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.03) 100%),
     var(--circuit-matrix);
   background-size: cover, 140px 140px;
   background-blend-mode: normal, overlay;
-  border: 1px solid rgba(168, 85, 247, 0.2);
-  color: #CBD5E1;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #E2E8F0;
   font-size: clamp(0.65rem, 0.85vw, 0.72rem);
   font-weight: 600;
 }
@@ -1180,14 +1173,14 @@ svg {
   width: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #030614;
+  background: #08090C;
 }
 ::-webkit-scrollbar-thumb {
   background: #334155;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #6366F1;
+  background: #94A3B8;
 }
 
 /* ==========================================================================

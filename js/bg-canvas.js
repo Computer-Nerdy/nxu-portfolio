@@ -1,8 +1,8 @@
 /* ==========================================================================
-   INTERACTIVE DEEP COSMIC NEBULA & STARDUST CANVAS ENGINE
-   - High-density twinkling stars & drifting stardust particles
-   - Supernova pulses & quantum gravitational cursor attraction
-   - Glowing constellation laser threads in cosmic hues
+   COSMIC GREY MONOCHROME STARDUST & CONSTELLATION ENGINE
+   - Monochromatic shimmering lunar stars & drifting silver stardust
+   - High-contrast platinum pulse nodes & gravitational cursor attraction
+   - Glowing silver/white constellation laser threads
    ========================================================================== */
 
 export function initBackgroundCanvas() {
@@ -36,13 +36,13 @@ export function initBackgroundCanvas() {
     particles = [];
     stars = [];
     
-    // 1. Constellation Nodes (Connected Quantum Points)
+    // 1. Monochromatic Constellation Nodes (Connected Lunar Points)
     const count = Math.min(Math.floor((width * height) / 11000), 95);
     const colorPalette = [
-      'rgba(245, 158, 11, ',   // Supernova Amber
-      'rgba(56, 189, 248, ',   // Pulsar Cyan
-      'rgba(168, 85, 247, ',   // Nebula Violet
-      'rgba(253, 230, 138, '   // Stardust Gold
+      'rgba(255, 255, 255, ',  // Pure Starlight White
+      'rgba(226, 232, 240, ',  // Lunar Platinum
+      'rgba(203, 213, 225, ',  // Frosted Silver
+      'rgba(148, 163, 184, '   // Cosmic Slate
     ];
 
     for (let i = 0; i < count; i++) {
@@ -86,7 +86,7 @@ export function initBackgroundCanvas() {
   function render() {
     ctx.clearRect(0, 0, width, height);
 
-    // 1. Draw Twinkling Background Stars
+    // 1. Draw Twinkling Lunar Background Stars
     for (let s = 0; s < stars.length; s++) {
       const star = stars[s];
       star.twinkleVal += star.twinkleSpeed;
@@ -127,12 +127,12 @@ export function initBackgroundCanvas() {
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
       ctx.fillStyle = `${p.color}${Math.max(0.15, Math.min(1, currentAlpha))})`;
-      ctx.shadowColor = '#F59E0B';
+      ctx.shadowColor = '#FFFFFF';
       ctx.shadowBlur = 10;
       ctx.fill();
       ctx.shadowBlur = 0;
 
-      // Connect nearby particles with glowing cosmic laser threads
+      // Connect nearby particles with glowing silver laser threads
       for (let j = i + 1; j < particles.length; j++) {
         const p2 = particles[j];
         const dist2 = Math.hypot(p.x - p2.x, p.y - p2.y);
@@ -141,8 +141,8 @@ export function initBackgroundCanvas() {
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(p2.x, p2.y);
-          const lineAlpha = (1 - dist2 / 125) * 0.22;
-          ctx.strokeStyle = `rgba(168, 85, 247, ${lineAlpha})`;
+          const lineAlpha = (1 - dist2 / 125) * 0.25;
+          ctx.strokeStyle = `rgba(255, 255, 255, ${lineAlpha})`;
           ctx.lineWidth = 0.85;
           ctx.stroke();
         }
