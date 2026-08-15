@@ -1,7 +1,8 @@
 /* ==========================================================================
-   LIVING NEURAL AI LABORATORY & VIBRANT CHROMATIC SMOKE ENGINE
-   - Volumetric Inward-Rolling RGB Smoke & Atmospheric Fog
-   - Screen-Blended Radiant Plasma Synapses & Action Potential Laser Pulses
+   REACTIVE FLUID DYNAMICS & LIQUID MEMBRANE BUBBLE ENGINE
+   - Navier-Stokes Grid Fluid Momentum & Vorticity Simulation
+   - Liquid Surface Tension Bubble Membrane Deform
+   - Swirling Fluorescent Dye Vortices & Inward-Billowing Smoke
    - 100% Autonomous Continuous Execution & Real-Time Telemetry Stream
    ========================================================================== */
 
@@ -11,9 +12,6 @@ export function initNeuralAILab() {
   const latencyDisplay = document.getElementById('neural-telemetry-latency');
   const accuracyDisplay = document.getElementById('neural-telemetry-accuracy');
   const throughputDisplay = document.getElementById('neural-telemetry-throughput');
-  const activePipelineName = document.getElementById('neural-active-pipeline-name');
-  const activePipelineTag = document.getElementById('neural-active-pipeline-tag');
-  const autonomousLogFeed = document.getElementById('neural-log-feed');
 
   if (!canvas || !container) return;
 
@@ -22,16 +20,27 @@ export function initNeuralAILab() {
   let neurons = [];
   let actionPulses = [];
   let smokePuffs = [];
-  let mouse = { x: -1000, y: -1000, radius: 180 };
+  let fluidRipples = [];
 
-  const autonomousPipelines = [
-    { name: "RF Spectrum Anomaly Classifier (Deep ResNet-34)", tag: "BATCH 128 · 240MHz", log: "Inference cycle: RF spectrum anomaly localized at 2.412 GHz · Confidence: 99.8%" },
-    { name: "Auto-Patch AST Neural Code Repair Engine", tag: "AST SYNAPSE · ZERO-COPY", log: "AST parser node tree resolved · Autonomous patch compiled in 0.42ms" },
-    { name: "Quantum Qubit VQE Decoherence Filter", tag: "1024 SHOTS · INT8 QUANT", log: "Variational quantum eigensolver converged · Fidelity threshold: 0.9994" },
-    { name: "Edge TPU TinyML Real-Time Sensor Fusion", tag: "DMA STREAM · 520KB SRAM", log: "Sensor matrix fused: 6-DOF IMU + RF Telemetry synchronized" }
-  ];
+  // Fluid Dynamics Velocity Grid
+  const CELL_SIZE = 32;
+  let gridCols = 0, gridRows = 0;
+  let velocityGrid = [];
 
-  let currentPipelineIdx = 0;
+  let mouse = {
+    x: -1000,
+    y: -1000,
+    prevX: -1000,
+    prevY: -1000,
+    vx: 0,
+    vy: 0,
+    speed: 0,
+    isInside: false
+  };
+
+  // Fluid Bubble Membrane Spring Physics
+  let bubbleRadii = [32, 32, 32, 32, 32, 32, 32, 32];
+  let targetRadii = [32, 32, 32, 32, 32, 32, 32, 32];
 
   function getLivingRGB(offset = 0) {
     const t = performance.now() * 0.0008 + offset;
@@ -44,7 +53,44 @@ export function initNeuralAILab() {
   function resize() {
     width = canvas.width = container.clientWidth || container.offsetWidth || window.innerWidth;
     height = canvas.height = container.clientHeight || container.offsetHeight || 600;
+
+    gridCols = Math.ceil(width / CELL_SIZE) + 1;
+    gridRows = Math.ceil(height / CELL_SIZE) + 1;
+    velocityGrid = new Float32Array(gridCols * gridRows * 2); // [u, v] per cell
+
     createNetwork();
+  }
+
+  function getGridIndex(x, y) {
+    const col = Math.max(0, Math.min(gridCols - 1, Math.floor(x / CELL_SIZE)));
+    const row = Math.max(0, Math.min(gridRows - 1, Math.floor(y / CELL_SIZE)));
+    return (row * gridCols + col) * 2;
+  }
+
+  function injectFluidForce(x, y, vx, vy, radius = 65) {
+    const radCells = Math.ceil(radius / CELL_SIZE);
+    const centerCol = Math.floor(x / CELL_SIZE);
+    const centerRow = Math.floor(y / CELL_SIZE);
+
+    for (let r = -radCells; r <= radCells; r++) {
+      for (let c = -radCells; c <= radCells; c++) {
+        const col = centerCol + c;
+        const row = centerRow + r;
+
+        if (col >= 0 && col < gridCols && row >= 0 && row < gridRows) {
+          const cellX = col * CELL_SIZE;
+          const cellY = row * CELL_SIZE;
+          const dist = Math.hypot(x - cellX, y - cellY);
+
+          if (dist < radius) {
+            const factor = (1 - dist / radius);
+            const idx = (row * gridCols + col) * 2;
+            velocityGrid[idx] += vx * factor * 0.45;
+            velocityGrid[idx + 1] += vy * factor * 0.45;
+          }
+        }
+      }
+    }
   }
 
   function spawnSmokePuff(randomStart = false) {
@@ -53,25 +99,21 @@ export function initNeuralAILab() {
     const speed = Math.random() * 1.2 + 0.6;
 
     if (edge === 0) {
-      // Top edge
       x = Math.random() * width;
       y = randomStart ? Math.random() * (height * 0.4) : -20;
       vx = (Math.random() - 0.5) * 0.8;
       vy = speed;
     } else if (edge === 1) {
-      // Right edge
       x = randomStart ? width - Math.random() * (width * 0.4) : width + 20;
       y = Math.random() * height;
       vx = -speed;
       vy = (Math.random() - 0.5) * 0.8;
     } else if (edge === 2) {
-      // Bottom edge
       x = Math.random() * width;
       y = randomStart ? height - Math.random() * (height * 0.4) : height + 20;
       vx = (Math.random() - 0.5) * 0.8;
       vy = -speed;
     } else {
-      // Left edge
       x = randomStart ? Math.random() * (width * 0.4) : -20;
       y = Math.random() * height;
       vx = speed;
@@ -87,7 +129,7 @@ export function initNeuralAILab() {
       maxSize: Math.random() * 160 + 120,
       growth: Math.random() * 0.8 + 0.45,
       opacity: 0.1,
-      maxOpacity: Math.random() * 0.45 + 0.3,
+      maxOpacity: Math.random() * 0.48 + 0.28,
       life: randomStart ? Math.floor(Math.random() * 50) : 0,
       maxLife: Math.random() * 150 + 110,
       color: getLivingRGB(Math.random() * 3)
@@ -112,21 +154,75 @@ export function initNeuralAILab() {
       });
     }
 
-    // Pre-populate dense initial smoke
     for (let s = 0; s < 40; s++) {
       spawnSmokePuff(true);
     }
   }
 
+  container.addEventListener('mouseenter', () => {
+    mouse.isInside = true;
+  });
+
   container.addEventListener('mousemove', (e) => {
     const rect = container.getBoundingClientRect();
-    mouse.x = e.clientX - rect.left;
-    mouse.y = e.clientY - rect.top;
+    const curX = e.clientX - rect.left;
+    const curY = e.clientY - rect.top;
+
+    if (mouse.prevX > -500) {
+      mouse.vx = curX - mouse.prevX;
+      mouse.vy = curY - mouse.prevY;
+      mouse.speed = Math.hypot(mouse.vx, mouse.vy);
+
+      // Inject fluid momentum & spin vortices
+      injectFluidForce(curX, curY, mouse.vx * 1.6, mouse.vy * 1.6, 95);
+
+      // Liquid bubble membrane deformation
+      const normX = curX / width;
+      const normY = curY / height;
+      const bulge = Math.min(mouse.speed * 0.8, 40);
+
+      targetRadii[0] = 32 + (1 - normX) * (1 - normY) * bulge;
+      targetRadii[1] = 32 + (normX) * (1 - normY) * bulge;
+      targetRadii[2] = 32 + (normX) * (normY) * bulge;
+      targetRadii[3] = 32 + (1 - normX) * (normY) * bulge;
+    }
+
+    mouse.prevX = mouse.x = curX;
+    mouse.prevY = mouse.y = curY;
   });
 
   container.addEventListener('mouseleave', () => {
     mouse.x = -1000;
     mouse.y = -1000;
+    mouse.prevX = -1000;
+    mouse.prevY = -1000;
+    mouse.isInside = false;
+
+    // Reset bubble membrane
+    targetRadii = [32, 32, 32, 32, 32, 32, 32, 32];
+  });
+
+  // Click generates high-speed fluid shockwave ripple
+  container.addEventListener('click', (e) => {
+    const rect = container.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const clickY = e.clientY - rect.top;
+
+    fluidRipples.push({
+      x: clickX,
+      y: clickY,
+      radius: 5,
+      maxRadius: 180,
+      opacity: 0.9,
+      color: getLivingRGB()
+    });
+
+    // Blast fluid outward in all directions
+    for (let angle = 0; angle < Math.PI * 2; angle += Math.PI / 8) {
+      const forceX = Math.cos(angle) * 18;
+      const forceY = Math.sin(angle) * 18;
+      injectFluidForce(clickX + Math.cos(angle) * 20, clickY + Math.sin(angle) * 20, forceX, forceY, 60);
+    }
   });
 
   function fireNeuralPulse() {
@@ -144,18 +240,15 @@ export function initNeuralAILab() {
       });
     }
 
-    // Extra burst of edge smoke
     for (let s = 0; s < 8; s++) {
       spawnSmokePuff(false);
     }
   }
 
-  // 1. High-frequency pulse loop (every 1.8 seconds)
   setInterval(() => {
     fireNeuralPulse();
   }, 1800);
 
-  // 2. Real-time telemetry stream (every 500ms)
   setInterval(() => {
     if (latencyDisplay) {
       latencyDisplay.textContent = `${(0.42 + Math.random() * 0.35).toFixed(2)} ms`;
@@ -168,11 +261,10 @@ export function initNeuralAILab() {
     }
   }, 500);
 
-
-
   function render() {
     ctx.clearRect(0, 0, width, height);
 
+    const now = performance.now();
     const rgb1 = getLivingRGB(0);
     const rgb2 = getLivingRGB(1.5);
     const rgb3 = getLivingRGB(3.0);
@@ -184,22 +276,45 @@ export function initNeuralAILab() {
     container.style.setProperty('--smoke-color-3', `rgb(${rgb3.r}, ${rgb3.g}, ${rgb3.b})`);
     container.style.setProperty('--smoke-color-4', `rgb(${rgb4.r}, ${rgb4.g}, ${rgb4.b})`);
 
-    // 1. Continuous Emission of Smoke Puffs from Edges
+    // 1. Update Fluid Bubble Membrane Deform (Surface Tension)
+    const fluidWobble = Math.sin(now * 0.003) * 6;
+    for (let i = 0; i < 4; i++) {
+      bubbleRadii[i] += (targetRadii[i] - bubbleRadii[i]) * 0.12;
+    }
+    const r1 = Math.max(16, bubbleRadii[0] + fluidWobble);
+    const r2 = Math.max(16, bubbleRadii[1] - fluidWobble);
+    const r3 = Math.max(16, bubbleRadii[2] + fluidWobble);
+    const r4 = Math.max(16, bubbleRadii[3] - fluidWobble);
+    container.style.borderRadius = `${r1.toFixed(1)}px ${r2.toFixed(1)}px ${r3.toFixed(1)}px ${r4.toFixed(1)}px`;
+
+    // 2. Dampen & Diffuse Velocity Grid (Viscous Dissipation)
+    const damp = 0.94;
+    for (let i = 0; i < velocityGrid.length; i++) {
+      velocityGrid[i] *= damp;
+    }
+
+    // 3. Continuous Smoke Puff Inflow from Edges
     if (smokePuffs.length < 90) {
       spawnSmokePuff(false);
       spawnSmokePuff(false);
       spawnSmokePuff(false);
     }
 
-    // Use 'screen' composite mode so colors blend into vibrant glowing fog
     ctx.globalCompositeOperation = 'screen';
 
-    // 2. Render & Update Chromatic Smoke Puffs (Volumetric Vapor Clouds)
+    // 4. Update & Render Fluid-Driven Smoke Puffs
     for (let s = smokePuffs.length - 1; s >= 0; s--) {
       const p = smokePuffs[s];
       p.life++;
-      p.x += p.vx;
-      p.y += p.vy;
+
+      // Sample Local Fluid Velocity
+      const gIdx = getGridIndex(p.x, p.y);
+      const fluidU = velocityGrid[gIdx] || 0;
+      const fluidV = velocityGrid[gIdx + 1] || 0;
+
+      // Advect particle by natural velocity + fluid field
+      p.x += p.vx + fluidU * 1.5;
+      p.y += p.vy + fluidV * 1.5;
       p.size = Math.min(p.maxSize, p.size + p.growth);
 
       if (p.life < 30) {
@@ -225,31 +340,41 @@ export function initNeuralAILab() {
       ctx.fill();
     }
 
-    // Reset composite operation for neurons and links
+    // 5. Update & Render Fluid Shockwave Ripples
+    for (let r = fluidRipples.length - 1; r >= 0; r--) {
+      const rip = fluidRipples[r];
+      rip.radius += 6;
+      rip.opacity *= 0.94;
+
+      if (rip.opacity < 0.02 || rip.radius > rip.maxRadius) {
+        fluidRipples.splice(r, 1);
+        continue;
+      }
+
+      ctx.beginPath();
+      ctx.arc(rip.x, rip.y, rip.radius, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(${rip.color.r}, ${rip.color.g}, ${rip.color.b}, ${rip.opacity})`;
+      ctx.lineWidth = 3.5;
+      ctx.stroke();
+    }
+
     ctx.globalCompositeOperation = 'source-over';
 
-    // 3. Update & Draw Synaptic Neurons
+    // 6. Update & Render Synaptic Neurons with Fluid Advection
     for (let i = 0; i < neurons.length; i++) {
       const n = neurons[i];
 
-      n.x += n.vx;
-      n.y += n.vy;
+      const gIdx = getGridIndex(n.x, n.y);
+      const fluidU = velocityGrid[gIdx] || 0;
+      const fluidV = velocityGrid[gIdx + 1] || 0;
+
+      n.x += n.vx + fluidU * 0.8;
+      n.y += n.vy + fluidV * 0.8;
 
       if (n.x < 0) n.x = width;
       if (n.x > width) n.x = 0;
       if (n.y < 0) n.y = height;
       if (n.y > height) n.y = 0;
-
-      // Mouse Gravitational Attractor
-      const dx = mouse.x - n.x;
-      const dy = mouse.y - n.y;
-      const dist = Math.hypot(dx, dy);
-
-      if (dist < mouse.radius) {
-        const force = (1 - dist / mouse.radius) * 0.9;
-        n.x -= (dx / dist) * force * 1.8;
-        n.y -= (dy / dist) * force * 1.8;
-      }
 
       n.pulseVal += n.pulseSpeed;
       const currentAlpha = n.alpha + Math.sin(n.pulseVal) * 0.25;
@@ -279,7 +404,7 @@ export function initNeuralAILab() {
       }
     }
 
-    // 4. Update & Draw Action Potential Pulses
+    // 7. Update & Draw Action Potential Pulses
     for (let p = actionPulses.length - 1; p >= 0; p--) {
       const pulse = actionPulses[p];
       pulse.progress += pulse.speed;
