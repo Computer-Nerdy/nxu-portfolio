@@ -21,14 +21,13 @@
   <!-- Stylesheet (Cache-Busted) -->
   <style>
 /* ==========================================================================
-   HARISH RAGAV V. — OBSIDIAN LIQUID GLASS DESIGN SYSTEM (DARK MODE)
-   Authentic Physical Textures (Obsidian Grain, Glass, Fractures, Carbon Weave,
-   Brushed Titanium, Circuit Matrix) + High-Contrast Crystal Typography
+   HARISH RAGAV V. — DEEP COSMIC NEBULA & OBSIDIAN DESIGN SYSTEM
+   Luminous Starlight, Supernova Amber, Pulsar Cyan & Galactic Violet
    ========================================================================== */
 
 :root {
-  --bg-canvas: #060913;
-  --bg-gradient-canvas: radial-gradient(ellipse at 50% -10%, #151E32 0%, #080D1A 55%, #03060C 100%);
+  --bg-canvas: #030614;
+  --bg-gradient-canvas: radial-gradient(ellipse at 50% -20%, #1A103C 0%, #0C102E 35%, #040718 70%, #010208 100%);
   
   /* Physical 2K Texture Paths */
   --obsidian-grain: url("images/textures/obsidian_grain.jpeg");
@@ -38,14 +37,14 @@
   --carbon-weave: url("images/textures/carbon_weave.jpeg");
   --circuit-matrix: url("images/textures/circuit_matrix.jpeg");
 
-  --glass-bg: rgba(16, 24, 44, 0.82);
-  --glass-bg-hover: rgba(26, 38, 64, 0.92);
-  --glass-border: rgba(255, 255, 255, 0.16);
-  --glass-border-hover: rgba(245, 158, 11, 0.55);
-  --glass-border-subtle: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(14, 20, 48, 0.82);
+  --glass-bg-hover: rgba(24, 32, 70, 0.92);
+  --glass-border: rgba(168, 85, 247, 0.25);
+  --glass-border-hover: rgba(245, 158, 11, 0.65);
+  --glass-border-subtle: rgba(255, 255, 255, 0.1);
   
-  --shadow-glass: 0 16px 40px 0 rgba(0, 0, 0, 0.65), inset 0 1px 1px 0 rgba(255, 255, 255, 0.28), inset 0 0 20px rgba(6, 9, 19, 0.6);
-  --shadow-glass-lg: 0 24px 60px 0 rgba(0, 0, 0, 0.85), inset 0 1px 1px 0 rgba(255, 255, 255, 0.35), inset 0 0 30px rgba(6, 9, 19, 0.8);
+  --shadow-glass: 0 16px 45px 0 rgba(2, 6, 23, 0.85), inset 0 1px 1px 0 rgba(255, 255, 255, 0.35), 0 0 20px rgba(139, 92, 246, 0.1);
+  --shadow-glass-lg: 0 24px 65px 0 rgba(2, 6, 23, 0.95), inset 0 1px 1px 0 rgba(255, 255, 255, 0.45), 0 0 35px rgba(245, 158, 11, 0.15);
   
   --color-slate-900: #FFFFFF;
   --color-slate-800: #F8FAFC;
@@ -53,20 +52,20 @@
   --color-slate-600: #94A3B8;
   --color-slate-500: #64748B;
   --color-slate-400: #475569;
-  --color-slate-200: rgba(255, 255, 255, 0.12);
-  --color-slate-100: rgba(255, 255, 255, 0.05);
+  --color-slate-200: rgba(255, 255, 255, 0.14);
+  --color-slate-100: rgba(255, 255, 255, 0.06);
   
   --color-amber-800: #FDE68A;
   --color-amber-700: #F59E0B;
   --color-amber-600: #D97706;
   --color-amber-500: #F59E0B;
-  --color-amber-100: rgba(245, 158, 11, 0.18);
-  --color-amber-50: rgba(245, 158, 11, 0.1);
+  --color-amber-100: rgba(245, 158, 11, 0.2);
+  --color-amber-50: rgba(245, 158, 11, 0.12);
   
   --color-emerald-500: #10B981;
-  --color-emerald-50: rgba(16, 185, 129, 0.12);
+  --color-emerald-50: rgba(16, 185, 129, 0.14);
   --color-emerald-700: #34D399;
-  --color-emerald-200: rgba(52, 211, 153, 0.3);
+  --color-emerald-200: rgba(52, 211, 153, 0.35);
 
   --font-display: 'Syne', 'Figtree', sans-serif;
   --font-body: 'Mulish', 'Figtree', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -128,7 +127,7 @@ a {
   background-image: var(--obsidian-grain);
   background-size: 480px 480px;
   background-repeat: repeat;
-  opacity: 0.18;
+  opacity: 0.16;
   mix-blend-mode: screen;
 }
 
@@ -148,17 +147,17 @@ a {
 }
 
 /* ==========================================================================
-   TACTILE OBSIDIAN GLASS CARDS & SURFACES
+   TACTILE COSMIC GLASS CARDS & SURFACES
    ========================================================================== */
 
 .glass-card {
   background: 
-    linear-gradient(135deg, rgba(18, 27, 48, 0.86) 0%, rgba(8, 14, 28, 0.94) 100%),
+    linear-gradient(135deg, rgba(20, 28, 58, 0.86) 0%, rgba(9, 14, 34, 0.94) 100%),
     var(--obsidian-grain);
   background-size: cover, 340px 340px;
   background-blend-mode: normal, overlay;
-  backdrop-filter: blur(28px) saturate(210%);
-  -webkit-backdrop-filter: blur(28px) saturate(210%);
+  backdrop-filter: blur(30px) saturate(220%);
+  -webkit-backdrop-filter: blur(30px) saturate(220%);
   border: 1px solid var(--glass-border);
   box-shadow: var(--shadow-glass);
   position: relative;
@@ -231,15 +230,15 @@ a {
 }
 
 .bg-slide.active {
-  opacity: 0.38;
+  opacity: 0.36;
   transform: scale(1);
 }
 
 /* ==========================================================================
-   ADVANCED TEXT TEXTURE PACKS (DYNAMIC METALLIC, PRISM & CIRCUIT TEXTURES)
+   ADVANCED COSMIC TEXT TEXTURE PACKS (SUPERNOVA, PRISM, PULSAR & EMBER)
    ========================================================================== */
 
-/* 1. Molten Liquid Gold Texture with Animated Sheen Sweep */
+/* 1. Supernova Liquid Gold Texture with Animated Sheen Sweep */
 .texture-liquid-amber,
 .text-textured-amber {
   background: linear-gradient(110deg, #FDE68A 0%, #F59E0B 22%, #FFFBEB 45%, #F59E0B 68%, #D97706 88%, #B45309 100%);
@@ -248,7 +247,7 @@ a {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
-  filter: drop-shadow(0 0 16px rgba(245, 158, 11, 0.45));
+  filter: drop-shadow(0 0 18px rgba(245, 158, 11, 0.55));
 }
 
 @keyframes textureSheenSweep {
@@ -258,13 +257,13 @@ a {
 
 /* 2. Quantum Holographic Prism Texture with Iridescent Shift */
 .texture-quantum-prism {
-  background: linear-gradient(135deg, #38BDF8 0%, #34D399 26%, #F59E0B 52%, #C084FC 78%, #38BDF8 100%);
+  background: linear-gradient(135deg, #38BDF8 0%, #818CF8 26%, #C084FC 52%, #F59E0B 78%, #38BDF8 100%);
   background-size: 240% auto;
   animation: texturePrismFlow 7s ease-in-out infinite alternate;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
-  filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.4));
+  filter: drop-shadow(0 0 18px rgba(168, 85, 247, 0.5));
 }
 
 @keyframes texturePrismFlow {
@@ -272,14 +271,14 @@ a {
   100% { background-position: 100% 50%; }
 }
 
-/* 3. Cyber Circuit Electric Cyan Texture */
+/* 3. Cyber Pulsar Cyan Lightning Texture */
 .texture-cyber-circuit {
   background: linear-gradient(120deg, #E0F2FE 0%, #38BDF8 30%, #0284C7 60%, #06B6D4 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
-  filter: drop-shadow(0 0 14px rgba(6, 182, 212, 0.45));
+  filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.55));
 }
 
 /* 4. Plasma Ember Volcanic Texture */
@@ -290,7 +289,7 @@ a {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
-  filter: drop-shadow(0 0 16px rgba(234, 88, 12, 0.45));
+  filter: drop-shadow(0 0 16px rgba(234, 88, 12, 0.5));
 }
 
 @keyframes texturePlasmaPulse {
@@ -301,12 +300,12 @@ a {
 /* 5. Aerospace Brushed Titanium Chrome Texture */
 .texture-brushed-titanium,
 .text-textured-chrome {
-  background: linear-gradient(140deg, #FFFFFF 0%, #E2E8F0 25%, #94A3B8 50%, #F8FAFC 75%, #64748B 100%);
+  background: linear-gradient(140deg, #FFFFFF 0%, #E2E8F0 25%, #A5B4FC 50%, #F8FAFC 75%, #6366F1 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
-  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.2));
+  filter: drop-shadow(0 0 14px rgba(129, 140, 248, 0.35));
 }
 
 /* ==========================================================================
@@ -340,8 +339,8 @@ a {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    border: 1.5px solid rgba(245, 158, 11, 0.5);
-    background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, rgba(245, 158, 11, 0) 70%);
+    border: 1.5px solid rgba(245, 158, 11, 0.6);
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.2) 0%, rgba(139, 92, 246, 0.1) 40%, rgba(245, 158, 11, 0) 70%);
     pointer-events: none;
     z-index: 9998;
     transform: translate3d(-100px, -100px, 0);
@@ -349,15 +348,16 @@ a {
   }
 
   .cyber-cursor-follower.cursor-hover {
-    border-color: rgba(245, 158, 11, 0.9);
-    background: radial-gradient(circle, rgba(245, 158, 11, 0.28) 0%, rgba(245, 158, 11, 0) 75%);
+    border-color: rgba(245, 158, 11, 0.95);
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.32) 0%, rgba(139, 92, 246, 0.2) 50%, rgba(245, 158, 11, 0) 75%);
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
   }
 
   .cyber-cursor-dot.cursor-hover-dot {
     width: 10px;
     height: 10px;
     background-color: #FFFFFF;
-    box-shadow: 0 0 16px #FFFFFF;
+    box-shadow: 0 0 18px #FFFFFF, 0 0 30px #F59E0B;
   }
 
   .cursor-shockwave {
@@ -389,7 +389,7 @@ a {
 }
 
 /* ==========================================================================
-   DYNAMIC WORD & CHARACTER TYPOGRAPHY (ZERO WORD MANGLING)
+   DYNAMIC WORD & CHARACTER TYPOGRAPHY
    ========================================================================== */
 
 .kinetic-word {
@@ -435,7 +435,7 @@ a {
 
 .text-illuminated {
   color: #FFFFFF !important;
-  text-shadow: 0 0 10px rgba(245, 158, 11, 0.45);
+  text-shadow: 0 0 12px rgba(245, 158, 11, 0.5);
 }
 
 /* Universal SVG Size Lock */
@@ -519,7 +519,7 @@ svg {
 }
 
 /* ==========================================================================
-   HEADER & NAVBAR (DARK OBSIDIAN GLASS)
+   HEADER & NAVBAR (COSMIC NEBULA GLASS)
    ========================================================================== */
 
 .nav-container {
@@ -538,12 +538,12 @@ svg {
   padding: 0 clamp(0.85rem, 2vw, 1.75rem);
   border-radius: clamp(0.875rem, 2vw, 1.25rem);
   background: 
-    linear-gradient(135deg, rgba(20, 29, 48, 0.88) 0%, rgba(10, 16, 30, 0.94) 100%),
+    linear-gradient(135deg, rgba(22, 32, 68, 0.9) 0%, rgba(10, 16, 40, 0.95) 100%),
     var(--obsidian-glass);
   background-size: cover, 360px 360px;
   background-blend-mode: normal, overlay;
-  backdrop-filter: blur(28px) saturate(210%);
-  -webkit-backdrop-filter: blur(28px) saturate(210%);
+  backdrop-filter: blur(28px) saturate(220%);
+  -webkit-backdrop-filter: blur(28px) saturate(220%);
   border: 1px solid var(--glass-border);
   box-shadow: var(--shadow-glass);
   display: flex;
@@ -562,8 +562,8 @@ svg {
   width: clamp(2rem, 3.2vw, 2.5rem);
   height: clamp(2rem, 3.2vw, 2.5rem);
   border-radius: 0.65rem;
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.25) 0%, rgba(217, 119, 6, 0.1) 100%);
-  border: 1px solid rgba(245, 158, 11, 0.4);
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.3) 0%, rgba(139, 92, 246, 0.2) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -571,7 +571,7 @@ svg {
   font-family: var(--font-mono);
   font-weight: 700;
   font-size: 0.8125rem;
-  box-shadow: 0 0 16px rgba(245, 158, 11, 0.15);
+  box-shadow: 0 0 18px rgba(245, 158, 11, 0.25);
   transition: transform 0.2s var(--ease-smooth);
 }
 
@@ -653,9 +653,9 @@ svg {
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--color-amber-500);
+  background: linear-gradient(90deg, #F59E0B, #8B5CF6);
   border-radius: 2px;
-  box-shadow: 0 0 8px rgba(245, 158, 11, 0.6);
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.7);
   transition: width 0.2s var(--ease-smooth);
 }
 
@@ -690,9 +690,10 @@ svg {
 }
 
 .nav-github-btn:hover {
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(139, 92, 246, 0.25);
+  border-color: #8B5CF6;
   color: #FFFFFF;
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 16px rgba(139, 92, 246, 0.3);
 }
 
 .nav-cta-btn {
@@ -705,7 +706,7 @@ svg {
   color: #060913 !important;
   font-size: clamp(0.7rem, 0.95vw, 0.75rem);
   font-weight: 800;
-  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.45);
   border: 1px solid rgba(255, 255, 255, 0.5);
   transition: all 0.2s var(--ease-smooth);
 }
@@ -718,7 +719,7 @@ svg {
 
 .nav-cta-btn:hover {
   transform: translateY(-1.5px);
-  box-shadow: 0 6px 24px rgba(245, 158, 11, 0.5);
+  box-shadow: 0 6px 26px rgba(245, 158, 11, 0.55);
   filter: brightness(1.08);
 }
 
@@ -747,7 +748,7 @@ svg {
   margin: 0.5rem auto 0;
   padding: 0.875rem;
   border-radius: 1.25rem;
-  background: rgba(15, 23, 42, 0.95);
+  background: rgba(16, 24, 52, 0.96);
   backdrop-filter: blur(28px);
   -webkit-backdrop-filter: blur(28px);
   border: 1px solid var(--glass-border);
@@ -782,7 +783,7 @@ svg {
 }
 
 .mobile-nav-link:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(139, 92, 246, 0.2);
   color: #FFFFFF;
 }
 
@@ -845,15 +846,15 @@ svg {
   left: 0;
   right: 0;
   height: 4px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
   z-index: 10;
 }
 
 .fullscreen-scrubber-fill {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, #F59E0B 0%, #D97706 100%);
-  box-shadow: 0 0 14px rgba(245, 158, 11, 0.9);
+  background: linear-gradient(90deg, #F59E0B 0%, #C084FC 50%, #38BDF8 100%);
+  box-shadow: 0 0 16px rgba(245, 158, 11, 0.95);
 }
 
 /* ==========================================================================
@@ -869,7 +870,7 @@ svg {
   overflow: hidden;
   border: 1px solid var(--glass-border);
   background: 
-    linear-gradient(135deg, rgba(18, 27, 48, 0.86) 0%, rgba(8, 14, 28, 0.94) 100%),
+    linear-gradient(135deg, rgba(20, 28, 60, 0.88) 0%, rgba(9, 14, 36, 0.95) 100%),
     var(--obsidian-fracture);
   background-size: cover, 420px 420px;
   background-blend-mode: normal, overlay;
@@ -895,7 +896,7 @@ svg {
   inset: 0;
   z-index: 100;
   background: 
-    linear-gradient(135deg, rgba(8, 13, 26, 0.96) 0%, rgba(3, 6, 12, 0.99) 100%),
+    linear-gradient(135deg, rgba(10, 14, 34, 0.97) 0%, rgba(3, 5, 15, 0.99) 100%),
     var(--obsidian-grain);
   background-size: cover, 400px 400px;
   background-blend-mode: normal, overlay;
@@ -954,7 +955,7 @@ svg {
   border-radius: 0.75rem;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(168, 85, 247, 0.3);
   color: #FFFFFF;
   font-size: 0.75rem;
   font-weight: 700;
@@ -967,7 +968,7 @@ svg {
   background: rgba(245, 158, 11, 0.35);
   border-color: #F59E0B;
   color: #FEF3C7;
-  box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.45);
 }
 
 /* 3D Tilt Card Parallax with Specular Glare in Dark Mode */
@@ -981,61 +982,70 @@ svg {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 50%), rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 60%);
+  background: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 50%), rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0) 60%);
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 .tilt-card:hover {
-  border-color: rgba(245, 158, 11, 0.55);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7), 0 0 24px rgba(245, 158, 11, 0.15);
+  border-color: rgba(245, 158, 11, 0.6);
+  box-shadow: 0 24px 60px rgba(2, 6, 23, 0.8), 0 0 28px rgba(139, 92, 246, 0.25);
 }
 
 .tilt-card:hover::before {
   opacity: 1;
 }
 
-/* Ambient Liquid Cosmic Orbs */
+/* Volumetric Deep Nebula Cosmic Orbs */
 .liquid-orb {
   position: absolute;
   border-radius: 50%;
   filter: blur(100px);
-  opacity: 0.35;
+  opacity: 0.42;
   pointer-events: none;
   animation: orbFloat 22s infinite ease-in-out alternate;
 }
 
 .orb-1 {
-  width: clamp(320px, 42vw, 600px);
-  height: clamp(320px, 42vw, 600px);
+  width: clamp(340px, 46vw, 650px);
+  height: clamp(340px, 46vw, 650px);
   background: radial-gradient(circle, #F59E0B 0%, rgba(245, 158, 11, 0) 70%);
-  top: -100px;
-  right: -100px;
+  top: -120px;
+  right: -120px;
 }
 
 .orb-2 {
-  width: clamp(380px, 50vw, 700px);
-  height: clamp(380px, 50vw, 700px);
-  background: radial-gradient(circle, #0EA5E9 0%, rgba(14, 165, 233, 0) 70%);
-  top: 25%;
-  left: -150px;
+  width: clamp(400px, 52vw, 750px);
+  height: clamp(400px, 52vw, 750px);
+  background: radial-gradient(circle, #8B5CF6 0%, #6366F1 40%, rgba(139, 92, 246, 0) 75%);
+  top: 22%;
+  left: -180px;
   animation-duration: 26s;
 }
 
 .orb-3 {
-  width: clamp(300px, 38vw, 520px);
-  height: clamp(300px, 38vw, 520px);
-  background: radial-gradient(circle, #10B981 0%, rgba(16, 185, 129, 0) 70%);
-  bottom: 10%;
-  right: 5%;
-  animation-duration: 19s;
+  width: clamp(320px, 40vw, 550px);
+  height: clamp(320px, 40vw, 550px);
+  background: radial-gradient(circle, #06B6D4 0%, rgba(6, 182, 212, 0) 70%);
+  bottom: 8%;
+  right: 4%;
+  animation-duration: 20s;
+}
+
+.orb-4 {
+  width: clamp(280px, 35vw, 480px);
+  height: clamp(280px, 35vw, 480px);
+  background: radial-gradient(circle, #EC4899 0%, rgba(236, 72, 153, 0) 70%);
+  top: 60%;
+  left: 20%;
+  animation-duration: 28s;
 }
 
 @keyframes orbFloat {
   0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(45px, 65px) scale(1.1); }
-  100% { transform: translate(-35px, 35px) scale(0.95); }
+  50% { transform: translate(50px, 70px) scale(1.12); }
+  100% { transform: translate(-40px, 40px) scale(0.95); }
 }
 
 /* Spacing Utilities */
@@ -1056,8 +1066,8 @@ svg {
   background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
   color: #060913 !important;
   border-radius: 0.875rem;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.45);
   font-size: clamp(0.8125rem, 1.1vw, 0.875rem);
   font-weight: 800;
   text-decoration: none;
@@ -1067,7 +1077,7 @@ svg {
 
 .btn-liquid-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(245, 158, 11, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 30px rgba(245, 158, 11, 0.55), inset 0 1px 1px rgba(255, 255, 255, 0.55);
   filter: brightness(1.08);
 }
 
@@ -1078,7 +1088,7 @@ svg {
   gap: 0.5rem;
   padding: clamp(0.75rem, 1.5vw, 0.95rem) clamp(1.25rem, 2.5vw, 1.75rem);
   background: 
-    linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(139, 92, 246, 0.08) 100%),
     var(--carbon-weave);
   background-size: cover, 180px 180px;
   background-blend-mode: normal, overlay;
@@ -1095,9 +1105,10 @@ svg {
 }
 
 .btn-liquid-secondary:hover {
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(139, 92, 246, 0.22);
+  border-color: #8B5CF6;
   transform: translateY(-2px);
-  box-shadow: var(--shadow-glass-lg);
+  box-shadow: var(--shadow-glass-lg), 0 0 25px rgba(139, 92, 246, 0.25);
   color: #FFFFFF;
 }
 
@@ -1109,7 +1120,7 @@ svg {
   padding: 0.55rem 1rem;
   border-radius: 0.75rem;
   background: rgba(245, 158, 11, 0.15);
-  border: 1px solid rgba(245, 158, 11, 0.4);
+  border: 1px solid rgba(245, 158, 11, 0.45);
   color: #FDE68A;
   font-size: 0.75rem;
   font-weight: 700;
@@ -1121,7 +1132,7 @@ svg {
   background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
   color: #060913 !important;
   transform: translateY(-1.5px);
-  box-shadow: 0 4px 18px rgba(245, 158, 11, 0.4);
+  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.45);
 }
 
 /* Component Inspector Buttons */
@@ -1130,7 +1141,7 @@ svg {
   padding: 0.4rem clamp(0.55rem, 1.1vw, 0.85rem);
   font-size: clamp(0.6875rem, 0.9vw, 0.75rem);
   border-radius: 0.625rem;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(139, 92, 246, 0.22);
   background: 
     linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%),
     var(--carbon-weave);
@@ -1143,15 +1154,15 @@ svg {
 
 .comp-label-btn:hover {
   border-color: var(--color-amber-500);
-  background: rgba(245, 158, 11, 0.18);
+  background: rgba(245, 158, 11, 0.2);
   color: #FFFFFF;
 }
 
 .comp-label-btn.active {
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.3) 0%, rgba(217, 119, 6, 0.15) 100%);
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.35) 0%, rgba(217, 119, 6, 0.2) 100%);
   border-color: var(--color-amber-500);
   color: #FDE68A;
-  box-shadow: 0 0 14px rgba(245, 158, 11, 0.3);
+  box-shadow: 0 0 16px rgba(245, 158, 11, 0.35);
 }
 
 /* Project Links */
@@ -1176,11 +1187,11 @@ svg {
   padding: 0.25rem 0.5rem;
   border-radius: 0.375rem;
   background: 
-    linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.03) 100%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, rgba(139, 92, 246, 0.06) 100%),
     var(--circuit-matrix);
   background-size: cover, 140px 140px;
   background-blend-mode: normal, overlay;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(168, 85, 247, 0.2);
   color: #CBD5E1;
   font-size: clamp(0.65rem, 0.85vw, 0.72rem);
   font-weight: 600;
@@ -1191,14 +1202,14 @@ svg {
   width: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #060913;
+  background: #030614;
 }
 ::-webkit-scrollbar-thumb {
   background: #334155;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: #6366F1;
 }
 
 /* ==========================================================================
@@ -1254,6 +1265,7 @@ svg {
     <div class="liquid-orb orb-1"></div>
     <div class="liquid-orb orb-2"></div>
     <div class="liquid-orb orb-3"></div>
+    <div class="liquid-orb orb-4"></div>
   </div>
 
   <!-- Physical Obsidian Micro-Grain Texture Overlay -->
@@ -1803,49 +1815,76 @@ function initBackgroundSlideshow() {
 
 /* --- Module: bg-canvas.js --- */
 /* ==========================================================================
-   INTERACTIVE QUANTUM CONSTELLATION & CYBER MATRIX BACKGROUND
-   Floating connected nodes, quantum pulses, and cursor-repelling particles
+   INTERACTIVE DEEP COSMIC NEBULA & STARDUST CANVAS ENGINE
+   - High-density twinkling stars & drifting stardust particles
+   - Supernova pulses & quantum gravitational cursor attraction
+   - Glowing constellation laser threads in cosmic hues
    ========================================================================== */
 
 function initBackgroundCanvas() {
-  const canvas = document.createElement('canvas');
-  canvas.id = 'bg-quantum-canvas';
-  canvas.style.position = 'fixed';
-  canvas.style.inset = '0';
-  canvas.style.width = '100vw';
-  canvas.style.height = '100vh';
-  canvas.style.pointerEvents = 'none';
-  canvas.style.zIndex = '1';
-  canvas.style.opacity = '0.65';
-  
-  document.body.prepend(canvas);
+  let canvas = document.getElementById('bg-quantum-canvas');
+  if (!canvas) {
+    canvas = document.createElement('canvas');
+    canvas.id = 'bg-quantum-canvas';
+    canvas.style.position = 'fixed';
+    canvas.style.inset = '0';
+    canvas.style.width = '100vw';
+    canvas.style.height = '100vh';
+    canvas.style.pointerEvents = 'none';
+    canvas.style.zIndex = '1';
+    canvas.style.opacity = '0.85';
+    document.body.prepend(canvas);
+  }
 
   const ctx = canvas.getContext('2d');
   let width, height;
   let particles = [];
-  let mouse = { x: -1000, y: -1000, radius: 160 };
+  let stars = [];
+  let mouse = { x: -1000, y: -1000, radius: 180 };
 
   function resize() {
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
-    createParticles();
+    createConstellation();
   }
 
-  function createParticles() {
+  function createConstellation() {
     particles = [];
-    const count = Math.min(Math.floor((width * height) / 14000), 75);
+    stars = [];
+    
+    // 1. Constellation Nodes (Connected Quantum Points)
+    const count = Math.min(Math.floor((width * height) / 11000), 95);
+    const colorPalette = [
+      'rgba(245, 158, 11, ',   // Supernova Amber
+      'rgba(56, 189, 248, ',   // Pulsar Cyan
+      'rgba(168, 85, 247, ',   // Nebula Violet
+      'rgba(253, 230, 138, '   // Stardust Gold
+    ];
 
     for (let i = 0; i < count; i++) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.45,
-        vy: (Math.random() - 0.5) * 0.45,
-        radius: Math.random() * 1.8 + 1,
-        baseColor: Math.random() > 0.4 ? 'rgba(245, 158, 11, ' : 'rgba(14, 165, 233, ',
-        alpha: Math.random() * 0.5 + 0.25,
-        pulseSpeed: Math.random() * 0.02 + 0.01,
-        pulseVal: Math.random() * Math.PI
+        vx: (Math.random() - 0.5) * 0.38,
+        vy: (Math.random() - 0.5) * 0.38,
+        radius: Math.random() * 2.2 + 1,
+        color: colorPalette[Math.floor(Math.random() * colorPalette.length)],
+        alpha: Math.random() * 0.6 + 0.3,
+        pulseSpeed: Math.random() * 0.025 + 0.012,
+        pulseVal: Math.random() * Math.PI * 2
+      });
+    }
+
+    // 2. Micro Background Stardust (Twinkling Cosmic Stars)
+    const starCount = Math.min(Math.floor((width * height) / 4500), 180);
+    for (let s = 0; s < starCount; s++) {
+      stars.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        radius: Math.random() * 1.2 + 0.4,
+        alpha: Math.random() * 0.7 + 0.1,
+        twinkleSpeed: Math.random() * 0.03 + 0.008,
+        twinkleVal: Math.random() * Math.PI * 2
       });
     }
   }
@@ -1863,24 +1902,19 @@ function initBackgroundCanvas() {
   function render() {
     ctx.clearRect(0, 0, width, height);
 
-    // Draw Subtle Cyber Circuit Grid Lines
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.015)';
-    ctx.lineWidth = 1;
-    const gridSize = 64;
-    for (let x = 0; x < width; x += gridSize) {
+    // 1. Draw Twinkling Background Stars
+    for (let s = 0; s < stars.length; s++) {
+      const star = stars[s];
+      star.twinkleVal += star.twinkleSpeed;
+      const currentAlpha = star.alpha + Math.sin(star.twinkleVal) * 0.35;
+      
       ctx.beginPath();
-      ctx.moveTo(x, 0);
-      ctx.lineTo(x, height);
-      ctx.stroke();
-    }
-    for (let y = 0; y < height; y += gridSize) {
-      ctx.beginPath();
-      ctx.moveTo(0, y);
-      ctx.lineTo(width, y);
-      ctx.stroke();
+      ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255, 255, 255, ${Math.max(0.05, Math.min(1, currentAlpha))})`;
+      ctx.fill();
     }
 
-    // Update & Draw Particles
+    // 2. Update & Draw Constellation Nodes
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
 
@@ -1892,40 +1926,40 @@ function initBackgroundCanvas() {
       if (p.y < 0) p.y = height;
       if (p.y > height) p.y = 0;
 
-      // Mouse Proximity Interaction (Attract & Glow)
+      // Gravitational Mouse Attraction
       const dx = mouse.x - p.x;
       const dy = mouse.y - p.y;
       const dist = Math.hypot(dx, dy);
 
       if (dist < mouse.radius) {
-        const force = (1 - dist / mouse.radius) * 0.8;
-        p.x -= (dx / dist) * force * 1.5;
-        p.y -= (dy / dist) * force * 1.5;
+        const force = (1 - dist / mouse.radius) * 0.9;
+        p.x -= (dx / dist) * force * 1.8;
+        p.y -= (dy / dist) * force * 1.8;
       }
 
       p.pulseVal += p.pulseSpeed;
-      const currentAlpha = p.alpha + Math.sin(p.pulseVal) * 0.2;
+      const currentAlpha = p.alpha + Math.sin(p.pulseVal) * 0.25;
 
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      ctx.fillStyle = `${p.baseColor}${Math.max(0.1, currentAlpha)})`;
+      ctx.fillStyle = `${p.color}${Math.max(0.15, Math.min(1, currentAlpha))})`;
       ctx.shadowColor = '#F59E0B';
-      ctx.shadowBlur = 8;
+      ctx.shadowBlur = 10;
       ctx.fill();
       ctx.shadowBlur = 0;
 
-      // Connect nearby particles with glowing quantum threads
+      // Connect nearby particles with glowing cosmic laser threads
       for (let j = i + 1; j < particles.length; j++) {
         const p2 = particles[j];
         const dist2 = Math.hypot(p.x - p2.x, p.y - p2.y);
 
-        if (dist2 < 120) {
+        if (dist2 < 125) {
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(p2.x, p2.y);
-          const lineAlpha = (1 - dist2 / 120) * 0.18;
-          ctx.strokeStyle = `rgba(245, 158, 11, ${lineAlpha})`;
-          ctx.lineWidth = 0.8;
+          const lineAlpha = (1 - dist2 / 125) * 0.22;
+          ctx.strokeStyle = `rgba(168, 85, 247, ${lineAlpha})`;
+          ctx.lineWidth = 0.85;
           ctx.stroke();
         }
       }
