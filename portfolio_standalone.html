@@ -22,21 +22,30 @@
   <style>
 /* ==========================================================================
    HARISH RAGAV V. — OBSIDIAN LIQUID GLASS DESIGN SYSTEM (DARK MODE)
-   Ultra-Polished Dark Aesthetics, Crystal Sharp Typography & 3D WebGL
+   Authentic Physical Textures (Obsidian Grain, Glass, Fractures, Carbon Weave,
+   Brushed Titanium, Circuit Matrix) + High-Contrast Crystal Typography
    ========================================================================== */
 
 :root {
   --bg-canvas: #060913;
   --bg-gradient-canvas: radial-gradient(ellipse at 50% -10%, #151E32 0%, #080D1A 55%, #03060C 100%);
   
-  --glass-bg: rgba(15, 23, 42, 0.75);
-  --glass-bg-hover: rgba(30, 41, 59, 0.88);
-  --glass-border: rgba(255, 255, 255, 0.15);
-  --glass-border-hover: rgba(245, 158, 11, 0.5);
+  /* Physical 2K Texture Paths */
+  --obsidian-grain: url("images/textures/obsidian_grain.jpeg");
+  --obsidian-glass: url("images/textures/obsidian_glass.jpeg");
+  --obsidian-fracture: url("images/textures/obsidian_fracture.jpeg");
+  --brushed-titanium: url("images/textures/brushed_titanium.jpeg");
+  --carbon-weave: url("images/textures/carbon_weave.jpeg");
+  --circuit-matrix: url("images/textures/circuit_matrix.jpeg");
+
+  --glass-bg: rgba(16, 24, 44, 0.82);
+  --glass-bg-hover: rgba(26, 38, 64, 0.92);
+  --glass-border: rgba(255, 255, 255, 0.16);
+  --glass-border-hover: rgba(245, 158, 11, 0.55);
   --glass-border-subtle: rgba(255, 255, 255, 0.08);
   
-  --shadow-glass: 0 16px 40px 0 rgba(0, 0, 0, 0.65), inset 0 1px 1px 0 rgba(255, 255, 255, 0.22), inset 0 0 20px rgba(6, 9, 19, 0.6);
-  --shadow-glass-lg: 0 24px 60px 0 rgba(0, 0, 0, 0.85), inset 0 1px 1px 0 rgba(255, 255, 255, 0.3), inset 0 0 30px rgba(6, 9, 19, 0.8);
+  --shadow-glass: 0 16px 40px 0 rgba(0, 0, 0, 0.65), inset 0 1px 1px 0 rgba(255, 255, 255, 0.28), inset 0 0 20px rgba(6, 9, 19, 0.6);
+  --shadow-glass-lg: 0 24px 60px 0 rgba(0, 0, 0, 0.85), inset 0 1px 1px 0 rgba(255, 255, 255, 0.35), inset 0 0 30px rgba(6, 9, 19, 0.8);
   
   --color-slate-900: #FFFFFF;
   --color-slate-800: #F8FAFC;
@@ -106,6 +115,24 @@ a {
 }
 
 /* ==========================================================================
+   AMBIENT OBSIDIAN MICRO-GRAIN OVERLAY (CANVAS LAYER)
+   ========================================================================== */
+
+.obsidian-texture-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+  background-image: var(--obsidian-grain);
+  background-size: 480px 480px;
+  background-repeat: repeat;
+  opacity: 0.18;
+  mix-blend-mode: screen;
+}
+
+/* ==========================================================================
    PERMANENT SECTION VISIBILITY (ZERO BLANK OR HIDDEN PAGES)
    ========================================================================== */
 
@@ -121,11 +148,15 @@ a {
 }
 
 /* ==========================================================================
-   REAL OBSIDIAN GLASS CARDS & CONTAINERS
+   TACTILE OBSIDIAN GLASS CARDS & SURFACES
    ========================================================================== */
 
 .glass-card {
-  background: rgba(15, 23, 42, 0.78);
+  background: 
+    linear-gradient(135deg, rgba(18, 27, 48, 0.86) 0%, rgba(8, 14, 28, 0.94) 100%),
+    var(--obsidian-grain);
+  background-size: cover, 340px 340px;
+  background-blend-mode: normal, overlay;
   backdrop-filter: blur(28px) saturate(210%);
   -webkit-backdrop-filter: blur(28px) saturate(210%);
   border: 1px solid var(--glass-border);
@@ -506,7 +537,11 @@ svg {
   height: clamp(3.4rem, 5.5vw, 4.25rem);
   padding: 0 clamp(0.85rem, 2vw, 1.75rem);
   border-radius: clamp(0.875rem, 2vw, 1.25rem);
-  background: rgba(15, 23, 42, 0.82);
+  background: 
+    linear-gradient(135deg, rgba(20, 29, 48, 0.88) 0%, rgba(10, 16, 30, 0.94) 100%),
+    var(--obsidian-glass);
+  background-size: cover, 360px 360px;
+  background-blend-mode: normal, overlay;
   backdrop-filter: blur(28px) saturate(210%);
   -webkit-backdrop-filter: blur(28px) saturate(210%);
   border: 1px solid var(--glass-border);
@@ -833,7 +868,11 @@ svg {
   padding: 0.65rem;
   overflow: hidden;
   border: 1px solid var(--glass-border);
-  background: rgba(15, 23, 42, 0.75);
+  background: 
+    linear-gradient(135deg, rgba(18, 27, 48, 0.86) 0%, rgba(8, 14, 28, 0.94) 100%),
+    var(--obsidian-fracture);
+  background-size: cover, 420px 420px;
+  background-blend-mode: normal, overlay;
 }
 
 #three-hero-container {
@@ -855,7 +894,11 @@ svg {
   position: fixed;
   inset: 0;
   z-index: 100;
-  background: rgba(6, 9, 19, 0.96);
+  background: 
+    linear-gradient(135deg, rgba(8, 13, 26, 0.96) 0%, rgba(3, 6, 12, 0.99) 100%),
+    var(--obsidian-grain);
+  background-size: cover, 400px 400px;
+  background-blend-mode: normal, overlay;
   backdrop-filter: blur(28px) saturate(200%);
   -webkit-backdrop-filter: blur(28px) saturate(200%);
   display: flex;
@@ -938,15 +981,15 @@ svg {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 50%), rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0) 60%);
+  background: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 50%), rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 60%);
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 .tilt-card:hover {
-  border-color: rgba(245, 158, 11, 0.45);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7), 0 0 24px rgba(245, 158, 11, 0.12);
+  border-color: rgba(245, 158, 11, 0.55);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7), 0 0 24px rgba(245, 158, 11, 0.15);
 }
 
 .tilt-card:hover::before {
@@ -1034,7 +1077,11 @@ svg {
   justify-content: center;
   gap: 0.5rem;
   padding: clamp(0.75rem, 1.5vw, 0.95rem) clamp(1.25rem, 2.5vw, 1.75rem);
-  background: rgba(255, 255, 255, 0.08);
+  background: 
+    linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%),
+    var(--carbon-weave);
+  background-size: cover, 180px 180px;
+  background-blend-mode: normal, overlay;
   backdrop-filter: blur(16px);
   border-radius: 0.875rem;
   border: 1px solid var(--glass-border);
@@ -1084,7 +1131,11 @@ svg {
   font-size: clamp(0.6875rem, 0.9vw, 0.75rem);
   border-radius: 0.625rem;
   border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.08);
+  background: 
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%),
+    var(--carbon-weave);
+  background-size: cover, 160px 160px;
+  background-blend-mode: normal, overlay;
   color: #E2E8F0;
   font-weight: 600;
   transition: all 0.2s ease;
@@ -1124,7 +1175,11 @@ svg {
   display: inline-block;
   padding: 0.25rem 0.5rem;
   border-radius: 0.375rem;
-  background: rgba(255, 255, 255, 0.08);
+  background: 
+    linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.03) 100%),
+    var(--circuit-matrix);
+  background-size: cover, 140px 140px;
+  background-blend-mode: normal, overlay;
   border: 1px solid rgba(255, 255, 255, 0.12);
   color: #CBD5E1;
   font-size: clamp(0.65rem, 0.85vw, 0.72rem);
@@ -1200,6 +1255,9 @@ svg {
     <div class="liquid-orb orb-2"></div>
     <div class="liquid-orb orb-3"></div>
   </div>
+
+  <!-- Physical Obsidian Micro-Grain Texture Overlay -->
+  <div class="obsidian-texture-canvas"></div>
 
   <!-- Header Navigation (Obsidian Liquid Glass Bar) -->
   <header class="nav-container">
