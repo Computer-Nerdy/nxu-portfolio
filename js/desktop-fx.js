@@ -1,18 +1,17 @@
 /* ==========================================================================
-   HYPER-REACTIVE CHARACTER KINETICS & DYNAMIC HERO MORPH ENGINE
-   Hero keywords disappearing & reappearing, permanent project text retention
+   DESKTOP INTERACTIVE EFFECTS (SOLID STABLE TEXT ENGINE)
+   - Zero character splitting or text disappearing/reappearing
+   - Velocity-stretching cursor & magnetic interactive buttons
+   - 3D card tilt & smooth cursor parallax
    ========================================================================== */
 
 export function initDesktopEffects() {
   if (window.innerWidth < 768) return; // Keep mobile lightweight
 
   initVelocitySparkCursor();
-  initCrystalSharpKineticPhysics();
-  initSmoothParagraphIllumination();
   initLiquidOrbCursorTracking();
   init3DCardTilt();
   initMagneticElements();
-  initScrollReveals();
 }
 
 /**
@@ -41,7 +40,7 @@ function initVelocitySparkCursor() {
     dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
 
     sparkCounter++;
-    if (sparkCounter % 2 === 0) {
+    if (sparkCounter % 3 === 0) {
       spawnCursorSpark(mouseX, mouseY);
     }
   });
@@ -79,15 +78,15 @@ function initVelocitySparkCursor() {
     wave.style.top = `${e.clientY}px`;
     document.body.appendChild(wave);
 
-    for (let i = 0; i < 8; i++) {
-      spawnCursorSpark(e.clientX + (Math.random() - 0.5) * 40, e.clientY + (Math.random() - 0.5) * 40);
+    for (let i = 0; i < 6; i++) {
+      spawnCursorSpark(e.clientX + (Math.random() - 0.5) * 30, e.clientY + (Math.random() - 0.5) * 30);
     }
 
     setTimeout(() => wave.remove(), 600);
   });
 
   // Hover expansion on interactives
-  const interactives = document.querySelectorAll('a, button, input, .comp-label-btn, .tilt-card, #three-hero-container');
+  const interactives = document.querySelectorAll('a, button, input, .tilt-card');
   interactives.forEach(el => {
     el.addEventListener('mouseenter', () => {
       follower.classList.add('cursor-hover');
@@ -102,223 +101,29 @@ function initVelocitySparkCursor() {
 
 function spawnCursorSpark(x, y) {
   const spark = document.createElement('div');
-  spark.className = 'kinetic-spark';
+  spark.className = 'cursor-spark';
+  
+  const size = Math.random() * 4 + 2;
+  const hue = Math.random() > 0.5 ? '#38BDF8' : '#EC4899';
+
+  spark.style.width = `${size}px`;
+  spark.style.height = `${size}px`;
   spark.style.left = `${x}px`;
   spark.style.top = `${y}px`;
-  
-  const vx = (Math.random() - 0.5) * 3;
-  const vy = (Math.random() - 0.5) * 3 - 1;
-  const color = Math.random() > 0.3 ? '#F59E0B' : '#38BDF8';
-  spark.style.backgroundColor = color;
-  spark.style.boxShadow = `0 0 8px ${color}`;
+  spark.style.backgroundColor = hue;
+  spark.style.boxShadow = `0 0 ${size * 2}px ${hue}`;
+
+  const vx = (Math.random() - 0.5) * 45;
+  const vy = (Math.random() - 0.5) * 45;
 
   document.body.appendChild(spark);
 
-  let curX = x, curY = y;
-  let opacity = 1;
-  let scale = Math.random() * 0.8 + 0.6;
-
-  function animateSpark() {
-    curX += vx;
-    curY += vy;
-    opacity -= 0.04;
-    scale *= 0.94;
-
-    spark.style.transform = `translate3d(${curX - x}px, ${curY - y}px, 0) scale(${scale})`;
-    spark.style.opacity = opacity;
-
-    if (opacity > 0) {
-      requestAnimationFrame(animateSpark);
-    } else {
-      spark.remove();
-    }
-  }
-  requestAnimationFrame(animateSpark);
-}
-
-/**
- * Character Kinetic Typography (applied cleanly only to main headings without affecting static project text)
- */
-function initCrystalSharpKineticPhysics() {
-  const headingElements = document.querySelectorAll('.brand-name, .section-title');
-  const charNodes = [];
-
-  headingElements.forEach(heading => {
-    wrapTextNodesInKineticWords(heading, charNodes);
+  requestAnimationFrame(() => {
+    spark.style.transform = `translate3d(${vx}px, ${vy}px, 0) scale(0)`;
+    spark.style.opacity = '0';
   });
 
-  let mouse = { x: -2000, y: -2000 };
-
-  window.addEventListener('mousemove', (e) => {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-  });
-
-  window.addEventListener('mouseleave', () => {
-    mouse.x = -2000;
-    mouse.y = -2000;
-  });
-
-  const TOTAL_LINGER_MS = 2200;
-
-  function updateKineticPhysics() {
-    const now = Date.now();
-
-    charNodes.forEach(item => {
-      const rect = item.element.getBoundingClientRect();
-      const charCenterX = rect.left + rect.width / 2;
-      const charCenterY = rect.top + rect.height / 2;
-
-      const dx = mouse.x - charCenterX;
-      const dy = mouse.y - charCenterY;
-      const dist = Math.hypot(dx, dy);
-      const radius = 140;
-
-      if (dist < radius) {
-        item.lastActiveTime = now;
-        const force = Math.pow((1 - dist / radius), 1.4);
-        const angle = Math.atan2(dy, dx);
-
-        item.targetX = -Math.cos(angle) * 18 * force;
-        item.targetY = -Math.sin(angle) * 14 * force;
-        item.targetRotate = -Math.sin(angle) * 8 * force;
-        item.targetScale = 1 + 0.16 * force;
-        item.targetGlow = force;
-      } else {
-        const elapsed = now - item.lastActiveTime;
-
-        if (elapsed < TOTAL_LINGER_MS) {
-          const progress = elapsed / TOTAL_LINGER_MS;
-          const easeFactor = 0.5 * (1 + Math.cos(Math.PI * progress));
-
-          item.targetX = 0;
-          item.targetY = -1 * easeFactor;
-          item.targetRotate = 0;
-          item.targetScale = 1 + 0.03 * easeFactor;
-          item.targetGlow = easeFactor * 0.85;
-        } else {
-          item.targetX = 0;
-          item.targetY = 0;
-          item.targetRotate = 0;
-          item.targetScale = 1;
-          item.targetGlow = 0;
-        }
-      }
-
-      const lerpFactor = 0.14;
-      item.currentX += (item.targetX - item.currentX) * lerpFactor;
-      item.currentY += (item.targetY - item.currentY) * lerpFactor;
-      item.currentRotate += (item.targetRotate - item.currentRotate) * lerpFactor;
-      item.currentScale += (item.targetScale - item.currentScale) * lerpFactor;
-      item.currentGlow += (item.targetGlow - item.currentGlow) * lerpFactor;
-
-      if (Math.abs(item.currentX) > 0.01 || Math.abs(item.currentY) > 0.01 || Math.abs(item.currentScale - 1) > 0.005) {
-        item.element.style.transform = `translate3d(${item.currentX.toFixed(2)}px, ${item.currentY.toFixed(2)}px, 0) rotate(${item.currentRotate.toFixed(2)}deg) scale(${item.currentScale.toFixed(3)})`;
-        
-        if (item.currentGlow > 0.04) {
-          item.element.style.color = '#FFFFFF';
-          item.element.style.textShadow = `0 0 1px #FFFFFF, 0 0 8px rgba(245, 158, 11, ${(item.currentGlow * 0.8).toFixed(2)})`;
-        } else {
-          item.element.style.color = '';
-          item.element.style.textShadow = '';
-        }
-      } else {
-        item.element.style.transform = 'translate3d(0, 0, 0) rotate(0deg) scale(1)';
-        item.element.style.color = '';
-        item.element.style.textShadow = '';
-      }
-    });
-
-    requestAnimationFrame(updateKineticPhysics);
-  }
-
-  updateKineticPhysics();
-}
-
-function wrapTextNodesInKineticWords(container, charList) {
-  const childNodes = Array.from(container.childNodes);
-
-  childNodes.forEach(node => {
-    if (node.nodeType === Node.TEXT_NODE) {
-      const text = node.textContent;
-      if (!text.trim() && text.length === 0) return;
-
-      const fragment = document.createDocumentFragment();
-      const words = text.split(/(\s+)/);
-
-      words.forEach(part => {
-        if (/^\s+$/.test(part)) {
-          fragment.appendChild(document.createTextNode(part));
-        } else if (part.length > 0) {
-          const wordSpan = document.createElement('span');
-          wordSpan.className = 'kinetic-word';
-
-          for (let i = 0; i < part.length; i++) {
-            const char = part[i];
-            const charSpan = document.createElement('span');
-            charSpan.className = 'kinetic-char';
-            charSpan.textContent = char;
-            wordSpan.appendChild(charSpan);
-
-            charList.push({
-              element: charSpan,
-              currentX: 0,
-              currentY: 0,
-              targetX: 0,
-              targetY: 0,
-              currentRotate: 0,
-              targetRotate: 0,
-              currentScale: 1,
-              targetScale: 1,
-              currentGlow: 0,
-              targetGlow: 0,
-              lastActiveTime: 0
-            });
-          }
-          fragment.appendChild(wordSpan);
-        }
-      });
-
-      container.replaceChild(fragment, node);
-    } else if (node.nodeType === Node.ELEMENT_NODE) {
-      wrapTextNodesInKineticWords(node, charList);
-    }
-  });
-}
-
-/**
- * Paragraph & Description Illumination
- */
-function initSmoothParagraphIllumination() {
-  const bodyTexts = document.querySelectorAll('.lead-text, .grid-skills li');
-  const textItems = [];
-
-  bodyTexts.forEach(el => {
-    textItems.push({ element: el, lastActive: 0 });
-  });
-
-  window.addEventListener('mousemove', (e) => {
-    const now = Date.now();
-    textItems.forEach(item => {
-      const rect = item.element.getBoundingClientRect();
-      const dist = Math.hypot(e.clientX - (rect.left + rect.width / 2), e.clientY - (rect.top + rect.height / 2));
-      if (dist < 260) {
-        item.lastActive = now;
-        item.element.classList.add('text-illuminated');
-      }
-    });
-  });
-
-  function checkParagraphFades() {
-    const now = Date.now();
-    textItems.forEach(item => {
-      if (item.lastActive > 0 && now - item.lastActive > 2400) {
-        item.element.classList.remove('text-illuminated');
-      }
-    });
-    requestAnimationFrame(checkParagraphFades);
-  }
-  checkParagraphFades();
+  setTimeout(() => spark.remove(), 550);
 }
 
 /**
@@ -348,21 +153,20 @@ function initLiquidOrbCursorTracking() {
 
     if (orb1) orb1.style.transform = `translate(${offsetX * 1.5}px, ${offsetY * 1.5}px)`;
     if (orb2) orb2.style.transform = `translate(${-offsetX * 1.9}px, ${-offsetY * 1.9}px)`;
-    if (orb3) orb3.style.transform = `translate(${offsetX * 1.2}px, ${-offsetY * 1.2}px)`;
+    if (orb3) orb3.style.transform = `translate(${offsetX * 0.8}px, ${offsetY * 1.4}px)`;
 
     requestAnimationFrame(updateOrbs);
   }
-
   updateOrbs();
 }
 
 /**
- * 3D Tilt & Specular Optical Glare for Project Cards & Containers
+ * High-Precision 3D Tilt for Interactive Cards
  */
 function init3DCardTilt() {
-  const tiltCards = document.querySelectorAll('.tilt-card');
+  const cards = document.querySelectorAll('.tilt-card');
 
-  tiltCards.forEach(card => {
+  cards.forEach(card => {
     card.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
@@ -371,55 +175,40 @@ function init3DCardTilt() {
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
 
-      const rotateX = ((y - centerY) / centerY) * -8;
-      const rotateY = ((x - centerX) / centerX) * 8;
+      const rotateX = ((y - centerY) / centerY) * -6;
+      const rotateY = ((x - centerX) / centerX) * 6;
 
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
-      card.style.setProperty('--glare-x', `${(x / rect.width) * 100}%`);
-      card.style.setProperty('--glare-y', `${(y / rect.height) * 100}%`);
+      card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-2px)`;
+
+      const glareX = (x / rect.width) * 100;
+      const glareY = (y / rect.height) * 100;
+      card.style.setProperty('--glare-x', `${glareX}%`);
+      card.style.setProperty('--glare-y', `${glareY}%`);
     });
 
     card.addEventListener('mouseleave', () => {
-      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
     });
   });
 }
 
 /**
- * Magnetic CTAs: Gently attract toward cursor on hover
+ * Magnetic Button Attraction
  */
 function initMagneticElements() {
-  const magnetics = document.querySelectorAll('.btn-magnetic');
+  const magneticEls = document.querySelectorAll('.btn-magnetic');
 
-  magnetics.forEach(btn => {
-    btn.addEventListener('mousemove', (e) => {
-      const rect = btn.getBoundingClientRect();
+  magneticEls.forEach(el => {
+    el.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
       const x = e.clientX - (rect.left + rect.width / 2);
       const y = e.clientY - (rect.top + rect.height / 2);
 
-      btn.style.transform = `translate(${x * 0.35}px, ${y * 0.35}px)`;
+      el.style.transform = `translate3d(${(x * 0.22).toFixed(2)}px, ${(y * 0.22).toFixed(2)}px, 0)`;
     });
 
-    btn.addEventListener('mouseleave', () => {
-      btn.style.transform = 'translate(0px, 0px)';
+    el.addEventListener('mouseleave', () => {
+      el.style.transform = 'translate3d(0, 0, 0)';
     });
   });
-}
-
-/**
- * Kinetic Scroll Reveals with staggered opacity & smooth upward drift
- */
-function initScrollReveals() {
-  const reveals = document.querySelectorAll('.reveal-on-scroll');
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
-
-  reveals.forEach(el => observer.observe(el));
 }

@@ -168,19 +168,7 @@ export function initNeuralAILab() {
     }
   }, 500);
 
-  // 3. Autonomous Pipeline Switcher (every 4 seconds)
-  setInterval(() => {
-    currentPipelineIdx = (currentPipelineIdx + 1) % autonomousPipelines.length;
-    const current = autonomousPipelines[currentPipelineIdx];
 
-    if (activePipelineName) activePipelineName.textContent = current.name;
-    if (activePipelineTag) activePipelineTag.textContent = current.tag;
-    if (autonomousLogFeed) {
-      const timeStr = new Date().toISOString().substring(11, 19);
-      autonomousLogFeed.textContent = `[${timeStr}] ${current.log}`;
-    }
-    fireNeuralPulse();
-  }, 4000);
 
   function render() {
     ctx.clearRect(0, 0, width, height);
