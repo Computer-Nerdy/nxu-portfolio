@@ -1,0 +1,3315 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Harish Ragav V. | Software, IoT & 3D Systems Engineer</title>
+  
+  <!-- SEO & Meta Tags -->
+  <meta name="description" content="Portfolio of Harish Ragav V. — Computer Science (IoT) engineer specializing in Embedded Systems, Quantum Simulations, AI/ML Tooling, and Interactive 3D WebGL." />
+  <meta name="author" content="Harish Ragav V." />
+  <meta property="og:title" content="Harish Ragav V. | Portfolio" />
+  <meta property="og:description" content="Building at the intersection of IoT, Edge AI, and Interactive 3D WebGL." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#060913" />
+
+  <!-- Google Fonts: Figtree, Mulish, Syne & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Mulish:ital,wght@0,300..900;1,300..900&family=Syne:wght@600..800&family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet (Cache-Busted) -->
+  <style>
+/* ==========================================================================
+   HARISH RAGAV V. — OBSIDIAN LIQUID GLASS DESIGN SYSTEM (DARK MODE)
+   Real Physical 2K Textures (Obsidian, Carbon Weave, Titanium & Circuit Matrix)
+   ========================================================================== */
+
+:root {
+  --bg-canvas: #060913;
+  --bg-gradient-canvas: radial-gradient(ellipse at 50% -10%, #151E32 0%, #080D1A 55%, #03060C 100%);
+  
+  /* Physical Texture Maps */
+  --obsidian-grain: url("images/textures/obsidian_grain.jpeg");
+  --obsidian-glass: url("images/textures/obsidian_glass.jpeg");
+  --obsidian-fracture: url("images/textures/obsidian_fracture.jpeg");
+  --brushed-titanium: url("images/textures/brushed_titanium.jpeg");
+  --carbon-weave: url("images/textures/carbon_weave.jpeg");
+  --circuit-matrix: url("images/textures/circuit_matrix.jpeg");
+  
+  --glass-bg: rgba(13, 20, 36, 0.82);
+  --glass-bg-hover: rgba(22, 32, 54, 0.9);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --glass-border-hover: rgba(245, 158, 11, 0.45);
+  --glass-border-subtle: rgba(255, 255, 255, 0.08);
+  
+  --shadow-glass: 0 16px 40px 0 rgba(0, 0, 0, 0.65), inset 0 1px 1px 0 rgba(255, 255, 255, 0.22), inset 0 0 20px rgba(6, 9, 19, 0.6);
+  --shadow-glass-lg: 0 24px 60px 0 rgba(0, 0, 0, 0.85), inset 0 1px 1px 0 rgba(255, 255, 255, 0.3), inset 0 0 30px rgba(6, 9, 19, 0.8);
+  
+  --color-slate-900: #FFFFFF;
+  --color-slate-800: #F8FAFC;
+  --color-slate-700: #E2E8F0;
+  --color-slate-600: #94A3B8;
+  --color-slate-500: #64748B;
+  --color-slate-400: #475569;
+  --color-slate-200: rgba(255, 255, 255, 0.12);
+  --color-slate-100: rgba(255, 255, 255, 0.05);
+  
+  --color-amber-800: #FDE68A;
+  --color-amber-700: #F59E0B;
+  --color-amber-600: #D97706;
+  --color-amber-500: #F59E0B;
+  --color-amber-100: rgba(245, 158, 11, 0.18);
+  --color-amber-50: rgba(245, 158, 11, 0.1);
+  
+  --color-emerald-500: #10B981;
+  --color-emerald-50: rgba(16, 185, 129, 0.12);
+  --color-emerald-700: #34D399;
+  --color-emerald-200: rgba(52, 211, 153, 0.3);
+
+  --font-display: 'Syne', 'Figtree', sans-serif;
+  --font-body: 'Mulish', 'Figtree', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Global Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+  background: var(--bg-canvas);
+  color: var(--color-slate-800);
+  font-family: var(--font-body);
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  overflow-x: hidden;
+  min-height: 100vh;
+  line-height: 1.6;
+  background: var(--bg-gradient-canvas), var(--obsidian-grain);
+  background-size: cover, 400px 400px;
+  background-blend-mode: overlay;
+  color: var(--color-slate-800);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ==========================================================================
+   REAL OBSIDIAN GLASS CARDS & CONTAINERS
+   ========================================================================== */
+
+.glass-card {
+  background: linear-gradient(135deg, rgba(20, 29, 48, 0.82) 0%, rgba(10, 16, 30, 0.92) 100%), var(--obsidian-grain);
+  background-size: cover, 360px 360px;
+  background-blend-mode: overlay;
+  backdrop-filter: blur(28px) saturate(210%);
+  -webkit-backdrop-filter: blur(28px) saturate(210%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-glass);
+  position: relative;
+}
+
+.shadow-glass {
+  box-shadow: var(--shadow-glass);
+}
+
+.shadow-glass-lg {
+  box-shadow: var(--shadow-glass-lg);
+}
+
+/* ==========================================================================
+   HERO KEYWORD DISAPPEARING & REAPPEARING MORPH ENGINE
+   ========================================================================== */
+
+.hero-morph-container {
+  display: inline-block;
+  vertical-align: baseline;
+  position: relative;
+}
+
+.hero-morph-word {
+  display: inline-block;
+  transform-origin: center center;
+  transition: opacity 0.45s var(--ease-smooth), transform 0.45s var(--ease-smooth), filter 0.45s var(--ease-smooth);
+}
+
+.hero-morph-word.morph-disappearing {
+  opacity: 0;
+  transform: translateY(-16px) scale(0.96);
+  filter: blur(6px);
+}
+
+.hero-morph-word.morph-reappearing {
+  animation: morphPopIn 0.5s var(--ease-smooth) forwards;
+}
+
+@keyframes morphPopIn {
+  0% { opacity: 0; transform: translateY(18px) scale(0.94); filter: blur(6px); }
+  100% { opacity: 1; transform: translateY(0px) scale(1); filter: blur(0px); }
+}
+
+/* ==========================================================================
+   PERMANENT PROJECTS SECTION STABILITY (NEVER HIDES OR DIMS)
+   ========================================================================== */
+
+#projects,
+#projects *,
+.grid-projects,
+.grid-projects * {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* ==========================================================================
+   REAL-TIME CINEMATIC BACKGROUND SLIDESHOW
+   ========================================================================== */
+
+.bg-slideshow-wrapper {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  transition: transform 0.4s var(--ease-smooth);
+}
+
+.bg-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1.08);
+  transition: opacity 2s ease-in-out, transform 8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.bg-slide.active {
+  opacity: 0.45;
+  transform: scale(1);
+}
+
+/* ==========================================================================
+   ADVANCED TEXT TEXTURE PACKS (DYNAMIC METALLIC, PRISM & CIRCUIT TEXTURES)
+   ========================================================================== */
+
+/* 1. Molten Liquid Gold Texture with Animated Sheen Sweep */
+.texture-liquid-amber,
+.text-textured-amber {
+  background: linear-gradient(110deg, #FDE68A 0%, #F59E0B 22%, #FFFBEB 45%, #F59E0B 68%, #D97706 88%, #B45309 100%);
+  background-size: 260% auto;
+  animation: textureSheenSweep 6s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  filter: drop-shadow(0 0 16px rgba(245, 158, 11, 0.45));
+}
+
+@keyframes textureSheenSweep {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 260% 50%; }
+}
+
+/* 2. Quantum Holographic Prism Texture with Iridescent Shift */
+.texture-quantum-prism {
+  background: linear-gradient(135deg, #38BDF8 0%, #34D399 26%, #F59E0B 52%, #C084FC 78%, #38BDF8 100%);
+  background-size: 240% auto;
+  animation: texturePrismFlow 7s ease-in-out infinite alternate;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.4));
+}
+
+@keyframes texturePrismFlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* 3. Cyber Circuit Electric Cyan Texture */
+.texture-cyber-circuit {
+  background: linear-gradient(120deg, #E0F2FE 0%, #38BDF8 30%, #0284C7 60%, #06B6D4 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  filter: drop-shadow(0 0 14px rgba(6, 182, 212, 0.45));
+}
+
+/* 4. Plasma Ember Volcanic Texture */
+.texture-plasma-ember {
+  background: linear-gradient(135deg, #FEF08A 0%, #F59E0B 30%, #EA580C 65%, #DC2626 100%);
+  background-size: 220% auto;
+  animation: texturePlasmaPulse 5s ease-in-out infinite alternate;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  filter: drop-shadow(0 0 16px rgba(234, 88, 12, 0.45));
+}
+
+@keyframes texturePlasmaPulse {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* 5. Aerospace Brushed Titanium Chrome Texture */
+.texture-brushed-titanium,
+.text-textured-chrome {
+  background: linear-gradient(140deg, #FFFFFF 0%, #E2E8F0 25%, #94A3B8 50%, #F8FAFC 75%, #64748B 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.2));
+}
+
+/* ==========================================================================
+   VELOCITY-STRETCHING CYBER CURSOR, SPARKS & SHOCKWAVES (DESKTOP ONLY)
+   ========================================================================== */
+
+@media (min-width: 768px) {
+  body {
+    cursor: default;
+  }
+
+  .cyber-cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    background-color: #F59E0B;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate3d(-100px, -100px, 0);
+    box-shadow: 0 0 10px #F59E0B, 0 0 20px #F59E0B;
+    transition: width 0.15s ease, height 0.15s ease, background-color 0.15s ease;
+  }
+
+  .cyber-cursor-follower {
+    position: fixed;
+    top: -18px;
+    left: -18px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(245, 158, 11, 0.5);
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, rgba(245, 158, 11, 0) 70%);
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate3d(-100px, -100px, 0);
+    will-change: transform;
+  }
+
+  .cyber-cursor-follower.cursor-hover {
+    border-color: rgba(245, 158, 11, 0.9);
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.28) 0%, rgba(245, 158, 11, 0) 75%);
+  }
+
+  .cyber-cursor-dot.cursor-hover-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 16px #FFFFFF;
+  }
+
+  .cursor-shockwave {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #F59E0B;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: none;
+    z-index: 9997;
+    animation: shockwaveExpand 0.6s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+  }
+
+  @keyframes shockwaveExpand {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 1; border-width: 3px; }
+    100% { transform: translate(-50%, -50%) scale(5); opacity: 0; border-width: 0.5px; }
+  }
+
+  .kinetic-spark {
+    position: fixed;
+    width: 4.5px;
+    height: 4.5px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9996;
+    will-change: transform, opacity;
+  }
+}
+
+/* ==========================================================================
+   DYNAMIC WORD & CHARACTER TYPOGRAPHY (ZERO WORD MANGLING)
+   ========================================================================== */
+
+.kinetic-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.kinetic-char {
+  display: inline-block;
+  will-change: transform, color;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-origin: center center;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  user-select: none;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.0rem, 4.5vw + 0.5rem, 3.8rem);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+  color: #FFFFFF;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 3.2vw + 0.2rem, 2.6rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+}
+
+.lead-text {
+  font-size: clamp(0.92rem, 1.1vw + 0.2rem, 1.15rem);
+  line-height: 1.65;
+  color: #94A3B8;
+  transition: color 0.7s var(--ease-smooth), text-shadow 0.7s var(--ease-smooth);
+}
+
+.text-illuminated {
+  color: #FFFFFF !important;
+  text-shadow: 0 0 10px rgba(245, 158, 11, 0.45);
+}
+
+/* Universal SVG Size Lock */
+svg {
+  display: inline-block !important;
+  vertical-align: middle !important;
+  flex-shrink: 0 !important;
+}
+
+.btn-liquid-primary svg,
+.btn-liquid-secondary svg,
+.btn-launch svg {
+  width: 1rem !important;
+  height: 1rem !important;
+  max-width: 1rem !important;
+  max-height: 1rem !important;
+}
+
+.project-link svg {
+  width: 0.875rem !important;
+  height: 0.875rem !important;
+  max-width: 0.875rem !important;
+  max-height: 0.875rem !important;
+}
+
+.nav-github-btn svg {
+  width: 1rem !important;
+  height: 1rem !important;
+  max-width: 1rem !important;
+  max-height: 1rem !important;
+}
+
+.nav-hamburger-btn svg {
+  width: 1.25rem !important;
+  height: 1.25rem !important;
+  max-width: 1.25rem !important;
+  max-height: 1.25rem !important;
+}
+
+/* Fluid Container Wrapper */
+.fluid-container {
+  width: min(100% - clamp(1.25rem, 4vw, 4rem), 76rem);
+  margin-inline: auto;
+}
+
+/* Fluid Sections */
+.fluid-section {
+  padding-top: clamp(3.5rem, 7vw, 7rem);
+  padding-bottom: clamp(3.5rem, 7vw, 7rem);
+}
+
+.hero-section {
+  padding-top: clamp(5.75rem, 9vw, 9.5rem);
+  padding-bottom: clamp(2.5rem, 5vw, 5rem);
+}
+
+/* Fluid Auto-Fitting Responsive Grids */
+.grid-hero {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr));
+  gap: clamp(1.75rem, 3.5vw, 3.5rem);
+  align-items: center;
+}
+
+.grid-projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  gap: clamp(1.25rem, 2.5vw, 2.25rem);
+}
+
+.grid-skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13.5rem), 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.grid-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 7rem), 1fr));
+  gap: clamp(0.5rem, 1.2vw, 0.875rem);
+}
+
+/* ==========================================================================
+   HEADER & NAVBAR (DARK OBSIDIAN GLASS)
+   ========================================================================== */
+
+.nav-container {
+  position: fixed;
+  top: clamp(0.5rem, 1.8vw, 1.25rem);
+  left: clamp(0.5rem, 2vw, 2rem);
+  right: clamp(0.5rem, 2vw, 2rem);
+  z-index: 50;
+  transition: all 0.3s var(--ease-smooth);
+}
+
+.navbar-card {
+  max-width: 76rem;
+  margin: 0 auto;
+  height: clamp(3.4rem, 5.5vw, 4.25rem);
+  padding: 0 clamp(0.85rem, 2vw, 1.75rem);
+  border-radius: clamp(0.875rem, 2vw, 1.25rem);
+  background: linear-gradient(135deg, rgba(20, 29, 48, 0.88) 0%, rgba(10, 16, 30, 0.94) 100%), var(--obsidian-glass);
+  background-size: cover, 360px 360px;
+  background-blend-mode: overlay;
+  backdrop-filter: blur(28px) saturate(210%);
+  -webkit-backdrop-filter: blur(28px) saturate(210%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-glass);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.45rem, 1vw, 0.875rem);
+  text-decoration: none;
+}
+
+.brand-avatar {
+  width: clamp(2rem, 3.2vw, 2.5rem);
+  height: clamp(2rem, 3.2vw, 2.5rem);
+  border-radius: 0.65rem;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.25) 0%, rgba(217, 119, 6, 0.1) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FDE68A;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.8125rem;
+  box-shadow: 0 0 16px rgba(245, 158, 11, 0.15);
+  transition: transform 0.2s var(--ease-smooth);
+}
+
+.brand-wrapper:hover .brand-avatar {
+  transform: scale(1.08);
+}
+
+.brand-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-size: clamp(0.875rem, 1.3vw, 1.05rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: -0.01em;
+  transition: color 0.15s ease;
+}
+
+.brand-wrapper:hover .brand-name {
+  color: var(--color-amber-500);
+}
+
+.brand-status {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: clamp(0.6rem, 0.9vw, 0.7rem);
+  font-weight: 600;
+  color: #94A3B8;
+}
+
+.status-dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background-color: var(--color-emerald-500);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.8);
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+
+.nav-menu {
+  display: none;
+  align-items: center;
+  gap: clamp(1rem, 2.5vw, 2rem);
+}
+
+@media (min-width: 768px) {
+  .nav-menu {
+    display: flex;
+  }
+}
+
+.nav-link {
+  text-decoration: none;
+  font-size: clamp(0.8125rem, 1.1vw, 0.875rem);
+  font-weight: 600;
+  color: #94A3B8;
+  transition: color 0.15s ease;
+  position: relative;
+  padding: 0.25rem 0;
+}
+
+.nav-link:hover {
+  color: #FFFFFF;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-amber-500);
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.6);
+  transition: width 0.2s var(--ease-smooth);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.35rem, 0.9vw, 0.75rem);
+}
+
+.nav-github-btn {
+  display: none;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.8rem;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--glass-border);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #E2E8F0;
+  transition: all 0.2s ease;
+}
+
+@media (min-width: 640px) {
+  .nav-github-btn {
+    display: inline-flex;
+  }
+}
+
+.nav-github-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #FFFFFF;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+}
+
+.nav-cta-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem clamp(0.75rem, 1.5vw, 1.15rem);
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  color: #060913 !important;
+  font-size: clamp(0.7rem, 0.95vw, 0.75rem);
+  font-weight: 800;
+  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 0.2s var(--ease-smooth);
+}
+
+@media (min-width: 480px) {
+  .nav-cta-btn {
+    display: inline-flex;
+  }
+}
+
+.nav-cta-btn:hover {
+  transform: translateY(-1.5px);
+  box-shadow: 0 6px 24px rgba(245, 158, 11, 0.5);
+  filter: brightness(1.08);
+}
+
+.nav-hamburger-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem;
+  border-radius: 0.65rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--glass-border);
+  color: #E2E8F0;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .nav-hamburger-btn {
+    display: none !important;
+  }
+}
+
+/* Mobile Menu Drawer */
+.mobile-menu-drawer {
+  display: none;
+  max-width: 76rem;
+  margin: 0.5rem auto 0;
+  padding: 0.875rem;
+  border-radius: 1.25rem;
+  background: linear-gradient(135deg, rgba(20, 29, 48, 0.95) 0%, rgba(10, 16, 30, 0.98) 100%), var(--obsidian-grain);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-glass-lg);
+  animation: slideDown 0.2s var(--ease-smooth);
+}
+
+.mobile-menu-drawer.active {
+  display: block !important;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (min-width: 768px) {
+  .mobile-menu-drawer,
+  .mobile-menu-drawer.active {
+    display: none !important;
+  }
+}
+
+.mobile-nav-link {
+  display: block;
+  padding: 0.65rem 1rem;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #E2E8F0;
+  transition: background 0.15s ease;
+}
+
+.mobile-nav-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   GENEROUS 480VH STICKY SCROLL VIDEO TRACK
+   ========================================================================== */
+
+#engineering-reel {
+  position: relative;
+  height: 480vh;
+  padding: 0;
+  margin: 0;
+  background: #000000;
+}
+
+@media (max-width: 768px) {
+  #engineering-reel {
+    height: 280vh;
+  }
+}
+
+.scroll-track-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.scroll-sticky-viewport {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  z-index: 20;
+}
+
+.fullscreen-video-theater {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #000000;
+  overflow: hidden;
+}
+
+.fullscreen-video-theater video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.fullscreen-scrubber-track {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 10;
+}
+
+.fullscreen-scrubber-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #F59E0B 0%, #D97706 100%);
+  box-shadow: 0 0 14px rgba(245, 158, 11, 0.9);
+}
+
+/* ==========================================================================
+   DYNAMIC 3D HARDWARE VIEWPORT & THEATRICAL STAGE
+   ========================================================================== */
+
+.viewport-card {
+  position: relative;
+  width: 100%;
+  height: clamp(280px, 38vw, 460px);
+  border-radius: clamp(1rem, 2.5vw, 1.75rem);
+  padding: 0.65rem;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  background: linear-gradient(135deg, rgba(20, 29, 48, 0.8) 0%, rgba(10, 16, 30, 0.9) 100%), var(--obsidian-fracture);
+  background-size: cover, 450px 450px;
+  background-blend-mode: overlay;
+}
+
+#three-hero-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.875rem;
+  overflow: hidden;
+  cursor: grab;
+  background-color: transparent;
+  touch-action: none;
+}
+
+#three-hero-container:active {
+  cursor: grabbing;
+}
+
+/* Fullscreen Theatrical Stage Modal */
+#theatrical-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: linear-gradient(135deg, rgba(10, 16, 30, 0.96) 0%, rgba(4, 7, 14, 0.99) 100%), var(--obsidian-grain);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  display: flex;
+  flex-direction: column;
+  animation: modalFadeIn 0.3s var(--ease-smooth);
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+#theatrical-canvas-container {
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  touch-action: none;
+}
+
+#theatrical-canvas-container:active {
+  cursor: grabbing;
+}
+
+.theatrical-hud-top {
+  position: absolute;
+  top: clamp(1rem, 2vw, 1.5rem);
+  left: clamp(1rem, 2vw, 2rem);
+  right: clamp(1rem, 2vw, 2rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 110;
+}
+
+.theatrical-hud-bottom {
+  position: absolute;
+  bottom: clamp(1rem, 2vw, 2rem);
+  left: clamp(1rem, 2vw, 2rem);
+  right: clamp(1rem, 2vw, 2rem);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  pointer-events: none;
+  z-index: 110;
+}
+
+.theatrical-control-btn {
+  pointer-events: auto;
+  padding: 0.55rem 1rem;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.theatrical-control-btn:hover,
+.theatrical-control-btn.active {
+  background: rgba(245, 158, 11, 0.35);
+  border-color: #F59E0B;
+  color: #FEF3C7;
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+}
+
+/* 3D Tilt Card Parallax with Specular Glare in Dark Mode */
+.tilt-card {
+  transition: transform 0.25s var(--ease-smooth), box-shadow 0.25s var(--ease-smooth), border-color 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.tilt-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 50%), rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0) 60%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.tilt-card:hover {
+  border-color: rgba(245, 158, 11, 0.45);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7), 0 0 24px rgba(245, 158, 11, 0.12);
+}
+
+.tilt-card:hover::before {
+  opacity: 1;
+}
+
+/* Ambient Liquid Cosmic Orbs */
+.liquid-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.35;
+  pointer-events: none;
+  animation: orbFloat 22s infinite ease-in-out alternate;
+}
+
+.orb-1 {
+  width: clamp(320px, 42vw, 600px);
+  height: clamp(320px, 42vw, 600px);
+  background: radial-gradient(circle, #F59E0B 0%, rgba(245, 158, 11, 0) 70%);
+  top: -100px;
+  right: -100px;
+}
+
+.orb-2 {
+  width: clamp(380px, 50vw, 700px);
+  height: clamp(380px, 50vw, 700px);
+  background: radial-gradient(circle, #0EA5E9 0%, rgba(14, 165, 233, 0) 70%);
+  top: 25%;
+  left: -150px;
+  animation-duration: 26s;
+}
+
+.orb-3 {
+  width: clamp(300px, 38vw, 520px);
+  height: clamp(300px, 38vw, 520px);
+  background: radial-gradient(circle, #10B981 0%, rgba(16, 185, 129, 0) 70%);
+  bottom: 10%;
+  right: 5%;
+  animation-duration: 19s;
+}
+
+@keyframes orbFloat {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(45px, 65px) scale(1.1); }
+  100% { transform: translate(-35px, 35px) scale(0.95); }
+}
+
+/* Spacing Utilities */
+.p-fluid { padding: clamp(1.25rem, 3vw, 2.5rem); }
+.p-card { padding: clamp(1.15rem, 2.5vw, 2rem); }
+.rounded-fluid { border-radius: clamp(0.875rem, 2.5vw, 1.75rem); }
+
+.space-y-4 > * + * { margin-top: clamp(0.75rem, 1.5vw, 1.25rem); }
+.space-y-6 > * + * { margin-top: clamp(1.25rem, 2vw, 1.75rem); }
+
+/* Liquid Buttons in Dark Mode */
+.btn-liquid-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: clamp(0.75rem, 1.5vw, 0.95rem) clamp(1.25rem, 2.5vw, 1.75rem);
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  color: #060913 !important;
+  border-radius: 0.875rem;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  font-size: clamp(0.8125rem, 1.1vw, 0.875rem);
+  font-weight: 800;
+  text-decoration: none;
+  transition: all 0.25s var(--ease-smooth);
+  cursor: pointer;
+}
+
+.btn-liquid-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(245, 158, 11, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.5);
+  filter: brightness(1.08);
+}
+
+.btn-liquid-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: clamp(0.75rem, 1.5vw, 0.95rem) clamp(1.25rem, 2.5vw, 1.75rem);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%), var(--carbon-weave);
+  background-size: cover, 200px 200px;
+  background-blend-mode: overlay;
+  backdrop-filter: blur(16px);
+  border-radius: 0.875rem;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-glass);
+  font-size: clamp(0.8125rem, 1.1vw, 0.875rem);
+  font-weight: 700;
+  color: #F8FAFC;
+  text-decoration: none;
+  transition: all 0.25s var(--ease-smooth);
+  cursor: pointer;
+}
+
+.btn-liquid-secondary:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glass-lg);
+  color: #FFFFFF;
+}
+
+.btn-launch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1rem;
+  border-radius: 0.75rem;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  color: #FDE68A;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s var(--ease-smooth);
+}
+
+.btn-launch:hover {
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  color: #060913 !important;
+  transform: translateY(-1.5px);
+  box-shadow: 0 4px 18px rgba(245, 158, 11, 0.4);
+}
+
+/* Component Inspector Buttons */
+.comp-label-btn {
+  cursor: pointer;
+  padding: 0.4rem clamp(0.55rem, 1.1vw, 0.85rem);
+  font-size: clamp(0.6875rem, 0.9vw, 0.75rem);
+  border-radius: 0.625rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%), var(--carbon-weave);
+  background-size: cover, 180px 180px;
+  background-blend-mode: overlay;
+  color: #E2E8F0;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.comp-label-btn:hover {
+  border-color: var(--color-amber-500);
+  background: rgba(245, 158, 11, 0.18);
+  color: #FFFFFF;
+}
+
+.comp-label-btn.active {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.3) 0%, rgba(217, 119, 6, 0.15) 100%);
+  border-color: var(--color-amber-500);
+  color: #FDE68A;
+  box-shadow: 0 0 14px rgba(245, 158, 11, 0.3);
+}
+
+/* Project Links */
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-amber-500);
+  transition: color 0.15s ease;
+}
+
+.project-link:hover {
+  color: #FDE68A;
+}
+
+/* Skill Tags */
+.skill-tag {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.03) 100%), var(--circuit-matrix);
+  background-size: cover, 180px 180px;
+  background-blend-mode: overlay;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #CBD5E1;
+  font-size: clamp(0.65rem, 0.85vw, 0.72rem);
+  font-weight: 600;
+}
+
+/* Reveal Animations */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s var(--ease-smooth), transform 0.7s var(--ease-smooth);
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Custom Dark Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #060913;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* ==========================================================================
+   MOBILE POLISH (UNDER 640PX)
+   ========================================================================== */
+
+@media (max-width: 640px) {
+  .hero-section {
+    padding-top: 5.5rem;
+    padding-bottom: 2rem;
+  }
+
+  .grid-hero {
+    gap: 1.5rem;
+  }
+
+  .viewport-card {
+    height: 270px;
+  }
+
+  .hero-title {
+    font-size: 1.85rem;
+    line-height: 1.2;
+  }
+
+  .lead-text {
+    font-size: 0.875rem;
+  }
+
+  .btn-liquid-primary,
+  .btn-liquid-secondary {
+    width: 100%;
+    padding: 0.85rem 1.25rem;
+  }
+}
+
+</style>
+
+  <!-- Three.js + GLTFLoader ES Module -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body class="antialiased selection:bg-amber-500/30 selection:text-amber-200 relative">
+
+  <!-- Ambient Liquid Cosmic Mesh Background Orbs (Reacts to Cursor Physics) -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="liquid-orb orb-1"></div>
+    <div class="liquid-orb orb-2"></div>
+    <div class="liquid-orb orb-3"></div>
+  </div>
+
+  <!-- Header Navigation (Obsidian Liquid Glass Bar) -->
+  <header class="nav-container">
+    <div class="navbar-card">
+      
+      <!-- Brand & Status -->
+      <a href="#hero" class="brand-wrapper">
+        <div class="brand-avatar">HR</div>
+        <div class="brand-info">
+          <span class="brand-name">Harish Ragav V.</span>
+          <div class="brand-status">
+            <span class="status-dot"></span>
+            <span>Available for Opportunities</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="nav-menu">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#engineering-reel" class="nav-link">Video Reel</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="nav-actions">
+        <a href="https://github.com/Computer-Nerdy" target="_blank" rel="noopener noreferrer" class="nav-github-btn btn-magnetic">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          <span>GitHub</span>
+        </a>
+        <a href="#contact" class="nav-cta-btn btn-magnetic">
+          Get in Touch
+        </a>
+
+        <!-- Mobile Menu Hamburger Button -->
+        <button id="mobile-menu-btn" class="nav-hamburger-btn" aria-label="Toggle navigation">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Drawer Menu (Hidden on desktop, active on mobile) -->
+    <div id="mobile-menu" class="mobile-menu-drawer">
+      <a href="#about" class="mobile-nav-link">About</a>
+      <a href="#engineering-reel" class="mobile-nav-link">Video Reel</a>
+      <a href="#projects" class="mobile-nav-link">Projects</a>
+      <a href="#skills" class="mobile-nav-link">Skills</a>
+      <a href="#contact" class="mobile-nav-link" style="color: var(--color-amber-500);">Contact</a>
+    </div>
+  </header>
+
+  <main class="relative z-10">
+    <!-- HERO SECTION (Fluid Dynamic Grid) -->
+    <section id="hero" class="hero-section">
+      <div class="fluid-container">
+        <div class="grid-hero">
+          
+          <!-- Left Column: Biography & Value Proposition -->
+          <div class="space-y-6 reveal-on-scroll">
+            
+            <div style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.35rem 0.85rem; border-radius: 9999px; border: 1px solid rgba(245, 158, 11, 0.4);" class="glass-card text-amber-200 text-xs font-semibold shadow-xs">
+              <span class="status-dot" style="background-color: var(--color-amber-500);"></span>
+              <span>B.Tech Computer Science (IoT) · SRM IST Ramapuram</span>
+            </div>
+
+            <h1 class="hero-title">
+              Building at the intersection of <br />
+              <span class="hero-morph-container">
+                <span id="hero-morph-text" class="hero-morph-word texture-liquid-amber">IoT Architecture &amp; Embedded Silicon</span>
+              </span>
+            </h1>
+
+            <p class="lead-text font-body">
+              I develop robust low-level embedded hardware, quantum circuit simulations, local AI tooling, and interactive 3D WebGL applications.
+            </p>
+
+            <!-- Fluid Metrics Strip -->
+            <div class="grid-metrics">
+              <div class="glass-card tilt-card" style="padding: 0.75rem 0.5rem; border-radius: 0.875rem; text-align: center;">
+                <div style="font-size: 0.7rem; color: var(--color-slate-500); font-weight: 600;">Domain</div>
+                <div style="font-size: 0.85rem; font-weight: 700; color: #FFFFFF; margin-top: 0.15rem;">Embedded &amp; IoT</div>
+              </div>
+              <div class="glass-card tilt-card" style="padding: 0.75rem 0.5rem; border-radius: 0.875rem; text-align: center;">
+                <div style="font-size: 0.7rem; color: var(--color-slate-500); font-weight: 600;">Focus</div>
+                <div style="font-size: 0.85rem; font-weight: 700; color: #FFFFFF; margin-top: 0.15rem;">Edge AI &amp; Quantum</div>
+              </div>
+              <div class="glass-card tilt-card" style="padding: 0.75rem 0.5rem; border-radius: 0.875rem; text-align: center;">
+                <div style="font-size: 0.7rem; color: var(--color-slate-500); font-weight: 600;">Graphics</div>
+                <div style="font-size: 0.85rem; font-weight: 700; color: #FFFFFF; margin-top: 0.15rem;">Three.js / WebGL</div>
+              </div>
+            </div>
+
+            <!-- Action CTAs -->
+            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 0.875rem;">
+              <a href="#projects" class="btn-liquid-primary btn-magnetic">
+                <span>Explore Projects</span>
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+              </a>
+              <button id="open-theatrical-btn" class="btn-liquid-secondary btn-magnetic" style="cursor: pointer;">
+                <span>✨ Enter Theatrical 3D Studio</span>
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Prominent Fluid 3D Hardware Viewport -->
+          <div class="space-y-4 reveal-on-scroll">
+            <div class="viewport-card glass-card shadow-glass-lg tilt-card">
+              
+              <!-- 3D Canvas -->
+              <div id="three-hero-container"></div>
+
+              <!-- Top Floating Controls -->
+              <div style="position: absolute; top: 1rem; left: 1rem; right: 1rem; display: flex; align-items: center; justify-content: space-between; pointer-events: auto; z-index: 20;">
+                <span class="glass-card" style="padding: 0.35rem 0.75rem; border-radius: 0.625rem; font-size: 0.75rem; font-weight: 600; color: #F1F5F9;">
+                  ESP32 Hardware Inspector (Drag to Rotate)
+                </span>
+                <button id="reset-cam-btn" style="padding: 0.35rem 0.75rem; border-radius: 0.625rem; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); font-size: 0.75rem; font-weight: 600; color: #FFFFFF; cursor: pointer;">
+                  Reset View
+                </button>
+              </div>
+
+            </div>
+
+            <!-- Interactive Component Label Buttons -->
+            <div class="glass-card p-card rounded-fluid space-y-4 tilt-card">
+              <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem; font-weight: 700; color: #94A3B8;">
+                <span>INSPECT HARDWARE STAGE:</span>
+                <span class="text-amber-500">Interactive Focus</span>
+              </div>
+              
+              <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                <button class="comp-label-btn active" data-comp="mcu">ESP-WROOM-32 Shield</button>
+                <button class="comp-label-btn" data-comp="antenna">PCB Antenna</button>
+                <button class="comp-label-btn" data-comp="gpio">Dual-Row Pins</button>
+                <button class="comp-label-btn" data-comp="bridge">CP2102 UART Bridge</button>
+                <button class="comp-label-btn" data-comp="buttons">EN / BOOT Buttons</button>
+              </div>
+
+              <!-- Dynamic Component Description Card -->
+              <div style="padding: 0.75rem 1rem; border-radius: 0.75rem; background-color: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08);">
+                <div id="component-label-title" style="font-weight: 800; color: #FFFFFF; font-size: 0.875rem;">ESP32 Dual-Core Xtensa LX6 (240MHz)</div>
+                <div id="component-label-desc" style="color: #94A3B8; font-size: 0.75rem; margin-top: 0.25rem; line-height: 1.6;">Main compute core with integrated Wi-Fi, Bluetooth 4.2 BLE, hardware crypto accelerator, and 520KB SRAM.</div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="fluid-section">
+      <div class="fluid-container">
+        
+        <div class="glass-card p-fluid rounded-fluid shadow-glass tilt-card reveal-on-scroll">
+          <div class="space-y-4" style="max-width: 52rem;">
+            <div class="text-xs font-bold text-amber-500 uppercase tracking-widest font-mono">Engineering Philosophy</div>
+            <h2 class="section-title">
+              Hands-on engineering from silicon registers to high-level 3D web interfaces.
+            </h2>
+            <p class="lead-text font-body">
+              I am Harish Ragav V., pursuing my B.Tech in Computer Science with a specialization in Internet of Things (IoT) at SRM Institute of Science and Technology.
+            </p>
+            <p class="lead-text font-body">
+              My engineering work connects low-level microcontrollers, quantum circuit modeling, and real-time visualization. I enjoy understanding how physical hardware and software integrate seamlessly—prototyping functional devices, diagnosing signal paths, and building robust client applications.
+            </p>
+            <div style="margin-top: 1rem; font-family: var(--font-mono); font-size: 0.8125rem; font-weight: 700; color: #F59E0B;">
+              Creed: Build → Test → Understand → Improve → Deliver.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- OPTION C: TRUE FULLSCREEN AUTO-PLAY SCROLL REEL (CLEAN 100vw x 100vh) -->
+    <section id="engineering-reel" class="relative">
+      <div id="scroll-video-container" class="scroll-track-wrapper">
+        <div class="scroll-sticky-viewport">
+          
+          <div class="fullscreen-video-theater">
+            <video id="scroll-scrub-video" muted playsinline preload="auto" poster="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080' fill='%23060913'><rect width='1920' height='1080'/><circle cx='960' cy='540' r='80' fill='none' stroke='%23F59E0B' stroke-width='4'/><polygon points='945,510 990,540 945,570' fill='%23F59E0B'/><text x='960' y='660' fill='%2394A3B8' font-family='monospace' font-size='22' text-anchor='middle'>[ HARDWARE ENGINEERING REEL - SCROLL TO PLAY ]</text></svg>">
+              <source src="videos/showcase.mp4" type="video/mp4">
+              <source src="videos/demo.mp4" type="video/mp4">
+              <source src="videos/esp32.mp4" type="video/mp4">
+            </video>
+
+            <!-- Ultra-Clean Glowing Bottom Progress Bar -->
+            <div class="fullscreen-scrubber-track">
+              <div id="video-scrub-bar" class="fullscreen-scrubber-fill"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- VERIFIED PROJECTS SECTION -->
+    <section id="projects" class="fluid-section">
+      <div class="fluid-container">
+        
+        <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; margin-bottom: clamp(2rem, 4vw, 3.5rem); gap: 1rem;" class="reveal-on-scroll">
+          <div>
+            <div class="text-xs font-bold text-amber-500 uppercase tracking-widest font-mono" style="margin-bottom: 0.35rem;">Public Builds &amp; Live Deployments</div>
+            <h2 class="section-title">
+              <span class="texture-liquid-amber">Featured Client-Ready Projects</span>
+            </h2>
+          </div>
+          <p class="font-body" style="font-size: 0.875rem; color: #94A3B8; max-width: 28rem;">
+            Directly verified applications covering quantum simulations, RF signal intelligence, and developer tooling.
+          </p>
+        </div>
+
+        <div class="grid-projects">
+          
+          <!-- PROJECT 01: QuantumLens -->
+          <div class="glass-card p-card rounded-fluid shadow-glass hover:shadow-glass-lg tilt-card reveal-on-scroll" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div class="space-y-4">
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <span style="font-size: 0.75rem; font-weight: 700; color: #FDE68A; font-family: var(--font-mono);">Computer-Nerdy / QuantumLens</span>
+                <span style="padding: 0.2rem 0.6rem; border-radius: 9999px; font-size: 0.65rem; font-weight: 700; background-color: rgba(16, 185, 129, 0.2); color: #6EE7B7; border: 1px solid rgba(16, 185, 129, 0.4);">Live Deployed</span>
+              </div>
+              <h3 class="texture-quantum-prism" style="font-size: 1.25rem; font-weight: 800; font-family: var(--font-display);">
+                QuantumLens: Interactive Quantum Circuit Simulator
+              </h3>
+              <p class="font-body" style="font-size: 0.875rem; color: #94A3B8; line-height: 1.6;">
+                A high-fidelity quantum circuit simulator featuring real-time state simulation and 3D visual rendering of state spaces in the browser.
+              </p>
+              <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; font-family: var(--font-mono); font-size: 0.75rem;">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Qiskit</span>
+                <span class="skill-tag">Three.js</span>
+                <span class="skill-tag">Streamlit</span>
+                <span class="skill-tag">WebGL</span>
+              </div>
+            </div>
+
+            <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem;">
+              <a href="https://quantumlenscb.streamlit.app" target="_blank" rel="noopener noreferrer" class="btn-launch">
+                <span>🚀 Launch Web App</span>
+                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              </a>
+              <a href="https://github.com/Computer-Nerdy/QuantumLens" target="_blank" rel="noopener noreferrer" class="project-link">
+                <span>GitHub Repo</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- PROJECT 02: Quantum RF Anomaly Detection -->
+          <div class="glass-card p-card rounded-fluid shadow-glass hover:shadow-glass-lg tilt-card reveal-on-scroll" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div class="space-y-4">
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <span style="font-size: 0.75rem; font-weight: 700; color: #FDE68A; font-family: var(--font-mono);">Computer-Nerdy / quantum-rf-anomaly-detection</span>
+                <span style="padding: 0.2rem 0.6rem; border-radius: 9999px; font-size: 0.65rem; font-weight: 700; background-color: rgba(16, 185, 129, 0.2); color: #6EE7B7; border: 1px solid rgba(16, 185, 129, 0.4);">Live Deployed</span>
+              </div>
+              <h3 class="texture-cyber-circuit" style="font-size: 1.25rem; font-weight: 800; font-family: var(--font-display);">
+                Quantum RF Spectrum Intelligence &amp; Disturbance Detector
+              </h3>
+              <p class="font-body" style="font-size: 0.875rem; color: #94A3B8; line-height: 1.6;">
+                Real-time Radio Frequency analyzer and signal disturbance detector powered by Qiskit quantum circuit simulations with 3D Bloch sphere spatial representation.
+              </p>
+              <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; font-family: var(--font-mono); font-size: 0.75rem;">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Qiskit</span>
+                <span class="skill-tag">RF Signal Analysis</span>
+                <span class="skill-tag">3D Bloch Sphere</span>
+              </div>
+            </div>
+
+            <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem;">
+              <a href="https://quantum-rf-anomaly-detection.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn-launch">
+                <span>🚀 Launch Live Tool</span>
+                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              </a>
+              <a href="https://github.com/Computer-Nerdy/quantum-rf-anomaly-detection" target="_blank" rel="noopener noreferrer" class="project-link">
+                <span>GitHub Repo</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- PROJECT 03: auto-patch -->
+          <div class="glass-card p-card rounded-fluid shadow-glass hover:shadow-glass-lg tilt-card reveal-on-scroll" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div class="space-y-4">
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <span style="font-size: 0.75rem; font-weight: 700; color: #FDE68A; font-family: var(--font-mono);">Computer-Nerdy / auto-patch</span>
+                <span style="padding: 0.2rem 0.6rem; border-radius: 9999px; font-size: 0.65rem; font-weight: 700; background-color: rgba(16, 185, 129, 0.2); color: #6EE7B7; border: 1px solid rgba(16, 185, 129, 0.4);">Public Repo</span>
+              </div>
+              <h3 class="texture-plasma-ember" style="font-size: 1.25rem; font-weight: 800; font-family: var(--font-display);">
+                Auto-Patch: AI-Driven Automated Script Bug Fixer
+              </h3>
+              <p class="font-body" style="font-size: 0.875rem; color: #94A3B8; line-height: 1.6;">
+                An AI-driven command line tool designed to analyze script execution errors, identify root causes, and automatically patch bugs in-place.
+              </p>
+              <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; font-family: var(--font-mono); font-size: 0.75rem;">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">AI/ML</span>
+                <span class="skill-tag">CLI Tooling</span>
+                <span class="skill-tag">Productivity</span>
+              </div>
+            </div>
+
+            <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; align-items: center; justify-content: space-between;">
+              <a href="https://github.com/Computer-Nerdy/auto-patch" target="_blank" rel="noopener noreferrer" class="project-link">
+                <span>View GitHub Repository</span>
+                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TECHNICAL SKILLS SECTION -->
+    <section id="skills" class="fluid-section">
+      <div class="fluid-container">
+        
+        <div style="max-width: 52rem; margin-bottom: clamp(2rem, 4vw, 3.5rem);" class="reveal-on-scroll">
+          <div class="text-xs font-bold text-amber-500 uppercase tracking-widest font-mono" style="margin-bottom: 0.35rem;">Technical Matrix</div>
+          <h2 class="section-title">
+            <span class="texture-quantum-prism">Skills, Tools &amp; Technologies</span>
+          </h2>
+        </div>
+
+        <div class="grid-skills">
+          
+          <div class="glass-card p-card rounded-fluid shadow-glass space-y-4 tilt-card reveal-on-scroll">
+            <h3 style="font-size: 1.05rem; font-weight: 800; color: #FFFFFF; font-family: var(--font-display);">Programming Languages</h3>
+            <ul class="font-body" style="font-size: 0.875rem; color: #94A3B8; line-height: 1.8; font-weight: 600; list-style: none;">
+              <li>• Python (AI, Experimentation)</li>
+              <li>• C &amp; C++ (Embedded Systems)</li>
+              <li>• JavaScript / ES6+ (Web Apps)</li>
+              <li>• Java (Academic &amp; Systems)</li>
+              <li>• HTML5 &amp; CSS3</li>
+            </ul>
+          </div>
+
+          <div class="glass-card p-card rounded-fluid shadow-glass space-y-4 tilt-card reveal-on-scroll">
+            <h3 style="font-size: 1.05rem; font-weight: 800; color: #FFFFFF; font-family: var(--font-display);">Embedded &amp; Hardware</h3>
+            <ul class="font-body" style="font-size: 0.875rem; color: #94A3B8; line-height: 1.8; font-weight: 600; list-style: none;">
+              <li>• ESP32, ESP32-S3, ESP32-P4</li>
+              <li>• Raspberry Pi 5 / Zero 2 W</li>
+              <li>• I2C, SPI, UART Communication</li>
+              <li>• OLED Displays &amp; Addressable LEDs</li>
+              <li>• Sensor Fusion &amp; Actuators</li>
+            </ul>
+          </div>
+
+          <div class="glass-card p-card rounded-fluid shadow-glass space-y-4 tilt-card reveal-on-scroll">
+            <h3 style="font-size: 1.05rem; font-weight: 800; color: #FFFFFF; font-family: var(--font-display);">AI, ML &amp; Quantum</h3>
+            <ul class="font-body" style="font-size: 0.875rem; color: #94A3B8; line-height: 1.8; font-weight: 600; list-style: none;">
+              <li>• Qiskit (Quantum Circuits)</li>
+              <li>• Machine Learning &amp; Deep Learning</li>
+              <li>• Edge AI &amp; TinyML</li>
+              <li>• Local AI / LLM Inference</li>
+              <li>• Computer Vision (OpenCV)</li>
+            </ul>
+          </div>
+
+          <div class="glass-card p-card rounded-fluid shadow-glass space-y-4 tilt-card reveal-on-scroll">
+            <h3 style="font-size: 1.05rem; font-weight: 800; color: #FFFFFF; font-family: var(--font-display);">3D Web &amp; Tooling</h3>
+            <ul class="font-body" style="font-size: 0.875rem; color: #94A3B8; line-height: 1.8; font-weight: 600; list-style: none;">
+              <li>• Three.js &amp; WebGL</li>
+              <li>• Blender (GLB 3D Pipeline)</li>
+              <li>• Linux / Ubuntu / WSL2</li>
+              <li>• Git &amp; GitHub Version Control</li>
+              <li>• VS Code &amp; Arduino IDE</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="fluid-section">
+      <div class="fluid-container" style="max-width: 48rem; text-align: center;">
+        
+        <div class="space-y-4 reveal-on-scroll" style="margin-bottom: 2rem;">
+          <div class="text-xs font-bold text-amber-500 uppercase tracking-widest font-mono">Get in Touch</div>
+          <h2 class="section-title">
+            <span class="texture-liquid-amber">Let's Discuss Projects &amp; Opportunities</span>
+          </h2>
+          <p class="lead-text font-body" style="max-width: 36rem; margin-inline: auto;">
+            I am open to software development roles, embedded systems projects, IoT engineering, and interactive 3D web collaborations.
+          </p>
+        </div>
+
+        <div class="glass-card p-fluid rounded-fluid shadow-glass-lg space-y-6 tilt-card reveal-on-scroll">
+          <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1rem;">
+            <!-- Direct Email -->
+            <a href="mailto:harishragav987@gmail.com" class="btn-liquid-primary btn-magnetic" style="flex: 1 1 auto; max-width: 16rem;">
+              <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <span>Email Harish</span>
+            </a>
+
+            <!-- Copy Email Button -->
+            <button id="copy-email-btn" class="btn-liquid-secondary btn-magnetic font-mono" style="flex: 1 1 auto; max-width: 18rem; font-size: 0.75rem;">
+              <span id="copy-text">harishragav987@gmail.com</span>
+              <span id="copy-icon">📋</span>
+            </button>
+          </div>
+
+          <!-- Social Links -->
+          <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.25rem; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.1); font-size: 0.8125rem; font-weight: 700;">
+            <a href="https://github.com/Computer-Nerdy" target="_blank" rel="noopener noreferrer" class="project-link">
+              <span>GitHub (Computer-Nerdy) ↗</span>
+            </a>
+            <a href="https://www.linkedin.com/in/harish-ragav-ab92bb287" target="_blank" rel="noopener noreferrer" class="project-link">
+              <span>LinkedIn (Harish Ragav) ↗</span>
+            </a>
+            <a href="https://quantumlenscb.streamlit.app" target="_blank" rel="noopener noreferrer" class="project-link">
+              <span>QuantumLens Live ↗</span>
+            </a>
+            <a href="https://quantum-rf-anomaly-detection.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-link">
+              <span>Quantum RF Anomaly Live ↗</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer style="padding: clamp(2rem, 4vw, 3rem) 0; border-top: 1px solid rgba(255, 255, 255, 0.1); background-color: rgba(6, 9, 19, 0.85); backdrop-filter: blur(16px);" class="relative z-10">
+    <div class="fluid-container" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;">
+      <div style="display: flex; align-items: center; gap: 0.6rem;">
+        <span class="status-dot"></span>
+        <span class="font-display font-bold text-sm text-slate-200">Harish Ragav V. · 2026</span>
+      </div>
+      <div class="font-mono text-xs text-slate-500">
+        Designed &amp; Engineered with Three.js, Obsidian Glass &amp; Kinetic Physics
+      </div>
+    </div>
+  </footer>
+
+  <!-- FULLSCREEN THEATRICAL 3D STAGE MODAL -->
+  <div id="theatrical-modal" class="hidden">
+    
+    <!-- Top HUD Controls -->
+    <div class="theatrical-hud-top">
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <span style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 700; color: #F59E0B; background: rgba(0,0,0,0.6); padding: 0.4rem 0.85rem; border-radius: 0.75rem; border: 1px solid rgba(245,158,11,0.4);">
+          ⚡ THEATRICAL 3D STUDIO
+        </span>
+        <span style="font-size: 0.75rem; color: #94A3B8; display: none;" class="md:inline">
+          Full 360° Studio Orbit | Hardware Diagnostics Mode
+        </span>
+      </div>
+
+      <button id="close-theatrical-btn" class="theatrical-control-btn" style="background: rgba(239, 68, 68, 0.25); border-color: rgba(239, 68, 68, 0.5); color: #FCA5A5;">
+        ✕ Exit Theatrical Studio
+      </button>
+    </div>
+
+    <!-- 3D Canvas Viewport -->
+    <div id="theatrical-canvas-container"></div>
+
+    <!-- Bottom HUD Diagnostic Stage -->
+    <div class="theatrical-hud-bottom">
+      <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+        <button id="theat-mode-standard" class="theatrical-control-btn active">Standard Assembled</button>
+        <button id="theat-mode-exploded" class="theatrical-control-btn">Exploded Architecture</button>
+        <button id="theat-mode-wireframe" class="theatrical-control-btn">Cyber Blueprint</button>
+        <button id="theat-autorotate-btn" class="theatrical-control-btn">Auto-Orbit: ON</button>
+      </div>
+
+      <div style="font-family: var(--font-mono); font-size: 0.75rem; color: #64748B; background: rgba(0,0,0,0.6); padding: 0.4rem 0.85rem; border-radius: 0.75rem; border: 1px solid rgba(255,255,255,0.1);">
+        ESP32-WROOM-32 · Xtensa Dual-Core 240MHz · 520KB SRAM · Wi-Fi/BLE
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Main JavaScript Module Scripts (Cache-Busted) -->
+  <script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+/* --- Module: bg-slideshow.js --- */
+/* ==========================================================================
+   REAL-TIME BACKGROUND IMAGE SLIDESHOW (2K RENDER SCENES)
+   Loads authentic 2K background scenes with smooth cross-dissolve,
+   Ken Burns slow zoom drift, and responsive cursor parallax.
+   ========================================================================== */
+
+function initBackgroundSlideshow() {
+  let container = document.getElementById('bg-slideshow-container');
+  if (!container) {
+    container = document.createElement('div');
+    container.id = 'bg-slideshow-container';
+    container.className = 'bg-slideshow-wrapper';
+    document.body.prepend(container);
+  }
+
+  container.innerHTML = '';
+
+  // 4 High-Fidelity Background Scenes
+  const imageSources = [
+    'images/bg_quantum.jpeg',
+    'images/bg_silicon.jpeg',
+    'images/bg_rf.jpeg',
+    'images/bg_workbench.jpeg'
+  ];
+
+  const slideElements = [];
+
+  imageSources.forEach((src, idx) => {
+    const slide = document.createElement('div');
+    slide.className = `bg-slide ${idx === 0 ? 'active' : ''}`;
+    slide.style.backgroundImage = `url('${src}')`;
+    container.appendChild(slide);
+    slideElements.push(slide);
+  });
+
+  let currentIdx = 0;
+
+  // Real-time smooth cinematic cross-fade every 6 seconds
+  setInterval(() => {
+    slideElements[currentIdx].classList.remove('active');
+    currentIdx = (currentIdx + 1) % slideElements.length;
+    slideElements[currentIdx].classList.add('active');
+  }, 6000);
+
+  // Parallax subtle drift with mouse coordinates
+  window.addEventListener('mousemove', (e) => {
+    const mouseX = (e.clientX / window.innerWidth - 0.5) * 45;
+    const mouseY = (e.clientY / window.innerHeight - 0.5) * 45;
+    container.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) scale(1.05)`;
+  });
+}
+
+/* --- Module: bg-canvas.js --- */
+/* ==========================================================================
+   INTERACTIVE QUANTUM CONSTELLATION & CYBER MATRIX BACKGROUND
+   Floating connected nodes, quantum pulses, and cursor-repelling particles
+   ========================================================================== */
+
+function initBackgroundCanvas() {
+  const canvas = document.createElement('canvas');
+  canvas.id = 'bg-quantum-canvas';
+  canvas.style.position = 'fixed';
+  canvas.style.inset = '0';
+  canvas.style.width = '100vw';
+  canvas.style.height = '100vh';
+  canvas.style.pointerEvents = 'none';
+  canvas.style.zIndex = '1';
+  canvas.style.opacity = '0.65';
+  
+  document.body.prepend(canvas);
+
+  const ctx = canvas.getContext('2d');
+  let width, height;
+  let particles = [];
+  let mouse = { x: -1000, y: -1000, radius: 160 };
+
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+    createParticles();
+  }
+
+  function createParticles() {
+    particles = [];
+    const count = Math.min(Math.floor((width * height) / 14000), 75);
+
+    for (let i = 0; i < count; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.45,
+        vy: (Math.random() - 0.5) * 0.45,
+        radius: Math.random() * 1.8 + 1,
+        baseColor: Math.random() > 0.4 ? 'rgba(245, 158, 11, ' : 'rgba(14, 165, 233, ',
+        alpha: Math.random() * 0.5 + 0.25,
+        pulseSpeed: Math.random() * 0.02 + 0.01,
+        pulseVal: Math.random() * Math.PI
+      });
+    }
+  }
+
+  window.addEventListener('mousemove', (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  });
+
+  window.addEventListener('mouseleave', () => {
+    mouse.x = -1000;
+    mouse.y = -1000;
+  });
+
+  function render() {
+    ctx.clearRect(0, 0, width, height);
+
+    // Draw Subtle Cyber Circuit Grid Lines
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.015)';
+    ctx.lineWidth = 1;
+    const gridSize = 64;
+    for (let x = 0; x < width; x += gridSize) {
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, height);
+      ctx.stroke();
+    }
+    for (let y = 0; y < height; y += gridSize) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(width, y);
+      ctx.stroke();
+    }
+
+    // Update & Draw Particles
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+
+      p.x += p.vx;
+      p.y += p.vy;
+
+      if (p.x < 0) p.x = width;
+      if (p.x > width) p.x = 0;
+      if (p.y < 0) p.y = height;
+      if (p.y > height) p.y = 0;
+
+      // Mouse Proximity Interaction (Attract & Glow)
+      const dx = mouse.x - p.x;
+      const dy = mouse.y - p.y;
+      const dist = Math.hypot(dx, dy);
+
+      if (dist < mouse.radius) {
+        const force = (1 - dist / mouse.radius) * 0.8;
+        p.x -= (dx / dist) * force * 1.5;
+        p.y -= (dy / dist) * force * 1.5;
+      }
+
+      p.pulseVal += p.pulseSpeed;
+      const currentAlpha = p.alpha + Math.sin(p.pulseVal) * 0.2;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `${p.baseColor}${Math.max(0.1, currentAlpha)})`;
+      ctx.shadowColor = '#F59E0B';
+      ctx.shadowBlur = 8;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+
+      // Connect nearby particles with glowing quantum threads
+      for (let j = i + 1; j < particles.length; j++) {
+        const p2 = particles[j];
+        const dist2 = Math.hypot(p.x - p2.x, p.y - p2.y);
+
+        if (dist2 < 120) {
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p2.x, p2.y);
+          const lineAlpha = (1 - dist2 / 120) * 0.18;
+          ctx.strokeStyle = `rgba(245, 158, 11, ${lineAlpha})`;
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+        }
+      }
+    }
+
+    requestAnimationFrame(render);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  render();
+}
+
+/* --- Module: theatrical-stage.js --- */
+/* ==========================================================================
+   THEATRICAL 3D STAGE & ESP32 HARDWARE LAB
+   True 360° free orbit, correct upright orientation, and interactive diagnostics HUD
+   ========================================================================== */
+
+import * as THREE from 'three';
+
+let theatricalModal, theatricalContainer;
+let tScene, tCamera, tRenderer, tBoardGroup;
+let tSubMeshes = [];
+let isTheatricalActive = false;
+let animationId = null;
+
+let autoOrbit = true;
+let isExploded = false;
+let isWireframe = false;
+
+// 360° Free Orbit & Zoom Physics
+let isDragging = false;
+let prevMouse = { x: 0, y: 0 };
+let currentRotX = 0.25;
+let currentRotY = 0.0;
+let targetRotX = 0.25;
+let targetRotY = 0.0;
+let cameraDistance = 5.2;
+let targetCameraDistance = 5.2;
+
+function initTheatricalStage(sharedGLTF) {
+  theatricalModal = document.getElementById('theatrical-modal');
+  theatricalContainer = document.getElementById('theatrical-canvas-container');
+
+  const openBtn = document.getElementById('open-theatrical-btn');
+  const closeBtn = document.getElementById('close-theatrical-btn');
+  
+  const standardBtn = document.getElementById('theat-mode-standard');
+  const explodeBtn = document.getElementById('theat-mode-exploded');
+  const wireframeBtn = document.getElementById('theat-mode-wireframe');
+  const autoRotateBtn = document.getElementById('theat-autorotate-btn');
+
+  if (openBtn) {
+    openBtn.addEventListener('click', () => openTheatricalView(sharedGLTF));
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeTheatricalView);
+  }
+
+  if (standardBtn) {
+    standardBtn.addEventListener('click', () => {
+      setAssemblyMode('standard');
+      updateButtonStates(standardBtn);
+    });
+  }
+
+  if (explodeBtn) {
+    explodeBtn.addEventListener('click', () => {
+      setAssemblyMode('exploded');
+      updateButtonStates(explodeBtn);
+    });
+  }
+
+  if (wireframeBtn) {
+    wireframeBtn.addEventListener('click', () => {
+      toggleWireframe();
+      updateButtonStates(wireframeBtn, isWireframe);
+    });
+  }
+
+  if (autoRotateBtn) {
+    autoRotateBtn.addEventListener('click', () => {
+      autoOrbit = !autoOrbit;
+      autoRotateBtn.textContent = autoOrbit ? "Auto-Orbit: ON" : "Auto-Orbit: OFF";
+      autoRotateBtn.classList.toggle('active', autoOrbit);
+    });
+  }
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isTheatricalActive) {
+      closeTheatricalView();
+    }
+  });
+}
+
+function updateButtonStates(activeBtn, isToggleActive = true) {
+  if (!activeBtn) return;
+  if (activeBtn.id === 'theat-mode-standard' || activeBtn.id === 'theat-mode-exploded') {
+    document.getElementById('theat-mode-standard')?.classList.remove('active');
+    document.getElementById('theat-mode-exploded')?.classList.remove('active');
+    activeBtn.classList.add('active');
+  } else {
+    activeBtn.classList.toggle('active', isToggleActive);
+  }
+}
+
+function openTheatricalView(sharedModel) {
+  if (!theatricalModal || !theatricalContainer) return;
+
+  theatricalModal.classList.remove('hidden');
+  theatricalModal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  isTheatricalActive = true;
+
+  if (!tRenderer) {
+    setupTheatricalScene(sharedModel);
+  } else {
+    onTheatricalResize();
+  }
+
+  // Reset to natural upright orientation
+  targetRotX = 0.25;
+  targetRotY = 0.0;
+  currentRotX = 0.25;
+  currentRotY = 0.0;
+  targetCameraDistance = 5.2;
+
+  animateTheatrical();
+}
+
+function closeTheatricalView() {
+  if (!theatricalModal) return;
+
+  theatricalModal.classList.add('hidden');
+  theatricalModal.style.display = 'none';
+  document.body.style.overflow = '';
+  isTheatricalActive = false;
+
+  if (animationId) {
+    cancelAnimationFrame(animationId);
+    animationId = null;
+  }
+}
+
+function setupTheatricalScene(modelToClone) {
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+
+  tScene = new THREE.Scene();
+  tCamera = new THREE.PerspectiveCamera(40, width / height, 0.1, 100);
+  tCamera.position.set(0, 0, cameraDistance);
+  tCamera.lookAt(0, 0, 0);
+
+  tRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
+  tRenderer.setSize(width, height);
+  tRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  tRenderer.outputColorSpace = THREE.SRGBColorSpace;
+  tRenderer.toneMapping = THREE.ACESFilmicToneMapping;
+  tRenderer.toneMappingExposure = 1.3;
+  tRenderer.shadowMap.enabled = true;
+
+  theatricalContainer.appendChild(tRenderer.domElement);
+
+  // Cinematic 4-Point Studio Lighting Rig
+  const ambient = new THREE.AmbientLight(0xFFFFFF, 2.2);
+  tScene.add(ambient);
+
+  const keyLight = new THREE.DirectionalLight(0xFFFFFF, 3.8);
+  keyLight.position.set(6, 10, 8);
+  tScene.add(keyLight);
+
+  const rimCyan = new THREE.DirectionalLight(0x38BDF8, 2.6);
+  rimCyan.position.set(-8, 5, -5);
+  tScene.add(rimCyan);
+
+  const fillAmber = new THREE.DirectionalLight(0xF59E0B, 2.2);
+  fillAmber.position.set(4, -6, 5);
+  tScene.add(fillAmber);
+
+  // Board Anchor
+  tBoardGroup = new THREE.Group();
+  tScene.add(tBoardGroup);
+
+  // Clone Model with Right-Side Up Orientation
+  if (modelToClone) {
+    const clone = modelToClone.clone(true);
+    // Ensure clean centering and upright posture
+    clone.position.set(0, 0, 0);
+    tBoardGroup.add(clone);
+
+    tSubMeshes = [];
+    clone.traverse((child) => {
+      if (child.isMesh) {
+        tSubMeshes.push({
+          mesh: child,
+          originalPos: child.position.clone(),
+          originalMat: child.material
+        });
+      }
+    });
+  }
+
+  // Free 360° Orbit & Zoom Event Listeners
+  theatricalContainer.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    prevMouse = { x: e.clientX, y: e.clientY };
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    if (!isDragging || !isTheatricalActive) return;
+    const dx = e.clientX - prevMouse.x;
+    const dy = e.clientY - prevMouse.y;
+
+    targetRotY += dx * 0.008;
+    targetRotX += dy * 0.008;
+
+    // Clamp vertical tilt to prevent inverting
+    targetRotX = Math.max(-Math.PI / 2 + 0.05, Math.min(Math.PI / 2 - 0.05, targetRotX));
+
+    prevMouse = { x: e.clientX, y: e.clientY };
+  });
+
+  window.addEventListener('mouseup', () => {
+    isDragging = false;
+  });
+
+  // Touch support for free orbit
+  theatricalContainer.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 1) {
+      isDragging = true;
+      prevMouse = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    }
+  }, { passive: true });
+
+  window.addEventListener('touchmove', (e) => {
+    if (!isDragging || !isTheatricalActive || e.touches.length !== 1) return;
+    const dx = e.touches[0].clientX - prevMouse.x;
+    const dy = e.touches[0].clientY - prevMouse.y;
+
+    targetRotY += dx * 0.008;
+    targetRotX += dy * 0.008;
+    targetRotX = Math.max(-Math.PI / 2 + 0.05, Math.min(Math.PI / 2 - 0.05, targetRotX));
+
+    prevMouse = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  }, { passive: true });
+
+  window.addEventListener('touchend', () => {
+    isDragging = false;
+  });
+
+  // Mouse Wheel Zoom
+  theatricalContainer.addEventListener('wheel', (e) => {
+    if (!isTheatricalActive) return;
+    e.preventDefault();
+    targetCameraDistance = Math.max(2.5, Math.min(9.0, targetCameraDistance + e.deltaY * 0.005));
+  }, { passive: false });
+
+  window.addEventListener('resize', onTheatricalResize);
+}
+
+function setAssemblyMode(mode) {
+  isExploded = (mode === 'exploded');
+
+  tSubMeshes.forEach((item, index) => {
+    if (isExploded) {
+      const offsetY = (index % 4) * 0.4 + 0.25;
+      const offsetX = ((index % 3) - 1) * 0.25;
+      item.mesh.position.set(
+        item.originalPos.x + offsetX,
+        item.originalPos.y + offsetY,
+        item.originalPos.z
+      );
+    } else {
+      item.mesh.position.copy(item.originalPos);
+    }
+  });
+}
+
+function toggleWireframe() {
+  isWireframe = !isWireframe;
+
+  tSubMeshes.forEach((item) => {
+    if (isWireframe) {
+      item.mesh.material = new THREE.MeshBasicMaterial({
+        color: 0xF59E0B,
+        wireframe: true
+      });
+    } else {
+      item.mesh.material = item.originalMat;
+    }
+  });
+}
+
+function onTheatricalResize() {
+  if (!tCamera || !tRenderer || !isTheatricalActive) return;
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+  tCamera.aspect = width / height;
+  tCamera.updateProjectionMatrix();
+  tRenderer.setSize(width, height);
+}
+
+function animateTheatrical() {
+  if (!isTheatricalActive) return;
+
+  animationId = requestAnimationFrame(animateTheatrical);
+
+  // Smooth Auto-Orbit if not manually dragging
+  if (autoOrbit && !isDragging) {
+    targetRotY += 0.005;
+  }
+
+  // Smooth Inertial Interpolation for 360° Free Orbit
+  currentRotX += (targetRotX - currentRotX) * 0.12;
+  currentRotY += (targetRotY - currentRotY) * 0.12;
+  cameraDistance += (targetCameraDistance - cameraDistance) * 0.12;
+
+  if (tBoardGroup) {
+    tBoardGroup.rotation.x = currentRotX;
+    tBoardGroup.rotation.y = currentRotY;
+  }
+
+  if (tCamera) {
+    tCamera.position.z = cameraDistance;
+  }
+
+  tRenderer.render(tScene, tCamera);
+}
+
+/* --- Module: three-hero.js --- */
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+
+let scene, camera, renderer, boardGroup;
+let isUserInteracting = false;
+let targetRotationX = 0.35, targetRotationY = 0.6;
+let animationFrameId;
+let isVisible = true;
+
+const container = document.getElementById('three-hero-container');
+const labelTitle = document.getElementById('component-label-title');
+const labelDesc = document.getElementById('component-label-desc');
+
+const componentMap = {};
+
+function initThreeHero() {
+  if (!container) return;
+
+  const width = container.clientWidth || 500;
+  const height = container.clientHeight || 400;
+
+  // Scene
+  scene = new THREE.Scene();
+
+  // Camera - Wide fluid perspective
+  camera = new THREE.PerspectiveCamera(38, width / height, 0.1, 100);
+  camera.position.set(0, 2.6, 5.2);
+  camera.lookAt(0, 0, 0);
+
+  // High-End WebGL Renderer with sRGB & ACES Tone Mapping
+  const isMobile = window.innerWidth < 768;
+  const pixelRatio = isMobile ? Math.min(window.devicePixelRatio, 1.5) : Math.min(window.devicePixelRatio, 2);
+
+  renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
+  renderer.setSize(width, height);
+  renderer.setPixelRatio(pixelRatio);
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.35;
+  renderer.shadowMap.enabled = !isMobile;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  container.appendChild(renderer.domElement);
+
+  // 3-Point Studio Lighting
+  const ambientLight = new THREE.AmbientLight(0xFFFFFF, 2.2);
+  scene.add(ambientLight);
+
+  const mainLight = new THREE.DirectionalLight(0xFFFFFF, 3.2);
+  mainLight.position.set(6, 12, 8);
+  mainLight.castShadow = !isMobile;
+  scene.add(mainLight);
+
+  const fillLight1 = new THREE.DirectionalLight(0xE0F2FE, 2.0);
+  fillLight1.position.set(-8, 5, -5);
+  scene.add(fillLight1);
+
+  const warmRim = new THREE.DirectionalLight(0xFEF3C7, 1.8);
+  warmRim.position.set(2, -6, 6);
+  scene.add(warmRim);
+
+  // Load custom GLB model and apply realistic PBR materials
+  loadESP32Model();
+
+  // Attach Interaction Controls & Clickable Label List
+  attachControls();
+  attachLabelButtons();
+
+  // Real-Time Dynamic Resize Observer
+  const resizeObserver = new ResizeObserver((entries) => {
+    for (let entry of entries) {
+      const cr = entry.contentRect;
+      if (cr.width > 0 && cr.height > 0) {
+        camera.aspect = cr.width / cr.height;
+        camera.updateProjectionMatrix();
+        renderer.setSize(cr.width, cr.height);
+      }
+    }
+  });
+  resizeObserver.observe(container);
+
+  // Visibility Observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      isVisible = entry.isIntersecting;
+      if (isVisible && !animationFrameId) animate();
+    });
+  }, { threshold: 0.1 });
+  observer.observe(container);
+
+  animate();
+}
+
+function loadESP32Model() {
+  const loader = new GLTFLoader();
+
+  loader.load('models/esp32.glb', (gltf) => {
+    const rawScene = gltf.scene;
+
+    // Center geometry
+    const box = new THREE.Box3().setFromObject(rawScene);
+    const center = box.getCenter(new THREE.Vector3());
+    const size = box.getSize(new THREE.Vector3());
+
+    rawScene.position.x = -center.x;
+    rawScene.position.y = -center.y;
+    rawScene.position.z = -center.z;
+
+    const wrapper = new THREE.Group();
+    wrapper.add(rawScene);
+
+    // Auto-scale to fill viewport prominently (target dimension 4.8)
+    const maxDim = Math.max(size.x, size.y, size.z) || 1;
+    const targetDim = 4.8;
+    const scale = targetDim / maxDim;
+    wrapper.scale.set(scale, scale, scale);
+
+    // Apply Photorealistic PBR Materials to Sketchfab Geometry
+    applyRealisticPBR(rawScene, size);
+
+    boardGroup = wrapper;
+    scene.add(boardGroup);
+
+    setupComponentMapForGLTF();
+
+    // Initialize full-screen theatrical studio with boardGroup
+    initTheatricalStage(boardGroup);
+  }, undefined, (err) => {
+    console.error("Error loading GLB:", err);
+  });
+}
+
+function applyRealisticPBR(model, totalSize) {
+  const matPCB = new THREE.MeshStandardMaterial({
+    color: 0x18181B, // Matte Obsidian Black PCB
+    roughness: 0.38,
+    metalness: 0.1,
+    side: THREE.DoubleSide
+  });
+
+  const matShield = new THREE.MeshStandardMaterial({
+    color: 0xE4E4E7, // Brushed Silver Metal Can
+    metalness: 0.9,
+    roughness: 0.18,
+    side: THREE.DoubleSide
+  });
+
+  const matAntenna = new THREE.MeshStandardMaterial({
+    color: 0xD97706, // Polished Copper / Gold RF Trace
+    metalness: 0.88,
+    roughness: 0.22,
+    side: THREE.DoubleSide
+  });
+
+  const matPins = new THREE.MeshStandardMaterial({
+    color: 0xF1F5F9, // Silver / Chrome Solder Pins
+    metalness: 0.95,
+    roughness: 0.12,
+    side: THREE.DoubleSide
+  });
+
+  const matChips = new THREE.MeshStandardMaterial({
+    color: 0x0F172A, // Matte IC Epoxy
+    roughness: 0.45,
+    metalness: 0.2,
+    side: THREE.DoubleSide
+  });
+
+  const matCapacitor = new THREE.MeshStandardMaterial({
+    color: 0xF59E0B, // Tantalum SMD Capacitor (Amber/Gold)
+    roughness: 0.3,
+    metalness: 0.3,
+    side: THREE.DoubleSide
+  });
+
+  const matUSB = new THREE.MeshStandardMaterial({
+    color: 0xE2E8F0, // Metal USB Housing
+    metalness: 0.92,
+    roughness: 0.15,
+    side: THREE.DoubleSide
+  });
+
+  const matLED = new THREE.MeshStandardMaterial({
+    color: 0x10B981,
+    emissive: 0x10B981,
+    emissiveIntensity: 1.2,
+    roughness: 0.1,
+    side: THREE.DoubleSide
+  });
+
+  model.traverse((child) => {
+    if (child.isMesh) {
+      child.castShadow = true;
+      child.receiveShadow = true;
+
+      child.geometry.computeBoundingBox();
+      const meshBox = child.geometry.boundingBox;
+      const meshSize = meshBox.getSize(new THREE.Vector3());
+      const meshVol = meshSize.x * meshSize.y * meshSize.z;
+      const meshCenter = meshBox.getCenter(new THREE.Vector3());
+
+      if (meshVol > (totalSize.x * totalSize.y * totalSize.z * 0.25)) {
+        child.material = matPCB;
+      } else if (meshSize.x > totalSize.x * 0.3 && meshSize.z > totalSize.z * 0.3 && meshCenter.y > 0) {
+        child.material = matShield;
+      } else if (meshCenter.x < -totalSize.x * 0.28) {
+        child.material = matAntenna;
+      } else if (meshCenter.x > totalSize.x * 0.32) {
+        child.material = matUSB;
+      } else if (meshSize.y > meshSize.x * 1.5 || meshCenter.y < -totalSize.y * 0.2) {
+        child.material = matPins;
+      } else if (meshVol < 0.005) {
+        child.material = (Math.random() > 0.4) ? matCapacitor : matLED;
+      } else {
+        child.material = matChips;
+      }
+    }
+  });
+}
+
+function setupComponentMapForGLTF() {
+  componentMap["mcu"] = {
+    userData: {
+      title: "ESP-WROOM-32 Microcontroller Shield",
+      desc: "Xtensa dual-core LX6 32-bit CPU running up to 240MHz with 520KB SRAM and integrated Wi-Fi/Bluetooth."
+    }
+  };
+  componentMap["antenna"] = {
+    userData: {
+      title: "2.4 GHz PCB Inverted-F Antenna",
+      desc: "Meandered inverted-F trace antenna designed for optimal 2.4 GHz RF transmission efficiency."
+    }
+  };
+  componentMap["gpio"] = {
+    userData: {
+      title: "Dual-Row 30-Pin / 38-Pin Headers",
+      desc: "Full pinout access to I2C, SPI, UART, PWM, capacitive touch pins, and 12-bit analog inputs."
+    }
+  };
+  componentMap["bridge"] = {
+    userData: {
+      title: "Silicon Labs CP2102 USB-to-UART Bridge",
+      desc: "High-performance USB bridge supporting firmware burning and real-time serial telemetry."
+    }
+  };
+  componentMap["buttons"] = {
+    userData: {
+      title: "Tactile Push Buttons (EN / BOOT)",
+      desc: "Micro tactile switches for hardware resetting (EN) and entering serial bootloader flashing mode (BOOT / IO0)."
+    }
+  };
+}
+
+function attachLabelButtons() {
+  const buttons = document.querySelectorAll('.comp-label-btn');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const targetKey = btn.dataset.comp;
+      highlightComponent(targetKey);
+    });
+  });
+}
+
+function highlightComponent(key) {
+  const target = componentMap[key];
+  if (!target || !labelTitle || !labelDesc) return;
+
+  const data = target.userData;
+  labelTitle.textContent = data.title;
+  labelDesc.textContent = data.desc;
+
+  if (key === 'mcu') { targetRotationX = 0.35; targetRotationY = 0.4; }
+  else if (key === 'antenna') { targetRotationX = 0.35; targetRotationY = 1.2; }
+  else if (key === 'gpio') { targetRotationX = 0.7; targetRotationY = 0.25; }
+  else if (key === 'bridge') { targetRotationX = 0.35; targetRotationY = -0.3; }
+  else if (key === 'buttons') { targetRotationX = 0.3; targetRotationY = -1.0; }
+}
+
+function attachControls() {
+  let isDragging = false;
+  let prevPos = { x: 0, y: 0 };
+
+  const onPointerDown = (e) => {
+    isDragging = true;
+    isUserInteracting = true;
+    const clientX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
+    const clientY = e.clientY || (e.touches && e.touches[0].clientY) || 0;
+    prevPos = { x: clientX, y: clientY };
+  };
+
+  const onPointerMove = (e) => {
+    if (!isDragging) return;
+    const clientX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
+    const clientY = e.clientY || (e.touches && e.touches[0].clientY) || 0;
+
+    const deltaX = clientX - prevPos.x;
+    const deltaY = clientY - prevPos.y;
+
+    targetRotationY += deltaX * 0.008;
+    targetRotationX += deltaY * 0.008;
+
+    prevPos = { x: clientX, y: clientY };
+  };
+
+  const onPointerUp = () => {
+    isDragging = false;
+    setTimeout(() => { isUserInteracting = false; }, 3000);
+  };
+
+  container.addEventListener('mousedown', onPointerDown);
+  window.addEventListener('mousemove', onPointerMove);
+  window.addEventListener('mouseup', onPointerUp);
+
+  container.addEventListener('touchstart', onPointerDown, { passive: true });
+  window.addEventListener('touchmove', onPointerMove, { passive: true });
+  window.addEventListener('touchend', onPointerUp);
+
+  const resetBtn = document.getElementById('reset-cam-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      targetRotationX = 0.35;
+      targetRotationY = 0.6;
+    });
+  }
+
+  window.addEventListener('resize', onWindowResize);
+}
+
+function onWindowResize() {
+  if (!container || !renderer || !camera) return;
+  const width = container.clientWidth;
+  const height = container.clientHeight;
+  camera.aspect = width / height;
+  camera.updateProjectionMatrix();
+  renderer.setSize(width, height);
+}
+
+function animate() {
+  if (!isVisible) {
+    animationFrameId = null;
+    return;
+  }
+
+  animationFrameId = requestAnimationFrame(animate);
+
+  if (!isUserInteracting && boardGroup) {
+    boardGroup.rotation.y += 0.0035;
+    boardGroup.rotation.x = Math.sin(Date.now() * 0.0008) * 0.04 + 0.28;
+  } else if (boardGroup) {
+    boardGroup.rotation.y += (targetRotationY - boardGroup.rotation.y) * 0.1;
+    boardGroup.rotation.x += (targetRotationX - boardGroup.rotation.x) * 0.1;
+  }
+
+  renderer.render(scene, camera);
+}
+
+/* --- Module: scroll-video.js --- */
+/* ==========================================================================
+   CINEMATIC GPU-ACCELERATED STICKY SCROLL VIDEO ENGINE
+   Calibrated natural playback speed (0.6x to 1.15x max) with generous scroll travel.
+   ========================================================================== */
+
+function initScrollVideo() {
+  const track = document.getElementById('engineering-reel');
+  const video = document.getElementById('scroll-scrub-video');
+  const progressBar = document.getElementById('video-scrub-bar');
+
+  if (!track || !video) return;
+
+  let isLoaded = false;
+  let isPlaying = false;
+  let targetProgress = 0;
+  let pauseDebounce = null;
+  let lastScrollY = window.scrollY;
+
+  // Configure video for native zero-latency GPU decoding
+  video.muted = true;
+  video.playsInline = true;
+  video.autoplay = false;
+  video.preload = "auto";
+  video.pause();
+
+  video.addEventListener('loadedmetadata', () => {
+    isLoaded = true;
+    onScroll();
+  });
+
+  if (video.readyState >= 1) {
+    isLoaded = true;
+  }
+
+  function resetVideo() {
+    if (isPlaying) {
+      video.pause();
+      isPlaying = false;
+    }
+    video.currentTime = 0;
+    if (progressBar) progressBar.style.width = '0%';
+  }
+
+  function onScroll() {
+    const rect = track.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    const scrollDistance = track.offsetHeight - windowHeight;
+    const currentScrollY = window.scrollY;
+    const scrollDelta = currentScrollY - lastScrollY;
+    lastScrollY = currentScrollY;
+
+    if (scrollDistance <= 0) return;
+
+    // 1. Above section / Return to hero -> Reset to 0:00
+    if (rect.top > 40 || currentScrollY < 100) {
+      if (video.currentTime > 0) {
+        resetVideo();
+      }
+      return;
+    }
+
+    // 2. Inside Sticky Track
+    const inStickyZone = rect.top <= 0 && rect.bottom >= windowHeight;
+
+    if (inStickyZone) {
+      targetProgress = Math.max(0, Math.min(1, -rect.top / scrollDistance));
+
+      if (isLoaded && video.duration) {
+        const targetTime = targetProgress * video.duration;
+        const timeDiff = targetTime - video.currentTime;
+
+        // Downward scroll: Calm, cinematic natural-speed GPU playback
+        if (scrollDelta > 0 && timeDiff > 0.04 && !video.ended) {
+          // Calibrated smooth natural playback rate (capped at 1.15x max)
+          const naturalRate = Math.min(1.15, Math.max(0.65, 0.75 + timeDiff * 0.4));
+          video.playbackRate = naturalRate;
+
+          if (!isPlaying) {
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+              playPromise.then(() => {
+                isPlaying = true;
+              }).catch(() => {});
+            }
+          }
+
+          clearTimeout(pauseDebounce);
+          pauseDebounce = setTimeout(() => {
+            if (isPlaying) {
+              video.pause();
+              isPlaying = false;
+            }
+          }, 140);
+        }
+        // Backward scroll: Gentle position alignment
+        else if (scrollDelta < 0 && timeDiff < -0.1) {
+          if (isPlaying) {
+            video.pause();
+            isPlaying = false;
+          }
+          video.currentTime = Math.max(0, targetTime);
+        }
+      }
+    } else {
+      if (isPlaying) {
+        video.pause();
+        isPlaying = false;
+      }
+    }
+  }
+
+  // Real-time progress bar sync directly with video playback
+  video.addEventListener('timeupdate', () => {
+    if (progressBar && video.duration) {
+      const progress = (video.currentTime / video.duration) * 100;
+      progressBar.style.width = `${progress}%`;
+    }
+  });
+
+  video.addEventListener('ended', () => {
+    isPlaying = false;
+  });
+
+  // Reset triggers on landing page / logo click
+  const heroTriggers = document.querySelectorAll('a[href="#hero"], a[href="#about"], .brand-wrapper');
+  heroTriggers.forEach(el => {
+    el.addEventListener('click', () => {
+      resetVideo();
+    });
+  });
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+}
+
+/* --- Module: desktop-fx.js --- */
+/* ==========================================================================
+   HYPER-REACTIVE CHARACTER KINETICS & DYNAMIC HERO MORPH ENGINE
+   Hero keywords disappearing & reappearing, permanent project text retention
+   ========================================================================== */
+
+function initDesktopEffects() {
+  initHeroDisappearingTextMorph();
+
+  if (window.innerWidth < 768) return; // Keep mobile lightweight
+
+  initVelocitySparkCursor();
+  initCrystalSharpKineticPhysics();
+  initSmoothParagraphIllumination();
+  initLiquidOrbCursorTracking();
+  init3DCardTilt();
+  initMagneticElements();
+  initScrollReveals();
+}
+
+/**
+ * Hero Keywords Disappearing & Reappearing Engine
+ * Cycles: "IoT Architecture" -> "Edge AI & TinyML" -> "Interactive 3D Systems" -> "Quantum Simulations"
+ */
+function initHeroDisappearingTextMorph() {
+  const morphElement = document.getElementById('hero-morph-text');
+  if (!morphElement) return;
+
+  const phrases = [
+    { text: "IoT Architecture & Embedded Silicon", texture: "texture-liquid-amber" },
+    { text: "Edge AI & Neural Inference", texture: "texture-quantum-prism" },
+    { text: "Interactive 3D WebGL Systems", texture: "texture-cyber-circuit" },
+    { text: "Quantum Circuit Modeling", texture: "texture-plasma-ember" },
+    { text: "Low-Level Microcontroller Firmware", texture: "texture-brushed-titanium" }
+  ];
+
+  const allTextureClasses = [
+    "texture-liquid-amber",
+    "texture-quantum-prism",
+    "texture-cyber-circuit",
+    "texture-plasma-ember",
+    "texture-brushed-titanium"
+  ];
+
+  let currentIdx = 0;
+
+  setInterval(() => {
+    // 1. Disappear phase (glitch/fade out upward)
+    morphElement.classList.add('morph-disappearing');
+
+    setTimeout(() => {
+      // 2. Swap text and texture pack
+      currentIdx = (currentIdx + 1) % phrases.length;
+      const nextPhrase = phrases[currentIdx];
+
+      morphElement.textContent = nextPhrase.text;
+      allTextureClasses.forEach(cls => morphElement.classList.remove(cls));
+      morphElement.classList.add(nextPhrase.texture);
+
+      // 3. Reappear phase (slide in from below with glowing illumination)
+      morphElement.classList.remove('morph-disappearing');
+      morphElement.classList.add('morph-reappearing');
+
+      setTimeout(() => {
+        morphElement.classList.remove('morph-reappearing');
+      }, 500);
+    }, 450);
+
+  }, 2800);
+}
+
+/**
+ * Velocity-Stretching Cursor with Neon Trailing Sparks & Shockwaves
+ */
+function initVelocitySparkCursor() {
+  const dot = document.createElement('div');
+  dot.className = 'cyber-cursor-dot';
+
+  const follower = document.createElement('div');
+  follower.className = 'cyber-cursor-follower';
+
+  document.body.appendChild(dot);
+  document.body.appendChild(follower);
+
+  let mouseX = -100, mouseY = -100;
+  let prevMouseX = -100, prevMouseY = -100;
+  let followerX = -100, followerY = -100;
+  let currentAngle = 0;
+  let currentScaleX = 1, currentScaleY = 1;
+  let sparkCounter = 0;
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+
+    sparkCounter++;
+    if (sparkCounter % 2 === 0) {
+      spawnCursorSpark(mouseX, mouseY);
+    }
+  });
+
+  function animateCursor() {
+    const vx = mouseX - prevMouseX;
+    const vy = mouseY - prevMouseY;
+    const speed = Math.min(Math.hypot(vx, vy), 45);
+
+    prevMouseX = mouseX;
+    prevMouseY = mouseY;
+
+    followerX += (mouseX - followerX) * 0.22;
+    followerY += (mouseY - followerY) * 0.22;
+
+    if (speed > 1.5) {
+      currentAngle = Math.atan2(vy, vx);
+      currentScaleX = 1 + speed * 0.045;
+      currentScaleY = Math.max(0.6, 1 - speed * 0.025);
+    } else {
+      currentScaleX += (1 - currentScaleX) * 0.15;
+      currentScaleY += (1 - currentScaleY) * 0.15;
+    }
+
+    follower.style.transform = `translate3d(${followerX}px, ${followerY}px, 0) rotate(${currentAngle}rad) scale(${currentScaleX}, ${currentScaleY})`;
+    requestAnimationFrame(animateCursor);
+  }
+  animateCursor();
+
+  // Click Shockwave Burst
+  window.addEventListener('click', (e) => {
+    const wave = document.createElement('div');
+    wave.className = 'cursor-shockwave';
+    wave.style.left = `${e.clientX}px`;
+    wave.style.top = `${e.clientY}px`;
+    document.body.appendChild(wave);
+
+    for (let i = 0; i < 8; i++) {
+      spawnCursorSpark(e.clientX + (Math.random() - 0.5) * 40, e.clientY + (Math.random() - 0.5) * 40);
+    }
+
+    setTimeout(() => wave.remove(), 600);
+  });
+
+  // Hover expansion on interactives
+  const interactives = document.querySelectorAll('a, button, input, .comp-label-btn, .tilt-card, #three-hero-container');
+  interactives.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      follower.classList.add('cursor-hover');
+      dot.classList.add('cursor-hover-dot');
+    });
+    el.addEventListener('mouseleave', () => {
+      follower.classList.remove('cursor-hover');
+      dot.classList.remove('cursor-hover-dot');
+    });
+  });
+}
+
+function spawnCursorSpark(x, y) {
+  const spark = document.createElement('div');
+  spark.className = 'kinetic-spark';
+  spark.style.left = `${x}px`;
+  spark.style.top = `${y}px`;
+  
+  const vx = (Math.random() - 0.5) * 3;
+  const vy = (Math.random() - 0.5) * 3 - 1;
+  const color = Math.random() > 0.3 ? '#F59E0B' : '#38BDF8';
+  spark.style.backgroundColor = color;
+  spark.style.boxShadow = `0 0 8px ${color}`;
+
+  document.body.appendChild(spark);
+
+  let curX = x, curY = y;
+  let opacity = 1;
+  let scale = Math.random() * 0.8 + 0.6;
+
+  function animateSpark() {
+    curX += vx;
+    curY += vy;
+    opacity -= 0.04;
+    scale *= 0.94;
+
+    spark.style.transform = `translate3d(${curX - x}px, ${curY - y}px, 0) scale(${scale})`;
+    spark.style.opacity = opacity;
+
+    if (opacity > 0) {
+      requestAnimationFrame(animateSpark);
+    } else {
+      spark.remove();
+    }
+  }
+  requestAnimationFrame(animateSpark);
+}
+
+/**
+ * Character Kinetic Typography (applied cleanly only to main headings without affecting static project text)
+ */
+function initCrystalSharpKineticPhysics() {
+  const headingElements = document.querySelectorAll('.brand-name, .section-title');
+  const charNodes = [];
+
+  headingElements.forEach(heading => {
+    wrapTextNodesInKineticWords(heading, charNodes);
+  });
+
+  let mouse = { x: -2000, y: -2000 };
+
+  window.addEventListener('mousemove', (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  });
+
+  window.addEventListener('mouseleave', () => {
+    mouse.x = -2000;
+    mouse.y = -2000;
+  });
+
+  const TOTAL_LINGER_MS = 2200;
+
+  function updateKineticPhysics() {
+    const now = Date.now();
+
+    charNodes.forEach(item => {
+      const rect = item.element.getBoundingClientRect();
+      const charCenterX = rect.left + rect.width / 2;
+      const charCenterY = rect.top + rect.height / 2;
+
+      const dx = mouse.x - charCenterX;
+      const dy = mouse.y - charCenterY;
+      const dist = Math.hypot(dx, dy);
+      const radius = 140;
+
+      if (dist < radius) {
+        item.lastActiveTime = now;
+        const force = Math.pow((1 - dist / radius), 1.4);
+        const angle = Math.atan2(dy, dx);
+
+        item.targetX = -Math.cos(angle) * 18 * force;
+        item.targetY = -Math.sin(angle) * 14 * force;
+        item.targetRotate = -Math.sin(angle) * 8 * force;
+        item.targetScale = 1 + 0.16 * force;
+        item.targetGlow = force;
+      } else {
+        const elapsed = now - item.lastActiveTime;
+
+        if (elapsed < TOTAL_LINGER_MS) {
+          const progress = elapsed / TOTAL_LINGER_MS;
+          const easeFactor = 0.5 * (1 + Math.cos(Math.PI * progress));
+
+          item.targetX = 0;
+          item.targetY = -1 * easeFactor;
+          item.targetRotate = 0;
+          item.targetScale = 1 + 0.03 * easeFactor;
+          item.targetGlow = easeFactor * 0.85;
+        } else {
+          item.targetX = 0;
+          item.targetY = 0;
+          item.targetRotate = 0;
+          item.targetScale = 1;
+          item.targetGlow = 0;
+        }
+      }
+
+      const lerpFactor = 0.14;
+      item.currentX += (item.targetX - item.currentX) * lerpFactor;
+      item.currentY += (item.targetY - item.currentY) * lerpFactor;
+      item.currentRotate += (item.targetRotate - item.currentRotate) * lerpFactor;
+      item.currentScale += (item.targetScale - item.currentScale) * lerpFactor;
+      item.currentGlow += (item.targetGlow - item.currentGlow) * lerpFactor;
+
+      if (Math.abs(item.currentX) > 0.01 || Math.abs(item.currentY) > 0.01 || Math.abs(item.currentScale - 1) > 0.005) {
+        item.element.style.transform = `translate3d(${item.currentX.toFixed(2)}px, ${item.currentY.toFixed(2)}px, 0) rotate(${item.currentRotate.toFixed(2)}deg) scale(${item.currentScale.toFixed(3)})`;
+        
+        if (item.currentGlow > 0.04) {
+          item.element.style.color = '#FFFFFF';
+          item.element.style.textShadow = `0 0 1px #FFFFFF, 0 0 8px rgba(245, 158, 11, ${(item.currentGlow * 0.8).toFixed(2)})`;
+        } else {
+          item.element.style.color = '';
+          item.element.style.textShadow = '';
+        }
+      } else {
+        item.element.style.transform = 'translate3d(0, 0, 0) rotate(0deg) scale(1)';
+        item.element.style.color = '';
+        item.element.style.textShadow = '';
+      }
+    });
+
+    requestAnimationFrame(updateKineticPhysics);
+  }
+
+  updateKineticPhysics();
+}
+
+function wrapTextNodesInKineticWords(container, charList) {
+  const childNodes = Array.from(container.childNodes);
+
+  childNodes.forEach(node => {
+    if (node.nodeType === Node.TEXT_NODE) {
+      const text = node.textContent;
+      if (!text.trim() && text.length === 0) return;
+
+      const fragment = document.createDocumentFragment();
+      const words = text.split(/(\s+)/);
+
+      words.forEach(part => {
+        if (/^\s+$/.test(part)) {
+          fragment.appendChild(document.createTextNode(part));
+        } else if (part.length > 0) {
+          const wordSpan = document.createElement('span');
+          wordSpan.className = 'kinetic-word';
+
+          for (let i = 0; i < part.length; i++) {
+            const char = part[i];
+            const charSpan = document.createElement('span');
+            charSpan.className = 'kinetic-char';
+            charSpan.textContent = char;
+            wordSpan.appendChild(charSpan);
+
+            charList.push({
+              element: charSpan,
+              currentX: 0,
+              currentY: 0,
+              targetX: 0,
+              targetY: 0,
+              currentRotate: 0,
+              targetRotate: 0,
+              currentScale: 1,
+              targetScale: 1,
+              currentGlow: 0,
+              targetGlow: 0,
+              lastActiveTime: 0
+            });
+          }
+          fragment.appendChild(wordSpan);
+        }
+      });
+
+      container.replaceChild(fragment, node);
+    } else if (node.nodeType === Node.ELEMENT_NODE) {
+      wrapTextNodesInKineticWords(node, charList);
+    }
+  });
+}
+
+/**
+ * Paragraph & Description Illumination
+ */
+function initSmoothParagraphIllumination() {
+  const bodyTexts = document.querySelectorAll('.lead-text, .grid-skills li');
+  const textItems = [];
+
+  bodyTexts.forEach(el => {
+    textItems.push({ element: el, lastActive: 0 });
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    const now = Date.now();
+    textItems.forEach(item => {
+      const rect = item.element.getBoundingClientRect();
+      const dist = Math.hypot(e.clientX - (rect.left + rect.width / 2), e.clientY - (rect.top + rect.height / 2));
+      if (dist < 260) {
+        item.lastActive = now;
+        item.element.classList.add('text-illuminated');
+      }
+    });
+  });
+
+  function checkParagraphFades() {
+    const now = Date.now();
+    textItems.forEach(item => {
+      if (item.lastActive > 0 && now - item.lastActive > 2400) {
+        item.element.classList.remove('text-illuminated');
+      }
+    });
+    requestAnimationFrame(checkParagraphFades);
+  }
+  checkParagraphFades();
+}
+
+/**
+ * Ambient Liquid Orbs smoothly drift and react to cursor coordinates
+ */
+function initLiquidOrbCursorTracking() {
+  const orb1 = document.querySelector('.orb-1');
+  const orb2 = document.querySelector('.orb-2');
+  const orb3 = document.querySelector('.orb-3');
+
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let currentX = mouseX;
+  let currentY = mouseY;
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  function updateOrbs() {
+    currentX += (mouseX - currentX) * 0.04;
+    currentY += (mouseY - currentY) * 0.04;
+
+    const offsetX = (currentX / window.innerWidth - 0.5) * 110;
+    const offsetY = (currentY / window.innerHeight - 0.5) * 110;
+
+    if (orb1) orb1.style.transform = `translate(${offsetX * 1.5}px, ${offsetY * 1.5}px)`;
+    if (orb2) orb2.style.transform = `translate(${-offsetX * 1.9}px, ${-offsetY * 1.9}px)`;
+    if (orb3) orb3.style.transform = `translate(${offsetX * 1.2}px, ${-offsetY * 1.2}px)`;
+
+    requestAnimationFrame(updateOrbs);
+  }
+
+  updateOrbs();
+}
+
+/**
+ * 3D Tilt & Specular Optical Glare for Project Cards & Containers
+ */
+function init3DCardTilt() {
+  const tiltCards = document.querySelectorAll('.tilt-card');
+
+  tiltCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const rotateX = ((y - centerY) / centerY) * -8;
+      const rotateY = ((x - centerX) / centerX) * 8;
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+      card.style.setProperty('--glare-x', `${(x / rect.width) * 100}%`);
+      card.style.setProperty('--glare-y', `${(y / rect.height) * 100}%`);
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+    });
+  });
+}
+
+/**
+ * Magnetic CTAs: Gently attract toward cursor on hover
+ */
+function initMagneticElements() {
+  const magnetics = document.querySelectorAll('.btn-magnetic');
+
+  magnetics.forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - (rect.left + rect.width / 2);
+      const y = e.clientY - (rect.top + rect.height / 2);
+
+      btn.style.transform = `translate(${x * 0.35}px, ${y * 0.35}px)`;
+    });
+
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = 'translate(0px, 0px)';
+    });
+  });
+}
+
+/**
+ * Kinetic Scroll Reveals with staggered opacity & smooth upward drift
+ */
+function initScrollReveals() {
+  const reveals = document.querySelectorAll('.reveal-on-scroll');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+  reveals.forEach(el => observer.observe(el));
+}
+
+/* --- Module: main.js --- */
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  // 1. Initialize Real-Time Transitioning Background Slideshow
+  try {
+    initBackgroundSlideshow();
+  } catch (err) {
+    console.warn("Background slideshow note:", err);
+  }
+
+  // 2. Initialize Interactive Quantum Background Canvas
+  try {
+    initBackgroundCanvas();
+  } catch (err) {
+    console.warn("Background canvas note:", err);
+  }
+
+  // 3. Initialize 3D Hardware Model & Theatrical Engine
+  try {
+    initThreeHero();
+  } catch (err) {
+    console.warn("3D canvas initialization note:", err);
+  }
+
+  // 4. Initialize Zero-Lag Fullscreen Video Reel
+  try {
+    initScrollVideo();
+  } catch (err) {
+    console.warn("Scroll video engine note:", err);
+  }
+
+  // 5. Initialize Hyper-Reactive Character Kinetics, Velocity Spark Cursor & 3D Tilt
+  try {
+    initDesktopEffects();
+  } catch (err) {
+    console.warn("Desktop effects note:", err);
+  }
+
+  // 6. Mobile Menu Navigation
+  initMobileNav();
+
+  // 7. 1-Click Email Copy Feature
+  initCopyEmail();
+});
+
+function initMobileNav() {
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      mobileMenu.classList.toggle('active');
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+        mobileMenu.classList.remove('active');
+      }
+    });
+  }
+}
+
+function initCopyEmail() {
+  const copyBtn = document.getElementById('copy-email-btn');
+  const copyText = document.getElementById('copy-text');
+  const copyIcon = document.getElementById('copy-icon');
+
+  if (copyBtn && copyText && copyIcon) {
+    copyBtn.addEventListener('click', async () => {
+      const email = "harishragav987@gmail.com";
+      try {
+        await navigator.clipboard.writeText(email);
+        copyText.textContent = "Copied to clipboard!";
+        copyIcon.textContent = "✓";
+        copyBtn.style.borderColor = "var(--color-emerald-500)";
+        copyBtn.style.color = "var(--color-emerald-700)";
+
+        setTimeout(() => {
+          copyText.textContent = email;
+          copyIcon.textContent = "📋";
+          copyBtn.style.borderColor = "";
+          copyBtn.style.color = "";
+        }, 2200);
+      } catch (err) {
+        window.location.href = `mailto:${email}`;
+      }
+    });
+  }
+}
+
+</script>
+
+</body>
+</html>
