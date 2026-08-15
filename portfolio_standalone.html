@@ -1241,15 +1241,6 @@ svg {
 
 </style>
 
-  <!-- Three.js + GLTFLoader ES Module -->
-  <script type="importmap">
-    {
-      "imports": {
-        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
-        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
-      }
-    }
-  </script>
 </head>
 <body class="antialiased selection:bg-amber-500/30 selection:text-amber-200 relative">
 
@@ -1366,54 +1357,70 @@ svg {
                 <span>Explore Projects</span>
                 <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
               </a>
-              <button id="open-theatrical-btn" class="btn-liquid-secondary btn-magnetic" style="cursor: pointer;">
-                <span>✨ Enter Theatrical 3D Studio</span>
-              </button>
+              <a href="#engineering-reel" class="btn-liquid-secondary btn-magnetic">
+                <span>🎬 Watch Video Reel</span>
+              </a>
             </div>
 
           </div>
 
-          <!-- Right Column: Prominent Fluid 3D Hardware Viewport -->
+          <!-- Right Column: Sleek Architecture & Telemetry Terminal Card -->
           <div class="space-y-4 reveal-on-scroll">
-            <div class="viewport-card glass-card shadow-glass-lg tilt-card">
+            <div class="glass-card p-fluid rounded-fluid shadow-glass-lg tilt-card">
               
-              <!-- 3D Canvas -->
-              <div id="three-hero-container"></div>
-
-              <!-- Top Floating Controls -->
-              <div style="position: absolute; top: 1rem; left: 1rem; right: 1rem; display: flex; align-items: center; justify-content: space-between; pointer-events: auto; z-index: 20;">
-                <span class="glass-card" style="padding: 0.35rem 0.75rem; border-radius: 0.625rem; font-size: 0.75rem; font-weight: 600; color: #F1F5F9;">
-                  ESP32 Hardware Inspector (Drag to Rotate)
+              <!-- Top Terminal Status Bar -->
+              <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 0.85rem; margin-bottom: 1.25rem;">
+                <div style="display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; color: #FFFFFF;">
+                  <span class="status-dot" style="background-color: #FFFFFF;"></span>
+                  <span>SYSTEM ARCHITECTURE HUB</span>
+                </div>
+                <span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--color-slate-500); background: rgba(255,255,255,0.06); padding: 0.2rem 0.5rem; border-radius: 0.375rem;">
+                  STATUS: OPERATIONAL
                 </span>
-                <button id="reset-cam-btn" style="padding: 0.35rem 0.75rem; border-radius: 0.625rem; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); font-size: 0.75rem; font-weight: 600; color: #FFFFFF; cursor: pointer;">
-                  Reset View
-                </button>
+              </div>
+
+              <!-- Core Focus Blocks -->
+              <div class="space-y-4">
+                <div style="padding: 0.85rem; border-radius: 0.75rem; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08);">
+                  <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.8125rem; font-weight: 700; color: #FFFFFF;">
+                    <span>⚡ Embedded Hardware &amp; Firmware</span>
+                    <span style="font-family: var(--font-mono); font-size: 0.7rem; color: #94A3B8;">ESP32 / C++</span>
+                  </div>
+                  <p style="font-size: 0.75rem; color: #94A3B8; margin-top: 0.25rem; line-height: 1.5;">
+                    Bare-metal registers, FreeRTOS task scheduling, UART/SPI/I2C communication, and low-power sensor networks.
+                  </p>
+                </div>
+
+                <div style="padding: 0.85rem; border-radius: 0.75rem; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08);">
+                  <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.8125rem; font-weight: 700; color: #FFFFFF;">
+                    <span>🌌 Quantum Circuits &amp; RF Telemetry</span>
+                    <span style="font-family: var(--font-mono); font-size: 0.7rem; color: #94A3B8;">Qiskit / Anomaly</span>
+                  </div>
+                  <p style="font-size: 0.75rem; color: #94A3B8; margin-top: 0.25rem; line-height: 1.5;">
+                    Simulating qubit gates, entanglement states, and detecting radio frequency spectrum disturbances in real time.
+                  </p>
+                </div>
+
+                <div style="padding: 0.85rem; border-radius: 0.75rem; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08);">
+                  <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.8125rem; font-weight: 700; color: #FFFFFF;">
+                    <span>🤖 Autonomous AI Tooling</span>
+                    <span style="font-family: var(--font-mono); font-size: 0.7rem; color: #94A3B8;">PyTorch / Inference</span>
+                  </div>
+                  <p style="font-size: 0.75rem; color: #94A3B8; margin-top: 0.25rem; line-height: 1.5;">
+                    Local edge machine learning pipelines, autonomous code patching, and model telemetry optimization.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Quick Verification Footer -->
+              <div style="margin-top: 1.25rem; padding-top: 0.85rem; border-top: 1px solid rgba(255, 255, 255, 0.08); display: flex; align-items: center; justify-content: space-between;">
+                <span style="font-family: var(--font-mono); font-size: 0.7rem; color: #64748B;">SRM IST Ramapuram · 2026</span>
+                <a href="https://github.com/Computer-Nerdy" target="_blank" rel="noopener noreferrer" style="font-size: 0.75rem; font-weight: 700; color: #FFFFFF; text-decoration: underline;">
+                  View GitHub Profile ➔
+                </a>
               </div>
 
             </div>
-
-            <!-- Interactive Component Label Buttons -->
-            <div class="glass-card p-card rounded-fluid space-y-4 tilt-card">
-              <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem; font-weight: 700; color: #94A3B8;">
-                <span>INSPECT HARDWARE STAGE:</span>
-                <span class="text-amber-500">Interactive Focus</span>
-              </div>
-              
-              <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-                <button class="comp-label-btn active" data-comp="mcu">ESP-WROOM-32 Shield</button>
-                <button class="comp-label-btn" data-comp="antenna">PCB Antenna</button>
-                <button class="comp-label-btn" data-comp="gpio">Dual-Row Pins</button>
-                <button class="comp-label-btn" data-comp="bridge">CP2102 UART Bridge</button>
-                <button class="comp-label-btn" data-comp="buttons">EN / BOOT Buttons</button>
-              </div>
-
-              <!-- Dynamic Component Description Card -->
-              <div style="padding: 0.75rem 1rem; border-radius: 0.75rem; background-color: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08);">
-                <div id="component-label-title" style="font-weight: 800; color: #FFFFFF; font-size: 0.875rem;">ESP32 Dual-Core Xtensa LX6 (240MHz)</div>
-                <div id="component-label-desc" style="color: #94A3B8; font-size: 0.75rem; margin-top: 0.25rem; line-height: 1.6;">Main compute core with integrated Wi-Fi, Bluetooth 4.2 BLE, hardware crypto accelerator, and 520KB SRAM.</div>
-              </div>
-            </div>
-
           </div>
 
         </div>
@@ -1710,48 +1717,10 @@ svg {
     </div>
   </footer>
 
-  <!-- FULLSCREEN THEATRICAL 3D STAGE MODAL -->
-  <div id="theatrical-modal" class="hidden">
-    
-    <!-- Top HUD Controls -->
-    <div class="theatrical-hud-top">
-      <div style="display: flex; align-items: center; gap: 0.75rem;">
-        <span style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 700; color: #F59E0B; background: rgba(0,0,0,0.6); padding: 0.4rem 0.85rem; border-radius: 0.75rem; border: 1px solid rgba(245,158,11,0.4);">
-          ⚡ THEATRICAL 3D STUDIO
-        </span>
-        <span style="font-size: 0.75rem; color: #94A3B8; display: none;" class="md:inline">
-          Full 360° Studio Orbit | Hardware Diagnostics Mode
-        </span>
-      </div>
 
-      <button id="close-theatrical-btn" class="theatrical-control-btn" style="background: rgba(239, 68, 68, 0.25); border-color: rgba(239, 68, 68, 0.5); color: #FCA5A5;">
-        ✕ Exit Theatrical Studio
-      </button>
-    </div>
-
-    <!-- 3D Canvas Viewport -->
-    <div id="theatrical-canvas-container"></div>
-
-    <!-- Bottom HUD Diagnostic Stage -->
-    <div class="theatrical-hud-bottom">
-      <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-        <button id="theat-mode-standard" class="theatrical-control-btn active">Standard Assembled</button>
-        <button id="theat-mode-exploded" class="theatrical-control-btn">Exploded Architecture</button>
-        <button id="theat-mode-wireframe" class="theatrical-control-btn">Cyber Blueprint</button>
-        <button id="theat-autorotate-btn" class="theatrical-control-btn">Auto-Orbit: ON</button>
-      </div>
-
-      <div style="font-family: var(--font-mono); font-size: 0.75rem; color: #64748B; background: rgba(0,0,0,0.6); padding: 0.4rem 0.85rem; border-radius: 0.75rem; border: 1px solid rgba(255,255,255,0.1);">
-        ESP32-WROOM-32 · Xtensa Dual-Core 240MHz · 520KB SRAM · Wi-Fi/BLE
-      </div>
-    </div>
-
-  </div>
 
   <!-- Main JavaScript Module Scripts (Cache-Busted) -->
   <script type="module">
-import * as THREE from 'three';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 /* --- Module: bg-slideshow.js --- */
 /* ==========================================================================
@@ -1964,684 +1933,6 @@ function initBackgroundCanvas() {
   window.addEventListener('resize', resize);
   resize();
   render();
-}
-
-/* --- Module: theatrical-stage.js --- */
-/* ==========================================================================
-   THEATRICAL 3D STAGE & ESP32 HARDWARE LAB
-   True 360° free orbit, correct upright orientation, and interactive diagnostics HUD
-   ========================================================================== */
-
-import * as THREE from 'three';
-
-let theatricalModal, theatricalContainer;
-let tScene, tCamera, tRenderer, tBoardGroup;
-let tSubMeshes = [];
-let isTheatricalActive = false;
-let animationId = null;
-
-let autoOrbit = true;
-let isExploded = false;
-let isWireframe = false;
-
-// 360° Free Orbit & Zoom Physics
-let isDragging = false;
-let prevMouse = { x: 0, y: 0 };
-let currentRotX = 0.25;
-let currentRotY = 0.0;
-let targetRotX = 0.25;
-let targetRotY = 0.0;
-let cameraDistance = 5.2;
-let targetCameraDistance = 5.2;
-
-function initTheatricalStage(sharedGLTF) {
-  theatricalModal = document.getElementById('theatrical-modal');
-  theatricalContainer = document.getElementById('theatrical-canvas-container');
-
-  const openBtn = document.getElementById('open-theatrical-btn');
-  const closeBtn = document.getElementById('close-theatrical-btn');
-  
-  const standardBtn = document.getElementById('theat-mode-standard');
-  const explodeBtn = document.getElementById('theat-mode-exploded');
-  const wireframeBtn = document.getElementById('theat-mode-wireframe');
-  const autoRotateBtn = document.getElementById('theat-autorotate-btn');
-
-  if (openBtn) {
-    openBtn.addEventListener('click', () => openTheatricalView(sharedGLTF));
-  }
-
-  if (closeBtn) {
-    closeBtn.addEventListener('click', closeTheatricalView);
-  }
-
-  if (standardBtn) {
-    standardBtn.addEventListener('click', () => {
-      setAssemblyMode('standard');
-      updateButtonStates(standardBtn);
-    });
-  }
-
-  if (explodeBtn) {
-    explodeBtn.addEventListener('click', () => {
-      setAssemblyMode('exploded');
-      updateButtonStates(explodeBtn);
-    });
-  }
-
-  if (wireframeBtn) {
-    wireframeBtn.addEventListener('click', () => {
-      toggleWireframe();
-      updateButtonStates(wireframeBtn, isWireframe);
-    });
-  }
-
-  if (autoRotateBtn) {
-    autoRotateBtn.addEventListener('click', () => {
-      autoOrbit = !autoOrbit;
-      autoRotateBtn.textContent = autoOrbit ? "Auto-Orbit: ON" : "Auto-Orbit: OFF";
-      autoRotateBtn.classList.toggle('active', autoOrbit);
-    });
-  }
-
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && isTheatricalActive) {
-      closeTheatricalView();
-    }
-  });
-}
-
-function updateButtonStates(activeBtn, isToggleActive = true) {
-  if (!activeBtn) return;
-  if (activeBtn.id === 'theat-mode-standard' || activeBtn.id === 'theat-mode-exploded') {
-    document.getElementById('theat-mode-standard')?.classList.remove('active');
-    document.getElementById('theat-mode-exploded')?.classList.remove('active');
-    activeBtn.classList.add('active');
-  } else {
-    activeBtn.classList.toggle('active', isToggleActive);
-  }
-}
-
-function openTheatricalView(sharedModel) {
-  if (!theatricalModal || !theatricalContainer) return;
-
-  theatricalModal.classList.remove('hidden');
-  theatricalModal.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-  isTheatricalActive = true;
-
-  if (!tRenderer) {
-    setupTheatricalScene(sharedModel);
-  } else {
-    onTheatricalResize();
-  }
-
-  // Reset to natural upright orientation
-  targetRotX = 0.25;
-  targetRotY = 0.0;
-  currentRotX = 0.25;
-  currentRotY = 0.0;
-  targetCameraDistance = 5.2;
-
-  animateTheatrical();
-}
-
-function closeTheatricalView() {
-  if (!theatricalModal) return;
-
-  theatricalModal.classList.add('hidden');
-  theatricalModal.style.display = 'none';
-  document.body.style.overflow = '';
-  isTheatricalActive = false;
-
-  if (animationId) {
-    cancelAnimationFrame(animationId);
-    animationId = null;
-  }
-}
-
-function setupTheatricalScene(modelToClone) {
-  const width = window.innerWidth;
-  const height = window.innerHeight;
-
-  tScene = new THREE.Scene();
-  tCamera = new THREE.PerspectiveCamera(40, width / height, 0.1, 100);
-  tCamera.position.set(0, 0, cameraDistance);
-  tCamera.lookAt(0, 0, 0);
-
-  tRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
-  tRenderer.setSize(width, height);
-  tRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  tRenderer.outputColorSpace = THREE.SRGBColorSpace;
-  tRenderer.toneMapping = THREE.ACESFilmicToneMapping;
-  tRenderer.toneMappingExposure = 1.3;
-  tRenderer.shadowMap.enabled = true;
-
-  theatricalContainer.appendChild(tRenderer.domElement);
-
-  // Cinematic 4-Point Studio Lighting Rig
-  const ambient = new THREE.AmbientLight(0xFFFFFF, 2.2);
-  tScene.add(ambient);
-
-  const keyLight = new THREE.DirectionalLight(0xFFFFFF, 3.8);
-  keyLight.position.set(6, 10, 8);
-  tScene.add(keyLight);
-
-  const rimCyan = new THREE.DirectionalLight(0x38BDF8, 2.6);
-  rimCyan.position.set(-8, 5, -5);
-  tScene.add(rimCyan);
-
-  const fillAmber = new THREE.DirectionalLight(0xF59E0B, 2.2);
-  fillAmber.position.set(4, -6, 5);
-  tScene.add(fillAmber);
-
-  // Board Anchor
-  tBoardGroup = new THREE.Group();
-  tScene.add(tBoardGroup);
-
-  // Clone Model with Right-Side Up Orientation
-  if (modelToClone) {
-    const clone = modelToClone.clone(true);
-    // Ensure clean centering and upright posture
-    clone.position.set(0, 0, 0);
-    tBoardGroup.add(clone);
-
-    tSubMeshes = [];
-    clone.traverse((child) => {
-      if (child.isMesh) {
-        tSubMeshes.push({
-          mesh: child,
-          originalPos: child.position.clone(),
-          originalMat: child.material
-        });
-      }
-    });
-  }
-
-  // Free 360° Orbit & Zoom Event Listeners
-  theatricalContainer.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    prevMouse = { x: e.clientX, y: e.clientY };
-  });
-
-  window.addEventListener('mousemove', (e) => {
-    if (!isDragging || !isTheatricalActive) return;
-    const dx = e.clientX - prevMouse.x;
-    const dy = e.clientY - prevMouse.y;
-
-    targetRotY += dx * 0.008;
-    targetRotX += dy * 0.008;
-
-    // Clamp vertical tilt to prevent inverting
-    targetRotX = Math.max(-Math.PI / 2 + 0.05, Math.min(Math.PI / 2 - 0.05, targetRotX));
-
-    prevMouse = { x: e.clientX, y: e.clientY };
-  });
-
-  window.addEventListener('mouseup', () => {
-    isDragging = false;
-  });
-
-  // Touch support for free orbit
-  theatricalContainer.addEventListener('touchstart', (e) => {
-    if (e.touches.length === 1) {
-      isDragging = true;
-      prevMouse = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-    }
-  }, { passive: true });
-
-  window.addEventListener('touchmove', (e) => {
-    if (!isDragging || !isTheatricalActive || e.touches.length !== 1) return;
-    const dx = e.touches[0].clientX - prevMouse.x;
-    const dy = e.touches[0].clientY - prevMouse.y;
-
-    targetRotY += dx * 0.008;
-    targetRotX += dy * 0.008;
-    targetRotX = Math.max(-Math.PI / 2 + 0.05, Math.min(Math.PI / 2 - 0.05, targetRotX));
-
-    prevMouse = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-  }, { passive: true });
-
-  window.addEventListener('touchend', () => {
-    isDragging = false;
-  });
-
-  // Mouse Wheel Zoom
-  theatricalContainer.addEventListener('wheel', (e) => {
-    if (!isTheatricalActive) return;
-    e.preventDefault();
-    targetCameraDistance = Math.max(2.5, Math.min(9.0, targetCameraDistance + e.deltaY * 0.005));
-  }, { passive: false });
-
-  window.addEventListener('resize', onTheatricalResize);
-}
-
-function setAssemblyMode(mode) {
-  isExploded = (mode === 'exploded');
-
-  tSubMeshes.forEach((item, index) => {
-    if (isExploded) {
-      const offsetY = (index % 4) * 0.4 + 0.25;
-      const offsetX = ((index % 3) - 1) * 0.25;
-      item.mesh.position.set(
-        item.originalPos.x + offsetX,
-        item.originalPos.y + offsetY,
-        item.originalPos.z
-      );
-    } else {
-      item.mesh.position.copy(item.originalPos);
-    }
-  });
-}
-
-function toggleWireframe() {
-  isWireframe = !isWireframe;
-
-  tSubMeshes.forEach((item) => {
-    if (isWireframe) {
-      item.mesh.material = new THREE.MeshBasicMaterial({
-        color: 0xF59E0B,
-        wireframe: true
-      });
-    } else {
-      item.mesh.material = item.originalMat;
-    }
-  });
-}
-
-function onTheatricalResize() {
-  if (!tCamera || !tRenderer || !isTheatricalActive) return;
-  const width = window.innerWidth;
-  const height = window.innerHeight;
-  tCamera.aspect = width / height;
-  tCamera.updateProjectionMatrix();
-  tRenderer.setSize(width, height);
-}
-
-function animateTheatrical() {
-  if (!isTheatricalActive) return;
-
-  animationId = requestAnimationFrame(animateTheatrical);
-
-  // Smooth Auto-Orbit if not manually dragging
-  if (autoOrbit && !isDragging) {
-    targetRotY += 0.005;
-  }
-
-  // Smooth Inertial Interpolation for 360° Free Orbit
-  currentRotX += (targetRotX - currentRotX) * 0.12;
-  currentRotY += (targetRotY - currentRotY) * 0.12;
-  cameraDistance += (targetCameraDistance - cameraDistance) * 0.12;
-
-  if (tBoardGroup) {
-    tBoardGroup.rotation.x = currentRotX;
-    tBoardGroup.rotation.y = currentRotY;
-  }
-
-  if (tCamera) {
-    tCamera.position.z = cameraDistance;
-  }
-
-  tRenderer.render(tScene, tCamera);
-}
-
-/* --- Module: three-hero.js --- */
-import * as THREE from 'three';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-
-
-let scene, camera, renderer, boardGroup;
-let isUserInteracting = false;
-let targetRotationX = 0.35, targetRotationY = 0.6;
-let animationFrameId;
-let isVisible = true;
-
-const container = document.getElementById('three-hero-container');
-const labelTitle = document.getElementById('component-label-title');
-const labelDesc = document.getElementById('component-label-desc');
-
-const componentMap = {};
-
-function initThreeHero() {
-  if (!container) return;
-
-  const width = container.clientWidth || 500;
-  const height = container.clientHeight || 400;
-
-  // Scene
-  scene = new THREE.Scene();
-
-  // Camera - Wide fluid perspective
-  camera = new THREE.PerspectiveCamera(38, width / height, 0.1, 100);
-  camera.position.set(0, 2.6, 5.2);
-  camera.lookAt(0, 0, 0);
-
-  // High-End WebGL Renderer with sRGB & ACES Tone Mapping
-  const isMobile = window.innerWidth < 768;
-  const pixelRatio = isMobile ? Math.min(window.devicePixelRatio, 1.5) : Math.min(window.devicePixelRatio, 2);
-
-  renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
-  renderer.setSize(width, height);
-  renderer.setPixelRatio(pixelRatio);
-  renderer.outputColorSpace = THREE.SRGBColorSpace;
-  renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.35;
-  renderer.shadowMap.enabled = !isMobile;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-  container.appendChild(renderer.domElement);
-
-  // 3-Point Studio Lighting
-  const ambientLight = new THREE.AmbientLight(0xFFFFFF, 2.2);
-  scene.add(ambientLight);
-
-  const mainLight = new THREE.DirectionalLight(0xFFFFFF, 3.2);
-  mainLight.position.set(6, 12, 8);
-  mainLight.castShadow = !isMobile;
-  scene.add(mainLight);
-
-  const fillLight1 = new THREE.DirectionalLight(0xE0F2FE, 2.0);
-  fillLight1.position.set(-8, 5, -5);
-  scene.add(fillLight1);
-
-  const warmRim = new THREE.DirectionalLight(0xFEF3C7, 1.8);
-  warmRim.position.set(2, -6, 6);
-  scene.add(warmRim);
-
-  // Load custom GLB model and apply realistic PBR materials
-  loadESP32Model();
-
-  // Attach Interaction Controls & Clickable Label List
-  attachControls();
-  attachLabelButtons();
-
-  // Real-Time Dynamic Resize Observer
-  const resizeObserver = new ResizeObserver((entries) => {
-    for (let entry of entries) {
-      const cr = entry.contentRect;
-      if (cr.width > 0 && cr.height > 0) {
-        camera.aspect = cr.width / cr.height;
-        camera.updateProjectionMatrix();
-        renderer.setSize(cr.width, cr.height);
-      }
-    }
-  });
-  resizeObserver.observe(container);
-
-  // Visibility Observer
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      isVisible = entry.isIntersecting;
-      if (isVisible && !animationFrameId) animate();
-    });
-  }, { threshold: 0.1 });
-  observer.observe(container);
-
-  animate();
-}
-
-function loadESP32Model() {
-  const loader = new GLTFLoader();
-
-  loader.load('models/esp32.glb', (gltf) => {
-    const rawScene = gltf.scene;
-
-    // Center geometry
-    const box = new THREE.Box3().setFromObject(rawScene);
-    const center = box.getCenter(new THREE.Vector3());
-    const size = box.getSize(new THREE.Vector3());
-
-    rawScene.position.x = -center.x;
-    rawScene.position.y = -center.y;
-    rawScene.position.z = -center.z;
-
-    const wrapper = new THREE.Group();
-    wrapper.add(rawScene);
-
-    // Auto-scale to fill viewport prominently (target dimension 4.8)
-    const maxDim = Math.max(size.x, size.y, size.z) || 1;
-    const targetDim = 4.8;
-    const scale = targetDim / maxDim;
-    wrapper.scale.set(scale, scale, scale);
-
-    // Apply Photorealistic PBR Materials to Sketchfab Geometry
-    applyRealisticPBR(rawScene, size);
-
-    boardGroup = wrapper;
-    scene.add(boardGroup);
-
-    setupComponentMapForGLTF();
-
-    // Initialize full-screen theatrical studio with boardGroup
-    initTheatricalStage(boardGroup);
-  }, undefined, (err) => {
-    console.error("Error loading GLB:", err);
-  });
-}
-
-function applyRealisticPBR(model, totalSize) {
-  const matPCB = new THREE.MeshStandardMaterial({
-    color: 0x18181B, // Matte Obsidian Black PCB
-    roughness: 0.38,
-    metalness: 0.1,
-    side: THREE.DoubleSide
-  });
-
-  const matShield = new THREE.MeshStandardMaterial({
-    color: 0xE4E4E7, // Brushed Silver Metal Can
-    metalness: 0.9,
-    roughness: 0.18,
-    side: THREE.DoubleSide
-  });
-
-  const matAntenna = new THREE.MeshStandardMaterial({
-    color: 0xD97706, // Polished Copper / Gold RF Trace
-    metalness: 0.88,
-    roughness: 0.22,
-    side: THREE.DoubleSide
-  });
-
-  const matPins = new THREE.MeshStandardMaterial({
-    color: 0xF1F5F9, // Silver / Chrome Solder Pins
-    metalness: 0.95,
-    roughness: 0.12,
-    side: THREE.DoubleSide
-  });
-
-  const matChips = new THREE.MeshStandardMaterial({
-    color: 0x0F172A, // Matte IC Epoxy
-    roughness: 0.45,
-    metalness: 0.2,
-    side: THREE.DoubleSide
-  });
-
-  const matCapacitor = new THREE.MeshStandardMaterial({
-    color: 0xF59E0B, // Tantalum SMD Capacitor (Amber/Gold)
-    roughness: 0.3,
-    metalness: 0.3,
-    side: THREE.DoubleSide
-  });
-
-  const matUSB = new THREE.MeshStandardMaterial({
-    color: 0xE2E8F0, // Metal USB Housing
-    metalness: 0.92,
-    roughness: 0.15,
-    side: THREE.DoubleSide
-  });
-
-  const matLED = new THREE.MeshStandardMaterial({
-    color: 0x10B981,
-    emissive: 0x10B981,
-    emissiveIntensity: 1.2,
-    roughness: 0.1,
-    side: THREE.DoubleSide
-  });
-
-  model.traverse((child) => {
-    if (child.isMesh) {
-      child.castShadow = true;
-      child.receiveShadow = true;
-
-      child.geometry.computeBoundingBox();
-      const meshBox = child.geometry.boundingBox;
-      const meshSize = meshBox.getSize(new THREE.Vector3());
-      const meshVol = meshSize.x * meshSize.y * meshSize.z;
-      const meshCenter = meshBox.getCenter(new THREE.Vector3());
-
-      if (meshVol > (totalSize.x * totalSize.y * totalSize.z * 0.25)) {
-        child.material = matPCB;
-      } else if (meshSize.x > totalSize.x * 0.3 && meshSize.z > totalSize.z * 0.3 && meshCenter.y > 0) {
-        child.material = matShield;
-      } else if (meshCenter.x < -totalSize.x * 0.28) {
-        child.material = matAntenna;
-      } else if (meshCenter.x > totalSize.x * 0.32) {
-        child.material = matUSB;
-      } else if (meshSize.y > meshSize.x * 1.5 || meshCenter.y < -totalSize.y * 0.2) {
-        child.material = matPins;
-      } else if (meshVol < 0.005) {
-        child.material = (Math.random() > 0.4) ? matCapacitor : matLED;
-      } else {
-        child.material = matChips;
-      }
-    }
-  });
-}
-
-function setupComponentMapForGLTF() {
-  componentMap["mcu"] = {
-    userData: {
-      title: "ESP-WROOM-32 Microcontroller Shield",
-      desc: "Xtensa dual-core LX6 32-bit CPU running up to 240MHz with 520KB SRAM and integrated Wi-Fi/Bluetooth."
-    }
-  };
-  componentMap["antenna"] = {
-    userData: {
-      title: "2.4 GHz PCB Inverted-F Antenna",
-      desc: "Meandered inverted-F trace antenna designed for optimal 2.4 GHz RF transmission efficiency."
-    }
-  };
-  componentMap["gpio"] = {
-    userData: {
-      title: "Dual-Row 30-Pin / 38-Pin Headers",
-      desc: "Full pinout access to I2C, SPI, UART, PWM, capacitive touch pins, and 12-bit analog inputs."
-    }
-  };
-  componentMap["bridge"] = {
-    userData: {
-      title: "Silicon Labs CP2102 USB-to-UART Bridge",
-      desc: "High-performance USB bridge supporting firmware burning and real-time serial telemetry."
-    }
-  };
-  componentMap["buttons"] = {
-    userData: {
-      title: "Tactile Push Buttons (EN / BOOT)",
-      desc: "Micro tactile switches for hardware resetting (EN) and entering serial bootloader flashing mode (BOOT / IO0)."
-    }
-  };
-}
-
-function attachLabelButtons() {
-  const buttons = document.querySelectorAll('.comp-label-btn');
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      buttons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const targetKey = btn.dataset.comp;
-      highlightComponent(targetKey);
-    });
-  });
-}
-
-function highlightComponent(key) {
-  const target = componentMap[key];
-  if (!target || !labelTitle || !labelDesc) return;
-
-  const data = target.userData;
-  labelTitle.textContent = data.title;
-  labelDesc.textContent = data.desc;
-
-  if (key === 'mcu') { targetRotationX = 0.35; targetRotationY = 0.4; }
-  else if (key === 'antenna') { targetRotationX = 0.35; targetRotationY = 1.2; }
-  else if (key === 'gpio') { targetRotationX = 0.7; targetRotationY = 0.25; }
-  else if (key === 'bridge') { targetRotationX = 0.35; targetRotationY = -0.3; }
-  else if (key === 'buttons') { targetRotationX = 0.3; targetRotationY = -1.0; }
-}
-
-function attachControls() {
-  let isDragging = false;
-  let prevPos = { x: 0, y: 0 };
-
-  const onPointerDown = (e) => {
-    isDragging = true;
-    isUserInteracting = true;
-    const clientX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
-    const clientY = e.clientY || (e.touches && e.touches[0].clientY) || 0;
-    prevPos = { x: clientX, y: clientY };
-  };
-
-  const onPointerMove = (e) => {
-    if (!isDragging) return;
-    const clientX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
-    const clientY = e.clientY || (e.touches && e.touches[0].clientY) || 0;
-
-    const deltaX = clientX - prevPos.x;
-    const deltaY = clientY - prevPos.y;
-
-    targetRotationY += deltaX * 0.008;
-    targetRotationX += deltaY * 0.008;
-
-    prevPos = { x: clientX, y: clientY };
-  };
-
-  const onPointerUp = () => {
-    isDragging = false;
-    setTimeout(() => { isUserInteracting = false; }, 3000);
-  };
-
-  container.addEventListener('mousedown', onPointerDown);
-  window.addEventListener('mousemove', onPointerMove);
-  window.addEventListener('mouseup', onPointerUp);
-
-  container.addEventListener('touchstart', onPointerDown, { passive: true });
-  window.addEventListener('touchmove', onPointerMove, { passive: true });
-  window.addEventListener('touchend', onPointerUp);
-
-  const resetBtn = document.getElementById('reset-cam-btn');
-  if (resetBtn) {
-    resetBtn.addEventListener('click', () => {
-      targetRotationX = 0.35;
-      targetRotationY = 0.6;
-    });
-  }
-
-  window.addEventListener('resize', onWindowResize);
-}
-
-function onWindowResize() {
-  if (!container || !renderer || !camera) return;
-  const width = container.clientWidth;
-  const height = container.clientHeight;
-  camera.aspect = width / height;
-  camera.updateProjectionMatrix();
-  renderer.setSize(width, height);
-}
-
-function animate() {
-  if (!isVisible) {
-    animationFrameId = null;
-    return;
-  }
-
-  animationFrameId = requestAnimationFrame(animate);
-
-  if (!isUserInteracting && boardGroup) {
-    boardGroup.rotation.y += 0.0035;
-    boardGroup.rotation.x = Math.sin(Date.now() * 0.0008) * 0.04 + 0.28;
-  } else if (boardGroup) {
-    boardGroup.rotation.y += (targetRotationY - boardGroup.rotation.y) * 0.1;
-    boardGroup.rotation.x += (targetRotationX - boardGroup.rotation.x) * 0.1;
-  }
-
-  renderer.render(scene, camera);
 }
 
 /* --- Module: scroll-video.js --- */
@@ -3275,47 +2566,39 @@ function initScrollReveals() {
 
 
 
-
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Initialize Real-Time Transitioning Background Slideshow
+  // 1. Initialize Real-Time Background Slideshow
   try {
     initBackgroundSlideshow();
   } catch (err) {
     console.warn("Background slideshow note:", err);
   }
 
-  // 2. Initialize Interactive Quantum Background Canvas
+  // 2. Initialize Interactive Cosmic Stardust Canvas
   try {
     initBackgroundCanvas();
   } catch (err) {
     console.warn("Background canvas note:", err);
   }
 
-  // 3. Initialize 3D Hardware Model & Theatrical Engine
-  try {
-    initThreeHero();
-  } catch (err) {
-    console.warn("3D canvas initialization note:", err);
-  }
-
-  // 4. Initialize Zero-Lag Fullscreen Video Reel
+  // 3. Initialize Zero-Lag Fullscreen Video Reel
   try {
     initScrollVideo();
   } catch (err) {
     console.warn("Scroll video engine note:", err);
   }
 
-  // 5. Initialize Hyper-Reactive Character Kinetics, Velocity Spark Cursor & 3D Tilt
+  // 4. Initialize Velocity Cursor, Tilt, Morphing Text & Animations
   try {
     initDesktopEffects();
   } catch (err) {
     console.warn("Desktop effects note:", err);
   }
 
-  // 6. Mobile Menu Navigation
+  // 5. Mobile Menu Navigation
   initMobileNav();
 
-  // 7. 1-Click Email Copy Feature
+  // 6. 1-Click Email Copy Feature
   initCopyEmail();
 });
 
@@ -3356,8 +2639,8 @@ function initCopyEmail() {
         await navigator.clipboard.writeText(email);
         copyText.textContent = "Copied to clipboard!";
         copyIcon.textContent = "✓";
-        copyBtn.style.borderColor = "var(--color-emerald-500)";
-        copyBtn.style.color = "var(--color-emerald-700)";
+        copyBtn.style.borderColor = "#FFFFFF";
+        copyBtn.style.color = "#FFFFFF";
 
         setTimeout(() => {
           copyText.textContent = email;

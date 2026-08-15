@@ -19,8 +19,6 @@ def build():
     js_files = [
         "bg-slideshow.js",
         "bg-canvas.js",
-        "theatrical-stage.js",
-        "three-hero.js",
         "scroll-video.js",
         "desktop-fx.js",
         "main.js"
@@ -37,9 +35,6 @@ def build():
                 # Remove export keywords
                 code = re.sub(r'export\s+(function|const|let|var|class)\s+', r'\1 ', code)
                 combined_js += f"\n/* --- Module: {fname} --- */\n" + code
-
-    # Ensure single THREE import at top of script
-    combined_js = "import * as THREE from 'three';\nimport { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';\n" + combined_js
 
     # Replace stylesheet link with inline <style>
     style_tag = f"<style>\n{css}\n</style>"

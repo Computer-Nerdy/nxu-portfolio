@@ -21,15 +21,6 @@
   <!-- Stylesheet (Cache-Busted) -->
   <link rel="stylesheet" href="styles.css?v=2.5" />
 
-  <!-- Three.js + GLTFLoader ES Module -->
-  <script type="importmap">
-    {
-      "imports": {
-        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
-        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
-      }
-    }
-  </script>
 </head>
 <body class="antialiased selection:bg-amber-500/30 selection:text-amber-200 relative">
 
@@ -146,54 +137,70 @@
                 <span>Explore Projects</span>
                 <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
               </a>
-              <button id="open-theatrical-btn" class="btn-liquid-secondary btn-magnetic" style="cursor: pointer;">
-                <span>✨ Enter Theatrical 3D Studio</span>
-              </button>
+              <a href="#engineering-reel" class="btn-liquid-secondary btn-magnetic">
+                <span>🎬 Watch Video Reel</span>
+              </a>
             </div>
 
           </div>
 
-          <!-- Right Column: Prominent Fluid 3D Hardware Viewport -->
+          <!-- Right Column: Sleek Architecture & Telemetry Terminal Card -->
           <div class="space-y-4 reveal-on-scroll">
-            <div class="viewport-card glass-card shadow-glass-lg tilt-card">
+            <div class="glass-card p-fluid rounded-fluid shadow-glass-lg tilt-card">
               
-              <!-- 3D Canvas -->
-              <div id="three-hero-container"></div>
-
-              <!-- Top Floating Controls -->
-              <div style="position: absolute; top: 1rem; left: 1rem; right: 1rem; display: flex; align-items: center; justify-content: space-between; pointer-events: auto; z-index: 20;">
-                <span class="glass-card" style="padding: 0.35rem 0.75rem; border-radius: 0.625rem; font-size: 0.75rem; font-weight: 600; color: #F1F5F9;">
-                  ESP32 Hardware Inspector (Drag to Rotate)
+              <!-- Top Terminal Status Bar -->
+              <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 0.85rem; margin-bottom: 1.25rem;">
+                <div style="display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; color: #FFFFFF;">
+                  <span class="status-dot" style="background-color: #FFFFFF;"></span>
+                  <span>SYSTEM ARCHITECTURE HUB</span>
+                </div>
+                <span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--color-slate-500); background: rgba(255,255,255,0.06); padding: 0.2rem 0.5rem; border-radius: 0.375rem;">
+                  STATUS: OPERATIONAL
                 </span>
-                <button id="reset-cam-btn" style="padding: 0.35rem 0.75rem; border-radius: 0.625rem; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); font-size: 0.75rem; font-weight: 600; color: #FFFFFF; cursor: pointer;">
-                  Reset View
-                </button>
+              </div>
+
+              <!-- Core Focus Blocks -->
+              <div class="space-y-4">
+                <div style="padding: 0.85rem; border-radius: 0.75rem; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08);">
+                  <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.8125rem; font-weight: 700; color: #FFFFFF;">
+                    <span>⚡ Embedded Hardware &amp; Firmware</span>
+                    <span style="font-family: var(--font-mono); font-size: 0.7rem; color: #94A3B8;">ESP32 / C++</span>
+                  </div>
+                  <p style="font-size: 0.75rem; color: #94A3B8; margin-top: 0.25rem; line-height: 1.5;">
+                    Bare-metal registers, FreeRTOS task scheduling, UART/SPI/I2C communication, and low-power sensor networks.
+                  </p>
+                </div>
+
+                <div style="padding: 0.85rem; border-radius: 0.75rem; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08);">
+                  <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.8125rem; font-weight: 700; color: #FFFFFF;">
+                    <span>🌌 Quantum Circuits &amp; RF Telemetry</span>
+                    <span style="font-family: var(--font-mono); font-size: 0.7rem; color: #94A3B8;">Qiskit / Anomaly</span>
+                  </div>
+                  <p style="font-size: 0.75rem; color: #94A3B8; margin-top: 0.25rem; line-height: 1.5;">
+                    Simulating qubit gates, entanglement states, and detecting radio frequency spectrum disturbances in real time.
+                  </p>
+                </div>
+
+                <div style="padding: 0.85rem; border-radius: 0.75rem; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08);">
+                  <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.8125rem; font-weight: 700; color: #FFFFFF;">
+                    <span>🤖 Autonomous AI Tooling</span>
+                    <span style="font-family: var(--font-mono); font-size: 0.7rem; color: #94A3B8;">PyTorch / Inference</span>
+                  </div>
+                  <p style="font-size: 0.75rem; color: #94A3B8; margin-top: 0.25rem; line-height: 1.5;">
+                    Local edge machine learning pipelines, autonomous code patching, and model telemetry optimization.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Quick Verification Footer -->
+              <div style="margin-top: 1.25rem; padding-top: 0.85rem; border-top: 1px solid rgba(255, 255, 255, 0.08); display: flex; align-items: center; justify-content: space-between;">
+                <span style="font-family: var(--font-mono); font-size: 0.7rem; color: #64748B;">SRM IST Ramapuram · 2026</span>
+                <a href="https://github.com/Computer-Nerdy" target="_blank" rel="noopener noreferrer" style="font-size: 0.75rem; font-weight: 700; color: #FFFFFF; text-decoration: underline;">
+                  View GitHub Profile ➔
+                </a>
               </div>
 
             </div>
-
-            <!-- Interactive Component Label Buttons -->
-            <div class="glass-card p-card rounded-fluid space-y-4 tilt-card">
-              <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem; font-weight: 700; color: #94A3B8;">
-                <span>INSPECT HARDWARE STAGE:</span>
-                <span class="text-amber-500">Interactive Focus</span>
-              </div>
-              
-              <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-                <button class="comp-label-btn active" data-comp="mcu">ESP-WROOM-32 Shield</button>
-                <button class="comp-label-btn" data-comp="antenna">PCB Antenna</button>
-                <button class="comp-label-btn" data-comp="gpio">Dual-Row Pins</button>
-                <button class="comp-label-btn" data-comp="bridge">CP2102 UART Bridge</button>
-                <button class="comp-label-btn" data-comp="buttons">EN / BOOT Buttons</button>
-              </div>
-
-              <!-- Dynamic Component Description Card -->
-              <div style="padding: 0.75rem 1rem; border-radius: 0.75rem; background-color: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08);">
-                <div id="component-label-title" style="font-weight: 800; color: #FFFFFF; font-size: 0.875rem;">ESP32 Dual-Core Xtensa LX6 (240MHz)</div>
-                <div id="component-label-desc" style="color: #94A3B8; font-size: 0.75rem; margin-top: 0.25rem; line-height: 1.6;">Main compute core with integrated Wi-Fi, Bluetooth 4.2 BLE, hardware crypto accelerator, and 520KB SRAM.</div>
-              </div>
-            </div>
-
           </div>
 
         </div>
@@ -490,43 +497,7 @@
     </div>
   </footer>
 
-  <!-- FULLSCREEN THEATRICAL 3D STAGE MODAL -->
-  <div id="theatrical-modal" class="hidden">
-    
-    <!-- Top HUD Controls -->
-    <div class="theatrical-hud-top">
-      <div style="display: flex; align-items: center; gap: 0.75rem;">
-        <span style="font-family: var(--font-mono); font-size: 0.875rem; font-weight: 700; color: #F59E0B; background: rgba(0,0,0,0.6); padding: 0.4rem 0.85rem; border-radius: 0.75rem; border: 1px solid rgba(245,158,11,0.4);">
-          ⚡ THEATRICAL 3D STUDIO
-        </span>
-        <span style="font-size: 0.75rem; color: #94A3B8; display: none;" class="md:inline">
-          Full 360° Studio Orbit | Hardware Diagnostics Mode
-        </span>
-      </div>
 
-      <button id="close-theatrical-btn" class="theatrical-control-btn" style="background: rgba(239, 68, 68, 0.25); border-color: rgba(239, 68, 68, 0.5); color: #FCA5A5;">
-        ✕ Exit Theatrical Studio
-      </button>
-    </div>
-
-    <!-- 3D Canvas Viewport -->
-    <div id="theatrical-canvas-container"></div>
-
-    <!-- Bottom HUD Diagnostic Stage -->
-    <div class="theatrical-hud-bottom">
-      <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-        <button id="theat-mode-standard" class="theatrical-control-btn active">Standard Assembled</button>
-        <button id="theat-mode-exploded" class="theatrical-control-btn">Exploded Architecture</button>
-        <button id="theat-mode-wireframe" class="theatrical-control-btn">Cyber Blueprint</button>
-        <button id="theat-autorotate-btn" class="theatrical-control-btn">Auto-Orbit: ON</button>
-      </div>
-
-      <div style="font-family: var(--font-mono); font-size: 0.75rem; color: #64748B; background: rgba(0,0,0,0.6); padding: 0.4rem 0.85rem; border-radius: 0.75rem; border: 1px solid rgba(255,255,255,0.1);">
-        ESP32-WROOM-32 · Xtensa Dual-Core 240MHz · 520KB SRAM · Wi-Fi/BLE
-      </div>
-    </div>
-
-  </div>
 
   <!-- Main JavaScript Module Scripts (Cache-Busted) -->
   <script type="module" src="js/main.js?v=2.5"></script>
