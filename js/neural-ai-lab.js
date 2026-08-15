@@ -291,29 +291,7 @@ export function initNeuralAILab() {
     container.style.setProperty('--smoke-color-3', `rgb(${rgb3.r}, ${rgb3.g}, ${rgb3.b})`);
     container.style.setProperty('--smoke-color-4', `rgb(${rgb4.r}, ${rgb4.g}, ${rgb4.b})`);
 
-    // 1. Calculate Organic Undulating Liquid Glass Puddle Contour
-    const wave1 = Math.sin(now * 0.0018) * 7;
-    const wave2 = Math.cos(now * 0.0023) * 6;
-    const wave3 = Math.sin(now * 0.0014) * 8;
-    const wave4 = Math.cos(now * 0.0019) * 5;
-
-    for (let i = 0; i < 8; i++) {
-      puddlePoints[i] += (targetPuddle[i] - puddlePoints[i]) * 0.1;
-    }
-
-    const p0 = Math.max(25, Math.min(75, puddlePoints[0] + wave1));
-    const p1 = Math.max(25, Math.min(75, puddlePoints[1] - wave2));
-    const p2 = Math.max(25, Math.min(75, puddlePoints[2] + wave3));
-    const p3 = Math.max(25, Math.min(75, puddlePoints[3] - wave4));
-
-    const p4 = Math.max(25, Math.min(75, puddlePoints[4] - wave1));
-    const p5 = Math.max(25, Math.min(75, puddlePoints[5] + wave2));
-    const p6 = Math.max(25, Math.min(75, puddlePoints[6] - wave3));
-    const p7 = Math.max(25, Math.min(75, puddlePoints[7] + wave4));
-
-    container.style.borderRadius = `${p0.toFixed(1)}% ${p1.toFixed(1)}% ${p2.toFixed(1)}% ${p3.toFixed(1)}% / ${p4.toFixed(1)}% ${p5.toFixed(1)}% ${p6.toFixed(1)}% ${p7.toFixed(1)}%`;
-
-    // 2. Viscous Dampening of Velocity Grid
+    // 1. Viscous Dampening of Velocity Grid
     const damp = 0.94;
     for (let i = 0; i < velocityGrid.length; i++) {
       velocityGrid[i] *= damp;

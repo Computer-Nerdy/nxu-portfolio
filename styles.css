@@ -162,6 +162,7 @@ a {
 
 .rgb-living-edge-container {
   position: relative;
+  border-radius: clamp(1.25rem, 3vw, 2.25rem);
   overflow: hidden;
   background: 
     radial-gradient(80% 80% at var(--liquid-mouse-x, 50%) var(--liquid-mouse-y, 50%), rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.02) 40%, transparent 75%),
@@ -180,7 +181,6 @@ a {
     0 0 50px rgba(56, 189, 248, 0.35);
   animation: rgbLivingEdgePulse 9s ease-in-out infinite alternate;
   transition: border-color 0.4s var(--ease-smooth), box-shadow 0.4s var(--ease-smooth);
-  will-change: border-radius, transform;
 }
 
 @keyframes rgbLivingEdgePulse {
