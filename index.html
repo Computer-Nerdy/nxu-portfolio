@@ -270,22 +270,29 @@
 
             </div>
 
-            <!-- Interactive Neural Control & Trigger -->
-            <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.1);">
-              <div style="display: flex; align-items: center; gap: 0.75rem;">
-                <label for="neural-model-select" style="font-size: 0.75rem; font-family: var(--font-mono); color: #94A3B8;">
-                  ACTIVE AI PIPELINE:
-                </label>
-                <select id="neural-model-select" style="padding: 0.4rem 0.75rem; border-radius: 0.5rem; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(255, 255, 255, 0.2); color: #FFFFFF; font-size: 0.75rem; font-family: var(--font-mono); cursor: pointer;">
-                  <option value="anomaly">RF Spectrum Anomaly Classifier (Deep ResNet)</option>
-                  <option value="autopatch">Auto-Patch AST Neural Code Healer</option>
-                  <option value="quantum">Quantum Qubit VQE Noise Filter</option>
-                </select>
+            <!-- Autonomous Neural Execution Stream (Zero Clicks Required) -->
+            <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding-top: 1.25rem; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+              <div style="display: flex; flex-direction: column; gap: 0.25rem;">
+                <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; font-family: var(--font-mono); color: #94A3B8;">
+                  <span class="status-dot" style="background-color: #10B981; box-shadow: 0 0 10px #10B981;"></span>
+                  <span>AUTONOMOUS PIPELINE:</span>
+                  <span id="neural-active-pipeline-name" style="color: #FFFFFF; font-weight: 700;">
+                    RF Spectrum Anomaly Classifier (Deep ResNet-34)
+                  </span>
+                </div>
+                <div id="neural-log-feed" style="font-family: var(--font-mono); font-size: 0.7rem; color: #38BDF8; margin-top: 0.2rem;">
+                  [ACTIVE] Synaptic DMA stream running continuously at 240MHz hardware clock
+                </div>
               </div>
 
-              <button id="trigger-neural-pulse-btn" class="btn-liquid-primary btn-magnetic" style="cursor: pointer;">
-                <span>⚡ Fire Synaptic Neural Pulse</span>
-              </button>
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <span id="neural-active-pipeline-tag" style="font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; color: #FFFFFF; background: rgba(255, 255, 255, 0.08); padding: 0.35rem 0.75rem; border-radius: 0.5rem; border: 1px solid rgba(255, 255, 255, 0.18);">
+                  BATCH 128 · 240MHz
+                </span>
+                <span style="font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; color: #34D399; background: rgba(16, 185, 129, 0.12); padding: 0.35rem 0.75rem; border-radius: 0.5rem; border: 1px solid rgba(52, 211, 153, 0.3);">
+                  AUTONOMOUS
+                </span>
+              </div>
             </div>
 
           </div>

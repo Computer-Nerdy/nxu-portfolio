@@ -1531,22 +1531,29 @@ svg {
 
             </div>
 
-            <!-- Interactive Neural Control & Trigger -->
-            <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.1);">
-              <div style="display: flex; align-items: center; gap: 0.75rem;">
-                <label for="neural-model-select" style="font-size: 0.75rem; font-family: var(--font-mono); color: #94A3B8;">
-                  ACTIVE AI PIPELINE:
-                </label>
-                <select id="neural-model-select" style="padding: 0.4rem 0.75rem; border-radius: 0.5rem; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(255, 255, 255, 0.2); color: #FFFFFF; font-size: 0.75rem; font-family: var(--font-mono); cursor: pointer;">
-                  <option value="anomaly">RF Spectrum Anomaly Classifier (Deep ResNet)</option>
-                  <option value="autopatch">Auto-Patch AST Neural Code Healer</option>
-                  <option value="quantum">Quantum Qubit VQE Noise Filter</option>
-                </select>
+            <!-- Autonomous Neural Execution Stream (Zero Clicks Required) -->
+            <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding-top: 1.25rem; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+              <div style="display: flex; flex-direction: column; gap: 0.25rem;">
+                <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; font-family: var(--font-mono); color: #94A3B8;">
+                  <span class="status-dot" style="background-color: #10B981; box-shadow: 0 0 10px #10B981;"></span>
+                  <span>AUTONOMOUS PIPELINE:</span>
+                  <span id="neural-active-pipeline-name" style="color: #FFFFFF; font-weight: 700;">
+                    RF Spectrum Anomaly Classifier (Deep ResNet-34)
+                  </span>
+                </div>
+                <div id="neural-log-feed" style="font-family: var(--font-mono); font-size: 0.7rem; color: #38BDF8; margin-top: 0.2rem;">
+                  [ACTIVE] Synaptic DMA stream running continuously at 240MHz hardware clock
+                </div>
               </div>
 
-              <button id="trigger-neural-pulse-btn" class="btn-liquid-primary btn-magnetic" style="cursor: pointer;">
-                <span>⚡ Fire Synaptic Neural Pulse</span>
-              </button>
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <span id="neural-active-pipeline-tag" style="font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; color: #FFFFFF; background: rgba(255, 255, 255, 0.08); padding: 0.35rem 0.75rem; border-radius: 0.5rem; border: 1px solid rgba(255, 255, 255, 0.18);">
+                  BATCH 128 · 240MHz
+                </span>
+                <span style="font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; color: #34D399; background: rgba(16, 185, 129, 0.12); padding: 0.35rem 0.75rem; border-radius: 0.5rem; border: 1px solid rgba(52, 211, 153, 0.3);">
+                  AUTONOMOUS
+                </span>
+              </div>
             </div>
 
           </div>
@@ -2066,20 +2073,21 @@ function initBackgroundCanvas() {
 
 /* --- Module: neural-ai-lab.js --- */
 /* ==========================================================================
-   LIVING NEURAL AI LABORATORY & RGB SYNAPTIC PARTICLE ENGINE
-   - Chromatic RGB Edge Screen Aura
-   - Synaptic Node Network with Action Potential Laser Pulses
-   - Interactive Pulse Trigger & Neural Model Telemetry
+   FULLY AUTONOMOUS NEURAL AI LABORATORY & REAL-TIME RGB PARTICLE ENGINE
+   - 100% Automatic Execution — Zero Clicks Required
+   - Autonomous Synaptic Action Potential Pulses & Dynamic Screen Edge Glow
+   - Continuous Streaming Telemetry & Autonomous Model Pipeline Cycler
    ========================================================================== */
 
 function initNeuralAILab() {
   const container = document.getElementById('neural-ai-lab');
   const canvas = document.getElementById('neural-particle-canvas');
-  const pulseBtn = document.getElementById('trigger-neural-pulse-btn');
-  const modelSelect = document.getElementById('neural-model-select');
   const latencyDisplay = document.getElementById('neural-telemetry-latency');
   const accuracyDisplay = document.getElementById('neural-telemetry-accuracy');
   const throughputDisplay = document.getElementById('neural-telemetry-throughput');
+  const activePipelineName = document.getElementById('neural-active-pipeline-name');
+  const activePipelineTag = document.getElementById('neural-active-pipeline-tag');
+  const autonomousLogFeed = document.getElementById('neural-log-feed');
 
   if (!canvas) return;
 
@@ -2090,12 +2098,21 @@ function initNeuralAILab() {
   let mouse = { x: -1000, y: -1000, radius: 170 };
 
   const rgbColors = [
-    { r: 56, g: 189, b: 248 },   // Cyan
-    { r: 168, g: 85, b: 247 },   // Violet
-    { r: 236, g: 72, b: 153 },   // Pink/Magenta
-    { r: 245, g: 158, b: 11 },   // Amber
-    { r: 16, g: 185, b: 129 }    // Emerald
+    { r: 56, g: 189, b: 248 },   // Electric Cyan
+    { r: 168, g: 85, b: 247 },   // Galactic Violet
+    { r: 236, g: 72, b: 153 },   // Astral Magenta
+    { r: 245, g: 158, b: 11 },   // Supernova Amber
+    { r: 16, g: 185, b: 129 }    // Emerald Phosphor
   ];
+
+  const autonomousPipelines = [
+    { name: "RF Spectrum Anomaly Classifier (Deep ResNet-34)", tag: "BATCH 128 · 240MHz", log: "Inference cycle #8492: Spectrum anomaly detected at 2.412 GHz · Confidence: 99.8%" },
+    { name: "Auto-Patch AST Neural Code Repair Engine", tag: "AST SYNAPSE · ZERO-COPY", log: "AST parser node tree resolved · Autonomous patch compiled in 0.42ms" },
+    { name: "Quantum Qubit VQE Decoherence Filter", tag: "1024 SHOTS · INT8 QUANT", log: "Variational quantum eigensolver converged · Fidelity threshold: 0.9994" },
+    { name: "Edge TPU TinyML Real-Time Sensor Fusion", tag: "DMA STREAM · 520KB SRAM", log: "Sensor matrix fused: 6-DOF IMU + RF Telemetry synchronized" }
+  ];
+
+  let currentPipelineIdx = 0;
 
   function resize() {
     if (!container) return;
@@ -2106,15 +2123,15 @@ function initNeuralAILab() {
 
   function createNetwork() {
     neurons = [];
-    const count = Math.min(Math.floor((width * height) / 10000), 80);
+    const count = Math.min(Math.floor((width * height) / 9500), 90);
 
     for (let i = 0; i < count; i++) {
       const color = rgbColors[i % rgbColors.length];
       neurons.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
+        vx: (Math.random() - 0.5) * 0.45,
+        vy: (Math.random() - 0.5) * 0.45,
         radius: Math.random() * 2.5 + 1.2,
         color: color,
         alpha: Math.random() * 0.6 + 0.35,
@@ -2135,16 +2152,18 @@ function initNeuralAILab() {
     mouse.y = -1000;
   });
 
-  // Trigger high-energy RGB synaptic action potential wave
+  // Automatically fire high-energy RGB synaptic action potential wave
   function fireNeuralPulse() {
-    for (let i = 0; i < 6; i++) {
+    if (neurons.length < 2) return;
+
+    for (let i = 0; i < 5; i++) {
       const startIdx = Math.floor(Math.random() * neurons.length);
-      const endIdx = (startIdx + Math.floor(Math.random() * 6) + 1) % neurons.length;
+      const endIdx = (startIdx + Math.floor(Math.random() * 8) + 1) % neurons.length;
       actionPulses.push({
         from: neurons[startIdx],
         to: neurons[endIdx],
         progress: 0,
-        speed: 0.035 + Math.random() * 0.02,
+        speed: 0.03 + Math.random() * 0.025,
         color: rgbColors[Math.floor(Math.random() * rgbColors.length)]
       });
     }
@@ -2154,37 +2173,41 @@ function initNeuralAILab() {
       container.classList.add('edge-glow-supercharge');
       setTimeout(() => {
         container.classList.remove('edge-glow-supercharge');
-      }, 700);
+      }, 600);
     }
   }
 
-  if (pulseBtn) {
-    pulseBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      fireNeuralPulse();
-      
-      // Simulate real-time inference latency fluctuation
-      if (latencyDisplay) {
-        latencyDisplay.textContent = `${(0.4 + Math.random() * 0.5).toFixed(2)} ms`;
-      }
-      if (accuracyDisplay) {
-        accuracyDisplay.textContent = `${(99.6 + Math.random() * 0.3).toFixed(1)}%`;
-      }
-      if (throughputDisplay) {
-        throughputDisplay.textContent = `${Math.floor(1800 + Math.random() * 400)} FPS`;
-      }
-    });
-  }
+  // 1. Autonomous High-Frequency Pulse Loop (every 1.8 seconds)
+  setInterval(() => {
+    fireNeuralPulse();
+  }, 1800);
 
-  // Model Selector Simulator
-  if (modelSelect) {
-    modelSelect.addEventListener('change', () => {
-      fireNeuralPulse();
-      if (latencyDisplay) {
-        latencyDisplay.textContent = `${(0.5 + Math.random() * 0.6).toFixed(2)} ms`;
-      }
-    });
-  }
+  // 2. Autonomous Real-Time Telemetry Stream (Updates every 600ms)
+  setInterval(() => {
+    if (latencyDisplay) {
+      latencyDisplay.textContent = `${(0.45 + Math.random() * 0.38).toFixed(2)} ms`;
+    }
+    if (accuracyDisplay) {
+      accuracyDisplay.textContent = `${(99.6 + Math.random() * 0.3).toFixed(1)}%`;
+    }
+    if (throughputDisplay) {
+      throughputDisplay.textContent = `${Math.floor(2100 + Math.random() * 350).toLocaleString()} FPS`;
+    }
+  }, 600);
+
+  // 3. Autonomous AI Pipeline Switcher (Cycles every 4 seconds)
+  setInterval(() => {
+    currentPipelineIdx = (currentPipelineIdx + 1) % autonomousPipelines.length;
+    const current = autonomousPipelines[currentPipelineIdx];
+
+    if (activePipelineName) activePipelineName.textContent = current.name;
+    if (activePipelineTag) activePipelineTag.textContent = current.tag;
+    if (autonomousLogFeed) {
+      const timeStr = new Date().toISOString().substring(11, 19);
+      autonomousLogFeed.textContent = `[${timeStr}] ${current.log}`;
+    }
+    fireNeuralPulse();
+  }, 4000);
 
   function render() {
     ctx.clearRect(0, 0, width, height);
@@ -2208,8 +2231,8 @@ function initNeuralAILab() {
 
       if (dist < mouse.radius) {
         const force = (1 - dist / mouse.radius) * 0.9;
-        n.x -= (dx / dist) * force * 2;
-        n.y -= (dy / dist) * force * 2;
+        n.x -= (dx / dist) * force * 1.8;
+        n.y -= (dy / dist) * force * 1.8;
       }
 
       n.pulseVal += n.pulseSpeed;
@@ -2228,13 +2251,13 @@ function initNeuralAILab() {
         const n2 = neurons[j];
         const dist2 = Math.hypot(n.x - n2.x, n.y - n2.y);
 
-        if (dist2 < 130) {
-          const alpha = (1 - dist2 / 130) * 0.22;
+        if (dist2 < 135) {
+          const alpha = (1 - dist2 / 135) * 0.24;
           ctx.beginPath();
           ctx.moveTo(n.x, n.y);
           ctx.lineTo(n2.x, n2.y);
           ctx.strokeStyle = `rgba(${n.color.r}, ${n.color.g}, ${n.color.b}, ${alpha})`;
-          ctx.lineWidth = 0.9;
+          ctx.lineWidth = 0.95;
           ctx.stroke();
         }
       }
@@ -2268,13 +2291,6 @@ function initNeuralAILab() {
   window.addEventListener('resize', resize);
   setTimeout(resize, 100);
   render();
-
-  // Ambient automatic synaptic pulses every 4.5 seconds
-  setInterval(() => {
-    if (Math.random() > 0.3) {
-      fireNeuralPulse();
-    }
-  }, 4500);
 }
 
 /* --- Module: scroll-video.js --- */
