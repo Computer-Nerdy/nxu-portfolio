@@ -1,6 +1,6 @@
 /* ==========================================================================
-   REAL-TIME BACKGROUND IMAGE SLIDESHOW (LITERAL PROJECT IMAGES)
-   Loads real background images from /images/ folder with smooth cross-dissolve,
+   REAL-TIME BACKGROUND IMAGE SLIDESHOW (2K RENDER SCENES)
+   Loads authentic 2K background scenes with smooth cross-dissolve,
    Ken Burns slow zoom drift, and responsive cursor parallax.
    ========================================================================== */
 
@@ -15,12 +15,12 @@ export function initBackgroundSlideshow() {
 
   container.innerHTML = '';
 
-  // Literal Image paths located in /images/ directory
+  // 4 High-Fidelity Background Scenes
   const imageSources = [
-    'images/bg1.jpg',
-    'images/bg2.jpg',
-    'images/bg3.jpg',
-    'images/bg4.jpg'
+    'images/bg_quantum.jpeg',
+    'images/bg_silicon.jpeg',
+    'images/bg_rf.jpeg',
+    'images/bg_workbench.jpeg'
   ];
 
   const slideElements = [];
