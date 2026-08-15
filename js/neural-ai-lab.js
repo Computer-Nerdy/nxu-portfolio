@@ -1,8 +1,8 @@
 /* ==========================================================================
-   REACTIVE FLUID DYNAMICS & LIQUID MEMBRANE BUBBLE ENGINE
-   - Navier-Stokes Grid Fluid Momentum & Vorticity Simulation
-   - Liquid Surface Tension Bubble Membrane Deform
-   - Swirling Fluorescent Dye Vortices & Inward-Billowing Smoke
+   LIVING LIQUID GLASS PUDDLE & REACTIVE FLUID MECHANICS ENGINE
+   - Organic Undulating Liquid Glass Puddle Contour & Surface Tension Physics
+   - Dynamic Specular Glass Refraction & Light Caustics
+   - Navier-Stokes Grid Momentum, Vortices & Inward-Billowing Smoke Clouds
    - 100% Autonomous Continuous Execution & Real-Time Telemetry Stream
    ========================================================================== */
 
@@ -23,7 +23,7 @@ export function initNeuralAILab() {
   let fluidRipples = [];
 
   // Fluid Dynamics Velocity Grid
-  const CELL_SIZE = 32;
+  const CELL_SIZE = 30;
   let gridCols = 0, gridRows = 0;
   let velocityGrid = [];
 
@@ -38,9 +38,9 @@ export function initNeuralAILab() {
     isInside: false
   };
 
-  // Fluid Bubble Membrane Spring Physics
-  let bubbleRadii = [32, 32, 32, 32, 32, 32, 32, 32];
-  let targetRadii = [32, 32, 32, 32, 32, 32, 32, 32];
+  // Organic Liquid Glass Puddle 8-Point Membrane Contour (Percentages)
+  let puddlePoints = [48, 52, 46, 54, 52, 48, 54, 46];
+  let targetPuddle = [48, 52, 46, 54, 52, 48, 54, 46];
 
   function getLivingRGB(offset = 0) {
     const t = performance.now() * 0.0008 + offset;
@@ -56,7 +56,7 @@ export function initNeuralAILab() {
 
     gridCols = Math.ceil(width / CELL_SIZE) + 1;
     gridRows = Math.ceil(height / CELL_SIZE) + 1;
-    velocityGrid = new Float32Array(gridCols * gridRows * 2); // [u, v] per cell
+    velocityGrid = new Float32Array(gridCols * gridRows * 2);
 
     createNetwork();
   }
@@ -67,7 +67,7 @@ export function initNeuralAILab() {
     return (row * gridCols + col) * 2;
   }
 
-  function injectFluidForce(x, y, vx, vy, radius = 65) {
+  function injectFluidForce(x, y, vx, vy, radius = 70) {
     const radCells = Math.ceil(radius / CELL_SIZE);
     const centerCol = Math.floor(x / CELL_SIZE);
     const centerRow = Math.floor(y / CELL_SIZE);
@@ -85,8 +85,8 @@ export function initNeuralAILab() {
           if (dist < radius) {
             const factor = (1 - dist / radius);
             const idx = (row * gridCols + col) * 2;
-            velocityGrid[idx] += vx * factor * 0.45;
-            velocityGrid[idx + 1] += vy * factor * 0.45;
+            velocityGrid[idx] += vx * factor * 0.5;
+            velocityGrid[idx + 1] += vy * factor * 0.5;
           }
         }
       }
@@ -125,11 +125,11 @@ export function initNeuralAILab() {
       y,
       vx,
       vy,
-      size: Math.random() * 60 + 45,
-      maxSize: Math.random() * 160 + 120,
-      growth: Math.random() * 0.8 + 0.45,
+      size: Math.random() * 65 + 45,
+      maxSize: Math.random() * 170 + 130,
+      growth: Math.random() * 0.85 + 0.45,
       opacity: 0.1,
-      maxOpacity: Math.random() * 0.48 + 0.28,
+      maxOpacity: Math.random() * 0.48 + 0.3,
       life: randomStart ? Math.floor(Math.random() * 50) : 0,
       maxLife: Math.random() * 150 + 110,
       color: getLivingRGB(Math.random() * 3)
@@ -154,7 +154,7 @@ export function initNeuralAILab() {
       });
     }
 
-    for (let s = 0; s < 40; s++) {
+    for (let s = 0; s < 45; s++) {
       spawnSmokePuff(true);
     }
   }
@@ -168,23 +168,34 @@ export function initNeuralAILab() {
     const curX = e.clientX - rect.left;
     const curY = e.clientY - rect.top;
 
+    // Update specular glass highlight position
+    const pctX = ((curX / width) * 100).toFixed(1);
+    const pctY = ((curY / height) * 100).toFixed(1);
+    container.style.setProperty('--liquid-mouse-x', `${pctX}%`);
+    container.style.setProperty('--liquid-mouse-y', `${pctY}%`);
+
     if (mouse.prevX > -500) {
       mouse.vx = curX - mouse.prevX;
       mouse.vy = curY - mouse.prevY;
       mouse.speed = Math.hypot(mouse.vx, mouse.vy);
 
       // Inject fluid momentum & spin vortices
-      injectFluidForce(curX, curY, mouse.vx * 1.6, mouse.vy * 1.6, 95);
+      injectFluidForce(curX, curY, mouse.vx * 1.8, mouse.vy * 1.8, 100);
 
-      // Liquid bubble membrane deformation
+      // Liquid Glass Puddle Stretch & Bulge Physics
       const normX = curX / width;
       const normY = curY / height;
-      const bulge = Math.min(mouse.speed * 0.8, 40);
+      const stretch = Math.min(mouse.speed * 0.6, 22);
 
-      targetRadii[0] = 32 + (1 - normX) * (1 - normY) * bulge;
-      targetRadii[1] = 32 + (normX) * (1 - normY) * bulge;
-      targetRadii[2] = 32 + (normX) * (normY) * bulge;
-      targetRadii[3] = 32 + (1 - normX) * (normY) * bulge;
+      targetPuddle[0] = 48 + (1 - normX) * stretch;
+      targetPuddle[1] = 52 + normX * stretch;
+      targetPuddle[2] = 46 + normX * stretch;
+      targetPuddle[3] = 54 + (1 - normX) * stretch;
+
+      targetPuddle[4] = 52 + (1 - normY) * stretch;
+      targetPuddle[5] = 48 + (1 - normY) * stretch;
+      targetPuddle[6] = 54 + normY * stretch;
+      targetPuddle[7] = 46 + normY * stretch;
     }
 
     mouse.prevX = mouse.x = curX;
@@ -198,11 +209,15 @@ export function initNeuralAILab() {
     mouse.prevY = -1000;
     mouse.isInside = false;
 
-    // Reset bubble membrane
-    targetRadii = [32, 32, 32, 32, 32, 32, 32, 32];
+    // Reset default specular highlight to center
+    container.style.setProperty('--liquid-mouse-x', '50%');
+    container.style.setProperty('--liquid-mouse-y', '50%');
+
+    // Smoothly restore base puddle shape
+    targetPuddle = [48, 52, 46, 54, 52, 48, 54, 46];
   });
 
-  // Click generates high-speed fluid shockwave ripple
+  // Click generates liquid glass caustic ripple shockwave
   container.addEventListener('click', (e) => {
     const rect = container.getBoundingClientRect();
     const clickX = e.clientX - rect.left;
@@ -211,17 +226,17 @@ export function initNeuralAILab() {
     fluidRipples.push({
       x: clickX,
       y: clickY,
-      radius: 5,
-      maxRadius: 180,
-      opacity: 0.9,
+      radius: 4,
+      maxRadius: 220,
+      opacity: 0.95,
       color: getLivingRGB()
     });
 
     // Blast fluid outward in all directions
     for (let angle = 0; angle < Math.PI * 2; angle += Math.PI / 8) {
-      const forceX = Math.cos(angle) * 18;
-      const forceY = Math.sin(angle) * 18;
-      injectFluidForce(clickX + Math.cos(angle) * 20, clickY + Math.sin(angle) * 20, forceX, forceY, 60);
+      const forceX = Math.cos(angle) * 22;
+      const forceY = Math.sin(angle) * 22;
+      injectFluidForce(clickX + Math.cos(angle) * 25, clickY + Math.sin(angle) * 25, forceX, forceY, 70);
     }
   });
 
@@ -276,18 +291,29 @@ export function initNeuralAILab() {
     container.style.setProperty('--smoke-color-3', `rgb(${rgb3.r}, ${rgb3.g}, ${rgb3.b})`);
     container.style.setProperty('--smoke-color-4', `rgb(${rgb4.r}, ${rgb4.g}, ${rgb4.b})`);
 
-    // 1. Update Fluid Bubble Membrane Deform (Surface Tension)
-    const fluidWobble = Math.sin(now * 0.003) * 6;
-    for (let i = 0; i < 4; i++) {
-      bubbleRadii[i] += (targetRadii[i] - bubbleRadii[i]) * 0.12;
-    }
-    const r1 = Math.max(16, bubbleRadii[0] + fluidWobble);
-    const r2 = Math.max(16, bubbleRadii[1] - fluidWobble);
-    const r3 = Math.max(16, bubbleRadii[2] + fluidWobble);
-    const r4 = Math.max(16, bubbleRadii[3] - fluidWobble);
-    container.style.borderRadius = `${r1.toFixed(1)}px ${r2.toFixed(1)}px ${r3.toFixed(1)}px ${r4.toFixed(1)}px`;
+    // 1. Calculate Organic Undulating Liquid Glass Puddle Contour
+    const wave1 = Math.sin(now * 0.0018) * 7;
+    const wave2 = Math.cos(now * 0.0023) * 6;
+    const wave3 = Math.sin(now * 0.0014) * 8;
+    const wave4 = Math.cos(now * 0.0019) * 5;
 
-    // 2. Dampen & Diffuse Velocity Grid (Viscous Dissipation)
+    for (let i = 0; i < 8; i++) {
+      puddlePoints[i] += (targetPuddle[i] - puddlePoints[i]) * 0.1;
+    }
+
+    const p0 = Math.max(25, Math.min(75, puddlePoints[0] + wave1));
+    const p1 = Math.max(25, Math.min(75, puddlePoints[1] - wave2));
+    const p2 = Math.max(25, Math.min(75, puddlePoints[2] + wave3));
+    const p3 = Math.max(25, Math.min(75, puddlePoints[3] - wave4));
+
+    const p4 = Math.max(25, Math.min(75, puddlePoints[4] - wave1));
+    const p5 = Math.max(25, Math.min(75, puddlePoints[5] + wave2));
+    const p6 = Math.max(25, Math.min(75, puddlePoints[6] - wave3));
+    const p7 = Math.max(25, Math.min(75, puddlePoints[7] + wave4));
+
+    container.style.borderRadius = `${p0.toFixed(1)}% ${p1.toFixed(1)}% ${p2.toFixed(1)}% ${p3.toFixed(1)}% / ${p4.toFixed(1)}% ${p5.toFixed(1)}% ${p6.toFixed(1)}% ${p7.toFixed(1)}%`;
+
+    // 2. Viscous Dampening of Velocity Grid
     const damp = 0.94;
     for (let i = 0; i < velocityGrid.length; i++) {
       velocityGrid[i] *= damp;
@@ -307,12 +333,10 @@ export function initNeuralAILab() {
       const p = smokePuffs[s];
       p.life++;
 
-      // Sample Local Fluid Velocity
       const gIdx = getGridIndex(p.x, p.y);
       const fluidU = velocityGrid[gIdx] || 0;
       const fluidV = velocityGrid[gIdx + 1] || 0;
 
-      // Advect particle by natural velocity + fluid field
       p.x += p.vx + fluidU * 1.5;
       p.y += p.vy + fluidV * 1.5;
       p.size = Math.min(p.maxSize, p.size + p.growth);
@@ -340,10 +364,10 @@ export function initNeuralAILab() {
       ctx.fill();
     }
 
-    // 5. Update & Render Fluid Shockwave Ripples
+    // 5. Update & Render Liquid Caustic Wave Ripples
     for (let r = fluidRipples.length - 1; r >= 0; r--) {
       const rip = fluidRipples[r];
-      rip.radius += 6;
+      rip.radius += 6.5;
       rip.opacity *= 0.94;
 
       if (rip.opacity < 0.02 || rip.radius > rip.maxRadius) {
@@ -351,16 +375,23 @@ export function initNeuralAILab() {
         continue;
       }
 
+      // Caustic Multi-Ring Specular Wave
       ctx.beginPath();
       ctx.arc(rip.x, rip.y, rip.radius, 0, Math.PI * 2);
-      ctx.strokeStyle = `rgba(${rip.color.r}, ${rip.color.g}, ${rip.color.b}, ${rip.opacity})`;
-      ctx.lineWidth = 3.5;
+      ctx.strokeStyle = `rgba(255, 255, 255, ${rip.opacity * 0.8})`;
+      ctx.lineWidth = 2.5;
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(rip.x, rip.y, Math.max(1, rip.radius - 8), 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(${rip.color.r}, ${rip.color.g}, ${rip.color.b}, ${rip.opacity * 0.6})`;
+      ctx.lineWidth = 4;
       ctx.stroke();
     }
 
     ctx.globalCompositeOperation = 'source-over';
 
-    // 6. Update & Render Synaptic Neurons with Fluid Advection
+    // 6. Update & Render Synaptic Neurons with Liquid Glass Refraction
     for (let i = 0; i < neurons.length; i++) {
       const n = neurons[i];
 
